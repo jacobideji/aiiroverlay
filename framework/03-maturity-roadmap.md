@@ -21,7 +21,7 @@ This is the **framework view** of maturity — the model used to assess and benc
 
 ## The Four Levels
 
-```
+```text
                        ┌──────────────────────────────┐
                        │   Level 4  RESILIENT         │
                        │   Continuous improvement     │
