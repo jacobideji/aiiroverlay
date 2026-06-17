@@ -93,7 +93,7 @@ The four-clause model operationalizes:
 
 - **GV.PO-01** — "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities" — the four clauses are an organization-level policy lens for AI agents
 - **GV.RM-02** — "Risk appetite and risk tolerance statements are established, communicated, and maintained" — clause-by-clause appetite (acts, remembers, retrieves, changes) supports tolerance articulation
-- **PR.AA-01 / PR.AA-05** — identity assertion and access policies — the *"if it can act, govern it as a privileged identity"* clause maps directly to existing PAM disciplines for service accounts and OAuth grants
+- **PR.AA-01 / PR.AA-05** — identity/credential management and access policies — the *"if it can act, govern it as a privileged identity"* clause maps directly to existing PAM disciplines for service accounts and OAuth grants
 
 ### Maturity Roadmap ↔ IDENTIFY + GOVERN
 
