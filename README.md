@@ -46,7 +46,7 @@ AI does not rewrite the rules of effective IR. It changes the map.
 
 The AI IR Overlay adds four agent-aware controls — the **Minimum Viable Overlay (MVO)** — on top of your existing IR program:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                NIST 800-61 IR Lifecycle                 │
 │  Preparation → Detection → Containment → Eradication →  │
@@ -64,7 +64,7 @@ The AI IR Overlay adds four agent-aware controls — the **Minimum Viable Overla
 │  4. CONTROLLED    — Staged, validated re-enablement     │
 │     RE-ENABLE                                           │
 └─────────────────────────────────────────────────────────┘
-```text
+```
 
 ## Reading order
 
