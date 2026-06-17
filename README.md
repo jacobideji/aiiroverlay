@@ -90,6 +90,6 @@ The AI IR Overlay was developed and field-tested through the *AI IR Overlay* Lin
 - NIST AI Risk Management Framework (AI RMF 1.0)
 - OWASP Top 10 for LLM Applications (2025.1)
 - OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10, OWASP GenAI Security Project)
-- ISO/IEC 42001:2023 — Artificial Intelligence Management System
+- ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system (AIMS)
 - EU AI Act (Regulation 2024/1689) — Article 26 obligations for deployers
-- MITRE ATLAS — Adversarial Threat Landscape for AI Systems
+- MITRE ATLAS — Adversarial Threat Landscape for Artificial-Intelligence Systems
