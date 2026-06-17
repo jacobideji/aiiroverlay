@@ -1,0 +1,139 @@
+<!-- ────────────────────────────────────────────────────────────────── -->
+<!--  Minimum AI Evidence Set                                                              -->
+<!--  Part of the AI IR Overlay™ framework — by Jacob Ideji                 -->
+<!--  https://jacobideji.com                                                -->
+<!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
+<!-- ────────────────────────────────────────────────────────────────── -->
+
+> **Six evidence types (A-F) plus capture order. Preservable in 60 minutes.**
+>
+> *This file is one self-contained piece of the AI IR Overlay framework.
+> Cross-references to other pieces point to other packages in the same set,
+> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+
+---
+
+# Minimum AI Evidence Set
+
+> When the actor is an authorized agent, the question is not just *"what was compromised?"* but also *"what was trusted, what was retrieved, and what actions were taken in our name?"*
+
+In AI incidents, evidence is fragile. The most common AI IR failure comes from well-meaning teams who disable integrations, rotate tokens, update prompts, and redeploy — and only then ask *"what exactly did it access?"* By then, the proof is gone.
+
+This document defines the **minimum** evidence set every team must be able to capture, in what order, and within what time budget.
+
+---
+
+## The Capture Order (do not skip)
+
+### Step 1 — Stabilize Without Rewriting Reality
+
+Use staged containment (Kill-Switch Modes M1–M4) to stop damage **without destroying state**. The objective is to halt harm while keeping systems intact long enough to capture evidence.
+
+### Step 2 — Snapshot Identity and Capabilities
+
+**Before** rotating credentials or making config changes, document:
+
+- Agent identity (service account, OAuth grant, impersonation)
+- Permissions held at incident time
+- Enabled tools and write targets
+- Current configuration (prompts, tools, policies, retriever settings)
+
+### Step 3 — Capture the Minimum AI Evidence Set
+
+The six evidence types below. **Only then** rotate credentials, clean corpora, or redeploy.
+
+---
+
+## The Six Evidence Types (A–F)
+
+### A — Prompt and Response Record
+
+The user prompts, system prompts, and model outputs for the incident window.
+
+**Where it lives:** model provider logs, API gateway logs, application logs.
+
+**Capture format:** structured JSON with timestamps, user identity, session ID.
+
+**Retention concern:** model provider TTLs are often short (24–72h). Pull immediately.
+
+### B — Tool-Call Ledger (Action Log)
+
+Attempted **and** successful tool calls, with parameters and results.
+
+**Where it lives:** application middleware, function-calling logs, SaaS audit logs (target side).
+
+**Critical detail:** capture *attempted* calls, not just successful — denied calls are evidence of intent.
+
+### C — Retrieval Traces (RAG / Knowledge-Base)
+
+What the agent retrieved, from which corpus, at which version, with what scores.
+
+**Where it lives:** vector store query logs, RAG framework traces, knowledge-base access logs.
+
+**Why it matters:** poisoned context produces poisoned output. Without retrieval traces, you cannot prove the input vector.
+
+See **RAG / Knowledge-Base Forensics** (Playbook 03) — distributed as the `playbook-03` package.
+
+### D — Memory Snapshot (if enabled)
+
+The agent's persistent context as of incident time.
+
+**Where it lives:** memory backend (Redis, vector DB, app DB), agent framework state.
+
+**Scope question:** is memory per-user or shared? Memory bleed between users is its own incident class.
+
+### E — Configuration Snapshot
+
+The full agent configuration at incident time:
+
+- System prompts (every version active in the window)
+- Tool definitions and authorizations
+- Policies and guardrails
+- Retriever settings (corpus list, top-k, filters)
+- Model version and parameters
+
+**Where it lives:** config management system, deployment manifests, feature flags.
+
+**Why it matters:** "what was the prompt?" is the most-asked post-incident question. Without a versioned snapshot, the answer is a guess.
+
+### F — Identity and SaaS Audit-Log Correlation
+
+The downstream evidence: what the agent did in target systems, attributed to the agent's identity.
+
+**Where it lives:** IdP logs (Okta, Entra), SaaS audit logs (Salesforce, M365, ServiceNow), cloud CloudTrail/Activity logs.
+
+**Why it matters:** confirms the blast radius and supports regulator/customer notification.
+
+---
+
+## Operational Requirements
+
+To claim conformance with the Minimum Evidence Set:
+
+- [ ] All six types (A–F) can be **exported within 60 minutes** of incident declaration
+- [ ] Owners and access paths for each type are pre-documented
+- [ ] Pre-approved emergency access exists (no waiting on a ticket)
+- [ ] Logs A and B are retained for a minimum window matching your IR plan (typically 90 days)
+- [ ] Configuration snapshots (E) are versioned with every change in production
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Consequence |
+|---|---|
+| Rotating credentials before capturing scopes (B, F) | Cannot prove what the agent could do |
+| Updating prompts before exporting previous state (E) | Cannot prove what the agent was told |
+| Cleaning knowledge bases before preserving versioned content (C) | Cannot prove the input vector |
+| Relying on screenshots instead of structured exports | Inadmissible in regulator or legal proceedings |
+| Trusting model-provider retention defaults | Lose A within 72 hours |
+
+---
+
+## Related
+
+Distributed as separate packages:
+
+- **Kill-Switch Modes** — `kill-switches-modes` (staged containment that preserves evidence)
+- **Records, Retention, and Proving What Happened** (Playbook 15) — `playbook-15`
+- **Multi-Stakeholder Logging and Privacy** (Playbook 23) — `playbook-23`

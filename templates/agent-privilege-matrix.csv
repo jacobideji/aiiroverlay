@@ -1,0 +1,13 @@
+agent_name,tool_name,tool_category,risk_tier,read_write,scope,write_targets,allowlist,cap_per_run,approval_required,reversible,notes
+sales-triage-copilot,salesforce_query,saas_read,T0,read,opportunities.read,,,unlimited,no,n/a,read-only SOQL queries
+sales-triage-copilot,salesforce_update_opportunity,saas_write,T2,write,opportunities.write,Salesforce.Opportunity,closed-won-stages-only,50,yes,via opportunity history,Tier-2: approval gate active
+sales-triage-copilot,outlook_send_email,communication,T2,write,mail.send,M365.Outlook,internal-domains-only,20,yes,draft-mode preferred,Tier-2: external send blocked
+sales-triage-copilot,outlook_draft_email,communication,T1,write,mail.drafts,M365.Outlook.Drafts,,100,no,delete draft,Drafts only; no send
+sales-triage-copilot,internal_kb_search,retrieval,T0,read,sharepoint.read,sales-playbook-corpus,,unlimited,no,n/a,Approved corpus only
+support-copilot,zendesk_query_ticket,saas_read,T0,read,tickets.read,,,unlimited,no,n/a,
+support-copilot,zendesk_update_ticket,saas_write,T1,write,tickets.write,Zendesk.Ticket.Comments,,200,no,via audit log,Internal comments only
+support-copilot,zendesk_close_ticket,saas_write,T2,write,tickets.write,Zendesk.Ticket.Status,,10,yes,via audit log,Tier-2 gate
+support-copilot,jira_create_issue,saas_write,T1,write,issues.create,Jira.Project.SUPPORT,sec-projects-blocked,50,no,via issue history,
+devops-agent,github_create_pr,vcs_write,T2,write,pull-request.create,Github.Repo.Main,branch-protection,5,yes,close PR,Tier-2: approval queue
+devops-agent,github_read_files,vcs_read,T0,read,contents.read,,,unlimited,no,n/a,
+devops-agent,cloud_deploy,infra_write,T2,write,deploy.execute,AWS.ECS.staging-only,staging-cluster-only,1,yes,blue-green rollback,Tier-2: staging only
