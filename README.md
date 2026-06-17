@@ -10,42 +10,41 @@
 > *This file is one self-contained piece of the AI IR Overlay framework.
 > Cross-references to other pieces point to other packages in the same set,
 > which you can obtain at [jacobideji.com](https://jacobideji.com).*
-
 ---
 
 # The AI IR Overlay — Framework Overview
 
-> We set basic requirements to ensure AI agents work safely and effectively in real-world use.
+> Establishing the minimum standard for safe and effective operations of AI agents in production.
 
 ## Why an overlay, not a replacement
 
-Traditional incident response, as described in NIST SP 800-61 r2, focused on threats like malware, exploits, stolen credentials, and lateral movement. With AI agents, the types of failures we face differ, including incorrect outputs, unsafe actions, and loss of control.
+Traditional incident response (NIST SP 800-61 r2) was built around unauthorized access vectors: malware, exploits, credential theft, lateral movement. AI agents change the failure mode.
 
 AI incidents often manifest through *authorized* channels:
 
-* Legitimate identities, such as service accounts or delegated OAuth grants, can sometimes carry out actions that were not intended.
-* Legitimate APIs, including tool calls to email, CRM, and ERP systems, may work within approved limits but can still cause harm.
-* Legitimate sources, such as retrieval layers, might pull information from trusted but outdated or unsuitable knowledge bases.
-* Legitimate workflows, including automations that follow policy as written, can still lead to harmful results.
+- **Legitimate identities** — service accounts or delegated OAuth grants that execute unintended actions
+- **Legitimate APIs** — tool calls to email, CRM, and ERP, which operate within allowed parameters but still produce harm
+- **Legitimate sources** — retrieval layers pulling from trusted but outdated or inappropriate knowledge
+- **Legitimate workflows** — automations that execute policy as written, yet produce harmful outcomes
 
-Once the actor is authorized, the focus changes from asking *"who got in?"* to *"what could they access and what did they do?"* At this stage, the most useful evidence comes from prompts, tool calls, retrieval traces, and configuration state, rather than only checking endpoints.
+When the actor is authorized, the question shifts from *"who got in?"* to *"what could it touch, and what did it do?"* Crucial evidence now lives in prompts, tool calls, retrieval traces, and configuration state — not on endpoints.
 
 ## What stays the same
 
-The main steps for effective incident response have stayed the same:
+The core mechanics of effective incident response remain unchanged:
 
-- Keep command and control clear
-- Focus on evidence first
-- Contain issues quickly while causing as little disruption as possible
-- Use 'confirmed' and 'suspected' carefully when describing the scope
-- Recover systems in a controlled, step-by-step way
-- Keep clear records of decisions
+- Clear command and control
+- Evidence-first discipline
+- Rapid containment with minimal disruption
+- Scoping using *confirmed* versus *suspected* terminology
+- Recovery via controlled, staged re-enablement
+- Defensible decision logs
 
-AI does not change the basic rules of effective international relations. Instead, it shifts the landscape.
+AI does not rewrite the rules of effective IR. It changes the map.
 
 ## The Overlay model
 
-The AI IR Overlay introduces four agent-aware controls, called the **Minimum Viable Overlay (MVO)**, to your current IR program:
+The AI IR Overlay adds four agent-aware controls — the **Minimum Viable Overlay (MVO)** — on top of your existing IR program:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -80,7 +79,7 @@ The framework ships as separate packages. Read them in this order:
 
 ## Provenance
 
-The AI IR Overlay was developed and tested through the *AI IR Overlay* LinkedIn newsletter series (Issues 1–24, 2025–2026) by Jacob Ideji. Each issue corresponds to a playbook in the full framework.
+The AI IR Overlay was developed and field-tested through the *AI IR Overlay* LinkedIn newsletter series (Issues 1–24, 2025–2026), authored by Jacob Ideji. Each newsletter issue maps to one playbook in the full framework.
 
 ## Related work
 
