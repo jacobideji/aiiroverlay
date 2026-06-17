@@ -64,7 +64,7 @@ The AI IR Overlay adds four agent-aware controls — the **Minimum Viable Overla
 │  4. CONTROLLED    — Staged, validated re-enablement     │
 │     RE-ENABLE                                           │
 └─────────────────────────────────────────────────────────┘
-```
+```text
 
 ## Reading order
 
