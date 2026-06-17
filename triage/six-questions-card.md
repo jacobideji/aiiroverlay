@@ -50,14 +50,14 @@ Prompts · Tool calls · Retrieval traces · Memory · Config · Identity logs.
 
 ## Kill-Switch Ladder
 
-```
+```text
 M0 Observe       →  Normal operations
 M1 Read-Only     →  Suspicious, low/moderate impact         (preferred first move)
 M2 Approvals     →  Must keep running, need two-person rule
 M3 Tool Tiering  →  Disable high-risk tools only
 M4 Full Disable  →  Active harm or confirmed compromise
 M5 Re-Enable     →  Containment validated, staged recovery
-```
+```text
 
 ---
 
