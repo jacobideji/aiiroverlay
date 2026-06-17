@@ -4,7 +4,7 @@
 # the agent's deployment manifest. Updated on every change. Exportable as
 # the first artifact in any AI incident.
 #
-# Conforms to: AI IR Overlay Minimum Viable Overlay, Control 1 (Inventory)
+# Conforms to: AI IR Overlay ™  Minimum Viable Overlay, Control 1 (Inventory)
 
 agent:
   name: "sales-triage-copilot"
