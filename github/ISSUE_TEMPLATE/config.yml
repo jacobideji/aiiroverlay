@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussion / Question
+    url: https://github.com/jacobideji/aiiroverlay/discussions
+    about: For open-ended questions, design ideas, or general discussion, use Discussions instead of Issues.
+  - name: Security vulnerability
+    url: https://github.com/jacobideji/aiiroverlay/security/advisories/new
+    about: For security vulnerabilities, please use a private security advisory — not a public issue.
