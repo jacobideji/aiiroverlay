@@ -121,3 +121,8 @@ An AI deployment conforms to the AI IR Overlay Minimum Standard when:
 - [ ] **Controlled Re-Enable** procedure exists and is documented in the runbook
 
 Document conformance using the **Board-Ready Scorecard** — distributed as the `playbook-24` package.
+
+---
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>

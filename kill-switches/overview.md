@@ -183,3 +183,8 @@ Distributed as separate packages:
 - **Minimum Evidence Set** — `evidence-minimum-set`
 - **Tool Design Is Containment** (Playbook 04) — `playbook-04`
 - **Testing for Agent Failure Modes** (Playbook 14) — `playbook-14`
+
+---
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>

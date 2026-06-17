@@ -137,3 +137,8 @@ Distributed as separate packages:
 - **Kill-Switch Modes** — `kill-switches-modes` (staged containment that preserves evidence)
 - **Records, Retention, and Proving What Happened** (Playbook 15) — `playbook-15`
 - **Multi-Stakeholder Logging and Privacy** (Playbook 23) — `playbook-23`
+
+---
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>

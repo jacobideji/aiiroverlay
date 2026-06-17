@@ -91,3 +91,8 @@ Distributed as separate packages:
 - **Kill-Switch Modes** — `kill-switches-modes`
 - **Minimum Evidence Set** — `evidence-minimum-set`
 - **Playbook 01 — The Agent Is a Privileged Identity** — `playbook-01`
+
+---
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>

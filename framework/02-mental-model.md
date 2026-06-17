@@ -76,3 +76,8 @@ Distributed as separate packages:
 - **The Six Triage Questions** — `triage-six-questions`
 - **Minimum Evidence Set** — `evidence-minimum-set`
 - **Insider Threat 3.0** playbook — `playbook-12`
+
+---
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>

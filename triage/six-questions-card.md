@@ -72,3 +72,6 @@ M5 Re-Enable     →  Containment validated, staged recovery
 
 *AI IR Overlay™ · Apache 2.0 · jacobideji.com*
 *Founded by Jacob Ideji*
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>
