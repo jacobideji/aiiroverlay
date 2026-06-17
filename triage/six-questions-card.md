@@ -57,7 +57,7 @@ M2 Approvals     →  Must keep running, need two-person rule
 M3 Tool Tiering  →  Disable high-risk tools only
 M4 Full Disable  →  Active harm or confirmed compromise
 M5 Re-Enable     →  Containment validated, staged recovery
-```text
+```
 
 ---
 

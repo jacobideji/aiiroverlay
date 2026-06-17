@@ -17,6 +17,8 @@
 
 The MVO is the smallest set of controls that converts an AI deployment from *unreadiness* to *defensibility*. Adopt all four to claim minimum-standard conformance.
 
+These four controls are referenced throughout the framework as **MVO-1 (Inventory)**, **MVO-2 (Safe Modes)**, **MVO-3 (Minimum Evidence Set)**, and **MVO-4 (Controlled Re-Enable)**.
+
 ---
 
 ## 1. Inventory

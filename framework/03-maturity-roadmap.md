@@ -45,7 +45,7 @@ This is the **framework view** of maturity — the model used to assess and benc
                        │   Inventory of agents/tools  │
                        │   "We know what we run"      │
                        └──────────────────────────────┘
-```text
+```
 
 ## Level Definitions
 

@@ -18,7 +18,7 @@
 
 ## Why an overlay, not a replacement
 
-Traditional incident response (NIST SP 800-61 r2) was built around unauthorized access vectors: malware, exploits, credential theft, lateral movement. AI agents change the failure mode.
+Traditional incident response (NIST SP 800-61 r3, which superseded r2 in April 2025) was built around unauthorized access vectors: malware, exploits, credential theft, lateral movement. AI agents change the failure mode.
 
 AI incidents often manifest through *authorized* channels:
 
@@ -45,6 +45,8 @@ AI does not rewrite the rules of effective IR. It changes the map.
 ## The Overlay model
 
 The AI IR Overlay adds four agent-aware controls — the **Minimum Viable Overlay (MVO)** — on top of your existing IR program:
+
+> **Note:** The NIST 800-61 r2 phases shown below remain widely-understood operational shorthand. r3 (April 2025) restructures incident response around CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover); an AI IR Overlay ↔ CSF 2.0 crosswalk is planned for v0.2.
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
@@ -83,9 +85,10 @@ The AI IR Overlay was developed and field-tested through the *AI IR Overlay* Lin
 
 ## Related work
 
-- NIST SP 800-61 r2 — Computer Security Incident Handling Guide
+- NIST SP 800-61 r3 — Incident Response Recommendations and Considerations for Cybersecurity Risk Management: A CSF 2.0 Community Profile (April 2025, supersedes r2)
 - NIST AI Risk Management Framework (AI RMF 1.0)
-- OWASP Top 10 for LLM and Agentic Applications
+- OWASP Top 10 for LLM Applications (2025.1)
+- OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10, including the "Least Agency" principle)
 - ISO/IEC 42001:2023 — Artificial Intelligence Management System
 - EU AI Act (Regulation 2024/1689) — Article 26 obligations for deployers
 - MITRE ATLAS — Adversarial Threat Landscape for AI Systems
