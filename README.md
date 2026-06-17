@@ -46,7 +46,7 @@ AI does not rewrite the rules of effective IR. It changes the map.
 
 The AI IR Overlay adds four agent-aware controls — the **Minimum Viable Overlay (MVO)** — on top of your existing IR program:
 
-> **Note:** The NIST 800-61 r2 phases shown below remain widely-understood operational shorthand. r3 (April 2025) restructures incident response around CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover); an AI IR Overlay ↔ CSF 2.0 crosswalk is planned for v0.2.
+> **Note:** The NIST 800-61 r2 phases shown below remain widely-understood operational shorthand. r3 (April 2025) restructures incident response around CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover); see the AI IR Overlay ↔ CSF 2.0 crosswalk at [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md).
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
@@ -78,6 +78,7 @@ The framework ships as separate packages. Read them in this order:
 4. **The Six Triage Questions** — first-hour discipline (`triage-six-questions`)
 5. **Kill-Switch Modes** — containment ladder (`kill-switches-modes`)
 6. **Minimum Evidence Set** — what to preserve, and in what order (`evidence-minimum-set`)
+7. **Crosswalks** — [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 + SP 800-61 r3)
 
 ## Provenance
 
