@@ -26,8 +26,8 @@ This crosswalk maps AI IR Overlay controls to NIST AI RMF functions, with emphas
 | **MVO-3 Minimum Evidence Set** | MEASURE, MANAGE | MEASURE 2.7, MANAGE 4.1 |
 | **MVO-4 Controlled Re-Enable** | MANAGE | MANAGE 4.2, MANAGE 4.3 |
 | Six Triage Questions | MAP, MEASURE | MAP 2.3, MEASURE 2.5 |
-| Mental Model | GOVERN | GOVERN 1.1 (org policy), GOVERN 3.2 (risk tolerance) |
-| Maturity Roadmap | GOVERN, MEASURE | GOVERN 1.4 (continuous improvement), MEASURE 4.2 |
+| Mental Model | GOVERN | GOVERN 1.1 (legal/regulatory), GOVERN 3.2 (human-AI roles) |
+| Maturity Roadmap | GOVERN, MEASURE, MANAGE | GOVERN 1.4 (risk-management process), MEASURE 4.2, MANAGE 4.2 (continual improvement) |
 
 ## Detailed Mappings
 
@@ -35,7 +35,7 @@ This crosswalk maps AI IR Overlay controls to NIST AI RMF functions, with emphas
 
 The AI-BOM template (distributed as the `template-ai-bom` package) operationalizes:
 
-- **GOVERN 1.6** — "Mechanisms are in place to inventory AI systems and resource them according to organizational risk priorities."
+- **GOVERN 1.6** — "Mechanisms are in place to inventory AI systems and are resourced according to organizational risk priorities."
 - **MAP 1.1** — "Intended purposes, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented."
 - **MAP 4.1** — "Approaches for mapping AI technology and legal risks of its components — including the use of third-party data or software — are in place, followed, and documented."
 
@@ -45,7 +45,7 @@ The AI-BOM template (distributed as the `template-ai-bom` package) operationaliz
 
 The Kill-Switch Modes (M0–M5) operationalize:
 
-- **MANAGE 1.3** — "Responses to the AI risks deemed high priority, as identified by the MAP function, are developed, planned, and documented."
+- **MANAGE 1.3** — "Responses to the AI risks deemed high priority, as identified by the map function, are developed, planned, and documented."
 - **MANAGE 2.3** — "Procedures are followed to respond to and recover from a previously unknown risk when it is identified."
 - **MANAGE 2.4** — "Mechanisms are in place and applied, and responsibilities are assigned and understood, to supersede, disengage, or deactivate AI systems that demonstrate performance or outcomes inconsistent with intended use."
 
@@ -55,8 +55,8 @@ The Kill-Switch Modes (M0–M5) operationalize:
 
 The Minimum Evidence Set (A–F) operationalizes:
 
-- **MEASURE 2.7** — "AI system security and resilience are evaluated and documented."
-- **MANAGE 4.1** — "Post-deployment AI system monitoring plans are implemented, including mechanisms for capable AI actors, users, and other relevant AI actors to report issues."
+- **MEASURE 2.7** — "AI system security and resilience – as identified in the map function – are evaluated and documented."
+- **MANAGE 4.1** — "Post-deployment AI system monitoring plans are implemented, including mechanisms for capturing and evaluating input from users and other relevant AI actors, appeal and override, decommissioning, incident response, recovery, and change management."
 
 **Gap note:** AI RMF does not enumerate evidence types. The A–F set provides the operational specification.
 
@@ -87,4 +87,4 @@ When responding to an auditor, regulator, or board question framed in AI RMF ter
 
 ---
 
-*Last revised: 2026-06-15 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-06-17 · Maintainer interpretation, not a NIST publication.*
