@@ -78,7 +78,7 @@ The framework ships as separate packages. Read them in this order:
 4. **The Six Triage Questions** — first-hour discipline (`triage-six-questions`)
 5. **Kill-Switch Modes** — containment ladder (`kill-switches-modes`)
 6. **Minimum Evidence Set** — what to preserve, and in what order (`evidence-minimum-set`)
-7. **Crosswalks** — [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 + SP 800-61 r3)
+7. **Crosswalks** — [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 + SP 800-61 r3) · [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) (OWASP Agentic Top 10 2026)
 
 ## Provenance
 
@@ -89,7 +89,7 @@ The AI IR Overlay was developed and field-tested through the *AI IR Overlay* Lin
 - NIST SP 800-61 r3 — Incident Response Recommendations and Considerations for Cybersecurity Risk Management: A CSF 2.0 Community Profile (April 2025, supersedes r2)
 - NIST AI Risk Management Framework (AI RMF 1.0)
 - OWASP Top 10 for LLM Applications (2025.1)
-- OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10, including the "Least Agency" principle)
+- OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10, OWASP GenAI Security Project)
 - ISO/IEC 42001:2023 — Artificial Intelligence Management System
 - EU AI Act (Regulation 2024/1689) — Article 26 obligations for deployers
 - MITRE ATLAS — Adversarial Threat Landscape for AI Systems

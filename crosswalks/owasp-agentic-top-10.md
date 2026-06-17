@@ -1,0 +1,191 @@
+<!-- ────────────────────────────────────────────────────────────────── -->
+<!--  Crosswalk — AI IR Overlay vs OWASP Top 10 for Agentic Applications 2026                              -->
+<!--  Part of the AI IR Overlay™ framework — by Jacob Ideji                 -->
+<!--  https://jacobideji.com                                                -->
+<!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
+<!-- ────────────────────────────────────────────────────────────────── -->
+
+> **Mappings to all 10 ASI risks: ASI01–ASI10.**
+>
+> *This file is one self-contained piece of the AI IR Overlay framework.
+> Cross-references to other pieces point to other packages in the same set,
+> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+
+---
+
+# Crosswalk — AI IR Overlay ↔ OWASP Top 10 for Agentic Applications 2026
+
+OWASP's Agentic Top 10 (released December 2025 by the OWASP GenAI Security Project) is the most current ranking of risks specific to autonomous and agentic AI. The 10 risks (ASI01–ASI10) cover goal hijacking, tool misuse, identity abuse, supply chain, code execution, memory poisoning, inter-agent communication, cascading failures, human-agent trust, and rogue behavior.
+
+The AI IR Overlay provides the **operational machinery** — inventory, staged containment, evidence preservation, controlled recovery — for **responding to incidents** in each ASI category. OWASP categorizes what can go wrong; the AI IR Overlay specifies how to detect, contain, prove, and recover when it does.
+
+## At a Glance
+
+| ASI Risk | Primary AI IR Overlay Controls | Most Relevant Artifacts |
+|---|---|---|
+| **ASI01** Agent Goal Hijack | MVO-3 Evidence + Triage Q1 | Prompt/response logs (A) · config snapshot (E) |
+| **ASI02** Tool Misuse & Exploitation | MVO-1 Inventory + MVO-2 Safe Modes (M3) + Triage Q1, Q5 | Agent Privilege Matrix · tool-call ledger (B) |
+| **ASI03** Identity & Privilege Abuse | MVO-1 Inventory + Triage Q3 | AI-BOM `identity` section · SaaS audit logs (F) |
+| **ASI04** Agentic Supply Chain Compromise | MVO-1 Inventory + MVO-3 Evidence | AI-BOM `model` + `retrieval` sections · config snapshot (E) |
+| **ASI05** Unexpected Code Execution | MVO-2 Safe Modes (M4) + Triage Q1, Q5 | Tool-call ledger (B) · kill-switch M4 |
+| **ASI06** Memory & Context Poisoning | MVO-1 Inventory + MVO-3 Evidence + Mental Model | Memory snapshot (D) · retrieval traces (C) |
+| **ASI07** Insecure Inter-Agent Communication | MVO-1 Inventory + MVO-3 Evidence | AI-BOM `tools` section · tool-call ledger (B) |
+| **ASI08** Cascading Agent Failures | MVO-2 Safe Modes (M3 + M4) + MVO-4 Controlled Re-Enable | Kill-switch ladder · staged recovery sequence |
+| **ASI09** Human-Agent Trust Exploitation | Mental Model + Maturity Roadmap | Operating cadence · drill design |
+| **ASI10** Rogue Agents | MVO-2 Safe Modes (M4) + MVO-3 Evidence | Full A–F evidence set · kill-switch M4 |
+
+## Detailed Mappings
+
+### ASI01 — Agent Goal Hijack
+
+**Threat:** Prompt injection, indirect prompt injection, or context manipulation that causes the agent to pursue an attacker's goal instead of the user's.
+
+**AI IR Overlay response:**
+
+- **MVO-3 Minimum Evidence Set, type A (Prompt/Response Record)** is the primary forensic artifact — captures the injected payload, the resulting plan, and the deviation from intended behavior.
+- **MVO-3, type E (Configuration Snapshot)** captures the system prompt and guardrails in effect at the time of hijack — essential to prove the agent's intended scope.
+- **Six Triage Questions Q1** ("What tools can the agent call?") scopes the blast radius of the hijacked plan before containment.
+
+**Operational priority:** Preserve A and E **before** rotating the system prompt or retraining; the rush-to-fix often destroys the evidence needed to prove what the agent was instructed to do.
+
+### ASI02 — Tool Misuse & Exploitation
+
+**Threat:** The agent invokes legitimate tools in unintended ways (e.g., sending mass emails, deleting records, triggering financial actions) due to malicious instruction or buggy planning.
+
+**AI IR Overlay response:**
+
+- **MVO-1 Inventory** — the **Agent Privilege Matrix** (T0/T1/T2 tiering) is the pre-incident control: every tool is pre-classified by risk so containment can be surgical, not binary.
+- **MVO-2 Safe Modes, Mode M3 (Tool Tiering)** — the operational mechanism. Disable T2 tools, keep T0/T1, business continues.
+- **MVO-3, type B (Tool-Call Ledger)** — captures both attempted and successful calls; denied calls are evidence of intent.
+- **Triage Q1 + Q5** — first-hour discipline matches threat to least-disruptive safe mode.
+
+**Operational priority:** Pre-tier tools (`template-agent-privilege-matrix` package) — without this, M3 cannot execute under pressure.
+
+### ASI03 — Identity & Privilege Abuse
+
+**Threat:** The agent's service account, delegated OAuth grant, or impersonation token has more privilege than its task requires, and that excess is exploited.
+
+**AI IR Overlay response:**
+
+- **MVO-1 Inventory** — AI-BOM's `identity` section is the authoritative record: principal, scopes, rotation cadence. Reviewed in PAM cadence per the Mental Model clause *"if it can act, govern it as a privileged identity."*
+- **Triage Q3** ("What identity does it run as?") immediately scopes downstream audit trails and accountability.
+- **MVO-3, type F (Identity and SaaS Audit-Log Correlation)** — the downstream evidence proving what the identity touched, with which target systems.
+
+**Operational priority:** AI-BOM `identity` section **must** include scopes and rotation cadence; otherwise audit becomes guesswork.
+
+### ASI04 — Agentic Supply Chain Compromise
+
+**Threat:** Compromised models, retrieval corpora, tool definitions, or middleware libraries inject malicious behavior upstream of any individual agent.
+
+**AI IR Overlay response:**
+
+- **MVO-1 Inventory** — AI-BOM's `model` (provider, model ID, version pinning, fallback) and `retrieval` (corpora, URIs, sensitivities, refresh cadences) sections are the supply-chain manifest.
+- **MVO-3, type E (Configuration Snapshot)** — captures tool definitions and retriever settings at incident time, enabling supply-chain forensics.
+- **Mental Model clause 3** ("if it can retrieve, protect it as a production system") — corpora updates are change-control events, tracked in CMDB.
+
+**Operational priority:** Pin model versions in AI-BOM and treat corpus refreshes as production deployments.
+
+### ASI05 — Unexpected Code Execution
+
+**Threat:** The agent triggers execution of arbitrary code via tools like code interpreters, shell tools, or sandboxes — beyond what the user or operator intended.
+
+**AI IR Overlay response:**
+
+- **MVO-2 Safe Modes, Mode M4 (Full Disable)** — when code execution is the harm vector, M4 is appropriate; the cost of staged containment exceeds the cost of stopping execution.
+- **MVO-3, type B (Tool-Call Ledger)** — must capture every code-execution invocation with parameters and results, with retention long enough for forensics.
+- **Triage Q1 + Q5** — Q1 lists the code-execution tools, Q5 confirms M4 is the right response.
+
+**Operational priority:** Code-execution tools are Tier-T2 by default in the Privilege Matrix; require approvals (M2) at minimum, disable on suspicion.
+
+### ASI06 — Memory & Context Poisoning
+
+**Threat:** Adversarial content persisted in agent memory (per-user or shared) or injected into retrieved context causes downstream actions to be poisoned across sessions.
+
+**AI IR Overlay response:**
+
+- **MVO-1 Inventory** — AI-BOM's `memory` section (scope: off / per-user / shared, retention, classification) and `retrieval` section are the inventory artifacts.
+- **Mental Model clause 2** ("if it can remember, treat it as a data store") — memory falls under SOC 2 / HIPAA / GDPR / PCI assessments.
+- **MVO-3, type D (Memory Snapshot)** — captures persistent context at incident time; without it, you cannot prove cross-session bleed.
+- **MVO-3, type C (Retrieval Traces)** — captures what the agent retrieved, from which corpus, at which version, with what scores. Without this, the input vector is unprovable.
+
+**Operational priority:** If memory is `scope: shared`, treat memory bleed across users as its own incident class. Capture D **before** cleaning or rotating memory.
+
+### ASI07 — Insecure Inter-Agent Communication
+
+**Threat:** Agents communicating via standardized protocols (e.g., MCP) trust each other's outputs without verification, propagating attacks across an agent mesh.
+
+**AI IR Overlay response:**
+
+- **MVO-1 Inventory** — AI-BOM's `tools` section must capture inter-agent connectors and the agents on the other end (treat them as external systems).
+- **MVO-3, type B (Tool-Call Ledger)** — captures messages exchanged across agents, with parameters and results.
+- **Mental Model clause 4** ("if it can change, manage it as software") — inter-agent protocols are infrastructure; deployment requires review.
+
+**Operational priority:** Each inter-agent connector counts as a distinct tool in the Privilege Matrix and must be tier-classified.
+
+### ASI08 — Cascading Agent Failures
+
+**Threat:** One failing or compromised agent triggers a cascade of failures across other agents that depend on its outputs, magnifying the blast radius.
+
+**AI IR Overlay response:**
+
+- **MVO-2 Safe Modes, Modes M3 + M4** — surgical containment of the originating agent prevents cascade; full disable of any downstream agent that is now consuming poisoned output.
+- **MVO-4 Controlled Re-Enable** — staged recovery is **mandatory** to prevent re-triggering the cascade during restoration.
+- **Maturity Roadmap Level 4 (Resilient)** — quarterly tabletops should include a cross-agent failure scenario.
+
+**Operational priority:** Inventory must capture inter-agent dependencies (which agents depend on which). Without this, cascade scope cannot be enumerated under pressure.
+
+### ASI09 — Human-Agent Trust Exploitation
+
+**Threat:** Humans develop excessive trust in agent outputs and act on bad recommendations (e.g., a finance copilot recommends an urgent payment based on a poisoned invoice).
+
+**AI IR Overlay response:**
+
+- **Mental Model** — the four-clause discipline is the operator-level countermeasure: every agent output is a *recommendation*, not an *order*; human review remains the control of last resort for high-impact actions.
+- **MVO-2 Safe Modes, Mode M2 (Approvals Required)** — pre-positioned two-person rule for high-impact actions (financial, external-facing).
+- **Maturity Roadmap Level 4 (Resilient)** — quarterly tabletops should include a trust-exploitation scenario where the agent's recommendation is subtly wrong.
+
+**Operational priority:** Drills should include both *agent is wrong* and *user trusts incorrect output* scenarios. Without operator training, the technical controls have a human-shaped hole.
+
+### ASI10 — Rogue Agents
+
+**Threat:** An agent's behavior drifts from its intended function due to reward hacking, goal drift, or collusion with other agents — and the drift goes undetected until material harm occurs.
+
+**AI IR Overlay response:**
+
+- **MVO-2 Safe Modes, Mode M4 (Full Disable)** — once rogue behavior is confirmed, full disable preserves the state for forensics.
+- **MVO-3 Minimum Evidence Set (full A–F)** — rogue-agent investigations are often complex and benefit from the **entire** evidence set, not just one type.
+- **Maturity Roadmap Level 3 (Provable)** — the ability to export the full A–F set within 60 minutes is the precondition for proving what a rogue agent did.
+
+**Operational priority:** Define drift detection criteria pre-incident. A "rogue" determination is a category jump that requires CISO/IC approval, not a Tier-1 SOC call.
+
+## How to Use This Crosswalk
+
+When responding to a threat report, security researcher disclosure, or auditor question framed in OWASP ASI terms, this crosswalk provides direct evidence of AI IR Overlay readiness.
+
+**Example:** *"Walk us through how your organization would detect, contain, and recover from an ASI06 Memory & Context Poisoning incident."*
+
+**Answer:** *"Our AI-BOM (`template-ai-bom` package) documents memory scope (per-user vs shared), retention, and sensitivity classification for every agent. Detection sources include Type-A prompt logs and Type-C retrieval traces. Containment uses M3 (Tool Tiering) if a single tool is the carrier, M4 (Full Disable) if memory bleed is confirmed. Pre-containment, we capture Type-D (Memory Snapshot) and Type-C (Retrieval Traces) to preserve the input vector. Recovery follows M5 with corpus version verification before re-enabling memory. Our quarterly tabletops include a memory-poisoning scenario per Level 4 (Resilient) maturity."*
+
+## Relationship to OWASP Top 10 for LLM Applications
+
+OWASP's earlier **Top 10 for LLM Applications** (current version 2025.1) covers single-model risks: prompt injection, training data poisoning, model denial of service, etc. The Agentic Top 10 is **additive** — it covers risks that emerge only when LLMs are wired into multi-step plans with tools, memory, and inter-agent protocols.
+
+The AI IR Overlay focuses on agent-class incidents (the Agentic Top 10 territory). For LLM-only incidents in non-agentic systems, traditional application IR plus 800-61 r3 is usually sufficient.
+
+## Status
+
+- **Mapping completeness:** all 10 ASI categories have a primary AI IR Overlay control + most relevant artifact + operational priority note.
+- **Coverage gap:** detailed playbooks per ASI category are forthcoming — each playbook will operationalize one ASI threat model end-to-end. Planned for v0.2+.
+- **Validation:** unreviewed by OWASP. This is the maintainer's interpretation, offered in good faith.
+
+## Source
+
+- OWASP Top 10 for Agentic Applications 2026 (Agentic Security Initiative), OWASP GenAI Security Project, December 2025. Available at [genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/).
+- OWASP Top 10 for LLM Applications (2025.1), OWASP Foundation. Available at [owasp.org/www-project-top-10-for-large-language-model-applications/](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
+
+---
+
+*Last revised: 2026-06-17 · Maintainer interpretation, not an OWASP publication.*
+
+*Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
+<https://www.linkedin.com/in/jacobideji/>
