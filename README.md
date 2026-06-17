@@ -78,7 +78,8 @@ The framework ships as separate packages. Read them in this order:
 4. **The Six Triage Questions** — first-hour discipline (`triage-six-questions`)
 5. **Kill-Switch Modes** — containment ladder (`kill-switches-modes`)
 6. **Minimum Evidence Set** — what to preserve, and in what order (`evidence-minimum-set`)
-7. **Crosswalks** — [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 + SP 800-61 r3) · [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) (OWASP Agentic Top 10 2026)
+7. **Templates** — [`templates/ai-bom.yaml`](templates/ai-bom.yaml) (AI Bill of Materials schema for MVO-1 Inventory) · [`templates/agent-privilege-matrix.csv`](templates/agent-privilege-matrix.csv) (tool-tier matrix for MVO-2 Mode M3)
+8. **Crosswalks** — [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 + SP 800-61 r3) · [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) (OWASP Agentic Top 10 2026)
 
 ## Provenance
 
@@ -93,3 +94,17 @@ The AI IR Overlay was developed and field-tested through the *AI IR Overlay* Lin
 - ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system (AIMS)
 - EU AI Act (Regulation 2024/1689) — Article 26 obligations for deployers
 - MITRE ATLAS — Adversarial Threat Landscape for Artificial-Intelligence Systems
+
+## Acronyms
+
+- **AI-BOM** — AI Bill of Materials
+- **ASI** — Agentic Security Initiative (OWASP)
+- **CSF** — (NIST) Cybersecurity Framework
+- **IC** — Incident Commander
+- **IR** — Incident Response
+- **MVO** — Minimum Viable Overlay
+- **PAM** — Privileged Access Management
+- **RAG** — Retrieval-Augmented Generation
+- **RMF** — (NIST AI) Risk Management Framework
+- **SOC** — Security Operations Center *(distinct from SOC 2, the AICPA audit standard)*
+- **TTA** — Time-to-Activate
