@@ -10,7 +10,7 @@
 > *This file is one self-contained piece of the AI IR Overlay framework.
 > Cross-references to other pieces point to other packages in the same set,
 > which you can obtain at [jacobideji.com](https://jacobideji.com).*
-
+Å
 ---
 
 # The AI IR Overlay — Framework Overview
@@ -19,19 +19,18 @@
 
 ## Why an overlay, not a replacement
 
-Traditional incident response, as described in NIST SP 800-61 Revision 2, addresses unauthorized access vectors including malware, exploits, credential theft, and lateral movement. The use of AI agents introduces new types of failure modes.
+Traditional incident response (NIST SP 800-61 r2) was built around unauthorized access vectors: malware, exploits, credential theft, lateral movement. AI agents change the failure mode.
 
-AI incidents often manifest through authorized channels:
+AI incidents often manifest through *authorized* channels:
 
-* Legitimate identities, such as service accounts or delegated OAuth grants, may perform unintended actions.
-* Legitimate APIs, including tool calls to email, CRM, and ERP, may operate within allowed parameters but still cause harm.
-* Legitimate sources, such as retrieval layers, may pull from trusted but outdated or inappropriate knowledge.
-* Legitimate workflows, including automations that follow policy as written, may still result in harmful outcomes.
+- **Legitimate identities** — service accounts or delegated OAuth grants that execute unintended actions
+- **Legitimate APIs** — tool calls to email, CRM, and ERP, which operate within allowed parameters but still produce harm
+- **Legitimate sources** — retrieval layers pulling from trusted but outdated or inappropriate knowledge
+- **Legitimate workflows** — automations that execute policy as written, yet produce harmful outcomes
 
-After authorization, the focus shifts from identifying the actor to determining what resources were accessed and what actions were performed. Key evidence is now found in prompts, tool calls, retrieval traces, and configuration state, rather than on endpoints.
+When the actor is authorized, the question shifts from *"who got in?"* to *"what could it touch, and what did it do?"* Crucial evidence now lives in prompts, tool calls, retrieval traces, and configuration state — not on endpoints.
 
 ## What stays the same
-
 
 The core mechanics of effective incident response remain unchanged:
 
@@ -42,7 +41,7 @@ The core mechanics of effective incident response remain unchanged:
 - Recovery via controlled, staged re-enablement
 - Defensible decision logs
 
-AI does not change the core principles of effective incident response, but it does reshape the operational environment.
+AI does not rewrite the rules of effective IR. It changes the map.
 
 ## The Overlay model
 
@@ -81,7 +80,7 @@ The framework ships as separate packages. Read them in this order:
 
 ## Provenance
 
-Jacob Ideji developed and tested the AI IR Overlay through the *AI IR Overlay* LinkedIn newsletter series (Issues 1–24, 2025–2026). Each issue aligns with a playbook in the framework.
+The AI IR Overlay was developed and field-tested through the *AI IR Overlay* LinkedIn newsletter series (Issues 1–24, 2025–2026), authored by Jacob Ideji. Each newsletter issue maps to one playbook in the full framework.
 
 ## Related work
 
