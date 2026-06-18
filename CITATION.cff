@@ -7,7 +7,7 @@ authors:
     given-names: "Jacob"
     affiliation: "Independent — AI IR Overlay Framework"
     website: "https://jacobideji.com"
-version: "0.2.0"
+version: "0.3.0"
 date-released: "2026-06-18"
 license: "Apache-2.0"
 repository-code: "https://github.com/jacobideji/aiiroverlay"
@@ -33,6 +33,6 @@ preferred-citation:
     - family-names: "Ideji"
       given-names: "Jacob"
   year: 2026
-  version: "0.2.0"
+  version: "0.3.0"
   url: "https://github.com/jacobideji/aiiroverlay"
   license: "Apache-2.0"
