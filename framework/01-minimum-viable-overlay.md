@@ -13,7 +13,7 @@
 
 ---
 
-# The Minimum Viable Overlay (MVO) — Four Essential Controls
+# The Minimum Viable Overlay (MVO): Four Essential Controls
 
 The MVO is the smallest set of controls that converts an AI deployment from *unreadiness* to *defensibility*. Adopt all four to claim minimum-standard conformance.
 
@@ -43,11 +43,11 @@ For each agent, the inventory must capture:
 
 > **Mental model:** if you cannot answer *"what can this agent do?"* in one sentence, you cannot contain its incident in one hour.
 
-See the **AI Bill of Materials (AI-BOM)** template — distributed as the `template-ai-bom` package.
+See the **AI Bill of Materials (AI-BOM)** template, distributed as the `template-ai-bom` package.
 
 ---
 
-## 2. Safe Modes — Rapid Activation and Tiered Containment
+## 2. Safe Modes: Rapid Activation and Tiered Containment
 
 **Question answered:** *Can we stop harm in under 10 minutes without killing the business?*
 
@@ -64,11 +64,11 @@ A binary on/off switch is rarely appropriate in production. The Overlay defines 
 
 **Operational requirements:**
 
-- Modes M1–M4 must be activatable within **10 minutes** by Tier-1 SOC
+- Modes M1 to M4 must be activatable within **10 minutes** by Tier-1 SOC
 - Mode M5 requires CISO or designated incident commander approval
 - Each mode must be tested in a tabletop **before** the first production deployment
 
-See the **Kill-Switch Modes** full specification — distributed as the `kill-switches-modes` package.
+See the **Kill-Switch Modes** full specification, distributed as the `kill-switches-modes` package.
 
 ---
 
@@ -89,23 +89,23 @@ In AI incidents, evidence is fragile. Rotating tokens, redeploying agents, or cl
 
 **Operational requirement:** the team must be able to **export the full set within 60 minutes** of incident declaration, using documented procedures and pre-approved access paths.
 
-> **The rush-to-contain trap:** the most common AI IR failure comes from well-meaning teams who disable integrations, rotate tokens, update prompts, and redeploy — and only then ask "what exactly did it access?" Evidence-first discipline is the single biggest predictor of defensible response.
+> **The rush-to-contain trap:** the most common AI IR failure comes from well-meaning teams who disable integrations, rotate tokens, update prompts, and redeploy, and only then ask "what exactly did it access?" Evidence-first discipline is the single biggest predictor of defensible response.
 
-See the **Minimum Evidence Set** full specification — distributed as the `evidence-minimum-set` package.
+See the **Minimum Evidence Set** full specification, distributed as the `evidence-minimum-set` package.
 
 ---
 
-## 4. Controlled Re-Enable — Staged, Validated Recovery
+## 4. Controlled Re-Enable: Staged, Validated Recovery
 
 **Question answered:** *Can we recover in stages without restarting the incident?*
 
 Recovery is not binary. Systems are restored in stages, each with validation:
 
-1. **Restore read-only access first** — re-enable the agent in observe mode
-2. **Validate retrieval and tool policies** — confirm fixes hold post-incident
-3. **Replay the incident scenario in a safe harness** — sandbox the original trigger
-4. **Re-enable tools incrementally** — monitor for regression or drift after each
-5. **Return to full operation** — only after the above passes
+1. **Restore read-only access first.** Re-enable the agent in observe mode.
+2. **Validate retrieval and tool policies.** Confirm fixes hold post-incident.
+3. **Replay the incident scenario in a safe harness.** Sandbox the original trigger.
+4. **Re-enable tools incrementally.** Monitor for regression or drift after each.
+5. **Return to full operation.** Only after the above passes.
 
 This stepwise approach prevents the most common recovery failure: re-enabling everything at once and re-triggering the same incident.
 
@@ -117,10 +117,10 @@ An AI deployment conforms to the AI IR Overlay Minimum Standard when:
 
 - [ ] **Inventory** exists, is current within 7 days, and is exportable in under 5 minutes
 - [ ] **Safe Modes** M1, M2, M3, M4 are implemented and tabletop-tested in the last 90 days
-- [ ] **Minimum Evidence Set** A–F is exportable within 60 minutes
+- [ ] **Minimum Evidence Set** A to F is exportable within 60 minutes
 - [ ] **Controlled Re-Enable** procedure exists and is documented in the runbook
 
-Document conformance using the **Board-Ready Scorecard** — distributed as the `playbook-24` package.
+Document conformance using the **Board-Ready Scorecard**, distributed as the `playbook-24` package.
 
 ---
 
