@@ -7,7 +7,7 @@
 
 > **CSV mapping each agent's tools to Tier 0/1/2 with risk and reversibility.**
 >
-> *This is one self-contained piece of the AI IR Overlay framework.
+> *This is one self-contained piece of the AI IR Overlay™ framework.
 > Get the rest at [jacobideji.com](https://jacobideji.com).*
 
 ---
