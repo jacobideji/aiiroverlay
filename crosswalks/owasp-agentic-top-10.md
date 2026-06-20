@@ -7,7 +7,7 @@
 
 > **Mappings to all 10 ASI risks: ASI01–ASI10.**
 >
-> *This file is one self-contained piece of the AI IR Overlay framework.
+> *This file is one self-contained piece of the AI IR Overlay™ framework.
 > Cross-references to other pieces point to other packages in the same set,
 > which you can obtain at [jacobideji.com](https://jacobideji.com).*
 
@@ -27,12 +27,12 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 | **ASI02** Tool Misuse & Exploitation | MVO-1 Inventory + MVO-2 Safe Modes (M3) + Triage Q1, Q5 | Agent Privilege Matrix · tool-call ledger (B) |
 | **ASI03** Identity & Privilege Abuse | MVO-1 Inventory + Triage Q3 | AI-BOM `identity` section · SaaS audit logs (F) |
 | **ASI04** Agentic Supply Chain Compromise | MVO-1 Inventory + MVO-3 Evidence | AI-BOM `model` + `retrieval` sections · config snapshot (E) |
-| **ASI05** Unexpected Code Execution | MVO-2 Safe Modes (M4) + Triage Q1, Q5 | Tool-call ledger (B) · kill-switch M4 |
+| **ASI05** Unexpected Code Execution | MVO-2 Safe Modes (M4) + Triage Q1, Q5 | Tool-call ledger (B) · Kill-Switch M4 |
 | **ASI06** Memory & Context Poisoning | MVO-1 Inventory + MVO-3 Evidence + Mental Model | Memory snapshot (D) · retrieval traces (C) |
 | **ASI07** Insecure Inter-Agent Communication | MVO-1 Inventory + MVO-3 Evidence | AI-BOM `tools` section · tool-call ledger (B) |
-| **ASI08** Cascading Agent Failures | MVO-2 Safe Modes (M3 + M4) + MVO-4 Controlled Re-Enable | Kill-switch ladder · staged recovery sequence |
+| **ASI08** Cascading Agent Failures | MVO-2 Safe Modes (M3 + M4) + MVO-4 Controlled Re-Enable | Kill-Switch ladder · staged recovery sequence |
 | **ASI09** Human-Agent Trust Exploitation | Mental Model + Maturity Roadmap | Operating cadence · drill design |
-| **ASI10** Rogue Agents | MVO-2 Safe Modes (M4) + MVO-3 Evidence | Full A–F evidence set · kill-switch M4 |
+| **ASI10** Rogue Agents | MVO-2 Safe Modes (M4) + MVO-3 Evidence | Full A–F evidence set · Kill-Switch M4 |
 
 ## Detailed Mappings
 
