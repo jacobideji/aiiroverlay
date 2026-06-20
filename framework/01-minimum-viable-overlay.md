@@ -7,7 +7,7 @@
 
 > **Four controls. Each small. Together: the minimum standard.**
 >
-> *This file is one self-contained piece of the AI IR Overlay framework.
+> *This file is one self-contained piece of the AI IR Overlay™ framework.
 > Cross-references to other pieces point to other packages in the same set,
 > which you can obtain at [jacobideji.com](https://jacobideji.com).*
 
@@ -25,7 +25,7 @@ These four controls are referenced throughout the framework as **MVO-1 (Inventor
 
 **Question answered:** *What can the agent do, and where can it write?*
 
-A comprehensive inventory of every AI agent in production. Without it, responders cannot scope an incident in real time, and well-meaning containment either over-reacts or under-reacts.
+A complete inventory of every AI agent in production. Without it, responders cannot scope an incident in real time, and well-meaning containment either over-reacts or under-reacts.
 
 For each agent, the inventory must capture:
 
