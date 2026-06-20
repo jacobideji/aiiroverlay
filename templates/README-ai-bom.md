@@ -14,7 +14,7 @@
 
 # AI Bill of Materials (AI-BOM)
 
-A YAML schema for describing every AI agent in production. **The AI-BOM is the inventory layer of the [Minimum Viable Overlay](https://jacobideji.com)** — without it, responders cannot scope an incident in real time.
+A YAML schema for describing every AI agent in production. **The AI-BOM is the inventory layer of the [Minimum Viable Overlay](https://jacobideji.com).** Without it, responders cannot scope an incident in real time.
 
 ## What this package contains
 
@@ -38,7 +38,7 @@ The schema captures, **per agent**:
 | `memory` | Scope (off / per-user / shared), retention, sensitivity, PII handling |
 | `guardrails` | Active policies (prompt-injection detection, PII redaction, rate limits) |
 | `logging` | What's logged, retention windows |
-| `kill_switches` | Implementation status + last-tested date for each mode M1–M4 |
+| `kill_switches` | Implementation status + last-tested date for each mode M1 to M4 |
 | `evidence_export` | Where the runbook lives, tested export time |
 | `compliance_tags` | SOC 2, ISO 42001, EU AI Act applicability |
 | `incidents_history` | Tabletop and real incident log |
@@ -58,7 +58,7 @@ The schema captures, **per agent**:
 
 2. Replace the worked-example values with your agent's actual configuration.
 
-3. Treat each file as **production configuration** — version it, review it, and require an updated AI-BOM on every agent change.
+3. Treat each file as **production configuration.** Version it, review it, and require an updated AI-BOM on every agent change.
 
 ### Operational requirement
 
@@ -87,17 +87,17 @@ If you maintain a CMDB or SBOM:
 
 ## License
 
-Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark **AI IR Overlay™** is protected — see `LICENSE` for terms.
+Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark **AI IR Overlay™** is protected. See `LICENSE` for terms.
 
 ## Related packages
 
-- `framework-01-minimum-viable-overlay` — describes the four MVO controls; Inventory is the first
-- `template-agent-privilege-matrix` — the companion CSV mapping tools to risk tiers
-- `kill-switches-modes` — the six modes referenced by the `kill_switches` section
+- `framework-01-minimum-viable-overlay`: describes the four MVO controls. Inventory is the first.
+- `template-agent-privilege-matrix`: the companion CSV mapping tools to risk tiers.
+- `kill-switches-modes`: the six modes referenced by the `kill_switches` section.
 
 ## Cite
 
 ```text
-Ideji, J. (2026). AI Bill of Materials (AI-BOM) template — AI IR Overlay framework.
+Ideji, J. (2026). AI Bill of Materials (AI-BOM) template. AI IR Overlay framework.
 https://jacobideji.com
 ```
