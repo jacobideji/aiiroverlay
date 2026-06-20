@@ -1,6 +1,6 @@
 # Contributing to the AI IR Overlay™ Framework
 
-Thank you for considering a contribution. The AI IR Overlay is a **practitioner-driven framework** — field experience is the most valuable contribution.
+Thanks for considering a contribution. The AI IR Overlay is a **practitioner-driven framework**. Field experience is the most valuable contribution you can make.
 
 ## Highest-velocity contribution paths
 
@@ -18,9 +18,9 @@ These are where new contributors create the most value:
 
 Open an Issue for:
 
-- **Bug reports** — broken link, factual error, conflicting guidance, lint warning
-- **Playbook proposals** — describe the scenario and why a separate playbook is warranted
-- **Crosswalk requests** — name the target framework and your intended use
+- **Bug reports**: broken link, factual error, conflicting guidance, lint warning
+- **Playbook proposals**: describe the scenario and why a separate playbook is warranted
+- **Crosswalk requests**: name the target framework and your intended use
 
 For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiiroverlay/discussions)** instead of Issues.
 
@@ -30,7 +30,7 @@ For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiir
 2. Create a feature branch from `main` (e.g., `playbook/voice-agent-deepfake`)
 3. Make changes with **clear conventional commit messages** (`feat:`, `fix:`, `docs:`, `style:`, `chore:`)
 4. Open a PR linking to the originating Issue or Discussion
-5. **Lazy consensus applies** for non-framework changes — silence after 5 days of public visibility counts as approval
+5. **Lazy consensus applies** for non-framework changes. Silence after 5 days of public visibility counts as approval.
 
 ## Standards by contribution type
 
@@ -43,7 +43,7 @@ For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiir
 
 ### Playbooks (`playbooks/`, when present)
 
-- Follow the **playbook template** — every playbook has these sections: Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related
+- Follow the **playbook template**. Every playbook has these sections: Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related
 - Must include a **source citation** if adapted from existing material
 - Must reference the Mental Model clause(s) the scenario engages
 - Must cross-reference relevant framework pieces using the *"see the `X-package` package"* pattern (so the playbook reads correctly standalone)
@@ -51,24 +51,26 @@ For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiir
 ### Crosswalks (`crosswalks/`)
 
 - Provide a **two-column mapping** (AI IR Overlay ↔ target framework)
-- Include "gap" notes for AI IR Overlay controls **not** present in the target — these are the value-adds your crosswalk surfaces
+- Include "gap" notes for AI IR Overlay controls **not** present in the target. These are the value-adds your crosswalk surfaces.
 
 ### Reference implementations (when added)
 
 - **Working code with tests**
 - **Document supported runtime / framework versions** explicitly
 - **Apache 2.0 license header** required in every source file
-- Use parameterized config (e.g., `AIIROVERLAY_VAULT_DIR` pattern) — never hardcode paths or credentials
+- Use parameterized config (e.g., `AIIROVERLAY_VAULT_DIR` pattern). Never hardcode paths or credentials.
 
 ## Style guide
 
 - **Plain English.** Avoid jargon when a plain word works.
 - **Active voice.** "The agent sends an email" beats "An email is sent by the agent."
-- **US spelling** (we're not ideological — just consistent).
+- **US spelling.** We're not ideological, just consistent.
 - **No vendor pitches.** Use brand-neutral language ("vector database" not "Pinecone," "CRM" not "Salesforce," unless the specific vendor's behavior is the point).
-- **Cite normative references by document number** (NIST SP 800-61 r2, ISO/IEC 42001:2023, EU AI Act Reg 2024/1689).
-- **Em dashes are encouraged** for emphasis and parenthetical asides. They're a brand signature.
-- **No filler** — *very, really, actually, basically* — cut on sight.
+- **Cite normative references by document number** (NIST SP 800-61 r3, ISO/IEC 42001:2023, EU AI Act Reg 2024/1689).
+- **Em-dash budget.** Aim for under 0.5 em-dashes per 100 words. Prefer periods, colons, or parentheses for readability. Em-dashes are fine when sparingly used for emphasis. They're not a brand signature.
+- **Contractions are fine** in playbook prose (don't, won't, it's, I've). Use them for natural practitioner voice.
+- **First-person is fine** when sharing direct experience.
+- **No filler.** *Very, really, actually, basically.* Cut on sight.
 
 ## Source attribution
 
@@ -91,11 +93,11 @@ This project follows the **[Contributor Covenant 2.1](CODE_OF_CONDUCT.md)**. By 
 
 ## Security disclosures
 
-For vulnerabilities, **do not** open a public Issue — see **[SECURITY.md](SECURITY.md)** for the private reporting path.
+For vulnerabilities, **do not** open a public Issue. See **[SECURITY.md](SECURITY.md)** for the private reporting path.
 
 ## Trademark notice
 
-The **AI IR Overlay™** and **AI IR Overlay Certified™** word marks are protected — see `LICENSE`. Contributing code or content under Apache 2.0 does not grant rights to use the word marks commercially.
+The **AI IR Overlay™** and **AI IR Overlay Certified™** word marks are protected. See `LICENSE`. Contributing code or content under Apache 2.0 does not grant rights to use the word marks commercially.
 
 ---
 
