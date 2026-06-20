@@ -17,7 +17,7 @@
 
 > Four levels. One question at each: *can you do this, on demand, under pressure?*
 
-This is the **framework view** of maturity — the model used to assess and benchmark organizations. The **operating** view, with cadences, drills, and pitfalls, is distributed as the `playbook-20` package.
+This is the **framework view** of maturity, the model used to assess and benchmark organizations. The **operating** view, with cadences, drills, and pitfalls, is distributed as the `playbook-20` package.
 
 ## The Four Levels
 
@@ -51,19 +51,19 @@ This is the **framework view** of maturity — the model used to assess and benc
 
 | Level | One-sentence definition | Test |
 |---|---|---|
-| **1 — Aware** | The organization has basic visibility into its AI assets. | Can you produce a current inventory of every agent → identity → tool → write target in under 5 minutes? |
-| **2 — Containable** | Harm can be contained without a complete shutdown. | Can Tier-1 SOC activate Modes M1–M4 within 10 minutes, in production, without escalation? |
-| **3 — Provable** | The organization can demonstrate scope under time pressure. | Can the team export the Minimum Evidence Set within 60 minutes for any agent? |
-| **4 — Resilient** | Continuous improvement with measured recovery. | Are the Six Metrics (see the `playbook-13` package) trending in the right direction over rolling 90 days? |
+| **1. Aware** | The organization has basic visibility into its AI assets. | Can you produce a current inventory of every agent → identity → tool → write target in under 5 minutes? |
+| **2. Containable** | Harm can be contained without a complete shutdown. | Can Tier-1 SOC activate Modes M1 to M4 within 10 minutes, in production, without escalation? |
+| **3. Provable** | The organization can demonstrate scope under time pressure. | Can the team export the Minimum Evidence Set within 60 minutes for any agent? |
+| **4. Resilient** | Continuous improvement with measured recovery. | Are the Six Metrics (see the `playbook-13` package) trending in the right direction over rolling 90 days? |
 
 ## Mapping the Levels to Framework Controls
 
 | Level | Required controls (see the `framework-01-minimum-viable-overlay` package) |
 |---|---|
-| **1 — Aware** | MVO-1 Inventory (current) |
-| **2 — Containable** | MVO-1 + MVO-2 Safe Modes (M1–M4 implemented & tested) |
-| **3 — Provable** | Level 2 + MVO-3 Minimum Evidence Set (A–F exportable in 60 min) |
-| **4 — Resilient** | Level 3 + MVO-4 Controlled Re-Enable + quarterly tabletops + measured metrics |
+| **1. Aware** | MVO-1 Inventory (current) |
+| **2. Containable** | MVO-1 + MVO-2 Safe Modes (M1 to M4 implemented and tested) |
+| **3. Provable** | Level 2 + MVO-3 Minimum Evidence Set (A to F exportable in 60 min) |
+| **4. Resilient** | Level 3 + MVO-4 Controlled Re-Enable + quarterly tabletops + measured metrics |
 
 ## The Honest Self-Assessment
 
@@ -73,7 +73,7 @@ A common failure mode is over-claiming. The Overlay's stance:
 
 Apply this rule to every level:
 
-- Level 2 means M1–M4 *tested in production* within 90 days, not "documented in the runbook."
+- Level 2 means M1 to M4 *tested in production* within 90 days, not "documented in the runbook."
 - Level 3 means the Minimum Evidence Set was *actually exported* within 60 minutes within 90 days.
 - Level 4 means tabletops happened and metrics moved.
 
@@ -96,5 +96,5 @@ The operating cadence, drill design, and common pitfalls are detailed in the `pl
 
 ---
 
-*Source: AI IR Overlay newsletter, Issue #20 — "AI IR Maturity Roadmap," by Jacob Ideji.*
+*Source: AI IR Overlay newsletter, Issue #20, "AI IR Maturity Roadmap," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
