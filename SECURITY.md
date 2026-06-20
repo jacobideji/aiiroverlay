@@ -2,7 +2,7 @@
 
 ## Scope
 
-This repository contains the **AI IR Overlay™** framework — documentation, templates, and reference materials for AI agent incident response. It is **not** a runtime system or executable software.
+This repository contains the **AI IR Overlay™** framework: documentation, templates, and reference materials for AI agent incident response. It is **not** a runtime system or executable software.
 
 The security boundary of this repository covers:
 
@@ -11,28 +11,28 @@ The security boundary of this repository covers:
 - Misuse of the `AI IR Overlay™` and `AI IR Overlay Certified™` word marks
 - Vulnerabilities in any reference implementations added in future releases
 
-For incidents in **your** AI agent environments, the framework itself is the guide — start with the [Six Triage Questions](triage/six-questions.md).
+For incidents in **your** AI agent environments, the framework itself is the guide. Start with the [Six Triage Questions](triage/six-questions.md).
 
 ## Supported Versions
 
 | Version | Supported with security fixes |
 |---|---|
 | Latest release (`v0.1.x`) | ✅ |
-| Older tags | ❌ — upgrade to latest |
+| Older tags | ❌ Upgrade to latest |
 | Pre-release / unreleased commits | ❌ |
 
 ## Reporting a Vulnerability
 
 **Please do not open a public GitHub Issue for security reports.** Use one of the private channels below.
 
-### Preferred channel — GitHub Security Advisory
+### Preferred channel: GitHub Security Advisory
 
 Open a private advisory:
 **[github.com/jacobideji/aiiroverlay/security/advisories/new](https://github.com/jacobideji/aiiroverlay/security/advisories/new)**
 
-This is the fastest path — it gives you a private collaboration thread with the maintainer and lets us coordinate a fix and disclosure.
+This is the fastest path. It gives you a private collaboration thread with the maintainer and lets us coordinate a fix and disclosure.
 
-### Alternative — direct contact
+### Alternative: direct contact
 
 If a security advisory isn't possible, contact the maintainer through [jacobideji.com](https://jacobideji.com).
 
@@ -54,7 +54,7 @@ If a security advisory isn't possible, contact the maintainer through [jacobidej
 
 ## Responsible Disclosure
 
-We follow a coordinated disclosure model. Please give us a reasonable window — typically **30 days** from acknowledgment for non-critical issues, **faster for critical** — before any public disclosure.
+We follow a coordinated disclosure model. Please give us a reasonable window (typically **30 days** from acknowledgment for non-critical issues, **faster for critical**) before any public disclosure.
 
 If you intend to publish research or a CVE, let us know your target date and we will work to meet it.
 
@@ -62,8 +62,8 @@ If you intend to publish research or a CVE, let us know your target date and we 
 
 - Generic discussions of AI agent risk that do not identify a specific vulnerability in this repository
 - Theoretical attacks on AI systems described **by** the framework (these are the subject of the framework, not vulnerabilities of it)
-- Issues in upstream dependencies of any tooling (`markdownlint-cli2`, `pyyaml`, etc.) — report those to their respective maintainers
+- Issues in upstream dependencies of any tooling (`markdownlint-cli2`, `pyyaml`, etc.). Report those to their respective maintainers.
 
 ## Trademark and Brand Misuse
 
-If you believe someone is misusing the **AI IR Overlay™** or **AI IR Overlay Certified™** word marks — for example, claiming "certification" status without authorization or running a paid program under the name — report via [jacobideji.com](https://jacobideji.com) rather than the security advisory channel.
+If you believe someone is misusing the **AI IR Overlay™** or **AI IR Overlay Certified™** word marks (for example, claiming "certification" status without authorization or running a paid program under the name) report via [jacobideji.com](https://jacobideji.com) rather than the security advisory channel.
