@@ -13,13 +13,13 @@
 
 ---
 
-# AI IR Overlay — First-Hour Triage Card
+# AI IR Overlay: First-Hour Triage Card
 
 > **An agent with tool access is a privileged identity. Respond like one.**
 
 ---
 
-## Walk these six in order — do not skip ahead
+## Walk these six in order. Do not skip ahead.
 
 ### 1 · WHAT CAN IT DO?
 
@@ -63,10 +63,10 @@ M5 Re-Enable     →  Containment validated, staged recovery
 
 ## The Mental Model
 
-> If it can **act** → govern as **privileged identity**
-> If it can **remember** → treat as **data store**
-> If it can **retrieve** → protect as **production system**
-> If it can **change** → manage as **software** (rollback + audit)
+> If it can **act**: govern as **privileged identity**
+> If it can **remember**: treat as **data store**
+> If it can **retrieve**: protect as **production system**
+> If it can **change**: manage as **software** (rollback + audit)
 
 ---
 
