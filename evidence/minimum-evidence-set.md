@@ -17,7 +17,7 @@
 
 > When the actor is an authorized agent, the question is not just *"what was compromised?"* but also *"what was trusted, what was retrieved, and what actions were taken in our name?"*
 
-In AI incidents, evidence is fragile. The most common AI IR failure comes from well-meaning teams who disable integrations, rotate tokens, update prompts, and redeploy — and only then ask *"what exactly did it access?"* By then, the proof is gone.
+In AI incidents, evidence is fragile. The most common AI IR failure comes from well-meaning teams who disable integrations, rotate tokens, update prompts, and redeploy, and only then ask *"what exactly did it access?"* By then, the proof is gone.
 
 This document defines the **minimum** evidence set every team must be able to capture, in what order, and within what time budget.
 
@@ -25,11 +25,11 @@ This document defines the **minimum** evidence set every team must be able to ca
 
 ## The Capture Order (do not skip)
 
-### Step 1 — Stabilize Without Rewriting Reality
+### Step 1: Stabilize Without Rewriting Reality
 
-Use staged containment (Kill-Switch Modes M1–M4) to stop damage **without destroying state**. The objective is to halt harm while keeping systems intact long enough to capture evidence.
+Use staged containment (Kill-Switch Modes M1 to M4) to stop damage **without destroying state**. The objective is to halt harm while keeping systems intact long enough to capture evidence.
 
-### Step 2 — Snapshot Identity and Capabilities
+### Step 2: Snapshot Identity and Capabilities
 
 **Before** rotating credentials or making config changes, document:
 
@@ -38,15 +38,15 @@ Use staged containment (Kill-Switch Modes M1–M4) to stop damage **without dest
 - Enabled tools and write targets
 - Current configuration (prompts, tools, policies, retriever settings)
 
-### Step 3 — Capture the Minimum AI Evidence Set
+### Step 3: Capture the Minimum AI Evidence Set
 
 The six evidence types below. **Only then** rotate credentials, clean corpora, or redeploy.
 
 ---
 
-## The Six Evidence Types (A–F)
+## The Six Evidence Types (A to F)
 
-### A — Prompt and Response Record
+### A. Prompt and Response Record
 
 The user prompts, system prompts, and model outputs for the incident window.
 
@@ -54,17 +54,17 @@ The user prompts, system prompts, and model outputs for the incident window.
 
 **Capture format:** structured JSON with timestamps, user identity, session ID.
 
-**Retention concern:** model provider TTLs are often short (24–72h). Pull immediately.
+**Retention concern:** model provider TTLs are often short (24 to 72 hours). Pull immediately.
 
-### B — Tool-Call Ledger (Action Log)
+### B. Tool-Call Ledger (Action Log)
 
 Attempted **and** successful tool calls, with parameters and results.
 
 **Where it lives:** application middleware, function-calling logs, SaaS audit logs (target side).
 
-**Critical detail:** capture *attempted* calls, not just successful — denied calls are evidence of intent.
+**Critical detail:** capture *attempted* calls, not just successful. Denied calls are evidence of intent.
 
-### C — Retrieval Traces (RAG / Knowledge-Base)
+### C. Retrieval Traces (RAG / Knowledge-Base)
 
 What the agent retrieved, from which corpus, at which version, with what scores.
 
@@ -72,9 +72,9 @@ What the agent retrieved, from which corpus, at which version, with what scores.
 
 **Why it matters:** poisoned context produces poisoned output. Without retrieval traces, you cannot prove the input vector.
 
-See **RAG / Knowledge-Base Forensics** (Playbook 03) — distributed as the `playbook-03` package.
+See **RAG / Knowledge-Base Forensics** (Playbook 03), distributed as the `playbook-03` package.
 
-### D — Memory Snapshot (if enabled)
+### D. Memory Snapshot (if enabled)
 
 The agent's persistent context as of incident time.
 
@@ -82,7 +82,7 @@ The agent's persistent context as of incident time.
 
 **Scope question:** is memory per-user or shared? Memory bleed between users is its own incident class.
 
-### E — Configuration Snapshot
+### E. Configuration Snapshot
 
 The full agent configuration at incident time:
 
@@ -96,9 +96,9 @@ The full agent configuration at incident time:
 
 **Why it matters:** "what was the prompt?" is the most-asked post-incident question. Without a versioned snapshot, the answer is a guess.
 
-### F — Identity and SaaS Audit-Log Correlation
+### F. Identity and SaaS Audit-Log Correlation
 
-The downstream evidence: what the agent did in target systems, attributed to the agent's identity.
+The downstream evidence. What the agent did in target systems, attributed to the agent's identity.
 
 **Where it lives:** IdP logs (Okta, Entra), SaaS audit logs (Salesforce, M365, ServiceNow), cloud CloudTrail/Activity logs.
 
@@ -110,7 +110,7 @@ The downstream evidence: what the agent did in target systems, attributed to the
 
 To claim conformance with the Minimum Evidence Set:
 
-- [ ] All six types (A–F) can be **exported within 60 minutes** of incident declaration
+- [ ] All six types (A to F) can be **exported within 60 minutes** of incident declaration
 - [ ] Owners and access paths for each type are pre-documented
 - [ ] Pre-approved emergency access exists (no waiting on a ticket)
 - [ ] Logs A and B are retained for a minimum window matching your IR plan (typically 90 days)
@@ -134,9 +134,9 @@ To claim conformance with the Minimum Evidence Set:
 
 Distributed as separate packages:
 
-- **Kill-Switch Modes** — `kill-switches-modes` (staged containment that preserves evidence)
-- **Records, Retention, and Proving What Happened** (Playbook 15) — `playbook-15`
-- **Multi-Stakeholder Logging and Privacy** (Playbook 23) — `playbook-23`
+- **Kill-Switch Modes:** `kill-switches-modes` (staged containment that preserves evidence)
+- **Records, Retention, and Proving What Happened** (Playbook 15): `playbook-15`
+- **Multi-Stakeholder Logging and Privacy** (Playbook 23): `playbook-23`
 
 ---
 
