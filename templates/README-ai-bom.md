@@ -7,7 +7,7 @@
 
 > **Machine-readable inventory schema. One YAML file per AI agent.**
 >
-> *This is one self-contained piece of the AI IR Overlay framework.
+> *This is one self-contained piece of the AI IR Overlay™ framework.
 > Get the rest at [jacobideji.com](https://jacobideji.com).*
 
 ---
