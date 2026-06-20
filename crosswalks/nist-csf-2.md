@@ -7,7 +7,7 @@
 
 > **Mappings to the six CSF 2.0 functions: GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER.**
 >
-> *This file is one self-contained piece of the AI IR Overlay framework.
+> *This file is one self-contained piece of the AI IR Overlay™ framework.
 > Cross-references to other pieces point to other packages in the same set,
 > which you can obtain at [jacobideji.com](https://jacobideji.com).*
 
@@ -116,7 +116,7 @@ When responding to an auditor, regulator, board member, or downstream contributo
 
 NIST SP 800-61 r3 (April 2025) is itself a CSF 2.0 Community Profile for incident response. The AI IR Overlay can be read as an **AI-specific extension** of SP 800-61 r3:
 
-- SP 800-61 r3 establishes incident-response outcomes per CSF 2.0 function (notably under RESPOND and RECOVER).
+- SP 800-61 r3 establishes incident-response outcomes per CSF 2.0 function, particularly RESPOND and RECOVER.
 - The AI IR Overlay specifies *how* those outcomes are achieved for AI agents: Inventory schema (AI-BOM), six-mode containment ladder, six evidence types, staged recovery procedure.
 
 A future v0.2+ playbook will formalize this layered relationship in a companion SP 800-61 r3 ↔ AI IR Overlay crosswalk.
