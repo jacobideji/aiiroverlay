@@ -5,7 +5,7 @@
 <!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
 <!-- ────────────────────────────────────────────────────────────────── -->
 
-> **The executive-layer playbook. Translates technical IR readiness into board-level posture across four domains — Containment · Evidence · Governance · Recovery.**
+> **The executive-layer playbook. Translates technical IR readiness into board-level posture across four domains: Containment, Evidence, Governance, Recovery.**
 >
 > *This file is one self-contained piece of the AI IR Overlay framework.
 > Cross-references to other pieces point to other packages in the same set,
@@ -13,35 +13,35 @@
 
 ---
 
-# Playbook 24 — Board-Ready Scorecard
+# Playbook 24: Board-Ready Scorecard
 
-> *Executives do not need to become AI engineers. They need clear, practical evidence that the organization can stop, verify, scope, and recover from agent-driven incidents — using concrete data, not assurances.*
+> *Executives don't need to become AI engineers. They need clear, practical evidence that the organization can stop, verify, scope, and recover from agent-driven incidents using concrete data, not assurances.*
 
 ## Premise
 
-Boards and executive teams have not changed their questions about cybersecurity in twenty years: *How fast can we stop harm? What was the scope? What is the customer impact? Can our decisions withstand regulatory scrutiny? Can we recover cleanly?* AI agents change the **sources of information** that answer those questions, but they do not change the questions themselves.
+Boards and executive teams haven't changed their questions about cybersecurity in twenty years: *How fast can we stop harm? What was the scope? What is the customer impact? Can our decisions withstand regulatory scrutiny? Can we recover cleanly?* AI agents change the **sources of information** that answer those questions, but they don't change the questions themselves.
 
-The disconnect between technical and executive teams in AI incident response is not a knowledge gap — it is a **language gap**. Technical teams monitor tool-call ledgers, retrieval-dominance alerts, and prompt-injection patterns. Executives need to know whether the answers to their five enduring questions are *yes, today, with evidence*.
+The disconnect between technical and executive teams in AI incident response isn't a knowledge gap. It's a **language gap**. Technical teams monitor tool-call ledgers, retrieval-dominance alerts, and prompt-injection patterns. Executives need to know whether the answers to their five enduring questions are *yes, today, with evidence*.
 
-This is the executive-layer playbook in the AI IR Overlay series. It runs after [Playbook 04 (Tool Design)](04-tool-design-is-containment.md), [Playbook 01 (Response)](01-agent-as-privileged-identity.md), and [Playbook 18 (Post-Incident Hardening)](18-post-incident-hardening.md) have built the technical machinery — and it converts that machinery into **a four-domain scorecard** that fits on one page, gets used quarterly, and updates the board on whether the organization is **board-ready or only documentation-ready**.
+This is the executive-layer playbook in the AI IR Overlay series. It runs after [Playbook 04 (Tool Design)](04-tool-design-is-containment.md), [Playbook 01 (Response)](01-agent-as-privileged-identity.md), and [Playbook 18 (Post-Incident Hardening)](18-post-incident-hardening.md) have built the technical machinery. It converts that machinery into **a four-domain scorecard** that fits on one page, gets used quarterly, and updates the board on whether the organization is **board-ready or only documentation-ready**.
 
 **Use this playbook when:** preparing a quarterly board update on AI risk posture, briefing a risk committee, responding to a regulator inquiry about AI incident-response capability, or self-assessing readiness before an audit. Use it during an active incident when the board needs **a concise, defensible status snapshot** rather than a technical bridge call.
 
-**Mental Model clause engaged:** *if it can act, govern it as a privileged identity.* The scorecard makes that clause auditable at the executive level — not as a slogan, but as four measurable capabilities the board can verify quarterly.
+**Mental Model clause engaged:** *if it can act, govern it as a privileged identity.* The scorecard makes that clause auditable at the executive level. Not as a slogan, but as four measurable capabilities the board can verify quarterly.
 
 ## First-Hour Actions
 
-During an active incident, the board does not need a 60-page playbook — they need a **one-page snapshot delivered within the first hour**. The Executive Incident Snapshot template below is the deliverable.
+During an active incident, the board doesn't need a 60-page playbook. They need a **one-page snapshot delivered within the first hour**. The Executive Incident Snapshot template below is the deliverable.
 
 | Minute | Action |
 |---|---|
 | 0–15 | Pull the agent's current scorecard from the last quarterly review. This is your **baseline**. |
 | 15–30 | Mark each domain (Containment · Evidence · Governance · Recovery) as **GREEN** (holding), **AMBER** (under stress), or **RED** (failed) based on the live incident. |
-| 30–45 | Capture **what the board can defensibly say** in each domain — one sentence each, derived from evidence already captured per [PB 01](01-agent-as-privileged-identity.md). |
+| 30–45 | Capture **what the board can defensibly say** in each domain. One sentence each, derived from evidence already captured per [PB 01](01-agent-as-privileged-identity.md). |
 | 45–55 | Identify the **top two risks** in plain language. No jargon. No model names. No tool stack details. |
 | 55–60 | Send the Executive Incident Snapshot (template below) to the board chair, CISO, General Counsel, and Communications lead. |
 
-**Critical:** if the snapshot relies on opinion rather than evidence captured per [Minimum Evidence Set](../evidence/minimum-evidence-set.md), the board is being asked to validate *plans*, not *capabilities*. The scorecard's quarterly discipline exists to prevent that. If you cannot complete the snapshot from evidence, the **most important board update is that finding itself**.
+**Critical:** if the snapshot relies on opinion rather than evidence captured per [Minimum Evidence Set](../evidence/minimum-evidence-set.md), the board is being asked to validate *plans*, not *capabilities*. The scorecard's quarterly discipline exists to prevent that. If you can't complete the snapshot from evidence, the **most important board update is that finding itself**.
 
 ## Containment Options
 
@@ -55,7 +55,7 @@ The Containment domain of the scorecard answers one question: **can the organiza
 | **A2** | Is there an approvals mode for high-risk operations? | M2 Approvals Required pre-wired for Tier 2 tools per [Privilege Matrix](../templates/agent-privilege-matrix.csv); approval queue staffed |
 | **A3** | Are emergency stoppage procedures (M4 Full Disable) tested quarterly? | Tabletop or live drill within last 90 days · time-to-disable measured, not assumed |
 
-**Operational mapping:** these three items operationalize [Kill-Switch Modes](../kill-switches/overview.md) M1, M2, and M4 specifically. The scorecard does not invent new capabilities — it audits whether the existing framework's capabilities are *real* (tested in the last quarter) or *theoretical* (documented but unverified).
+**Operational mapping:** these three items operationalize [Kill-Switch Modes](../kill-switches/overview.md) M1, M2, and M4 specifically. The scorecard doesn't invent new capabilities. It audits whether the existing framework's capabilities are *real* (tested in the last quarter) or *theoretical* (documented but unverified).
 
 **Common GREEN-AMBER trap:** a GREEN rating means modes were *tested* in the last quarter under realistic conditions, not just *implemented* in code. Implementation without exercise is AMBER. Implementation without testing is RED.
 
@@ -79,20 +79,20 @@ The Evidence domain answers: **if a customer, regulator, or board member asks "w
 
 The Recovery domain answers: **after containment, can we restore service in a way that prevents recurrence and survives later regulatory review?**
 
-### Recovery Scorecard Items (Domain D — paired with Governance below)
+### Recovery Scorecard Items (Domain D, paired with Governance below)
 
 | # | Question | Pass criteria |
 |---|---|---|
 | **D1** | Is there a staged process to restore agent access post-incident? | [MVO-4 Controlled Re-Enable](../framework/01-minimum-viable-overlay.md) procedure documented; M5 sequence validated in last quarter |
-| **D2** | Are validation steps in place to prevent recurrence before re-enablement? | Replay test per [PB 18](18-post-incident-hardening.md) — *would a recurrence of the triggering prompt be contained by the controls shipped after the incident?* |
+| **D2** | Are validation steps in place to prevent recurrence before re-enablement? | Replay test per [PB 18](18-post-incident-hardening.md): *would a recurrence of the triggering prompt be contained by the controls shipped after the incident?* |
 
 **Operational mapping:** the validation gate (D2) is the [Playbook 18](18-post-incident-hardening.md) recurrence-containment test. If the team can demonstrate that the replay test was executed and the answer was *yes*, recovery is defensible. If not, the recovery is theater.
 
 ## Post-Incident Hardening
 
-This section is where Playbook 24 differs from the other playbooks — for the scorecard, **the hardening is the quarterly cadence itself**. A scorecard that is reviewed once and filed is a documentation artifact. A scorecard that drives quarterly commitments is a governance engine.
+This section is where Playbook 24 differs from the other playbooks. For the scorecard, **the hardening is the quarterly cadence itself**. A scorecard that's reviewed once and filed is a documentation artifact. A scorecard that drives quarterly commitments is a governance engine.
 
-### Governance Scorecard Items (Domain C — the missing pair)
+### Governance Scorecard Items (Domain C, the missing pair)
 
 | # | Question | Pass criteria |
 |---|---|---|
@@ -119,14 +119,14 @@ For each agent, count the GAPS across the 10 scorecard items:
 | **4–6** | Exposed | "We have documented procedures but unverified capabilities. Targeted remediation underway." |
 | **7+** | Urgent remediation required | "The agent is operating without board-ready IR posture. Recommend pausing new privileges until baseline is achieved." |
 
-The scoring is **deliberately blunt**. Boards do not need nuance; they need *can-we-or-can't-we*.
+The scoring is **deliberately blunt**. Boards don't need nuance. They need *can-we-or-can't-we*.
 
 ## The Executive Incident Snapshot Template
 
-Use this template for **active-incident board updates** and for **quarterly posture briefings**. It is intentionally short — one page, no jargon, no model names.
+Use this template for **active-incident board updates** and for **quarterly posture briefings**. It's intentionally short. One page, no jargon, no model names.
 
 ```text
-EXECUTIVE INCIDENT SNAPSHOT — AI Agent IR Posture
+EXECUTIVE INCIDENT SNAPSHOT: AI Agent IR Posture
 
 Top agents in scope: [List 3–5 production agents with privileged access]
 
@@ -165,20 +165,20 @@ These are the highest-frequency failure modes when translating technical IR read
 
 | Pitfall | Why it happens | Consequence |
 |---|---|---|
-| **Briefing with technical jargon** | CISO defaults to engineering vocabulary | Board cannot challenge or verify; defaults to trust without evidence |
-| **Confusing documentation with capability** | Implementation gets credit; testing does not | Scorecard shows GREEN; the actual incident shows RED |
-| **Scoring on opinion, not evidence** | Quarterly review is rushed; evidence is not attached to scores | Board signs off on a posture the organization cannot demonstrate |
-| **Annual review only** | "We'll roll it into the annual audit" | 12 months of drift; scorecard becomes obsolete before it is read |
+| **Briefing with technical jargon** | CISO defaults to engineering vocabulary | Board can't challenge or verify; defaults to trust without evidence |
+| **Confusing documentation with capability** | Implementation gets credit; testing doesn't | Scorecard shows GREEN; the actual incident shows RED |
+| **Scoring on opinion, not evidence** | Quarterly review is rushed; evidence isn't attached to scores | Board signs off on a posture the organization can't demonstrate |
+| **Annual review only** | "We'll roll it into the annual audit" | 12 months of drift; scorecard becomes obsolete before it's read |
 | **No gap-closure commitment per quarter** | Scoring without action | Board sees the same gaps year after year; loses confidence |
 | **Aggregating across agents into one score** | "Our overall AI posture is GREEN" | Hides the high-risk agent inside the company average |
-| **Top-two-risks list is technical** | *"Prompt injection in the sales copilot"* | Board cannot act on it; risk does not register at the leadership layer |
-| **Quarterly improvements list is vague** | *"Improved tool design"* | Cannot be audited; loses board credibility over time |
+| **Top-two-risks list is technical** | *"Prompt injection in the sales copilot"* | Board can't act on it; risk doesn't register at the leadership layer |
+| **Quarterly improvements list is vague** | *"Improved tool design"* | Can't be audited; loses board credibility over time |
 | **Scoreboard becomes "security theater"** | Posture reported optimistically to protect reputation | Incident exposes the gap; board surprise becomes board distrust |
 | **No tie to risk committee agenda** | Scorecard lives in a Confluence page | Reviews skipped; capability decays without ever appearing on a meeting agenda |
 
 ## Key Metrics for Board-Ready Posture
 
-These three metrics are the **floor** for any organization claiming board-ready AI IR posture. If the organization cannot demonstrate all three with current evidence, the claim of board-readiness is aspirational, not actual.
+These three metrics are the **floor** for any organization claiming board-ready AI IR posture. If the organization can't demonstrate all three with current evidence, the claim of board-readiness is aspirational, not actual.
 
 | Metric | Target | What it proves |
 |---|---|---|
@@ -186,39 +186,39 @@ These three metrics are the **floor** for any organization claiming board-ready 
 | **Time-to-minimum-evidence-export** | < 60 minutes | The organization can demonstrate scope under regulatory or board pressure |
 | **Time-to-output-distribution clarity** | Demonstrable | The organization can answer "who saw the agent's output, and where did it go?" with evidence rather than guess |
 
-The third metric is often the underprepared one. Tool-call ledgers and retrieval traces tell the story up to the agent's output; **downstream distribution** (who received the email, who acted on the recommendation, which customer was affected) requires correlation across SaaS, CRM, communications, and analytics systems. The organization that has not yet rehearsed this correlation will discover the gap during an incident, not before.
+The third metric is often the underprepared one. Tool-call ledgers and retrieval traces tell the story up to the agent's output. **Downstream distribution** (who received the email, who acted on the recommendation, which customer was affected) requires correlation across SaaS, CRM, communications, and analytics systems. The organization that hasn't yet rehearsed this correlation will discover the gap during an incident, not before.
 
 ## Related
 
 Distributed as separate packages or files within the framework:
 
-- **The Minimum Viable Overlay** — [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md) (the four MVO controls this scorecard audits)
-- **The Mental Model** — [`framework/02-mental-model.md`](../framework/02-mental-model.md) (the four-clause foundation the board narrative rests on)
-- **The Maturity Roadmap** — [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md) (the scorecard's annual trend maps to maturity levels)
-- **Kill-Switch Modes** — [`kill-switches/overview.md`](../kill-switches/overview.md) (Modes M1, M2, M3, M4 underpin the Containment + Governance scorecard items)
-- **Minimum Evidence Set** — [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md) (A–F types underpin the Evidence scorecard items)
-- **AI-BOM template** — [`templates/ai-bom.yaml`](../templates/ai-bom.yaml) (the inventory the scorecard runs against)
-- **Agent Privilege Matrix** — [`templates/agent-privilege-matrix.csv`](../templates/agent-privilege-matrix.csv) (the tier discipline the Governance domain audits)
-- **Playbook 01 — The Agent Is a Privileged Identity** — [`playbooks/01-agent-as-privileged-identity.md`](01-agent-as-privileged-identity.md) (the response playbook the scorecard's Containment + Evidence domains validate)
-- **Playbook 04 — Tool Design Is Containment** — [`playbooks/04-tool-design-is-containment.md`](04-tool-design-is-containment.md) (the pre-incident discipline the Governance domain measures)
-- **Playbook 18 — Post-Incident Hardening** — [`playbooks/18-post-incident-hardening.md`](18-post-incident-hardening.md) (the quarterly hardening cadence the scorecard governs)
-- **NIST AI RMF crosswalk** — [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.4, GOVERN 1.6, GOVERN 3.2, MANAGE 4.2)
-- **NIST CSF 2.0 crosswalk** — [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports GV.OV-01, GV.OV-02, GV.RR-02, ID.IM-01, RC.CO-03)
-- **OWASP Agentic Top 10 crosswalk** — [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook addresses governance dimensions of ASI03 Identity & Privilege Abuse and ASI09 Human-Agent Trust Exploitation)
+- **The Minimum Viable Overlay:** [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md) (the four MVO controls this scorecard audits)
+- **The Mental Model:** [`framework/02-mental-model.md`](../framework/02-mental-model.md) (the four-clause foundation the board narrative rests on)
+- **The Maturity Roadmap:** [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md) (the scorecard's annual trend maps to maturity levels)
+- **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md) (Modes M1, M2, M3, M4 underpin the Containment + Governance scorecard items)
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md) (A–F types underpin the Evidence scorecard items)
+- **AI-BOM template:** [`templates/ai-bom.yaml`](../templates/ai-bom.yaml) (the inventory the scorecard runs against)
+- **Agent Privilege Matrix:** [`templates/agent-privilege-matrix.csv`](../templates/agent-privilege-matrix.csv) (the tier discipline the Governance domain audits)
+- **Playbook 01: The Agent Is a Privileged Identity** ([`playbooks/01-agent-as-privileged-identity.md`](01-agent-as-privileged-identity.md)) (the response playbook the scorecard's Containment + Evidence domains validate)
+- **Playbook 04: Tool Design Is Containment** ([`playbooks/04-tool-design-is-containment.md`](04-tool-design-is-containment.md)) (the pre-incident discipline the Governance domain measures)
+- **Playbook 18: Post-Incident Hardening** ([`playbooks/18-post-incident-hardening.md`](18-post-incident-hardening.md)) (the quarterly hardening cadence the scorecard governs)
+- **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.4, GOVERN 1.6, GOVERN 3.2, MANAGE 4.2)
+- **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports GV.OV-01, GV.OV-02, GV.RR-02, ID.IM-01, RC.CO-03)
+- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook addresses governance dimensions of ASI03 Identity & Privilege Abuse and ASI09 Human-Agent Trust Exploitation)
 
 ## The Question to Carry Forward
 
-If you do nothing else after reading this playbook, answer this one question for your most advanced production AI agent — and then answer it **for your board**, in plain language, with concrete evidence:
+If you do nothing else after reading this playbook, answer this one question for your most advanced production AI agent, and then answer it **for your board**, in plain language, with concrete evidence:
 
-> *If your most advanced AI agent caused harm for 30 minutes, could you demonstrate to leadership today — using concrete evidence rather than opinion — how you would stop it, verify what occurred, define the scope, and restore operations safely?*
+> *If your most advanced AI agent caused harm for 30 minutes, could you demonstrate to leadership today, using concrete evidence rather than opinion, how you would stop it, verify what occurred, define the scope, and restore operations safely?*
 
 If yes, with evidence: the organization is **board-ready**.
-If yes, with plans: the organization is **documentation-ready** — the next incident will expose the gap.
+If yes, with plans: the organization is **documentation-ready**. The next incident will expose the gap.
 If no: the scorecard's quarterly cadence exists to close that distance, one gap at a time, over the next four quarters.
 
-That is the test. That is the discipline. That is how AI risk stops being an abstract concern and becomes a tangible, evolving strength the board can defend.
+That's the test. That's the discipline. That's how AI risk stops being an abstract concern and becomes a tangible, evolving strength the board can defend.
 
 ---
 
-*Source: AI IR Overlay newsletter, Issue #24 — "Translating AI Agent Risk into Executive Clarity: A Board-Ready Scorecard for Incident Readiness," by Jacob Ideji.*
+*Source: AI IR Overlay newsletter, Issue #24, "Translating AI Agent Risk into Executive Clarity: A Board-Ready Scorecard for Incident Readiness," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
