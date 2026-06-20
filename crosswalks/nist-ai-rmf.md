@@ -7,7 +7,7 @@
 
 > **Mappings to GOVERN/MAP/MEASURE/MANAGE functions.**
 >
-> *This file is one self-contained piece of the AI IR Overlay framework.
+> *This file is one self-contained piece of the AI IR Overlay™ framework.
 > Cross-references to other pieces point to other packages in the same set,
 > which you can obtain at [jacobideji.com](https://jacobideji.com).*
 
