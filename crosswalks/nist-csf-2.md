@@ -1,11 +1,11 @@
 <!-- ────────────────────────────────────────────────────────────────── -->
-<!--  Crosswalk — AI IR Overlay vs NIST AI RMF                                                              -->
+<!--  Crosswalk — AI IR Overlay vs NIST CSF 2.0                                                             -->
 <!--  Part of the AI IR Overlay™ framework — by Jacob Ideji                 -->
 <!--  https://jacobideji.com                                                -->
 <!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
 <!-- ────────────────────────────────────────────────────────────────── -->
 
-> **Mappings to GOVERN/MAP/MEASURE/MANAGE functions.**
+> **Mappings to the six CSF 2.0 functions: GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER.**
 >
 > *This file is one self-contained piece of the AI IR Overlay framework.
 > Cross-references to other pieces point to other packages in the same set,
@@ -13,81 +13,128 @@
 
 ---
 
-# Crosswalk: AI IR Overlay ↔ NIST AI Risk Management Framework (AI RMF 1.0)
+# Crosswalk: AI IR Overlay ↔ NIST Cybersecurity Framework 2.0 (CSF 2.0)
 
-This crosswalk maps AI IR Overlay controls to NIST AI RMF functions, with emphasis on the **MANAGE** function (where incident response lives) and the **MEASURE** and **GOVERN** functions where preparation lives.
+This crosswalk maps AI IR Overlay controls to NIST CSF 2.0 functions and categories. CSF 2.0 (February 2024) introduced **GOVERN** as a sixth function and is the foundation for NIST SP 800-61 r3's incident-response Community Profile (April 2025).
+
+The crosswalk gives auditors, regulators, and boards a direct path from AI IR Overlay conformance to CSF 2.0 outcomes, and by extension, to SP 800-61 r3 alignment.
 
 ## At a Glance
 
-| AI IR Overlay Control | NIST AI RMF Function | RMF Subcategory (representative) |
+| AI IR Overlay Control | Primary CSF 2.0 Function(s) | Categories |
 |---|---|---|
-| **MVO-1 Inventory** | GOVERN, MAP | GOVERN 1.6, MAP 1.1, MAP 4.1 |
-| **MVO-2 Safe Modes (Kill-Switches)** | MANAGE | MANAGE 1.3, MANAGE 2.3, MANAGE 2.4 |
-| **MVO-3 Minimum Evidence Set** | MEASURE, MANAGE | MEASURE 2.7, MANAGE 4.1 |
-| **MVO-4 Controlled Re-Enable** | MANAGE | MANAGE 4.2, MANAGE 4.3 |
-| Six Triage Questions | MAP, MEASURE | MAP 2.3, MEASURE 2.5 |
-| Mental Model | GOVERN | GOVERN 1.1 (legal/regulatory), GOVERN 3.2 (human-AI roles) |
-| Maturity Roadmap | GOVERN, MEASURE, MANAGE | GOVERN 1.4 (risk-management process), MEASURE 4.2, MANAGE 4.2 (continual improvement) |
+| **MVO-1 Inventory** | IDENTIFY (+ GOVERN) | ID.AM, GV.OC, GV.RR |
+| **MVO-2 Safe Modes (Kill-Switches)** | RESPOND | RS.MA, RS.MI |
+| **MVO-3 Minimum Evidence Set** | RESPOND (+ DETECT) | RS.AN, DE.AE |
+| **MVO-4 Controlled Re-Enable** | RECOVER | RC.RP, RC.CO |
+| Six Triage Questions | RESPOND | RS.MA, RS.AN |
+| Mental Model | GOVERN (+ PROTECT) | GV.PO, GV.RM, PR.AA |
+| Maturity Roadmap | IDENTIFY + GOVERN | ID.IM, GV.OV |
 
 ## Detailed Mappings
 
-### MVO-1 Inventory ↔ GOVERN + MAP
+### MVO-1 Inventory ↔ IDENTIFY + GOVERN
 
 The AI-BOM template (distributed as the `template-ai-bom` package) operationalizes:
 
-- **GOVERN 1.6:** *"Mechanisms are in place to inventory AI systems and are resourced according to organizational risk priorities."*
-- **MAP 1.1:** *"Intended purposes, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented."*
-- **MAP 4.1:** *"Approaches for mapping AI technology and legal risks of its components, including the use of third-party data or software, are in place, followed, and documented."*
+- **ID.AM-01:** *"Inventories of hardware managed by the organization are maintained."* Extends to runtime hosts of AI agents.
+- **ID.AM-02:** *"Inventories of software, services, and systems managed by the organization are maintained."* Captures agent platforms, model providers, retrieval frameworks.
+- **ID.AM-04:** *"Inventories of services provided by suppliers are maintained."* Captures SaaS targets the agent can write to.
+- **ID.AM-05:** *"Assets are prioritized based on classification, criticality, resources, and impact."* The `risk_tier` field on each tool drives prioritization.
+- **GV.OC-02:** *"Internal and external stakeholders are understood…"* The `business_owner` and `technical_owner` fields per agent satisfy this.
+- **GV.RR-02:** *"Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced."* Owner assignment is mandatory in AI-BOM.
 
-**Gap note:** AI RMF does not specify an inventory schema. AI-BOM fills this gap with a concrete YAML template.
+**Gap note:** CSF 2.0 doesn't specify an inventory schema for AI agents. AI-BOM fills the gap with a concrete YAML template.
 
-### MVO-2 Safe Modes ↔ MANAGE
+### MVO-2 Safe Modes ↔ RESPOND
 
 The Kill-Switch Modes (M0–M5) operationalize:
 
-- **MANAGE 1.3:** *"Responses to the AI risks deemed high priority, as identified by the map function, are developed, planned, and documented."*
-- **MANAGE 2.3:** *"Procedures are followed to respond to and recover from a previously unknown risk when it is identified."*
-- **MANAGE 2.4:** *"Mechanisms are in place and applied, and responsibilities are assigned and understood, to supersede, disengage, or deactivate AI systems that demonstrate performance or outcomes inconsistent with intended use."*
+- **RS.MA-01:** *"The incident response plan is executed in coordination with relevant third parties once an incident is declared."* Modes are activated as part of the documented IR plan.
+- **RS.MA-04:** *"Incidents are escalated or elevated as needed."* TTA ≤ 10 min for Tier-1 SOC is the escalation criterion for M1–M4.
+- **RS.MI-01:** *"Incidents are contained."* M1 (Read-Only), M2 (Approvals), M3 (Tool Tiering), and M4 (Full Disable) provide graduated containment.
+- **RS.MI-02:** *"Incidents are eradicated."* The M4 → M5 sequence requires evidence capture before token rotation.
 
-**Gap note:** AI RMF specifies the *requirement* to disengage AI systems but not the *graduated mechanism*. The Kill-Switch ladder provides the operational specification.
+**Gap note:** CSF 2.0 specifies that incidents must be contained but not *how* to graduate containment to preserve business value while preventing harm. The six-mode ladder fills this operational gap.
 
-### MVO-3 Minimum Evidence Set ↔ MEASURE + MANAGE
+### MVO-3 Minimum Evidence Set ↔ RESPOND (with DETECT inputs)
 
-The Minimum Evidence Set (A–F) operationalizes:
+The Six Evidence Types (A–F) operationalize:
 
-- **MEASURE 2.7:** *"AI system security and resilience, as identified in the map function, are evaluated and documented."*
-- **MANAGE 4.1:** *"Post-deployment AI system monitoring plans are implemented, including mechanisms for capturing and evaluating input from users and other relevant AI actors, appeal and override, decommissioning, incident response, recovery, and change management."*
+- **RS.AN-03:** *"Analysis is performed to establish what has occurred during an incident."* Types A (prompts), B (tool calls), and F (downstream audit logs) directly support this.
+- **RS.AN-06:** *"Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved."* The capture order (Step 1 → Step 2 → Step 3) with snapshot-before-rotation enforces this discipline.
+- **RS.AN-07:** *"Incident data and metadata are collected, and their integrity and provenance are preserved."* Each A–F type has a documented capture format and retention window.
+- **DE.AE-02:** *"Potentially adverse events are analyzed to better understand associated activities."* Type A (prompts/responses) is the primary input.
+- **DE.AE-03:** *"Information is correlated from multiple sources."* Type F (Identity and SaaS Audit-Log Correlation) is the multi-source correlation step.
 
-**Gap note:** AI RMF does not enumerate evidence types. The A–F set provides the operational specification.
+**Gap note:** CSF 2.0 mandates evidence collection and preservation but doesn't enumerate AI-specific evidence types. The A–F set provides the operational specification.
 
-### MVO-4 Controlled Re-Enable ↔ MANAGE
+### MVO-4 Controlled Re-Enable ↔ RECOVER
 
 Staged recovery operationalizes:
 
-- **MANAGE 4.2:** *"Measurable activities for continual improvements are integrated into AI system updates and include regular engagement with interested parties, including relevant AI actors."*
-- **MANAGE 4.3:** *"Incidents and errors are communicated to relevant AI actors, including affected communities. Processes for tracking, responding to, and recovering from incidents and errors are followed and documented."*
+- **RC.RP-01:** *"The recovery portion of the incident response plan is executed once initiated from the incident response process."* M5 follows a documented sequence (M1 read-only → validate → replay → incremental re-enable → M0).
+- **RC.RP-02:** *"Recovery actions are selected, scoped, prioritized, and performed."* Staged tool re-enablement starts with the lowest-risk tier.
+- **RC.RP-03:** *"The integrity of backups and other restoration assets is verified before using them for restoration."* Corpora versions confirmed clean is an explicit step.
+- **RC.RP-04:** *"Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms."* The approver is the CISO or Incident Commander, not the original agent owner alone.
+- **RC.CO-03:** *"Recovery activities and progress are communicated to internal and external stakeholders."* Post-incident hardening communication is documented in the `playbook-18` package.
+
+### Six Triage Questions ↔ RESPOND
+
+The first-hour discipline operationalizes:
+
+- **RS.MA-02:** *"Incident reports are triaged and validated."* The six questions are the validation checklist.
+- **RS.MA-04:** *"Incidents are escalated or elevated as needed."* Q5 (the least-disruptive safe mode) determines escalation level.
+- **RS.AN-03:** *"Analysis is performed to establish what has occurred during an incident."* Q1–Q4 establish scope, and Q6 protects evidence required for analysis.
+
+### Mental Model ↔ GOVERN + PROTECT
+
+The four-clause model operationalizes:
+
+- **GV.PO-01:** *"Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities."* The four clauses are an organization-level policy lens for AI agents.
+- **GV.RM-02:** *"Risk appetite and risk tolerance statements are established, communicated, and maintained."* Clause-by-clause appetite (acts, remembers, retrieves, changes) supports tolerance articulation.
+- **PR.AA-01 / PR.AA-05:** Identity/credential management and access policies. The *"if it can act, govern it as a privileged identity"* clause maps directly to existing PAM disciplines for service accounts and OAuth grants.
+
+### Maturity Roadmap ↔ IDENTIFY + GOVERN
+
+The four-level model operationalizes:
+
+- **ID.IM-01:** *"Improvements are identified from evaluations."* Level 4 (Resilient) requires measured improvement over rolling 90-day windows.
+- **ID.IM-02:** *"Improvements are identified from security tests and exercises…"* Quarterly tabletops are the Level 4 driver.
+- **GV.OV-01:** *"Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction."* The board-question mapping in the Maturity Roadmap supports OV-01 reviews.
+- **GV.OV-02:** *"The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks."* The Level 1–4 progression is the review structure.
 
 ## How to Use This Crosswalk
 
-When responding to an auditor, regulator, or board question framed in AI RMF terms, this crosswalk lets you point to specific AI IR Overlay artifacts as evidence of conformance to the corresponding RMF subcategory.
+When responding to an auditor, regulator, board member, or downstream contributor framing a question in CSF 2.0 terms, this crosswalk provides direct evidence of AI IR Overlay conformance.
 
-**Example:** "How does your organization satisfy MANAGE 2.4?"
-**Answer:** "We implement the AI IR Overlay Kill-Switch Modes M1–M4, tested quarterly. Our AI-BOM (`template-ai-bom` package) documents implementation and last-tested dates per agent."
+**Example:** *"How does your organization satisfy RS.MI-01 (incidents are contained) for your AI agents?"*
+
+**Answer:** *"We implement the AI IR Overlay Kill-Switch Modes M1–M4 (Read-Only, Approvals Required, Tool Tiering, Full Disable), tabletop-tested quarterly per the `kill-switches-modes` specification. Our AI-BOM (`template-ai-bom` package) documents which modes each agent supports, with last-tested dates and measured Time-to-Activate (TTA) values."*
+
+## Relationship to SP 800-61 r3
+
+NIST SP 800-61 r3 (April 2025) is itself a CSF 2.0 Community Profile for incident response. The AI IR Overlay can be read as an **AI-specific extension** of SP 800-61 r3:
+
+- SP 800-61 r3 establishes incident-response outcomes per CSF 2.0 function (notably under RESPOND and RECOVER).
+- The AI IR Overlay specifies *how* those outcomes are achieved for AI agents: Inventory schema (AI-BOM), six-mode containment ladder, six evidence types, staged recovery procedure.
+
+A future v0.2+ playbook will formalize this layered relationship in a companion SP 800-61 r3 ↔ AI IR Overlay crosswalk.
 
 ## Status
 
-- **Mapping completeness:** Functions GOVERN, MAP, MEASURE, MANAGE. High-level mapping complete.
-- **Coverage gap:** specific RMF subcategories under MEASURE 4.x (Trustworthiness characteristics) need separate playbook treatment in v1.0.
+- **Mapping completeness:** functions GOVERN, IDENTIFY, RESPOND, and RECOVER have high-level mapping complete. PROTECT (PR.AA, PR.DS for agent identity and memory protection) and DETECT (DE.CM for continuous monitoring) extensions are deferred to v0.2.
+- **Coverage gap:** PR.AA-05 (access policies enforced on AI agent identities) and PR.DS-01 (data-at-rest protection for agent memory) need dedicated playbook treatment. Planned for v0.2.
 - **Validation:** unreviewed by NIST. This is the maintainer's interpretation, offered in good faith.
 
 ## Source
 
-- NIST AI Risk Management Framework (AI RMF 1.0), January 2023.
-- NIST AI 600-1, Generative AI Profile, July 2024.
+- NIST Cybersecurity Framework 2.0, February 26, 2024.
+- NIST SP 800-61 r3, *Incident Response Recommendations and Considerations for Cybersecurity Risk Management: A CSF 2.0 Community Profile*, April 3, 2025.
 
 ---
 
-*Last revised: 2026-06-17 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-06-20 · Maintainer interpretation, not a NIST publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
