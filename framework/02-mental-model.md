@@ -20,7 +20,7 @@ Four sentences. Memorize them. They govern every AI IR decision.
 > **If it can act, govern it as a privileged identity.**
 > **If it can remember, treat it as a data store.**
 > **If it can retrieve, protect it as a production system.**
-> **If it can change, manage it as software — with rollback and auditability.**
+> **If it can change, manage it as software, with rollback and auditability.**
 
 ---
 
@@ -30,25 +30,25 @@ Each clause maps a capability of modern AI agents to a discipline your security 
 
 ### 1. *If it can act, govern it as a privileged identity*
 
-When an agent can send email, modify records, approve workflows, or trigger automations, its permissions define organizational blast radius. The mature discipline for managing privileged identities — least privilege, just-in-time elevation, MFA-equivalent gating, session logging, kill switches — applies directly.
+When an agent can send email, modify records, approve workflows, or trigger automations, its permissions define organizational blast radius. The mature discipline for managing privileged identities (least privilege, just-in-time elevation, MFA-equivalent gating, session logging, kill switches) applies directly.
 
 **Implication:** treat every agent's tool list as a privileged-access grant. Review it in your PAM cadence.
 
 ### 2. *If it can remember, treat it as a data store*
 
-Agent memory holds user context, intermediate reasoning, prior actions, and sometimes regulated data. The mature discipline for data stores — classification, retention, encryption, access logging, deletion — applies.
+Agent memory holds user context, intermediate reasoning, prior actions, and sometimes regulated data. The mature discipline for data stores (classification, retention, encryption, access logging, deletion) applies.
 
 **Implication:** memory is in scope for SOC 2, HIPAA, GDPR, and PCI assessments. Plan for it before the auditor asks.
 
 ### 3. *If it can retrieve, protect it as a production system*
 
-The retrieval layer (RAG, knowledge bases, connectors) is *part of the agent*. Poisoned context produces poisoned actions. The mature discipline for production systems — change control, vulnerability management, integrity verification — applies to corpora.
+The retrieval layer (RAG, knowledge bases, connectors) is *part of the agent*. Poisoned context produces poisoned actions. The mature discipline for production systems (change control, vulnerability management, integrity verification) applies to corpora.
 
 **Implication:** corpus updates are change-control events. Track them in CMDB.
 
-### 4. *If it can change, manage it as software — with rollback and auditability*
+### 4. *If it can change, manage it as software, with rollback and auditability*
 
-Prompts, tool definitions, policies, and model versions all change in production. The mature discipline for software — versioning, rollback, code review, deployment gates, audit — applies.
+Prompts, tool definitions, policies, and model versions all change in production. The mature discipline for software (versioning, rollback, code review, deployment gates, audit) applies.
 
 **Implication:** "prompt updated" is a deployment. Treat it like one.
 
@@ -73,9 +73,9 @@ If you cannot identify the owning team for each clause **before** an incident, y
 
 Distributed as separate packages:
 
-- **The Six Triage Questions** — `triage-six-questions`
-- **Minimum Evidence Set** — `evidence-minimum-set`
-- **Insider Threat 3.0** playbook — `playbook-12`
+- **The Six Triage Questions:** `triage-six-questions`
+- **Minimum Evidence Set:** `evidence-minimum-set`
+- **Insider Threat 3.0** playbook: `playbook-12`
 
 ---
 
