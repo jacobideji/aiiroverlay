@@ -41,7 +41,7 @@ Enumerate every system where action can be observed by a customer, partner, regu
 - Cloud (AWS, Azure, GCP actions)
 - ERP (SAP, Oracle, NetSuite)
 - Code repository (commits, PRs, deploys)
-- Anything that **changes records** or **triggers workflows**
+- Anything that **changes records** or **triggers workflows**.
 
 ## 3. What identity does it run as?
 
@@ -76,7 +76,7 @@ The wrong choice here costs revenue. The wrong choice on the other side destroys
 
 Capture **prompt/response logs**, **tool-call logs**, and **configuration state** *before* rotating credentials, redeploying, or cleaning corpora.
 
-See the **Minimum Evidence Set** — distributed as the `evidence-minimum-set` package.
+See the **Minimum Evidence Set**, distributed as the `evidence-minimum-set` package.
 
 ---
 
@@ -88,9 +88,9 @@ A single-page printable version of these six questions, designed to live on a SO
 
 Distributed as separate packages:
 
-- **Kill-Switch Modes** — `kill-switches-modes`
-- **Minimum Evidence Set** — `evidence-minimum-set`
-- **Playbook 01 — The Agent Is a Privileged Identity** — `playbook-01`
+- **Kill-Switch Modes:** `kill-switches-modes`
+- **Minimum Evidence Set:** `evidence-minimum-set`
+- **Playbook 01: The Agent Is a Privileged Identity:** `playbook-01`
 
 ---
 
