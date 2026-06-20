@@ -13,7 +13,7 @@
 
 ---
 
-# Kill-Switch Modes — The Containment Ladder
+# Kill-Switch Modes: The Containment Ladder
 
 > The "kill switch" is not one switch. It is six modes that escalate from passive observation to full disable, and back.
 
@@ -28,7 +28,7 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 | **M0** | Observe | Normal operations | n/a | Owner |
 | **M1** | Read-Only | Suspicious behavior; low/moderate impact | **≤ 10 min** | Tier-1 SOC |
 | **M2** | Approvals Required | Agent must keep operating; actions need two-person rule | **≤ 10 min** | Tier-1 SOC |
-| **M3** | Tool Tiering | Targeted containment — disable high-risk tools only | **≤ 10 min** | Tier-1 SOC |
+| **M3** | Tool Tiering | Targeted containment. Disable high-risk tools only | **≤ 10 min** | Tier-1 SOC |
 | **M4** | Full Disable | Active harm, confirmed misuse, or evidence of compromise | **≤ 10 min** | Tier-1 SOC |
 | **M5** | Controlled Re-Enable | Containment validated; staged recovery | n/a | CISO / IC |
 
@@ -36,7 +36,7 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 ---
 
-## Mode 0 — Observe (Baseline)
+## Mode 0: Observe (Baseline)
 
 **Purpose:** Normal operations with logging.
 
@@ -46,11 +46,11 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 - Prompt/response logged for the configured retention window
 - Identity correlation in SaaS audit logs
 
-**Exit criteria:** Incident declared → step up to M1 (or further) based on confidence.
+**Exit criteria:** Incident declared. Step up to M1 (or further) based on confidence.
 
 ---
 
-## Mode 1 — Read-Only (Preferred First Containment)
+## Mode 1: Read-Only (Preferred First Containment)
 
 **Purpose:** Stop writes without stopping the business.
 
@@ -68,11 +68,11 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 - [ ] Test query confirms reads still function
 - [ ] Logging continues at M0 fidelity
 
-**Exit criteria:** Investigation confirms benign (return to M0), confirms harm (step up to M3/M4), or requires continued operation with control (step to M2).
+**Exit criteria:** Investigation confirms benign (return to M0), confirms harm (step up to M3/M4), or needs continued operation with control (step to M2).
 
 ---
 
-## Mode 2 — Approvals Required (Two-Person Rule)
+## Mode 2: Approvals Required (Two-Person Rule)
 
 **Purpose:** Continue operation, but no action without a human approver.
 
@@ -94,9 +94,9 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 ---
 
-## Mode 3 — Tool Tiering
+## Mode 3: Tool Tiering
 
-**Purpose:** Selectively contain — disable high-risk tools, keep low-risk.
+**Purpose:** Contain selectively. Disable high-risk tools, keep low-risk.
 
 **What changes:** Specific tools (external email send, code deploy, financial actions) are disabled. Lower-risk tools (internal search, status lookup) remain.
 
@@ -116,17 +116,17 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 ---
 
-## Mode 4 — Full Disable
+## Mode 4: Full Disable
 
 **Purpose:** Hard stop.
 
-**What changes:** Agent is taken offline. Active sessions are terminated. Tokens are scoped for revocation (not yet rotated — see Evidence Plan).
+**What changes:** Agent is taken offline. Active sessions are terminated. Tokens are scoped for revocation (not yet rotated; see Evidence Plan).
 
 **Use when:**
 
 - Active harm is occurring
 - Compromise is confirmed
-- Containment under M1–M3 has failed
+- Containment under M1 to M3 has failed
 
 **Operational checks (critical sequence):**
 
@@ -136,21 +136,21 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 > Rotating tokens before capturing scopes is the single most common evidence-destruction failure in AI IR.
 
-**Exit criteria:** Eradication complete → M5 controlled re-enable.
+**Exit criteria:** Eradication complete. Move to M5 controlled re-enable.
 
 ---
 
-## Mode 5 — Controlled Re-Enable (Recovery)
+## Mode 5: Controlled Re-Enable (Recovery)
 
 **Purpose:** Restore operation in stages, with validation at each step.
 
 **Sequence:**
 
-1. **Re-enable in Read-Only (M1)** — confirm the agent functions and logs flow
-2. **Validate retrieval and tool policies** — corpora versions confirmed clean
-3. **Replay the incident scenario in a safe harness** — confirm fix holds
-4. **Re-enable tools incrementally** — start with low-risk, monitor for drift
-5. **Return to M0 Observe** — only after all of the above
+1. **Re-enable in Read-Only (M1).** Confirm the agent functions and logs flow.
+2. **Validate retrieval and tool policies.** Corpora versions confirmed clean.
+3. **Replay the incident scenario in a safe harness.** Confirm fix holds.
+4. **Re-enable tools incrementally.** Start with low-risk, monitor for drift.
+5. **Return to M0 Observe.** Only after all of the above.
 
 **Approver:** CISO or designated Incident Commander. **Never** the original agent owner alone.
 
@@ -179,10 +179,10 @@ If any of the above is "not yet," the agent is not production-ready.
 
 Distributed as separate packages:
 
-- **The Six Triage Questions** — `triage-six-questions`
-- **Minimum Evidence Set** — `evidence-minimum-set`
-- **Tool Design Is Containment** (Playbook 04) — `playbook-04`
-- **Testing for Agent Failure Modes** (Playbook 14) — `playbook-14`
+- **The Six Triage Questions:** `triage-six-questions`
+- **Minimum Evidence Set:** `evidence-minimum-set`
+- **Tool Design Is Containment** (Playbook 04): `playbook-04`
+- **Testing for Agent Failure Modes** (Playbook 14): `playbook-14`
 
 ---
 
