@@ -55,7 +55,7 @@ A spreadsheet-friendly CSV for tiering every tool an AI agent can call. The matr
 
 1. Open `agent-privilege-matrix.csv` in your spreadsheet tool or import into your tool-registry CI.
 2. Replace the worked-example rows with your own agents and tools.
-3. Default Tier-2 to `approval_required = yes`; only relax for a specific cell when business need justifies it.
+3. Default Tier-2 to `approval_required = yes`. Only relax for a specific cell when business need justifies it.
 
 ### Operational use during an incident
 
@@ -82,17 +82,17 @@ The CSV is plain UTF-8 with standard delimiters. Drop it into any spreadsheet to
 
 ## License
 
-Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark **AI IR Overlay™** is protected — see `LICENSE` for terms.
+Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark **AI IR Overlay™** is protected. See `LICENSE` for terms.
 
 ## Related packages
 
-- `kill-switches-modes` — the six containment modes; Mode 3 (Tool Tiering) uses this matrix
-- `template-ai-bom` — the per-agent inventory YAML that references these tools
-- `playbook-04` — "Tool Design Is Containment" (the playbook that introduces the tier model)
+- `kill-switches-modes`: the six containment modes. Mode 3 (Tool Tiering) uses this matrix.
+- `template-ai-bom`: the per-agent inventory YAML that references these tools.
+- `playbook-04`: "Tool Design Is Containment" (the playbook that introduces the tier model).
 
 ## Cite
 
 ```text
-Ideji, J. (2026). Agent Privilege Matrix template — AI IR Overlay framework.
+Ideji, J. (2026). Agent Privilege Matrix template. AI IR Overlay framework.
 https://jacobideji.com
 ```
