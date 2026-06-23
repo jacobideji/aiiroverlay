@@ -71,11 +71,9 @@ If you cannot identify the owning team for each clause **before** an incident, y
 
 ## Related
 
-Distributed as separate packages:
-
-- **The Six Triage Questions:** `triage-six-questions`
-- **Minimum Evidence Set:** `evidence-minimum-set`
-- **Insider Threat 3.0** playbook: `playbook-12`
+- **The Six Triage Questions:** [`triage/six-questions.md`](../triage/six-questions.md)
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md)
+- **Insider Threat 3.0** playbook (Playbook 12): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 
 ---
 

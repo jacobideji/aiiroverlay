@@ -17,7 +17,7 @@
 
 > Four levels. One question at each: *can you do this, on demand, under pressure?*
 
-This is the **framework view** of maturity, the model used to assess and benchmark organizations. The **operating** view, with cadences, drills, and pitfalls, is distributed as the `playbook-20` package.
+This is the **framework view** of maturity, the model used to assess and benchmark organizations. The **operating** view, with cadences, drills, and pitfalls, ships as Playbook 20 (forthcoming). See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 
 ## The Four Levels
 
@@ -54,15 +54,15 @@ This is the **framework view** of maturity, the model used to assess and benchma
 | **1. Aware** | The organization has basic visibility into its AI assets. | Can you produce a current inventory of every agent → identity → tool → write target in under 5 minutes? |
 | **2. Containable** | Harm can be contained without a complete shutdown. | Can Tier-1 SOC activate Modes M1 to M4 within 10 minutes, in production, without escalation? |
 | **3. Provable** | The organization can demonstrate scope under time pressure. | Can the team export the Minimum Evidence Set within 60 minutes for any agent? |
-| **4. Resilient** | Continuous improvement with measured recovery. | Are the Six Metrics (see the `playbook-13` package) trending in the right direction over rolling 90 days? |
+| **4. Resilient** | Continuous improvement with measured recovery. | Are the [Six Metrics (Playbook 13)](../playbooks/13-six-metrics.md) trending in the right direction over rolling 90 days? |
 
 ## Mapping the Levels to Framework Controls
 
-| Level | Required controls (see the `framework-01-minimum-viable-overlay` package) |
+| Level | Required controls (see [`framework/01-minimum-viable-overlay.md`](01-minimum-viable-overlay.md)) |
 |---|---|
 | **1. Aware** | MVO-1 Inventory (current) |
 | **2. Containable** | MVO-1 + MVO-2 Safe Modes (M1 to M4 implemented and tested) |
-| **3. Provable** | Level 2 + MVO-3 Minimum Evidence Set (A to F exportable in 60 min) |
+| **3. Provable** | Level 2 + MVO-3 Minimum Evidence Set (A–F exportable in 60 min) |
 | **4. Resilient** | Level 3 + MVO-4 Controlled Re-Enable + quarterly tabletops + measured metrics |
 
 ## The Honest Self-Assessment
@@ -88,11 +88,11 @@ Most organizations who claim Level 3 are honestly at Level 1.
 | Can we tell the regulator what happened? | Level 3 |
 | Are we measurably getting better? | Level 4 |
 
-The board scorecard (distributed as the `playbook-24` package) maps directly to these.
+The [Board-Ready Scorecard (Playbook 24)](../playbooks/24-board-ready-scorecard.md) maps directly to these.
 
 ## Operating the Roadmap
 
-The operating cadence, drill design, and common pitfalls are detailed in the `playbook-20` package. Start there for execution.
+The operating cadence, drill design, and common pitfalls are detailed in Playbook 20 (forthcoming). See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for ship status. Until Playbook 20 lands, [Playbook 13 (Six Metrics)](../playbooks/13-six-metrics.md) and [Playbook 14 (Testing for Agent Failure Modes)](../playbooks/14-testing-for-agent-failure-modes.md) carry the measurement and drill work this roadmap depends on.
 
 ---
 

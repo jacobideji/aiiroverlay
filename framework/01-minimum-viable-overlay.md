@@ -43,7 +43,7 @@ For each agent, the inventory must capture:
 
 > **Mental model:** if you cannot answer *"what can this agent do?"* in one sentence, you cannot contain its incident in one hour.
 
-See the **AI Bill of Materials (AI-BOM)** template, distributed as the `template-ai-bom` package.
+See the [AI Bill of Materials (AI-BOM) template](../templates/ai-bom.yaml) and its [README](../templates/README-ai-bom.md).
 
 ---
 
@@ -68,7 +68,7 @@ A binary on/off switch is rarely appropriate in production. The Overlay defines 
 - Mode M5 requires CISO or designated incident commander approval
 - Each mode must be tested in a tabletop **before** the first production deployment
 
-See the **Kill-Switch Modes** full specification, distributed as the `kill-switches-modes` package.
+See the [Kill-Switch Modes](../kill-switches/overview.md) full specification.
 
 ---
 
@@ -91,7 +91,7 @@ In AI incidents, evidence is fragile. Rotating tokens, redeploying agents, or cl
 
 > **The rush-to-contain trap:** the most common AI IR failure comes from well-meaning teams who disable integrations, rotate tokens, update prompts, and redeploy, and only then ask "what exactly did it access?" Evidence-first discipline is the single biggest predictor of defensible response.
 
-See the **Minimum Evidence Set** full specification, distributed as the `evidence-minimum-set` package.
+See the [Minimum Evidence Set](../evidence/minimum-evidence-set.md) full specification.
 
 ---
 
@@ -117,10 +117,10 @@ An AI deployment conforms to the AI IR Overlay Minimum Standard when:
 
 - [ ] **Inventory** exists, is current within 7 days, and is exportable in under 5 minutes
 - [ ] **Safe Modes** M1, M2, M3, M4 are implemented and tabletop-tested in the last 90 days
-- [ ] **Minimum Evidence Set** A to F is exportable within 60 minutes
+- [ ] **Minimum Evidence Set** A–F is exportable within 60 minutes
 - [ ] **Controlled Re-Enable** procedure exists and is documented in the runbook
 
-Document conformance using the **Board-Ready Scorecard**, distributed as the `playbook-24` package.
+Document conformance using the [Board-Ready Scorecard (Playbook 24)](../playbooks/24-board-ready-scorecard.md).
 
 ---
 
