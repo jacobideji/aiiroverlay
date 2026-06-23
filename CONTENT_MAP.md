@@ -78,7 +78,7 @@ Each playbook marked 🟡 drafted has source content in the maintainer's working
 1. **Premise**: what's AI-specific, in one or two paragraphs.
 2. **First-Hour Actions**: a table with minute markers and owners.
 3. **Containment Options**: mapped to Kill-Switch Modes M0 through M5.
-4. **Evidence Priorities**: which of the A through F evidence types are load-bearing for this scenario.
+4. **Evidence Priorities**: which of the A–F evidence types are load-bearing for this scenario.
 5. **Recovery Sequence**: staged re-enablement, aligned with MVO-4.
 6. **Post-Incident Hardening**: what enters [Playbook 18](playbooks/18-post-incident-hardening.md)'s five-business-day SLA.
 7. **Common Pitfalls**: the failure modes specific to this scenario class.

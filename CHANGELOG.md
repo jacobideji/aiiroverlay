@@ -111,7 +111,7 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 
 ### Added: Evidence
 
-- `evidence/minimum-evidence-set.md`: evidence types A through F plus capture order.
+- `evidence/minimum-evidence-set.md`: evidence types A–F plus capture order.
 
 ### Added: Templates
 

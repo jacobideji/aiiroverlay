@@ -66,7 +66,7 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 │  1. INVENTORY     · Agents · Identities · Tools ·       │
 │                     Write Targets                       │
 │  2. SAFE MODES    · Kill-Switch Ladder (Modes 0 to 5)   │
-│  3. EVIDENCE      · Minimum AI Evidence Set (A to F)    │
+│  3. EVIDENCE      · Minimum AI Evidence Set (A–F)       │
 │  4. CONTROLLED    · Staged, validated re-enablement     │
 │     RE-ENABLE                                           │
 └─────────────────────────────────────────────────────────┘
