@@ -17,8 +17,9 @@ For incidents in **your** AI agent environments, the framework itself is the gui
 
 | Version | Supported with security fixes |
 |---|---|
-| Latest release (`v0.1.x`) | ✅ |
-| Older tags | ❌ Upgrade to latest |
+| Latest minor release (`v0.6.x`) | ✅ |
+| Previous minor (`v0.5.x`) | ✅ Critical fixes only |
+| Older tags (`≤ v0.4.x`) | ❌ Upgrade to latest |
 | Pre-release / unreleased commits | ❌ |
 
 ## Reporting a Vulnerability
@@ -66,4 +67,4 @@ If you intend to publish research or a CVE, let us know your target date and we 
 
 ## Trademark and Brand Misuse
 
-If you believe someone is misusing the **AI IR Overlay™** or **AI IR Overlay Certified™** word marks (for example, claiming "certification" status without authorization or running a paid program under the name) report via [jacobideji.com](https://jacobideji.com) rather than the security advisory channel.
+If you believe someone is misusing the **AI IR Overlay™** or **AI IR Overlay Certified™** word marks — for example, claiming "certification" status without authorization or running a paid program under the name — please report it via [jacobideji.com](https://jacobideji.com) rather than the security advisory channel.

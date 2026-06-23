@@ -14,6 +14,10 @@
 
 # The AI IR Overlay: Framework Overview
 
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
+[![Standards: NIST · OWASP · ISO/IEC](https://img.shields.io/badge/standards-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP%20%C2%B7%20ISO%2FIEC%2042001-informational)](#related-work)
+
 > Establishing the minimum standard for safe and effective operations of AI agents in production.
 
 ## Why an overlay, not a replacement
@@ -46,7 +50,7 @@ AI doesn't rewrite the rules of effective IR. It changes the map.
 
 The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**, or MVO) on top of your existing IR program:
 
-> **Note:** The NIST 800-61 r2 phases shown below remain widely-understood operational shorthand. r3 (April 2025) restructures incident response around CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover). See the AI IR Overlay ↔ CSF 2.0 crosswalk at [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md).
+> **Note:** The NIST 800-61 r2 phases shown below remain widely understood operational shorthand. r3 (April 2025) restructures incident response around CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover). See the AI IR Overlay ↔ CSF 2.0 crosswalk at [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md).
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
@@ -70,14 +74,14 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 
 ## Reading order
 
-The framework ships as separate packages. Read them in this order:
+Read the framework in this order. Items 1–6 are the core; 7–9 are working artifacts.
 
-1. **The Minimum Viable Overlay**: the four controls in detail (`framework-01-minimum-viable-overlay`)
-2. **The Mental Model**: four sentences that govern every decision (`framework-02-mental-model`)
-3. **The Maturity Roadmap**: where your program is, and how to advance it (`framework-03-maturity-roadmap`)
-4. **The Six Triage Questions**: first-hour discipline (`triage-six-questions`)
-5. **Kill-Switch Modes**: containment ladder (`kill-switches-modes`)
-6. **Minimum Evidence Set**: what to preserve, and in what order (`evidence-minimum-set`)
+1. **The Minimum Viable Overlay** — the four controls in detail: [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md)
+2. **The Mental Model** — four sentences that govern every decision: [`framework/02-mental-model.md`](framework/02-mental-model.md)
+3. **The Maturity Roadmap** — where your program is, and how to advance it: [`framework/03-maturity-roadmap.md`](framework/03-maturity-roadmap.md)
+4. **The Six Triage Questions** — first-hour discipline: [`triage/six-questions.md`](triage/six-questions.md)
+5. **Kill-Switch Modes** — containment ladder: [`kill-switches/overview.md`](kill-switches/overview.md)
+6. **Minimum Evidence Set** — what to preserve, and in what order: [`evidence/minimum-evidence-set.md`](evidence/minimum-evidence-set.md)
 7. **Templates**: [`templates/ai-bom.yaml`](templates/ai-bom.yaml) (AI Bill of Materials schema for MVO-1 Inventory) · [`templates/agent-privilege-matrix.csv`](templates/agent-privilege-matrix.csv) (tool-tier matrix for MVO-2 Mode M3)
 8. **Crosswalks**: [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 + SP 800-61 r3) · [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) (OWASP Agentic Top 10 2026)
 9. **Playbooks**: [`playbooks/01-agent-as-privileged-identity.md`](playbooks/01-agent-as-privileged-identity.md) (Playbook 01, privileged-identity response) · [`playbooks/03-rag-knowledge-base-forensics.md`](playbooks/03-rag-knowledge-base-forensics.md) (Playbook 03, RAG/KB forensics with 90-minute "Freeze the World" sequence) · [`playbooks/04-tool-design-is-containment.md`](playbooks/04-tool-design-is-containment.md) (Playbook 04, pre-incident tool design) · [`playbooks/13-six-metrics.md`](playbooks/13-six-metrics.md) (Playbook 13, the six metrics behind the Maturity Roadmap) · [`playbooks/14-testing-for-agent-failure-modes.md`](playbooks/14-testing-for-agent-failure-modes.md) (Playbook 14, pre-production Kill-Switch testing) · [`playbooks/18-post-incident-hardening.md`](playbooks/18-post-incident-hardening.md) (Playbook 18, post-incident hardening with 5-business-day SLA) · [`playbooks/24-board-ready-scorecard.md`](playbooks/24-board-ready-scorecard.md) (Playbook 24, executive-layer scorecard across 4 domains) · *more playbooks ship as MINOR releases*
