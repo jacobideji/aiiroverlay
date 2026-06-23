@@ -14,7 +14,7 @@
 
 # AI Bill of Materials (AI-BOM)
 
-A YAML schema for describing every AI agent in production. **The AI-BOM is the inventory layer of the [Minimum Viable Overlay](https://jacobideji.com).** Without it, responders cannot scope an incident in real time.
+A YAML schema for describing every AI agent in production. **The AI-BOM is the inventory layer (MVO-1) of the [Minimum Viable Overlay](../framework/01-minimum-viable-overlay.md).** Without it, responders cannot scope an incident in real time.
 
 ## What this package contains
 
@@ -40,7 +40,7 @@ The schema captures, **per agent**:
 | `logging` | What's logged, retention windows |
 | `kill_switches` | Implementation status + last-tested date for each mode M1 to M4 |
 | `evidence_export` | Where the runbook lives, tested export time |
-| `compliance_tags` | SOC 2, ISO 42001, EU AI Act applicability |
+| `compliance_tags` | SOC 2, ISO/IEC 42001:2023, EU AI Act applicability |
 | `incidents_history` | Tabletop and real incident log |
 
 ## How to use
@@ -89,11 +89,12 @@ If you maintain a CMDB or SBOM:
 
 Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark **AI IR Overlay™** is protected. See `LICENSE` for terms.
 
-## Related packages
+## Related
 
-- `framework-01-minimum-viable-overlay`: describes the four MVO controls. Inventory is the first.
-- `template-agent-privilege-matrix`: the companion CSV mapping tools to risk tiers.
-- `kill-switches-modes`: the six modes referenced by the `kill_switches` section.
+- [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md): describes the four MVO controls. Inventory is the first.
+- [`templates/agent-privilege-matrix.csv`](agent-privilege-matrix.csv) ([README](README-privilege-matrix.md)): the companion CSV mapping tools to risk tiers.
+- [`kill-switches/overview.md`](../kill-switches/overview.md): the six modes referenced by the `kill_switches` section.
+- [Playbook 01: The Agent Is a Privileged Identity](../playbooks/01-agent-as-privileged-identity.md): the response playbook that uses the inventory.
 
 ## Cite
 

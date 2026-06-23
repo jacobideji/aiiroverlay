@@ -84,11 +84,11 @@ The CSV is plain UTF-8 with standard delimiters. Drop it into any spreadsheet to
 
 Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark **AI IR Overlay™** is protected. See `LICENSE` for terms.
 
-## Related packages
+## Related
 
-- `kill-switches-modes`: the six containment modes. Mode 3 (Tool Tiering) uses this matrix.
-- `template-ai-bom`: the per-agent inventory YAML that references these tools.
-- `playbook-04`: "Tool Design Is Containment" (the playbook that introduces the tier model).
+- [`kill-switches/overview.md`](../kill-switches/overview.md): the six containment modes. Mode 3 (Tool Tiering) uses this matrix.
+- [`templates/ai-bom.yaml`](ai-bom.yaml) ([README](README-ai-bom.md)): the per-agent inventory YAML that references these tools.
+- [Playbook 04: Tool Design Is Containment](../playbooks/04-tool-design-is-containment.md): the playbook that introduces the tier model.
 
 ## Cite
 
