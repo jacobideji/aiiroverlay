@@ -35,7 +35,7 @@ The crosswalk gives auditors, regulators, and boards a direct path from AI IR Ov
 
 ### MVO-1 Inventory ↔ IDENTIFY + GOVERN
 
-The AI-BOM template (distributed as the `template-ai-bom` package) operationalizes:
+The [AI-BOM template](../templates/ai-bom.yaml) (see [README](../templates/README-ai-bom.md)) operationalizes:
 
 - **ID.AM-01:** *"Inventories of hardware managed by the organization are maintained."* Extends to runtime hosts of AI agents.
 - **ID.AM-02:** *"Inventories of software, services, and systems managed by the organization are maintained."* Captures agent platforms, model providers, retrieval frameworks.
@@ -77,7 +77,7 @@ Staged recovery operationalizes:
 - **RC.RP-02:** *"Recovery actions are selected, scoped, prioritized, and performed."* Staged tool re-enablement starts with the lowest-risk tier.
 - **RC.RP-03:** *"The integrity of backups and other restoration assets is verified before using them for restoration."* Corpora versions confirmed clean is an explicit step.
 - **RC.RP-04:** *"Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms."* The approver is the CISO or Incident Commander, not the original agent owner alone.
-- **RC.CO-03:** *"Recovery activities and progress are communicated to internal and external stakeholders."* Post-incident hardening communication is documented in the `playbook-18` package.
+- **RC.CO-03:** *"Recovery activities and progress are communicated to internal and external stakeholders."* Post-incident hardening communication is documented in [Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md).
 
 ### Six Triage Questions ↔ RESPOND
 
@@ -110,7 +110,7 @@ When responding to an auditor, regulator, board member, or downstream contributo
 
 **Example:** *"How does your organization satisfy RS.MI-01 (incidents are contained) for your AI agents?"*
 
-**Answer:** *"We implement the AI IR Overlay Kill-Switch Modes M1–M4 (Read-Only, Approvals Required, Tool Tiering, Full Disable), tabletop-tested quarterly per the `kill-switches-modes` specification. Our AI-BOM (`template-ai-bom` package) documents which modes each agent supports, with last-tested dates and measured Time-to-Activate (TTA) values."*
+**Answer:** *"We implement the AI IR Overlay Kill-Switch Modes M1–M4 (Read-Only, Approvals Required, Tool Tiering, Full Disable), tabletop-tested quarterly per the [Kill-Switch Modes specification](../kill-switches/overview.md). Our [AI-BOM](../templates/ai-bom.yaml) documents which modes each agent supports, with last-tested dates and measured Time-to-Activate (TTA) values."*
 
 ## Relationship to SP 800-61 r3
 

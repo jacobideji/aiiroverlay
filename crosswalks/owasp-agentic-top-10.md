@@ -59,7 +59,7 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 - **MVO-3, type B (Tool-Call Ledger).** Captures both attempted and successful calls. Denied calls are evidence of intent.
 - **Triage Q1 + Q5.** First-hour discipline matches threat to least-disruptive safe mode.
 
-**Operational priority:** Pre-tier tools (`template-agent-privilege-matrix` package). Without this, M3 can't execute under pressure.
+**Operational priority:** Pre-tier tools (see the [Agent Privilege Matrix](../templates/agent-privilege-matrix.csv) and its [README](../templates/README-privilege-matrix.md)). Without this, M3 can't execute under pressure. The pre-incident discipline is operationalized in [Playbook 04: Tool Design Is Containment](../playbooks/04-tool-design-is-containment.md).
 
 ### ASI03: Identity & Privilege Abuse
 
@@ -164,7 +164,7 @@ When responding to a threat report, security researcher disclosure, or auditor q
 
 **Example:** *"Walk us through how your organization would detect, contain, and recover from an ASI06 Memory & Context Poisoning incident."*
 
-**Answer:** *"Our AI-BOM (`template-ai-bom` package) documents memory scope (per-user vs shared), retention, and sensitivity classification for every agent. Detection sources include Type-A prompt logs and Type-C retrieval traces. Containment uses M3 (Tool Tiering) if a single tool is the carrier, M4 (Full Disable) if memory bleed is confirmed. Pre-containment, we capture Type-D (Memory Snapshot) and Type-C (Retrieval Traces) to preserve the input vector. Recovery follows M5 with corpus version verification before re-enabling memory. Our quarterly tabletops include a memory-poisoning scenario per Level 4 (Resilient) maturity."*
+**Answer:** *"Our [AI-BOM](../templates/ai-bom.yaml) documents memory scope (per-user vs shared), retention, and sensitivity classification for every agent. Detection sources include Type-A prompt logs and Type-C retrieval traces. Containment uses M3 (Tool Tiering) if a single tool is the carrier, M4 (Full Disable) if memory bleed is confirmed. Pre-containment, we capture Type-D (Memory Snapshot) and Type-C (Retrieval Traces) to preserve the input vector. Recovery follows M5 with corpus version verification before re-enabling memory. Our quarterly tabletops include a memory-poisoning scenario per Level 4 (Resilient) maturity. For the full ASI06 response procedure, see [Playbook 03: RAG / Knowledge-Base Forensics](../playbooks/03-rag-knowledge-base-forensics.md)."*
 
 ## Relationship to OWASP Top 10 for LLM Applications
 

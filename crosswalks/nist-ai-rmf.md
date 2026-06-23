@@ -33,7 +33,7 @@ This crosswalk maps AI IR Overlay controls to NIST AI RMF functions, with emphas
 
 ### MVO-1 Inventory ↔ GOVERN + MAP
 
-The AI-BOM template (distributed as the `template-ai-bom` package) operationalizes:
+The [AI-BOM template](../templates/ai-bom.yaml) (see [README](../templates/README-ai-bom.md)) operationalizes:
 
 - **GOVERN 1.6:** *"Mechanisms are in place to inventory AI systems and are resourced according to organizational risk priorities."*
 - **MAP 1.1:** *"Intended purposes, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented."*
@@ -72,7 +72,7 @@ Staged recovery operationalizes:
 When responding to an auditor, regulator, or board question framed in AI RMF terms, this crosswalk lets you point to specific AI IR Overlay artifacts as evidence of conformance to the corresponding RMF subcategory.
 
 **Example:** "How does your organization satisfy MANAGE 2.4?"
-**Answer:** "We implement the AI IR Overlay Kill-Switch Modes M1–M4, tested quarterly. Our AI-BOM (`template-ai-bom` package) documents implementation and last-tested dates per agent."
+**Answer:** "We implement the AI IR Overlay Kill-Switch Modes M1–M4, tested quarterly. Our [AI-BOM](../templates/ai-bom.yaml) documents implementation and last-tested dates per agent."
 
 ## Status
 
