@@ -37,7 +37,7 @@ Walk the [Six Triage Questions](../triage/six-questions.md) **in order** on the 
 
 | # | Question | What it scopes | Where the answer lives |
 |---|---|---|---|
-| 1 | What tools can the agent call? | Action surface | AI-BOM `tools` section ([`template-ai-bom`](../templates/ai-bom.yaml)) |
+| 1 | What tools can the agent call? | Action surface | AI-BOM `tools` section ([AI-BOM template](../templates/ai-bom.yaml)) |
 | 2 | What systems can it write to? | Blast radius | AI-BOM `tools[].write_targets` |
 | 3 | What identity does it run as? | Attribution chain | AI-BOM `identity` section |
 | 4 | Does it have memory? What is the scope? | Cross-session risk | AI-BOM `memory` section |
@@ -108,7 +108,7 @@ The hardening priorities for a privileged-identity-class incident map directly t
 | **AI-BOM update** | Update the agent's [AI-BOM](../templates/ai-bom.yaml) `incidents_history` entry with date, summary, mode activated, duration, outcome. |
 | **Kill-Switch tabletop** | Schedule a tabletop within **30 days** to validate the fix and exercise M1–M4 against the same scenario class. |
 | **Detection thresholds** | Update monitoring to detect recurrence of the specific attack vector (prompt injection patterns, retrieval anomalies, tool-call rate spikes). |
-| **Post-incident comms** | Prepare the recovery communication per [`playbook-18`](../crosswalks/nist-csf-2.md) (Post-Incident Hardening). Internal stakeholders, customers, and regulators if scope warrants. |
+| **Post-incident comms** | Prepare the recovery communication per [Playbook 18: Post-Incident Hardening](18-post-incident-hardening.md). Internal stakeholders, customers, and regulators if scope warrants. |
 
 **Done when:** the [Maturity Roadmap](../framework/03-maturity-roadmap.md)'s Level 4 (Resilient) criteria for this agent are met. Drill happened, metrics moved, AI-BOM updated.
 
@@ -150,7 +150,7 @@ If you're deploying agents today, here is the question to put in front of leader
 
 > *Do your agents have write access in production, and do you have a tested safe mode you can activate in under 10 minutes?*
 
-If the answer to the first half is *yes* and the answer to the second half is *no, or untested*, this playbook is the work plan. Build the inventory ([`template-ai-bom`](../templates/ai-bom.yaml)). Tier the tools ([Privilege Matrix](../templates/agent-privilege-matrix.csv)). Tabletop the modes ([Kill-Switch Modes](../kill-switches/overview.md)). Document the evidence path ([Minimum Evidence Set](../evidence/minimum-evidence-set.md)). Then test it before you need it.
+If the answer to the first half is *yes* and the answer to the second half is *no, or untested*, this playbook is the work plan. Build the inventory ([AI-BOM template](../templates/ai-bom.yaml)). Tier the tools ([Privilege Matrix](../templates/agent-privilege-matrix.csv)). Tabletop the modes ([Kill-Switch Modes](../kill-switches/overview.md)). Document the evidence path ([Minimum Evidence Set](../evidence/minimum-evidence-set.md)). Then test it before you need it.
 
 ---
 

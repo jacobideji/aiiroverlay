@@ -179,7 +179,7 @@ The playbook applies to individual incidents, but its **discipline** applies to 
 - **How many incidents resulted in zero hardening?** This number should be zero.
 - **Are TTSM and TTE trending in the right direction over rolling 90 days?** If not, the hardening is cosmetic.
 
-These four data points are the [Maturity Roadmap](../framework/03-maturity-roadmap.md) Level 4 (Resilient) criteria for this playbook. Without them, the framework's promise of "continuous improvement" is a slogan, not a practice.
+These four data points are the [Maturity Roadmap](../framework/03-maturity-roadmap.md) Level 4 (Resilient) criteria for this playbook. TTSM and TTE are defined in [Playbook 13: The Six Metrics](13-six-metrics.md), along with how to capture them and how to read their trend lines. Without that discipline, the framework's promise of "continuous improvement" is a slogan, not a practice.
 
 ## Related
 
@@ -194,6 +194,7 @@ Distributed as separate packages or files within the framework:
 - **Agent Privilege Matrix:** [`templates/agent-privilege-matrix.csv`](../templates/agent-privilege-matrix.csv) (the artifact most hardening cycles update)
 - **Playbook 01: The Agent Is a Privileged Identity** ([`playbooks/01-agent-as-privileged-identity.md`](01-agent-as-privileged-identity.md)) (the response that produces the lessons this playbook hardens)
 - **Playbook 04: Tool Design Is Containment** ([`playbooks/04-tool-design-is-containment.md`](04-tool-design-is-containment.md)) (the pre-incident discipline this playbook reinforces post-incident)
+- **Playbook 13: The Six Metrics** ([`playbooks/13-six-metrics.md`](13-six-metrics.md)) (Metric 5 measures hardening SLA compliance; TTSM and TTE definitions live there)
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports MANAGE 4.2, MANAGE 4.3)
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports ID.IM-01, ID.IM-02, RC.RP-04, RC.CO-03, GV.OV-01)
 - **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook addresses recurrence prevention for ASI02, ASI06, ASI08)

@@ -209,7 +209,7 @@ The quarterly cadence isn't ceremonial. It's the smallest interval that catches 
 Distributed as separate packages:
 
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md). Full M0 through M5 mode specifications and TTA targets that this playbook tests against.
-- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A through F evidence types that M4 drills must preserve before any state-mutating recovery.
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A–F evidence types that M4 drills must preserve before any state-mutating recovery.
 - **AI-BOM template:** [`templates/README-ai-bom.md`](../templates/README-ai-bom.md). The `kill_switches` section is the system of record for drill dates and measured TTA.
 - **Agent Privilege Matrix:** [`templates/README-privilege-matrix.md`](../templates/README-privilege-matrix.md). The M3 drill validates that this matrix is wired into the runtime, not just the documentation.
 - **Playbook 04 (Tool Design Is Containment):** [`04-tool-design-is-containment.md`](04-tool-design-is-containment.md). Without pre-tiered tools, the M3 drill has nothing to test. Run PB04 first if your privilege matrix isn't current.

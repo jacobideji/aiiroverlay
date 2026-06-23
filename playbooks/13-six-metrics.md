@@ -81,7 +81,7 @@ The Six Metrics cover the four MVO controls plus the two operational disciplines
 
 **Question answered:** *Can we prove what happened, on demand?*
 
-**Definition:** Median minutes from incident-declaration order to full [Minimum Evidence Set](../evidence/minimum-evidence-set.md) A through F captured, measured in drill exercises (live incidents are too rare to drive a stable trend).
+**Definition:** Median minutes from incident-declaration order to full [Minimum Evidence Set](../evidence/minimum-evidence-set.md) A–F captured, measured in drill exercises (live incidents are too rare to drive a stable trend).
 
 **Data source:** Drill logs from M4 Full Disable exercises.
 
@@ -141,7 +141,7 @@ The Six Metrics produce evidence, but they also depend on evidence. Treat the un
 |---|---|
 | Inventory Currency | AI-BOM commit history (versioned in source control) |
 | Containment TTA | Drill logs with timestamps, approver IDs, probe results |
-| Evidence Export Time | Drill records showing A through F capture sequence and times |
+| Evidence Export Time | Drill records showing A–F capture sequence and times |
 | Drill Currency | AI-BOM `tested_at` fields and supporting drill artifacts |
 | Hardening SLA | Backlog tickets with creation date, closure date, and code-change linkage |
 | Re-Enable Success | M5 sequence checklists with go/no-go decisions per stage |
@@ -186,7 +186,7 @@ Distributed as separate packages:
 - **Maturity Roadmap:** [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md). Defines the four levels these metrics measure. The Level 4 (Resilient) test points directly at this playbook.
 - **AI-BOM template:** [`templates/README-ai-bom.md`](../templates/README-ai-bom.md). The primary data source for Metrics 1, 2, and 4.
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md). Source of the TTA targets that Metric 2 measures against.
-- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A through F capture sequence that Metric 3 times.
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A–F capture sequence that Metric 3 times.
 - **Playbook 14 (Testing for Agent Failure Modes):** [`14-testing-for-agent-failure-modes.md`](14-testing-for-agent-failure-modes.md). Generates the drill data behind Metrics 2 and 4.
 - **Playbook 18 (Post-Incident Hardening):** [`18-post-incident-hardening.md`](18-post-incident-hardening.md). Defines the 5-business-day SLA measured by Metric 5.
 - **Playbook 24 (Board-Ready Scorecard):** [`24-board-ready-scorecard.md`](24-board-ready-scorecard.md). The executive translation layer for all six metrics.
