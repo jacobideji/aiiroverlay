@@ -67,4 +67,4 @@ If you intend to publish research or a CVE, let us know your target date and we 
 
 ## Trademark and Brand Misuse
 
-If you believe someone is misusing the **AI IR Overlay™** or **AI IR Overlay Certified™** word marks — for example, claiming "certification" status without authorization or running a paid program under the name — please report it via [jacobideji.com](https://jacobideji.com) rather than the security advisory channel.
+If you believe someone is misusing the **AI IR Overlay™** or **AI IR Overlay Certified™** word marks (for example, claiming "certification" status without authorization, or running a paid program under the name), please report it via [jacobideji.com](https://jacobideji.com) rather than the security advisory channel.
