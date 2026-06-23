@@ -108,11 +108,13 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 **Operational checks:**
 
-- [ ] Tier definitions are pre-documented (see the `template-agent-privilege-matrix` package)
+- [ ] Tier definitions are pre-documented (see the [Agent Privilege Matrix](../templates/agent-privilege-matrix.csv))
 - [ ] Disabled tools confirmed unreachable in production
 - [ ] Remaining tools confirmed operational
 
 **Exit criteria:** Vector contained (step down to M1/M2), or scope expands (M4).
+
+> **RAG-specific containment:** when the suspected attack path is the retrieval layer (RAG, knowledge base, vector index), use the *M3-RAG* variant. Cut retrieval to the suspect corpus and leave the other corpora alone. The agent keeps working with reduced knowledge but no exposure to poisoned content. See [Playbook 03: RAG / Knowledge-Base Forensics](../playbooks/03-rag-knowledge-base-forensics.md) for the freeze-the-world sequence and the seven-component pipeline forensics.
 
 ---
 
@@ -130,7 +132,7 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 **Operational checks (critical sequence):**
 
-- [ ] **Snapshot identity and capabilities BEFORE token rotation** (see Step 2 of the `evidence-minimum-set` package)
+- [ ] **Snapshot identity and capabilities BEFORE token rotation** (see Step 2 of the [Minimum Evidence Set](../evidence/minimum-evidence-set.md))
 - [ ] **Capture the Minimum AI Evidence Set BEFORE redeployment**
 - [ ] Only then: rotate credentials, clean corpora, redeploy
 
@@ -156,7 +158,7 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 **Operational checks:**
 
-- [ ] Post-incident hardening complete (see the `playbook-18` package)
+- [ ] Post-incident hardening complete (see [Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md))
 - [ ] Monitoring thresholds updated to detect recurrence
 - [ ] Tabletop scheduled within 30 days to validate the fix
 
@@ -177,12 +179,11 @@ If any of the above is "not yet," the agent is not production-ready.
 
 ## Related
 
-Distributed as separate packages:
-
-- **The Six Triage Questions:** `triage-six-questions`
-- **Minimum Evidence Set:** `evidence-minimum-set`
-- **Tool Design Is Containment** (Playbook 04): `playbook-04`
-- **Testing for Agent Failure Modes** (Playbook 14): `playbook-14`
+- **The Six Triage Questions:** [`triage/six-questions.md`](../triage/six-questions.md)
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md)
+- **Tool Design Is Containment** (Playbook 04): [`playbooks/04-tool-design-is-containment.md`](../playbooks/04-tool-design-is-containment.md)
+- **Testing for Agent Failure Modes** (Playbook 14): [`playbooks/14-testing-for-agent-failure-modes.md`](../playbooks/14-testing-for-agent-failure-modes.md)
+- **RAG / Knowledge-Base Forensics** (Playbook 03): [`playbooks/03-rag-knowledge-base-forensics.md`](../playbooks/03-rag-knowledge-base-forensics.md)
 
 ---
 
