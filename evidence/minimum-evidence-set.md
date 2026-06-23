@@ -5,7 +5,7 @@
 <!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
 <!-- ────────────────────────────────────────────────────────────────── -->
 
-> **Six evidence types (A-F) plus capture order. Preservable in 60 minutes.**
+> **Six evidence types (A–F) plus capture order. Exportable in 60 minutes.**
 >
 > *This file is one self-contained piece of the AI IR Overlay™ framework.
 > Cross-references to other pieces point to other packages in the same set,
@@ -44,7 +44,7 @@ The six evidence types below. **Only then** rotate credentials, clean corpora, o
 
 ---
 
-## The Six Evidence Types (A to F)
+## The Six Evidence Types (A–F)
 
 ### A. Prompt and Response Record
 
@@ -72,7 +72,7 @@ What the agent retrieved, from which corpus, at which version, with what scores.
 
 **Why it matters:** poisoned context produces poisoned output. Without retrieval traces, you cannot prove the input vector.
 
-See **RAG / Knowledge-Base Forensics** (Playbook 03), distributed as the `playbook-03` package.
+See [RAG / Knowledge-Base Forensics (Playbook 03)](../playbooks/03-rag-knowledge-base-forensics.md) for the 90-minute freeze-the-world sequence and the seven-component pipeline forensics (C1 through C7).
 
 ### D. Memory Snapshot (if enabled)
 
@@ -110,7 +110,7 @@ The downstream evidence. What the agent did in target systems, attributed to the
 
 To claim conformance with the Minimum Evidence Set:
 
-- [ ] All six types (A to F) can be **exported within 60 minutes** of incident declaration
+- [ ] All six types (A–F) can be **exported within 60 minutes** of incident declaration
 - [ ] Owners and access paths for each type are pre-documented
 - [ ] Pre-approved emergency access exists (no waiting on a ticket)
 - [ ] Logs A and B are retained for a minimum window matching your IR plan (typically 90 days)
@@ -132,11 +132,10 @@ To claim conformance with the Minimum Evidence Set:
 
 ## Related
 
-Distributed as separate packages:
-
-- **Kill-Switch Modes:** `kill-switches-modes` (staged containment that preserves evidence)
-- **Records, Retention, and Proving What Happened** (Playbook 15): `playbook-15`
-- **Multi-Stakeholder Logging and Privacy** (Playbook 23): `playbook-23`
+- **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md) (staged containment that preserves evidence)
+- **RAG / Knowledge-Base Forensics** (Playbook 03): [`playbooks/03-rag-knowledge-base-forensics.md`](../playbooks/03-rag-knowledge-base-forensics.md) (Type C deep dive)
+- **Records, Retention, and Proving What Happened** (Playbook 15): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
+- **Multi-Stakeholder Logging and Privacy** (Playbook 23): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 
 ---
 
