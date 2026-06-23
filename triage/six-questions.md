@@ -63,7 +63,7 @@ Memory scope determines blast radius across tenants and users.
 
 ## 5. What is the least disruptive safe mode?
 
-Before you reach for the off switch, walk the **Kill-Switch Modes** (see the `kill-switches-modes` package):
+Before you reach for the off switch, walk the [Kill-Switch Modes](../kill-switches/overview.md):
 
 - Can you move to **Read-Only (M1)**?
 - Can you require **Approvals (M2)**?
@@ -76,21 +76,19 @@ The wrong choice here costs revenue. The wrong choice on the other side destroys
 
 Capture **prompt/response logs**, **tool-call logs**, and **configuration state** *before* rotating credentials, redeploying, or cleaning corpora.
 
-See the **Minimum Evidence Set**, distributed as the `evidence-minimum-set` package.
+See the [Minimum Evidence Set](../evidence/minimum-evidence-set.md).
 
 ---
 
 ## Printable Card
 
-A single-page printable version of these six questions, designed to live on a SOC wall, is distributed as the **`triage-six-questions-card`** package.
+A single-page printable version of these six questions, designed to live on a SOC wall: [`triage/six-questions-card.md`](six-questions-card.md).
 
 ## Related
 
-Distributed as separate packages:
-
-- **Kill-Switch Modes:** `kill-switches-modes`
-- **Minimum Evidence Set:** `evidence-minimum-set`
-- **Playbook 01: The Agent Is a Privileged Identity:** `playbook-01`
+- **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md)
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md)
+- **Playbook 01: The Agent Is a Privileged Identity:** [`playbooks/01-agent-as-privileged-identity.md`](../playbooks/01-agent-as-privileged-identity.md)
 
 ---
 
