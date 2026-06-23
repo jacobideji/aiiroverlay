@@ -12,7 +12,52 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 - Remaining playbooks: 05 through 12, 15 through 17, and 19 through 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
+- Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.6.2] · 2026-06-23 · Structural Cleanup
+
+Documentation accuracy and navigation polish. No framework substance changes.
+
+### Fixed
+
+- Misrouted link in `playbooks/01-agent-as-privileged-identity.md` line 111. The "Playbook 18" reference now resolves to the actual playbook (was pointing to the CSF 2.0 crosswalk by mistake).
+- "Minimum Viable Overlay" link in `templates/README-ai-bom.md` repointed from `jacobideji.com` to the in-repo file.
+
+### Changed
+
+- 46 backtick-package-slug references across 12 files converted to relative file paths. Closes the residue from the original "ships as separate packages" distribution model.
+- 5 forthcoming-playbook references (PB12, PB15, PB20, PB23) rewritten as "forthcoming, see CHANGELOG" notes instead of citing them as live packages.
+- Evidence-letter notation normalized to A–F (en dash) across the repo. 12 outliers (A to F, A-F hyphen, A through F) all aligned.
+
+### Added
+
+- New "RAG-specific containment" note in `kill-switches/overview.md` Mode 3, pointing to Playbook 03 for the freeze-the-world sequence.
+- Inbound links added for the previously underwoven playbooks: PB13 now referenced from PB18, PB24, and the Maturity Roadmap Level 4 row. PB03 now referenced from kill-switches Mode 3, evidence Type C, and OWASP ASI06.
+- Printable triage card now linked from `triage/six-questions.md`.
+
+## [0.6.1] · 2026-06-23 · Documentation Polish
+
+Accuracy and OSS-convention round. No framework substance changes.
+
+### Fixed
+
+- `SECURITY.md` Supported Versions table bumped from `v0.1.x` to `v0.6.x`. The version table was stale and didn't reflect the actual current release.
+- `CODE_OF_CONDUCT.md` enforcement section: "at via" template artifact replaced with "via".
+- `README.md` "widely-understood" hyphenation corrected to "widely understood" (predicate adjective).
+- `README.md` reading order items 1 through 6 converted from package slugs to real relative file paths.
+
+### Added
+
+- `README.md` now carries License, Latest Release, and Standards badges.
+- `README.md` Acronyms list now includes TTE (Time-to-Evidence) and TTSM (Time-to-Safe-Mode).
+- `CHANGELOG.md` (this file): Keep-a-Changelog format covering all 11 releases.
+- `GOVERNANCE.md`: roles, decision-making, release cadence, trademark.
+- `CONTENT_MAP.md`: newsletter issue to repo destination map with arc-based ship order.
+
+### Changed
+
+- Repo-wide humanization pass: em-dash density reduced from 1.0 to 7.6 per 100 words (worst-case) down to 0.08 per 100 words across the whole repo. Style guide target is 0.5.
 
 ## [0.6.0] · 2026-06-23 · Measurement Release
 
@@ -118,7 +163,9 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.6.2...HEAD
+[0.6.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.2
+[0.6.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.1
 [0.6.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.0
 [0.5.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.5.0
 [0.4.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.4.0
