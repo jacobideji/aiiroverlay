@@ -1,0 +1,20 @@
+title: AI IR Overlay™
+description: Practical incident response framework for AI agents. Built on NIST SP 800-61 r3, mapped to NIST AI RMF, NIST CSF 2.0, OWASP Top 10 for Agentic Applications 2026, ISO/IEC 42001, EU AI Act.
+url: https://aiir.jacobideji.com
+baseurl: ""
+author:
+  name: Jacob Ideji
+  url: https://jacobideji.com
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+twitter:
+  username: jacobideji
+social:
+  name: Jacob Ideji
+  links:
+    - https://linkedin.com/in/jacobideji
+    - https://github.com/jacobideji
+    - https://jacobideji.com
