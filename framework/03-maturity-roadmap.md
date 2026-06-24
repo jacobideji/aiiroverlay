@@ -17,7 +17,7 @@
 
 > Four levels. One question at each: *can you do this, on demand, under pressure?*
 
-This is the **framework view** of maturity, the model used to assess and benchmark organizations. The **operating** view, with cadences, drills, and pitfalls, ships as Playbook 20 (forthcoming). See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
+This is the **framework view** of maturity, the model used to assess and benchmark organizations. The **operating view**, with cadences, drills, and pitfalls, is in [Playbook 20: AI IR Maturity Roadmap (Operating View)](../playbooks/20-maturity-roadmap.md).
 
 ## The Four Levels
 
@@ -92,7 +92,7 @@ The [Board-Ready Scorecard (Playbook 24)](../playbooks/24-board-ready-scorecard.
 
 ## Operating the Roadmap
 
-The operating cadence, drill design, and common pitfalls are detailed in Playbook 20 (forthcoming). See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for ship status. Until Playbook 20 lands, [Playbook 13 (Six Metrics)](../playbooks/13-six-metrics.md) and [Playbook 14 (Testing for Agent Failure Modes)](../playbooks/14-testing-for-agent-failure-modes.md) carry the measurement and drill work this roadmap depends on.
+The operating cadence, drill design, common pitfalls, and the 30-minute single-agent reality check are detailed in [Playbook 20: AI IR Maturity Roadmap (Operating View)](../playbooks/20-maturity-roadmap.md). Start there for execution. [Playbook 13 (Six Metrics)](../playbooks/13-six-metrics.md) carries the trend-line measurements that Level 4 depends on, and [Playbook 14 (Testing for Agent Failure Modes)](../playbooks/14-testing-for-agent-failure-modes.md) carries the drill discipline that produces the Level 2 and Level 3 evidence.
 
 ---
 
