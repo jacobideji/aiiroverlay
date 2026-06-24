@@ -46,7 +46,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | 17 | Communication Techniques for AI-Involved IR | `playbooks/17-communication-techniques.md` | 🟡 drafted, not yet released |
 | 18 | Post-Incident Hardening | [`playbooks/18-post-incident-hardening.md`](playbooks/18-post-incident-hardening.md) | ✅ `v0.4.0` |
 | 19 | Build vs Buy for Agent Controls | `playbooks/19-build-vs-buy.md` | 🟡 drafted, not yet released |
-| 20 | AI IR Maturity Roadmap | [`framework/03-maturity-roadmap.md`](framework/03-maturity-roadmap.md) (framework view) and `playbooks/20-maturity-roadmap.md` (operating view) | ✅ framework view (`v0.1.0`) · 🟡 operating view drafted |
+| 20 | AI IR Maturity Roadmap | [`framework/03-maturity-roadmap.md`](framework/03-maturity-roadmap.md) (framework view) and [`playbooks/20-maturity-roadmap.md`](playbooks/20-maturity-roadmap.md) (operating view) | ✅ framework view (`v0.1.0`) · ✅ operating view (`v0.7.0`) |
 | 21 | The Evolution from Shadow IT to Shadow AI | `playbooks/21-shadow-ai.md` | 🟡 drafted, not yet released |
 | 22 | Model and Policy Drift | `playbooks/22-model-policy-drift.md` | 🟡 drafted, not yet released |
 | 23 | AI Logging and Privacy in a Multi-Stakeholder World | `playbooks/23-logging-privacy.md` and [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) | ✅ crosswalk (`v0.1.5`) · 🟡 playbook drafted |
