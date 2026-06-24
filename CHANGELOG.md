@@ -10,10 +10,22 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05 through 12, 15 through 17, and 19 through 23
+- Remaining playbooks: 05 through 12, 15 through 17, 19, 21 through 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.7.0] · 2026-06-24 · Playbook 20: AI IR Maturity Roadmap (Operating View)
+
+### Added
+
+- `playbooks/20-maturity-roadmap.md`: the operating view of the Maturity Roadmap. Covers the four-quarter cadence (weekly, monthly, quarterly, annual), the level-to-containment realism mapping, the 30-minute single-agent reality check, the four-quarter improvement loop, and the ten operating pitfalls that turn a maturity program into documentation theater.
+- Maturity Roadmap framework view (`framework/03-maturity-roadmap.md`) now points readers at PB20 for execution. The two prior "forthcoming" notes are removed.
+- CONTENT_MAP.md Issue 20 row updated to show the operating view as shipped.
+
+### Why now
+
+PB20 completes the measurement and discipline triad with [Playbook 13 (Six Metrics)](playbooks/13-six-metrics.md) and [Playbook 14 (Testing for Agent Failure Modes)](playbooks/14-testing-for-agent-failure-modes.md). Together these three carry the Level 4 (Resilient) maturity claim from aspiration to operating reality.
 
 ## [0.6.2] · 2026-06-23 · Structural Cleanup
 
@@ -163,7 +175,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.6.2...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.7.0
 [0.6.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.2
 [0.6.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.1
 [0.6.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.0
