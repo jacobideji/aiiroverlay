@@ -123,8 +123,8 @@ A future v0.2+ playbook will formalize this layered relationship in a companion 
 
 ## Status
 
-- **Mapping completeness:** functions GOVERN, IDENTIFY, RESPOND, and RECOVER have high-level mapping complete. PROTECT (PR.AA, PR.DS for agent identity and memory protection) and DETECT (DE.CM for continuous monitoring) extensions are deferred to v0.2.
-- **Coverage gap:** PR.AA-05 (access policies enforced on AI agent identities) and PR.DS-01 (data-at-rest protection for agent memory) need dedicated playbook treatment. Planned for v0.2.
+- **Mapping completeness:** functions GOVERN, IDENTIFY, PROTECT (PR.AA family), RESPOND, and RECOVER have high-level mapping complete. PR.AA-05 (access policies on AI agent identities) is now covered by [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md), which ships the credential-discipline operational layer. DETECT (DE.CM for continuous monitoring) extension is forthcoming with the planned Playbook 11.
+- **Remaining gap:** PR.DS-01 (data-at-rest protection for agent memory) needs dedicated playbook treatment. Planned for a future release.
 - **Validation:** unreviewed by NIST. This is the maintainer's interpretation, offered in good faith.
 
 ## Source
