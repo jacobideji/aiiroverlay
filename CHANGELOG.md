@@ -10,10 +10,22 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05 through 12, 15 through 17, 19, 21 through 23
+- Remaining playbooks: 05, 06, 08 through 12, 15 through 17, 19, 21 through 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.8.0] · 2026-06-24 · Playbook 07: Secrets and Tokens in an Agent World
+
+### Added
+
+- `playbooks/07-secrets-and-tokens.md`: the credential-discipline playbook. Covers three credential classes (service-account secrets, delegated OAuth grants, user-impersonation tokens), the 60-minute snapshot-narrow-rotate-validate sequence, the scope-shrink rule, the break-glass procedure for credential-only containment without taking the agent offline, four-boundary hardening (lifecycle, scope, telemetry, procedure), and ten common credential pitfalls observed across engagements.
+
+### Why now
+
+PB07 closes the largest implicit gap in the live framework. Every shipped playbook references token rotation (PB01 names it as "the single most common evidence-destruction failure in AI IR"), yet no playbook specified the agent-specific PAM cadence, rotation discipline, OAuth grant lifecycle, or break-glass procedure. PB07 fills the gap. It also closes the NIST CSF 2.0 PR.AA-05 standards gap that was explicitly documented as deferred in the CSF crosswalk Status section.
+
+PB07 directly extends [Playbook 01](playbooks/01-agent-as-privileged-identity.md)'s privileged-identity lens with the credential-management operational discipline that lens implies. PB11 (Monitoring, forthcoming) will consume the credential-event log this playbook specifies.
 
 ## [0.7.0] · 2026-06-24 · Playbook 20: AI IR Maturity Roadmap (Operating View)
 
@@ -175,7 +187,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.8.0
 [0.7.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.7.0
 [0.6.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.2
 [0.6.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.1
