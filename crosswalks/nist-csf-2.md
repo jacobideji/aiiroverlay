@@ -123,7 +123,7 @@ A future v0.2+ playbook will formalize this layered relationship in a companion 
 
 ## Status
 
-- **Mapping completeness:** functions GOVERN, IDENTIFY, PROTECT (PR.AA family), RESPOND, and RECOVER have high-level mapping complete. PR.AA-05 (access policies on AI agent identities) is now covered by [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md), which ships the credential-discipline operational layer. DETECT (DE.CM for continuous monitoring) extension is forthcoming with the planned Playbook 11.
+- **Mapping completeness:** all six CSF 2.0 functions (GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER) have substantive playbook coverage. PR.AA-05 (access policies on AI agent identities) is covered by [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md). DE.CM (continuous monitoring) is covered by [Playbook 11: Monitoring That Truly Detects Agent Incidents](../playbooks/11-monitoring-detection.md).
 - **Remaining gap:** PR.DS-01 (data-at-rest protection for agent memory) needs dedicated playbook treatment. Planned for a future release.
 - **Validation:** unreviewed by NIST. This is the maintainer's interpretation, offered in good faith.
 
