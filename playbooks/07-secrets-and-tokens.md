@@ -135,7 +135,7 @@ Credential discipline is one of the highest-leverage hardening categories becaus
 ### Boundary 3: Telemetry
 
 - **Credential lifecycle events emit to the SIEM.** Issuance, refresh, revocation, scope change. Field set: `agent_id, principal, event_type, prior_scopes, new_scopes, timestamp, actor, justification, ticket_id`.
-- **Identity attribution in tool-call logs.** Every tool call carries the principal that authorized it. Without this, [Playbook 11 monitoring](../CHANGELOG.md) cannot correlate credential events to tool actions.
+- **Identity attribution in tool-call logs.** Every tool call carries the principal that authorized it. Without this, [Playbook 11: Monitoring](11-monitoring-detection.md) cannot correlate credential events to tool actions.
 - **Downstream quota and rate-limit telemetry.** SaaS-side API quotas often signal credential misuse before application-side detection catches it. Wire them into the same SIEM as credential lifecycle events.
 
 ### Boundary 4: Procedure
@@ -174,7 +174,7 @@ These are the highest-frequency failure modes specific to credential discipline 
 - **Playbook 14: Testing for Agent Failure Modes** ([`playbooks/14-testing-for-agent-failure-modes.md`](14-testing-for-agent-failure-modes.md)). The M4 drill discipline that exercises this playbook's snapshot-before-rotation sequence.
 - **Playbook 18: Post-Incident Hardening** ([`playbooks/18-post-incident-hardening.md`](18-post-incident-hardening.md)). The 5-business-day SLA credential-gap closure inherits.
 - **Playbook 20: Maturity Roadmap (Operating View)** ([`playbooks/20-maturity-roadmap.md`](20-maturity-roadmap.md)). The cadence that holds credential discipline honest over time.
-- **Playbook 11: Monitoring That Truly Detects Agent Incidents:** forthcoming. The detection rules that consume this playbook's credential-event log. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
+- **Playbook 11: Monitoring That Truly Detects Agent Incidents** ([`playbooks/11-monitoring-detection.md`](11-monitoring-detection.md)). The detection rules that consume this playbook's credential-event log. The three signal families (action, influence, capability) include the capability-based family that directly fires on credential lifecycle events.
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.6, MAP 4.1, MANAGE 1.3).
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports PR.AA-01, PR.AA-05, PR.DS-01, ID.AM-04).
 - **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the direct operational response to ASI03 Identity & Privilege Abuse and ASI04 Agentic Supply Chain Compromise).
@@ -188,6 +188,5 @@ If the answer is "it depends on the current token," PB07 is the work plan. Snaps
 That is how credential discipline moves from documented to demonstrated. One agent, one rotation, one shrunk scope at a time, on a cadence that holds.
 
 ---
-
 *Source: AI IR Overlay newsletter, Issue #7, "Secrets and Tokens in an Agent World," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
