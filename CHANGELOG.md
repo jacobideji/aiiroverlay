@@ -10,10 +10,27 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05, 06, 08 through 12, 15 through 17, 19, 21 through 23
+- Remaining playbooks: 05, 06, 08, 09, 10, 12, 15, 16, 17, 19, 21, 22, 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.9.0] · 2026-06-25 · Playbook 11: Monitoring That Truly Detects Agent Incidents
+
+### Added
+
+- `playbooks/11-monitoring-detection.md`: the detection playbook. EDR was built for malware, anomalous process trees, and lateral movement. AI agents act through authorized channels and look like normal operation to the SIEM. PB11 specifies the three signal families (action-based, influence-based, capability-based) that catch what traditional monitoring misses, the 60-minute first-rule drill, the detection-to-containment latency requirement (under 60 seconds), and the four-boundary hardening framework (signal sources, rule logic, latency and routing, procedure).
+
+### Changed
+
+- NIST CSF 2.0 crosswalk Status section updated. The DETECT function (DE.CM continuous monitoring) deferral is closed. All six CSF 2.0 functions now have substantive playbook coverage.
+- `playbooks/07-secrets-and-tokens.md` Related section: PB11 reference upgraded from "forthcoming" to a direct link. The hardening section's identity-attribution requirement is now backed by a live downstream consumer.
+
+### Why now
+
+PB11 closes the last remaining NIST CSF 2.0 deferral. With this release, the framework has substantive playbook coverage of all six CSF 2.0 functions (GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER). PB11 also consumes the credential-event log schema specified in [Playbook 07](playbooks/07-secrets-and-tokens.md), honoring the upstream-downstream contract PB07 established. The framework's IR loop (identify, protect, detect, respond, recover, improve) is now operationally complete.
+
+PB11 covers OWASP ASI06 (Memory & Context Poisoning detection), ASI08 (Cascading Agent Failures early detection), and ASI10 (Rogue Agent drift detection).
 
 ## [0.8.0] · 2026-06-24 · Playbook 07: Secrets and Tokens in an Agent World
 
@@ -187,7 +204,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.9.0
 [0.8.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.8.0
 [0.7.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.7.0
 [0.6.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.6.2
