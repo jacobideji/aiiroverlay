@@ -37,7 +37,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | 8 | Multi-Agent Systems Multiply Blast Radius | `playbooks/08-multi-agent-blast-radius.md` | 🟡 drafted, not yet released |
 | 9 | Leakage Without a Breach: AI Output Incidents | `playbooks/09-output-leakage.md` | 🟡 drafted, not yet released |
 | 10 | Vendor Copilots and Mutual Responsibility | `playbooks/10-vendor-copilots.md` | 🟡 drafted, not yet released |
-| 11 | Monitoring That Truly Detects Agent Incidents | `playbooks/11-monitoring-detection.md` | 🟡 drafted, not yet released |
+| 11 | Monitoring That Truly Detects Agent Incidents | [`playbooks/11-monitoring-detection.md`](playbooks/11-monitoring-detection.md) | ✅ `v0.9.0` |
 | 12 | Insider Threat 3.0: AI-Driven Misuse | `playbooks/12-insider-threat-3.md` | 🟡 drafted, not yet released |
 | 13 | The Six Metrics | [`playbooks/13-six-metrics.md`](playbooks/13-six-metrics.md) | ✅ `v0.6.0` |
 | 14 | Testing for Agent Failure Modes | [`playbooks/14-testing-for-agent-failure-modes.md`](playbooks/14-testing-for-agent-failure-modes.md) | ✅ `v0.6.0` |
