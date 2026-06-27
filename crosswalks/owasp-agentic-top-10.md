@@ -116,11 +116,11 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 
 **AI IR Overlay response:**
 
-- **MVO-1 Inventory.** AI-BOM's `tools` section must capture inter-agent connectors and the agents on the other end (treat them as external systems).
-- **MVO-3, type B (Tool-Call Ledger).** Captures messages exchanged across agents, with parameters and results.
+- **MVO-1 Inventory.** AI-BOM's `tools` section must capture inter-agent connectors and the agents on the other end (treat them as external systems). The agent-dependency graph specified in [Playbook 08](../playbooks/08-multi-agent-blast-radius.md) lives here.
+- **MVO-3, type B (Tool-Call Ledger).** Captures messages exchanged across agents, with parameters and results. Each cross-agent message carries a trace ID per [Playbook 08](../playbooks/08-multi-agent-blast-radius.md).
 - **Mental Model clause 4** ("if it can change, manage it as software"): inter-agent protocols are infrastructure, so deployment requires review.
 
-**Operational priority:** Each inter-agent connector counts as a distinct tool in the Privilege Matrix and must be tier-classified.
+**Operational priority:** Each inter-agent connector counts as a distinct tool in the Privilege Matrix and must be tier-classified. The full operational response (structured handoff contracts, bounded delegation at 2 hops, orchestrator-first containment, cascade-isolation gates) is specified in [Playbook 08: Multi-Agent Systems Multiply Blast Radius](../playbooks/08-multi-agent-blast-radius.md).
 
 ### ASI08: Cascading Agent Failures
 
@@ -128,11 +128,11 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 
 **AI IR Overlay response:**
 
-- **MVO-2 Safe Modes, Modes M3 + M4.** Surgical containment of the originating agent prevents cascade, plus full disable of any downstream agent that's now consuming poisoned output.
-- **MVO-4 Controlled Re-Enable.** Staged recovery is **mandatory** to prevent re-triggering the cascade during restoration.
+- **MVO-2 Safe Modes, Modes M3 + M4 plus orchestrator-first containment.** [Playbook 08](../playbooks/08-multi-agent-blast-radius.md) specifies the orchestrator-first sequence: stop the orchestrator before the originating agent to halt further delegation system-wide. Cascade propagation typically runs 5 to 30 seconds, so the framework's containment latency requirement is sub-60-second automation per [Playbook 11](../playbooks/11-monitoring-detection.md).
+- **MVO-4 Controlled Re-Enable.** Staged recovery is **mandatory** to prevent re-triggering the cascade during restoration. The dependency-graph re-enablement order specified in [Playbook 08](../playbooks/08-multi-agent-blast-radius.md) re-enables agents from the leaves of the dependency graph inward; the orchestrator is the last component re-enabled.
 - **Maturity Roadmap Level 4 (Resilient).** Quarterly tabletops should include a cross-agent failure scenario.
 
-**Operational priority:** Inventory must capture inter-agent dependencies (which agents depend on which). Without this, cascade scope can't be enumerated under pressure.
+**Operational priority:** Inventory must capture inter-agent dependencies (which agents depend on which). [Playbook 08](../playbooks/08-multi-agent-blast-radius.md) specifies the dependency graph as a load-bearing artifact in the AI-BOM.
 
 ### ASI09: Human-Agent Trust Exploitation
 
@@ -174,8 +174,8 @@ The AI IR Overlay focuses on agent-class incidents (the Agentic Top 10 territory
 
 ## Status
 
-- **Mapping completeness:** all 10 ASI categories have a primary AI IR Overlay control, most relevant artifact, and operational priority note.
-- **Coverage gap:** detailed playbooks per ASI category are forthcoming. Each playbook will operationalize one ASI threat model end-to-end. Planned for v0.2+.
+- **Mapping completeness:** all 10 ASI categories have substantive playbook coverage. ASI01 (Goal Hijack) is covered by [Playbook 01](../playbooks/01-agent-as-privileged-identity.md). ASI02 (Tool Misuse) and ASI05 (Code Execution) by [Playbook 04](../playbooks/04-tool-design-is-containment.md). ASI03 (Identity & Privilege Abuse) and ASI04 (Supply Chain) by [Playbook 07](../playbooks/07-secrets-and-tokens.md). ASI06 (Memory & Context Poisoning) by [Playbook 03](../playbooks/03-rag-knowledge-base-forensics.md) and [Playbook 11](../playbooks/11-monitoring-detection.md). ASI07 (Inter-Agent Communication) and ASI08 (Cascading Failures) by [Playbook 08](../playbooks/08-multi-agent-blast-radius.md). ASI09 (Human-Agent Trust) by [Playbook 24](../playbooks/24-board-ready-scorecard.md). ASI10 (Rogue Agents) by [Playbook 11](../playbooks/11-monitoring-detection.md) for detection.
+- **Coverage status:** complete for v0.10.x. Future playbooks will deepen ASI10 (rogue-agent investigation response) and add ASI-cross-cutting controls.
 - **Validation:** unreviewed by OWASP. This is the maintainer's interpretation, offered in good faith.
 
 ## Source
