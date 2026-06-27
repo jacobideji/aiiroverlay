@@ -10,10 +10,26 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05, 06, 08, 09, 10, 12, 15, 16, 17, 19, 21, 22, 23
+- Remaining playbooks: 05, 06, 09, 10, 12, 15, 16, 17, 19, 21, 22, 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.10.0] · 2026-06-26 · Playbook 08: Multi-Agent Systems Multiply Blast Radius
+
+### Added
+
+- `playbooks/08-multi-agent-blast-radius.md`: the multi-agent playbook. Specifies the multiplicative blast-radius thesis (one compromised agent's output becomes every downstream agent's input), the orchestrator-first containment sequence, the agent-dependency graph as an AI-BOM artifact, structured handoff contracts between agents, bounded delegation at 2 hops, trace IDs as the across-agents evidence requirement, the 5-to-30-second cascade propagation window and sub-60-second containment latency, the four-boundary hardening framework (topology documentation, inter-agent contracts, bounded delegation, telemetry), and ten common multi-agent pitfalls.
+
+### Changed
+
+- OWASP Agentic Top 10 crosswalk Status section updated. All 10 ASI categories now have substantive playbook coverage with direct references. ASI07 (Insecure Inter-Agent Communication) and ASI08 (Cascading Agent Failures) detailed mappings updated to reference Playbook 08 as the operational layer.
+
+### Why now
+
+PB08 closes the last remaining OWASP Top 10 for Agentic Applications category. With this release, the framework has substantive playbook coverage of **all 10 OWASP ASI categories AND all 6 NIST CSF 2.0 functions**. Combined with the v0.9.0 CSF DETECT closure, v0.10.0 reaches the v1.0.0-ready standards posture.
+
+PB08 also extends the upstream-downstream contract pattern established by PB07 → PB11. Multi-agent topologies inherit the credential-event log schema from PB07 (each agent is a separate identity, no permission inheritance) and consume PB11 detection rules for inter-agent traffic anomalies.
 
 ## [0.9.0] · 2026-06-25 · Playbook 11: Monitoring That Truly Detects Agent Incidents
 
@@ -204,7 +220,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.10.0
 [0.9.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.9.0
 [0.8.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.8.0
 [0.7.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.7.0
