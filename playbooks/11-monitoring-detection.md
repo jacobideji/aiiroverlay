@@ -227,7 +227,7 @@ These are the highest-frequency failure modes specific to AI agent monitoring. E
 - **Playbook 18: Post-Incident Hardening** ([`playbooks/18-post-incident-hardening.md`](18-post-incident-hardening.md)). The 5-business-day SLA that monitoring-gap closures inherit.
 - **Playbook 20: Maturity Roadmap (Operating View)** ([`playbooks/20-maturity-roadmap.md`](20-maturity-roadmap.md)). Monitoring discipline freshness drives the Level 3 to Level 4 transition.
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports MEASURE 2.7, MEASURE 4.2, MANAGE 4.1).
-- **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports DE.CM-01, DE.CM-09, DE.AE-02, DE.AE-03, DE.AE-04, RS.MA-02).
+- **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports DE.CM-01, DE.CM-09, DE.AE-02, DE.AE-03, DE.AE-06, RS.MA-02).
 - **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the direct operational response for ASI06 Memory & Context Poisoning detection, ASI08 Cascading Agent Failures early detection, and ASI10 Rogue Agent drift detection).
 
 ## The Question to Carry Forward
