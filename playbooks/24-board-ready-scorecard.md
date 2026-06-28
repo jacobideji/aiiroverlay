@@ -85,6 +85,7 @@ This section is where Playbook 24 differs from the other playbooks. For the scor
 |---|---|---|
 | **C1** | Are agent permissions tiered and minimally scoped? | T0/T1/T2 per [Privilege Matrix](../templates/agent-privilege-matrix.csv); CI rejects T2 tools without `approval_required: yes` |
 | **C2** | Can write targets be limited dynamically during an incident? | M3 Tool Tiering operational; CSV-filterable in seconds, not minutes |
+| **C3** | Is materiality determination documented for every incident reaching Kill-Switch Mode M3 or higher? | [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) convened within 1 hour of M3 activation; CISO + General Counsel + Incident Commander documented in decision log; determination outcome (material / not material / undetermined) recorded with supporting evidence |
 
 ### The Quarterly Cadence (Hardening as Governance)
 
@@ -98,13 +99,13 @@ This section is where Playbook 24 differs from the other playbooks. For the scor
 
 ### Scoring Guidance
 
-For each agent, count the GAPS across the 10 scorecard items:
+For each agent, count the GAPS across the 11 scorecard items:
 
 | Gaps | Posture | Board narrative |
 |---|---|---|
 | **0–3** | Strong baseline | "Containment, evidence, governance, and recovery capabilities are operational and tested." |
-| **4–6** | Exposed | "We have documented procedures but unverified capabilities. Targeted remediation underway." |
-| **7+** | Urgent remediation required | "The agent is operating without board-ready IR posture. Recommend pausing new privileges until baseline is achieved." |
+| **4–7** | Exposed | "We have documented procedures but unverified capabilities. Targeted remediation underway." |
+| **8+** | Urgent remediation required | "The agent is operating without board-ready IR posture. Recommend pausing new privileges until baseline is achieved." |
 
 The scoring is **deliberately blunt**. Boards don't need nuance. They need *can-we-or-can't-we*.
 
