@@ -73,7 +73,7 @@ If you cannot identify the owning team for each clause **before** an incident, y
 
 - **The Six Triage Questions:** [`triage/six-questions.md`](../triage/six-questions.md)
 - **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md)
-- **Insider Threat 3.0** playbook (Playbook 12): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
+- **Insider Threat 3.0** ([Playbook 12](../playbooks/12-insider-threat-3.md)). The AI-driven insider misuse playbook. Covers the human-with-agent and agent-as-insider scenarios; the capability vs intent vs impact investigator triad; HR and Legal joint engagement from minute zero; intent vector documentation; and soft cap / hard cap discipline for bulk-summarize attacks.
 
 ---
 
