@@ -43,7 +43,7 @@ For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiir
 
 ### Playbooks (`playbooks/`)
 
-- Follow the **playbook template**. Every playbook has these sections: Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related
+- Follow the **playbook template**. Every playbook has these sections: Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related, The Question to Carry Forward. Each playbook closes with a source-citation footer linking back to the originating newsletter issue.
 - Must include a **source citation** if adapted from existing material
 - Must reference the Mental Model clause(s) the scenario engages
 - Must cross-reference relevant framework pieces using the *"see the `X-package` package"* pattern (so the playbook reads correctly standalone)
@@ -100,5 +100,4 @@ For vulnerabilities, **do not** open a public Issue. See **[SECURITY.md](SECURIT
 The **AI IR Overlay™** and **AI IR Overlay Certified™** word marks are protected. See `LICENSE`. Contributing code or content under Apache 2.0 does not grant rights to use the word marks commercially.
 
 ---
-
 *Questions? Open a [Discussion](https://github.com/jacobideji/aiiroverlay/discussions), or reach the maintainer at [jacobideji.com](https://jacobideji.com).*
