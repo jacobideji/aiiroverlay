@@ -34,6 +34,19 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 > **TTA** = Time-To-Activate. Measured from incident-commander order to mode in effect.
 
+### Mode Variants
+
+The six modes above are canonical. Several playbooks document scenario-specific **variants** that scope an existing mode more narrowly. Variants are extensions of an existing mode, not new modes. The canonical ladder remains M0 through M5.
+
+| Variant | Scopes | Source playbook | Use when |
+|---|---|---|---|
+| **M3-RAG** | M3 Tool Tiering applied to the retrieval layer | [Playbook 03: RAG / Knowledge-Base Forensics](../playbooks/03-rag-knowledge-base-forensics.md) | Suspected corpus poisoning. Disable retrieval against the suspect corpus while preserving the agent's other capabilities. |
+| **M3-Delegation Cap** | M3 Tool Tiering applied to inter-agent delegation depth | [Playbook 08: Multi-Agent Systems Multiply Blast Radius](../playbooks/08-multi-agent-blast-radius.md) | Cascade is propagating through deep delegation chains. Cap maximum delegation depth (typical floor: 2 hops). |
+| **M4 (corpus-scoped)** | M4 Full Disable bounded to a specific corpus | [Playbook 12: Insider Threat 3.0](../playbooks/12-insider-threat-3.md) | Active misuse confirmed against one corpus; other corpora can keep serving. |
+| **Agent suspended for user** | M4 Full Disable bounded to a specific user identity | [Playbook 12: Insider Threat 3.0](../playbooks/12-insider-threat-3.md) | Single user is the suspect; HR/Legal protocols require their broader access stay live for investigation. |
+
+A reader claiming framework conformance is conforming to **M0 through M5**. Variants are operational refinements documented in their source playbooks; they do not add new mode numbers.
+
 ---
 
 ## Mode 0: Observe (Baseline)
