@@ -87,7 +87,7 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 
 ## Reading order
 
-Read the framework in this order. Items 1 through 6 are the core. Items 7 through 9 are the working artifacts.
+Read the framework in this order. Items 1 through 6 are the core. Items 7 through 10 are the working artifacts.
 
 1. **The Minimum Viable Overlay.** The four controls in detail: [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md)
 2. **The Mental Model.** Four sentences that govern every decision: [`framework/02-mental-model.md`](framework/02-mental-model.md)
@@ -107,6 +107,8 @@ Read the framework in this order. Items 1 through 6 are the core. Items 7 throug
    - **Operations:** [`playbooks/20-maturity-roadmap.md`](playbooks/20-maturity-roadmap.md) (operating view of the Maturity Roadmap), [`playbooks/07-secrets-and-tokens.md`](playbooks/07-secrets-and-tokens.md) (credential discipline), [`playbooks/11-monitoring-detection.md`](playbooks/11-monitoring-detection.md) (three signal families for authorized misuse), [`playbooks/06-prompt-injection-workflow.md`](playbooks/06-prompt-injection-workflow.md) (workflow injection: harmful instructions hidden in tickets, emails, web pages, and documents the agent reads; architectural defense over prompt engineering), [`playbooks/08-multi-agent-blast-radius.md`](playbooks/08-multi-agent-blast-radius.md) (multi-agent topologies, orchestrator-first containment), [`playbooks/10-vendor-copilots.md`](playbooks/10-vendor-copilots.md) (vendor copilots: customer-controlled identity boundary, contracted evidence and containment SLAs, quarterly Vendor Evidence Drill; M3-Vendor containment variant), [`playbooks/12-insider-threat-3.md`](playbooks/12-insider-threat-3.md) (Insider Threat 3.0, capability-intent-impact triad, HR/Legal joint engagement).
 
    More playbooks ship as MINOR releases. See [CHANGELOG.md](CHANGELOG.md) for the full release schedule.
+
+10. **Schemas.** Machine-readable contracts for CI validation: [`schemas/ai-bom.schema.json`](schemas/ai-bom.schema.json) (AI-BOM validator) · [`schemas/privilege-matrix.schema.json`](schemas/privilege-matrix.schema.json) (Privilege Matrix row validator) · [`schemas/credential-event.schema.json`](schemas/credential-event.schema.json) (PB07 credential-event log validator) · [`schemas/kill-switch-api.md`](schemas/kill-switch-api.md) (Mode M0 through M5 activation API contract) · [`schemas/evidence-export.spec.md`](schemas/evidence-export.spec.md) (Type A through F evidence export script contract).
 
 ## Provenance
 
