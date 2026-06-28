@@ -10,10 +10,30 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05, 09, 10, 15, 16, 17, 19, 21, 22, 23
+- Remaining playbooks: 05, 09, 15, 16, 17, 19, 21, 22, 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.13.0] · 2026-06-28 · Playbook 10: Vendor Copilots and Mutual Responsibility
+
+### Added
+
+- `playbooks/10-vendor-copilots.md`: the vendor-copilot playbook. Operationalizes the customer's response when the agent is managed by the vendor. Reframes "shared responsibility" from procurement slogan to testable operational capability through three disciplines: vendor copilots must be deployed behind a customer-controlled identity boundary, contracted with explicit evidence and containment SLAs, and rehearsed quarterly through the Vendor Evidence Drill. Introduces the M3-Vendor containment variant for vendor-controlled granular containment. Specifies the customer-first containment principle (customer-controllable containment activates immediately; vendor escalation runs in parallel, not first), the independent-verification rule for evidence (never trust only vendor logs; correlate with customer-side IdP and target-system audit), and the four-boundary hardening framework (contract, identity, evidence, communication). Ten common pitfalls including untested shared responsibility, vendor-side containment treated as the only option, contract retention shorter than the customer's regulatory window, and OAuth scopes broader than business need.
+
+### Changed
+
+- `CONTENT_MAP.md`: Issue 10 status promoted from drafted to shipped at `v0.13.0`.
+
+- `README.md`: playbook reading order updated to thirteen → fourteen shipped playbooks; PB10 added to the Operations arc bucket as the vendor-and-supply-chain entry.
+
+### Why now
+
+PB10 closes the second of the two most-requested missing playbooks named across CISO, engineering, consultant, and standards reviews. Vendor copilots (Microsoft 365 Copilot, Salesforce Einstein, ServiceNow Now Assist, Google Workspace Gemini, GitHub Copilot, the embedded copilots in CRM and ERP and ticketing platforms) are the dominant 2026 production deployment pattern for AI agents in regulated enterprises. The framework's existing playbooks assumed customer-managed agents; PB10 ships the operational discipline for the case where the customer is responsible to the regulator but the vendor controls the agent's operational levers.
+
+PB10's defensive thesis (deploy behind customer-controlled identity boundary, contract for testable evidence and containment SLAs, rehearse quarterly through the Vendor Evidence Drill) is the framework's first formal supply-chain response playbook. It maps directly to OWASP Agentic Top 10 ASI04 (Agentic Supply Chain Compromise), NIST CSF 2.0 GV.SC (supply chain risk management), and the EU AI Act provider/deployer distinction. Customers acting as deployers of vendor-provided AI systems can now point at a specific operational playbook when responding to regulator inquiry or auditor question about vendor copilot incident readiness.
+
+The Materiality and Disclosure integration (from v0.12.0) extends naturally to vendor-copilot incidents: vendor incidents nearly always cross the convening threshold because external recipients (the vendor and downstream customers) are touched. PB10 makes that convening call explicit in its First-Hour Actions section.
 
 ## [0.12.0] · 2026-06-28 · Playbook 06 + Materiality and Disclosure
 
