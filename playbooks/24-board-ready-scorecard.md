@@ -180,11 +180,13 @@ These are the highest-frequency failure modes when translating technical IR read
 
 These three metrics are the **floor** for any organization claiming board-ready AI IR posture. If the organization can't demonstrate all three with current evidence, the claim of board-readiness is aspirational, not actual.
 
-| Metric | Target | What it proves |
-|---|---|---|
-| **Time-to-read-only / approvals** | < 10 minutes | The organization can halt harm without shutting down the business |
-| **Time-to-minimum-evidence-export** | < 60 minutes | The organization can demonstrate scope under regulatory or board pressure |
-| **Time-to-output-distribution clarity** | Demonstrable | The organization can answer "who saw the agent's output, and where did it go?" with evidence rather than guess |
+The first two metrics map directly to [Playbook 13: The Six Metrics](13-six-metrics.md) (Metric 2 Containment TTA and Metric 3 Evidence Export Time, also known as TTSM and TTE). The third is a PB24-specific board lens that isolates downstream-correlation capability for executive review.
+
+| Metric | Target | What it proves | Source |
+|---|---|---|---|
+| **Time-to-read-only / approvals** | < 10 minutes | The organization can halt harm without shutting down the business | [PB13 Metric 2 (Containment TTA / TTSM)](13-six-metrics.md) |
+| **Time-to-minimum-evidence-export** | < 60 minutes | The organization can demonstrate scope under regulatory or board pressure | [PB13 Metric 3 (Evidence Export Time / TTE)](13-six-metrics.md) |
+| **Time-to-output-distribution clarity** | Demonstrable | The organization can answer "who saw the agent's output, and where did it go?" with evidence rather than guess | PB24-specific board lens (not a PB13 canonical metric) |
 
 The third metric is often the underprepared one. Tool-call ledgers and retrieval traces tell the story up to the agent's output. **Downstream distribution** (who received the email, who acted on the recommendation, which customer was affected) requires correlation across SaaS, CRM, communications, and analytics systems. The organization that hasn't yet rehearsed this correlation will discover the gap during an incident, not before.
 
