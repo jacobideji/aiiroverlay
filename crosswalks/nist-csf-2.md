@@ -134,7 +134,7 @@ A future v0.2+ playbook will formalize this layered relationship in a companion 
 
 ---
 
-*Last revised: 2026-06-20 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-06-26 · Maintainer interpretation, not a NIST publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
