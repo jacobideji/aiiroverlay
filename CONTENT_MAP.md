@@ -110,8 +110,8 @@ This supports academic citability and the trademark and attribution model docume
 
 ## Why this file exists
 
-A reader who lands on the framework asking "where are playbooks 02, 05 through 12, 15 through 17, and 19 through 23?" deserves an honest answer. This file is that answer. Every issue has a destination, every shipped artifact has a release tag, and every drafted-but-unreleased artifact is named so it can't pretend to be absent. The framework's promise is incremental shipping. This map is the receipt.
+A reader who lands on the framework asking "where are playbooks 02, 05, 09, 15 through 17, 19, and 21 through 23?" deserves an honest answer. This file is that answer. Every issue has a destination, every shipped artifact has a release tag, and every drafted-but-unreleased artifact is named so it can't pretend to be absent. The framework's promise is incremental shipping. This map is the receipt.
 
 ---
 
-<!-- Last revised: 2026-06-23 -->
+<!-- Last revised: 2026-06-28 -->
