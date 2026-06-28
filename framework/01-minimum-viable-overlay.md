@@ -111,6 +111,14 @@ This stepwise approach prevents the most common recovery failure: re-enabling ev
 
 ---
 
+## Measurement Scope
+
+The 5-minute inventory export, 10-minute Mode M1-M5 activation, and 60-minute Minimum Evidence Set export SLAs in this document are **drill-measured targets**. They define the readiness an organization must demonstrate to claim conformance.
+
+Live-incident timing is tracked separately under [Playbook 13: The Six Metrics](../playbooks/13-six-metrics.md), specifically Metric 2 (Containment TTA, also known as TTSM) and Metric 3 (Evidence Export Time, also known as TTE). Live-incident timing variability is expected and tracked, not a conformance failure. A live incident that exceeds a drill-measured target enters the [Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md) backlog.
+
+---
+
 ## Conformance: Claiming Minimum Standard
 
 An AI deployment conforms to the AI IR Overlay Minimum Standard when:
@@ -123,6 +131,5 @@ An AI deployment conforms to the AI IR Overlay Minimum Standard when:
 Document conformance using the [Board-Ready Scorecard (Playbook 24)](../playbooks/24-board-ready-scorecard.md).
 
 ---
-
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
