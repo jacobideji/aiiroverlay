@@ -94,6 +94,7 @@ The four-clause model operationalizes:
 - **GV.PO-01:** *"Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities."* The four clauses are an organization-level policy lens for AI agents.
 - **GV.RM-02:** *"Risk appetite and risk tolerance statements are established, communicated, and maintained."* Clause-by-clause appetite (acts, remembers, retrieves, changes) supports tolerance articulation.
 - **PR.AA-01 / PR.AA-05:** Identity/credential management and access policies. The *"if it can act, govern it as a privileged identity"* clause maps directly to existing PAM disciplines for service accounts and OAuth grants.
+- **PR.AT-01:** *"Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind."* Insider Threat 3.0 response requires HR, Legal, and the Incident Commander to be trained in joint-engagement protocols and AI-mediated misuse investigation ([Playbook 12: Insider Threat 3.0](../playbooks/12-insider-threat-3.md)).
 
 ### Maturity Roadmap ↔ IDENTIFY + GOVERN
 
