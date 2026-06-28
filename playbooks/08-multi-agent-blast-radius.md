@@ -176,7 +176,7 @@ These are the highest-frequency multi-agent-specific failure modes. Each has bee
 | **Containing one agent while the orchestrator continues delegating** | Single-agent reflex applied to multi-agent topology | Cascade continues through alternate paths. Containment is theatrical. |
 | **Treating each agent's logs as separate incidents** | Investigation tools are per-agent | Chain of custody breaks at every agent boundary. Investigation reverts to narrative. |
 | **Allowing freeform agent-to-agent handoffs** | "Agents are smart; they can figure it out" | One prompt injection becomes a sequence of legitimate-looking authorized actions. The most dangerous multi-agent failure mode. |
-| **Sharing Tier-2 tool access across multiple agents** | Convenience during prototyping | Blast radius is multiplied by the number of agents with access. The framework's "concentrated Tier-2" rule (one agent owns one Tier-2 tool) is the counter. |
+| **Sharing Tier-2 tool access across multiple agents** | Convenience during prototyping | Blast radius is multiplied by the number of agents with access. The counter is the **concentrated Tier-2 rule**: each Tier-2 tool is owned by exactly one agent. Other agents that need similar capability must use a separate, narrower instance with its own [Privilege Matrix](../templates/agent-privilege-matrix.csv) row. |
 | **No trace IDs in production** | Distributed tracing was "next sprint" | Investigation reverts to opinion. The 60-minute evidence SLA cannot be met. |
 | **Circular dependencies between agents** | Emergent during prototyping; nobody catches it pre-production | Cascades can loop. Detection latency becomes irrelevant when the loop generates its own propagation. |
 | **No agent-dependency map in the AI-BOM** | The topology was built incrementally; documentation was an afterthought | Scoping the blast radius under pressure is guesswork. The directed graph that defines the incident's scope does not exist on paper. |
@@ -215,6 +215,5 @@ If the answer is "the downstream agents would already be acting," PB08 is the wo
 That is how multi-agent containment moves from documented to demonstrated. One agent pair, one structured contract, one validated cascade-isolation gate at a time, on a cadence that holds.
 
 ---
-
 *Source: AI IR Overlay newsletter, Issue #8, "Multi-Agent Systems Multiply Blast Radius," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
