@@ -13,7 +13,7 @@ agent:
   technical_owner: "Platform Eng <platform-eng@example.com>"
   environment: "production"            # one of: dev, staging, production
   deployed_at: "2026-04-01T00:00:00Z"
-  last_reviewed: "2026-06-15T00:00:00Z"
+  last_reviewed: "2026-06-28T00:00:00Z"
 
 identity:
   type: "delegated_oauth"              # service_account | delegated_oauth | impersonation | shared_token
