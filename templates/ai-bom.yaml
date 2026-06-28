@@ -34,24 +34,24 @@ model:
 tools:
   - name: "salesforce_query"
     type: "read"
-    risk_tier: "low"
+    risk_tier: "T0"
     description: "Read-only Salesforce SOQL queries"
   - name: "salesforce_update_opportunity"
     type: "write"
-    risk_tier: "high"
+    risk_tier: "T2"
     description: "Updates opportunity records"
     write_targets:
       - "Salesforce.Opportunity"
   - name: "outlook_send_email"
     type: "write"
-    risk_tier: "high"
+    risk_tier: "T2"
     description: "Sends email on behalf of the agent identity"
     write_targets:
       - "M365.Outlook.SentItems"
       - "external_recipients"          # flag: external write target
   - name: "internal_kb_search"
     type: "read"
-    risk_tier: "low"
+    risk_tier: "T0"
 
 retrieval:
   enabled: true
