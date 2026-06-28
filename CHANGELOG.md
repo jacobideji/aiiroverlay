@@ -15,7 +15,7 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
-## [0.11.0] · 2026-06-27 · Playbook 12: Insider Threat 3.0 (AI-Driven Misuse)
+## [0.11.0] · 2026-06-28 · Playbook 12: Insider Threat 3.0 (AI-Driven Misuse)
 
 ### Added
 
