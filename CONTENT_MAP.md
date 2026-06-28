@@ -71,6 +71,16 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | Agent Privilege Matrix | [`templates/agent-privilege-matrix.csv`](templates/agent-privilege-matrix.csv), [`templates/README-privilege-matrix.md`](templates/README-privilege-matrix.md) | ✅ `v0.1.0` |
 | Board Scorecard (printable) | `templates/board-scorecard.md` | ⬜ planned (ships with the PB24 operating revision) |
 
+## Schemas
+
+| Schema | Repo home | Status |
+|---|---|---|
+| AI-BOM JSON Schema | [`schemas/ai-bom.schema.json`](schemas/ai-bom.schema.json) | ✅ `v0.14.0` |
+| Agent Privilege Matrix JSON Schema | [`schemas/privilege-matrix.schema.json`](schemas/privilege-matrix.schema.json) | ✅ `v0.14.0` |
+| Credential Event Log JSON Schema | [`schemas/credential-event.schema.json`](schemas/credential-event.schema.json) | ✅ `v0.14.0` |
+| Kill-Switch API Contract | [`schemas/kill-switch-api.md`](schemas/kill-switch-api.md) | ✅ `v0.14.0` |
+| Evidence Export Script Contract | [`schemas/evidence-export.spec.md`](schemas/evidence-export.spec.md) | ✅ `v0.14.0` |
+
 ## Drafted but unshipped: conversion notes
 
 Each playbook marked 🟡 drafted has source content in the maintainer's working folder (`AI IR Overlay-Linkedin-Post_completed/`) and in the package drafts under `aiiroverlay-packages/`. Promoting a drafted playbook to a shipped release means expanding the draft from its newsletter footprint (about 7 KB) to a full operational playbook (around 15 to 20 KB). The expansion follows the established skeleton:
