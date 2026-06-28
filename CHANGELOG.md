@@ -216,7 +216,7 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 
 ### Added: Framework Core
 
-- `framework/00-overview.md`: why an overlay, not a replacement.
+- `framework/00-overview.md`: why an overlay, not a replacement. *(Content absorbed into README.md during v0.6.x cleanup.)*
 - `framework/01-minimum-viable-overlay.md`: the four MVO controls.
 - `framework/02-mental-model.md`: the four-sentence model.
 
