@@ -120,7 +120,7 @@ NIST SP 800-61 r3 (April 2025) is itself a CSF 2.0 Community Profile for inciden
 - SP 800-61 r3 establishes incident-response outcomes per CSF 2.0 function, particularly RESPOND and RECOVER.
 - The AI IR Overlay specifies *how* those outcomes are achieved for AI agents: Inventory schema (AI-BOM), six-mode containment ladder, six evidence types, staged recovery procedure.
 
-A future v0.2+ playbook will formalize this layered relationship in a companion SP 800-61 r3 ↔ AI IR Overlay crosswalk.
+A future release will formalize this layered relationship in a companion SP 800-61 r3 ↔ AI IR Overlay crosswalk. See [CHANGELOG.md](../CHANGELOG.md) `[Unreleased]` for status.
 
 ## Status
 
