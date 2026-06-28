@@ -75,24 +75,11 @@ The Evidence domain answers: **if a customer, regulator, or board member asks "w
 
 **The "proof under pressure" test:** if the evidence export procedure has never been executed under timing pressure, the team has *documentation*, not *capability*. RED until exercised.
 
-## Recovery Sequence
-
-The Recovery domain answers: **after containment, can we restore service in a way that prevents recurrence and survives later regulatory review?**
-
-### Recovery Scorecard Items (Domain D, paired with Governance below)
-
-| # | Question | Pass criteria |
-|---|---|---|
-| **D1** | Is there a staged process to restore agent access post-incident? | [MVO-4 Controlled Re-Enable](../framework/01-minimum-viable-overlay.md) procedure documented; M5 sequence validated in last quarter |
-| **D2** | Are validation steps in place to prevent recurrence before re-enablement? | Replay test per [PB 18](18-post-incident-hardening.md): *would a recurrence of the triggering prompt be contained by the controls shipped after the incident?* |
-
-**Operational mapping:** the validation gate (D2) is the [Playbook 18](18-post-incident-hardening.md) recurrence-containment test. If the team can demonstrate that the replay test was executed and the answer was *yes*, recovery is defensible. If not, the recovery is theater.
-
 ## Post-Incident Hardening
 
 This section is where Playbook 24 differs from the other playbooks. For the scorecard, **the hardening is the quarterly cadence itself**. A scorecard that's reviewed once and filed is a documentation artifact. A scorecard that drives quarterly commitments is a governance engine.
 
-### Governance Scorecard Items (Domain C, the missing pair)
+### Governance Scorecard Items (Domain C)
 
 | # | Question | Pass criteria |
 |---|---|---|
@@ -120,6 +107,19 @@ For each agent, count the GAPS across the 10 scorecard items:
 | **7+** | Urgent remediation required | "The agent is operating without board-ready IR posture. Recommend pausing new privileges until baseline is achieved." |
 
 The scoring is **deliberately blunt**. Boards don't need nuance. They need *can-we-or-can't-we*.
+
+## Recovery Sequence
+
+The Recovery domain answers: **after containment, can we restore service in a way that prevents recurrence and survives later regulatory review?**
+
+### Recovery Scorecard Items (Domain D)
+
+| # | Question | Pass criteria |
+|---|---|---|
+| **D1** | Is there a staged process to restore agent access post-incident? | [MVO-4 Controlled Re-Enable](../framework/01-minimum-viable-overlay.md) procedure documented; M5 sequence validated in last quarter |
+| **D2** | Are validation steps in place to prevent recurrence before re-enablement? | Replay test per [PB 18](18-post-incident-hardening.md): *would a recurrence of the triggering prompt be contained by the controls shipped after the incident?* |
+
+**Operational mapping:** the validation gate (D2) is the [Playbook 18](18-post-incident-hardening.md) recurrence-containment test. If the team can demonstrate that the replay test was executed and the answer was *yes*, recovery is defensible. If not, the recovery is theater.
 
 ## The Executive Incident Snapshot Template
 
