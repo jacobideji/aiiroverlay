@@ -63,7 +63,7 @@ The Six Metrics cover the four MVO controls plus the two operational disciplines
 
 **Maps to NIST AI RMF:** GOVERN 1.6 (inventory mechanisms in place and resourced).
 
-### Metric 2: Containment Time-to-Activate (TTA)
+### Metric 2: Containment Time-to-Activate (TTA, also referred to as Time-to-Safe-Mode / TTSM)
 
 **Question answered:** *Can we actually stop harm fast?*
 
@@ -77,7 +77,7 @@ The Six Metrics cover the four MVO controls plus the two operational disciplines
 
 **Maps to NIST CSF 2.0:** RS.MA-04 (incident escalation timeliness).
 
-### Metric 3: Evidence Export Time
+### Metric 3: Evidence Export Time (also referred to as Time-to-Evidence / TTE)
 
 **Question answered:** *Can we prove what happened, on demand?*
 
