@@ -13,7 +13,7 @@ The framework ships incrementally. Earlier plans assumed one playbook per releas
 5. **Governance** (`v0.5.0`): Playbook 24 (Board-Ready Scorecard) translates the arc into executive posture.
 6. **Measurement and Depth** (`v0.6.0`): Playbook 13 (Six Metrics), Playbook 03 (RAG Forensics), and Playbook 14 (Testing) make the arc measurable and operationally deep.
 
-The remaining playbooks ship as future MINOR releases. `v1.0.0` is cut once all 24 playbooks are live and a Steering Committee is announced. See [GOVERNANCE.md](GOVERNANCE.md).
+The remaining playbooks ship as future MINOR releases. `v1.0.0` is cut once the remaining playbooks ship (PB02 is absorbed into the framework core, so the target is 23 playbooks) and a Steering Committee is announced. See [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Foundational source
 
