@@ -141,7 +141,7 @@ The Overlay defines four testable Kill-Switch modes plus Controlled Re-Enable. E
 2. Step 1: re-enable in M1 only. Confirm logs flow.
 3. Step 2: validate retrieval and tool policies against the hardened configuration.
 4. Step 3: replay the incident scenario in a sandbox. Confirm the fix holds.
-5. Step 4: re-enable Tier-1 tools incrementally with monitoring.
+5. Step 4: re-enable Tier-0 (read-only) tools first, then Tier-1 (bounded writes), incrementally with monitoring.
 6. Step 5: return to M0 Observe only after all of the above passes.
 
 **Pass criteria:**
@@ -222,6 +222,5 @@ Distributed as separate packages:
 If the regulator asked tomorrow *"when did your team last activate M3 on your highest-risk production agent, who approved it, and how long did it take?"*, do you have a date, a name, and a number? If any of the three is missing, this playbook is your work plan. Schedule the drill. Run it this quarter. Then schedule the next one before you leave the room.
 
 ---
-
 *Source: AI IR Overlay newsletter, Issue #14, "Testing for Agent Failure Modes," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
