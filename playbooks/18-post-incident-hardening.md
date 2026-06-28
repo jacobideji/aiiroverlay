@@ -45,6 +45,8 @@ That's the entire first hour. The fix list at the end of it should fit on one pa
 
 **Critical:** every selected control must be **measurable**. *"Tighten the email tool"* isn't a hardening control. It's a wish. *"Convert email tool from `send` to `draft` for any external recipient; CI rejects calls to `send.external` without two-person approval"* is a hardening control. Specificity is what makes the 5-day SLA enforceable.
 
+**Materiality verification:** before the Fix List ships, the Incident Commander confirms the [Materiality and Disclosure](../framework/04-materiality-and-disclosure.md) determination was captured in the decision log. If the determination is missing, incomplete, or undocumented, hardening is **paused** until General Counsel re-convenes and the determination is documented. The 5-business-day SLA does not run if the materiality record is incomplete.
+
 ## Containment Options
 
 Hardening's containment value is **preventive**. It makes the next incident's [Kill-Switch Modes](../kill-switches/overview.md) faster, more surgical, and more reliable. Without hardening, every incident requires the same heroics. With disciplined hardening, the same scenario class becomes a routine M3 (Tool Tiering) operation instead of an M4 (Full Disable).
