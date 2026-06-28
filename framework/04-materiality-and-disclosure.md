@@ -92,13 +92,13 @@ Three outcomes are possible:
 
 **Outcome C: Determination cannot be made yet.** Continue the incident response. Schedule the re-convene. Document the inability to determine. A registrant that determines at the next convene is not "late" provided the inability-to-determine was itself documented and reasonable.
 
-## Cross-references this annex affects
+## Where this annex is referenced from
 
-When the cross-doc updates ship (planned in v0.12.1), the following will reference back to this annex:
+Three live playbooks anchor back to this annex (all shipped in `v0.12.0` alongside this chapter):
 
-- **[Playbook 01: The Agent Is a Privileged Identity](../playbooks/01-agent-as-privileged-identity.md):** first-hour discipline will include the Materiality and Disclosure call as a trigger condition once Kill-Switch Mode M3 or higher is reached
-- **[Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md):** closure procedure will reference the materiality determination and ensure it's documented in the post-incident record
-- **[Playbook 24: Board-Ready Scorecard](../playbooks/24-board-ready-scorecard.md):** governance domain will include "materiality determination documented within X hours" as a board-defensible signal
+- **[Playbook 01: The Agent Is a Privileged Identity](../playbooks/01-agent-as-privileged-identity.md):** the First-Hour Actions section names the Materiality and Disclosure call as a trigger condition once Kill-Switch Mode M3 or higher is reached, or when any of the trigger conditions named in this annex applies.
+- **[Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md):** the First-Hour Actions section verifies that the materiality determination is captured in the decision log. The 5-business-day hardening SLA does not run if the materiality record is incomplete.
+- **[Playbook 24: Board-Ready Scorecard](../playbooks/24-board-ready-scorecard.md):** the Governance domain item C3 confirms that materiality determination is documented for every incident reaching Mode M3 or higher.
 
 ## What this annex is not
 
