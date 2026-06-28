@@ -48,6 +48,8 @@ Walk the [Six Triage Questions](../triage/six-questions.md) **in order** on the 
 
 **Decision log:** open it on minute zero. Capture the **time**, **the question**, **the answer** (with confidence), and **the action taken**. This becomes the chronology if regulators, customers, or the board ask later.
 
+**Materiality and Disclosure trigger:** if Question 5 lands on Mode **M3 (Tool Tiering) or higher**, OR if any of the trigger conditions named in [Materiality and Disclosure (framework/04)](../framework/04-materiality-and-disclosure.md) applies, the Incident Commander convenes the **Materiality and Disclosure call** within one hour. The call brings CISO, General Counsel, and Incident Commander together to determine whether a regulatory disclosure clock has started. **This is independent of incident closure.** The incident response continues in parallel.
+
 ## Containment Options
 
 Containment for a privileged-identity-class incident is **never** binary in production. The framework's [Kill-Switch Modes](../kill-switches/overview.md) provide a graduated ladder. The table below selects the right mode based on **confidence × impact**.
