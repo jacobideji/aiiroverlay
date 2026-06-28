@@ -174,8 +174,16 @@ The AI IR Overlay focuses on agent-class incidents (the Agentic Top 10 territory
 
 ## Status
 
-- **Mapping completeness:** all 10 ASI categories have substantive playbook coverage. ASI01 (Goal Hijack) is covered by [Playbook 01](../playbooks/01-agent-as-privileged-identity.md). ASI02 (Tool Misuse) and ASI05 (Code Execution) by [Playbook 04](../playbooks/04-tool-design-is-containment.md). ASI03 (Identity & Privilege Abuse) and ASI04 (Supply Chain) by [Playbook 07](../playbooks/07-secrets-and-tokens.md). ASI06 (Memory & Context Poisoning) by [Playbook 03](../playbooks/03-rag-knowledge-base-forensics.md) and [Playbook 11](../playbooks/11-monitoring-detection.md). ASI07 (Inter-Agent Communication) and ASI08 (Cascading Failures) by [Playbook 08](../playbooks/08-multi-agent-blast-radius.md). ASI09 (Human-Agent Trust) by [Playbook 24](../playbooks/24-board-ready-scorecard.md). ASI10 (Rogue Agents) by [Playbook 11](../playbooks/11-monitoring-detection.md) for detection.
-- **Coverage status:** complete for v0.10.x. Future playbooks will deepen ASI10 (rogue-agent investigation response) and add ASI-cross-cutting controls.
+- **Mapping completeness:** all 10 ASI categories have substantive playbook coverage.
+  - **ASI01 Agent Goal Hijack:** [Playbook 01](../playbooks/01-agent-as-privileged-identity.md) (general response) and [Playbook 06](../playbooks/06-prompt-injection-workflow.md) (workflow-injection variant, the dominant 2026 manifestation).
+  - **ASI02 Tool Misuse & Exploitation** and **ASI05 Unexpected Code Execution:** [Playbook 04](../playbooks/04-tool-design-is-containment.md).
+  - **ASI03 Identity & Privilege Abuse:** [Playbook 07](../playbooks/07-secrets-and-tokens.md).
+  - **ASI04 Agentic Supply Chain Compromise:** [Playbook 07](../playbooks/07-secrets-and-tokens.md) (vendor credential discipline) and [Playbook 10](../playbooks/10-vendor-copilots.md) (the framework's dedicated vendor-copilot response playbook).
+  - **ASI06 Memory & Context Poisoning:** [Playbook 03](../playbooks/03-rag-knowledge-base-forensics.md) (RAG forensics), [Playbook 06](../playbooks/06-prompt-injection-workflow.md) (workflow-injection vector), and [Playbook 11](../playbooks/11-monitoring-detection.md) (detection).
+  - **ASI07 Insecure Inter-Agent Communication** and **ASI08 Cascading Agent Failures:** [Playbook 08](../playbooks/08-multi-agent-blast-radius.md).
+  - **ASI09 Human-Agent Trust Exploitation:** [Playbook 24](../playbooks/24-board-ready-scorecard.md).
+  - **ASI10 Rogue Agents:** [Playbook 11](../playbooks/11-monitoring-detection.md) (detection signals) and [Playbook 12](../playbooks/12-insider-threat-3.md) (response and investigation; the matched detection-response pair completing the rogue-agent coverage arc).
+- **Coverage status:** complete through `v0.14.x`. The two largest gaps from the v0.10.x baseline are now closed: ASI04 supply-chain response by [Playbook 10](../playbooks/10-vendor-copilots.md) in `v0.13.0`, and ASI10 rogue-agent response by [Playbook 12](../playbooks/12-insider-threat-3.md) in `v0.11.0`. Future playbooks will add ASI-cross-cutting controls and deepen coverage on emerging variants.
 - **Validation:** unreviewed by OWASP. This is the maintainer's interpretation, offered in good faith.
 
 ## Source
@@ -185,7 +193,7 @@ The AI IR Overlay focuses on agent-class incidents (the Agentic Top 10 territory
 
 ---
 
-*Last revised: 2026-06-20 · Maintainer interpretation, not an OWASP publication.*
+*Last revised: 2026-06-28 · Maintainer interpretation, not an OWASP publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
