@@ -16,7 +16,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
-[![Standards: NIST · OWASP · ISO/IEC](https://img.shields.io/badge/standards-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP%20%C2%B7%20ISO%2FIEC%2042001-informational)](#related-work)
+[![Standards: NIST · OWASP](https://img.shields.io/badge/standards-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
 
 > Establishing the minimum standard for safe and effective operations of AI agents in production.
 
