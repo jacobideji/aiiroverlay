@@ -17,9 +17,9 @@ For incidents in **your** AI agent environments, the framework itself is the gui
 
 | Version | Supported with security fixes |
 |---|---|
-| Latest minor release (`v0.6.x`) | ✅ |
-| Previous minor (`v0.5.x`) | ✅ Critical fixes only |
-| Older tags (`≤ v0.4.x`) | ❌ Upgrade to latest |
+| Latest minor release (`v0.11.x`) | ✅ |
+| Previous minor (`v0.10.x`) | ✅ Critical fixes only |
+| Older tags (`≤ v0.9.x`) | ❌ Upgrade to latest |
 | Pre-release / unreleased commits | ❌ |
 
 ## Reporting a Vulnerability
