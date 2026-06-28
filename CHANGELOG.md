@@ -10,10 +10,28 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05, 06, 09, 10, 12, 15, 16, 17, 19, 21, 22, 23
+- Remaining playbooks: 05, 06, 09, 10, 15, 16, 17, 19, 21, 22, 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.11.0] · 2026-06-27 · Playbook 12: Insider Threat 3.0 (AI-Driven Misuse)
+
+### Added
+
+- `playbooks/12-insider-threat-3.md`: the AI-driven insider misuse playbook. Covers two scenarios that prior insider threat generations conflate or miss: the human-with-agent insider (a user with legitimate access uses an AI agent to compile or exfiltrate at scale) and the agent-as-insider (the AI agent itself drifts or is compromised, operating against organizational intent). Specifies the capability vs intent vs impact investigator triad, HR and Legal joint engagement from minute zero, the intent vector as a load-bearing AI-BOM artifact, the intent-realignment gate in recovery, and the soft cap / hard cap discipline for bulk-summarize attacks. Ten common pitfalls including conflating capability with intent, suspending the user before HR/Legal concurrence, and UEBA models tuned for humans missing agent-mediated actions.
+
+### Changed
+
+- `framework/02-mental-model.md` Related section: the Insider Threat 3.0 (Playbook 12) reference upgraded from "forthcoming" to a direct link. **All forthcoming references in the framework's foundational chapters are now closed.**
+
+### Why now
+
+PB12 closes the last remaining forthcoming reference in the framework's foundational chapters (the Mental Model's Related section). After this release, a reader following the foundational arc (README → Mental Model → Maturity Roadmap → MVO) hits zero unfinished references. The framework's foundational narrative reads as complete.
+
+PB12 also completes the rogue-agent coverage arc. [Playbook 11](playbooks/11-monitoring-detection.md) covers detection of capability-family signals that suggest rogue behavior; PB12 covers the response and investigation when those signals fire. The two playbooks form a matched detection-response pair, the same upstream-downstream pattern PB07 → PB11 → PB08 established.
+
+PB12's "Insider Threat 3.0" framing positions the framework ahead of the analyst category formation. Insider Threat 1.0 (humans with credentials, DLP era) and Insider Threat 2.0 (humans with anomalous behavior, UEBA era) are addressed by mature programs. The 3.0 generation, where AI agents mediate or constitute the insider action, is the rising 2026 CISO concern. PB12 ships the operational playbook before the category solidifies.
 
 ## [0.10.0] · 2026-06-26 · Playbook 08: Multi-Agent Systems Multiply Blast Radius
 
@@ -220,7 +238,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.11.0
 [0.10.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.10.0
 [0.9.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.9.0
 [0.8.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.8.0
