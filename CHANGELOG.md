@@ -15,6 +15,34 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.14.0] · 2026-06-28 · Schemas Directory: Machine-Readable Contracts
+
+### Added
+
+- `schemas/ai-bom.schema.json`: JSON Schema 2020-12 for the AI Bill of Materials. Encodes the [`templates/ai-bom.yaml`](templates/ai-bom.yaml) contract as a machine-validatable artifact. Enforces the T0/T1/T2 risk-tier vocabulary (aligned with the Privilege Matrix), the 10-minute Kill-Switch Mode TTA bound, the 60-minute Evidence Set bound, and the conditional CI rule that write tools must declare `write_targets`. The `$id` resolves to `https://aiir.jacobideji.com/schemas/ai-bom.schema.json` for adopter CI pipelines.
+
+- `schemas/privilege-matrix.schema.json`: JSON Schema for a single Privilege Matrix CSV row. Encodes the three CI rules from [Playbook 04 (Tool Design Is Containment)](playbooks/04-tool-design-is-containment.md) as conditional schema constraints: T2 rows must carry `approval_required=yes`; T2 rows must carry a non-empty `reversible` value that is not `n/a`; every write row must declare non-empty `write_targets`. CSV consumers convert each row to a JSON object and validate against this schema as the runtime equivalent of the playbook's pre-incident review.
+
+- `schemas/credential-event.schema.json`: JSON Schema for a single credential-event log entry. Operationalizes the upstream contract specified in [Playbook 07 (Secrets and Tokens)](playbooks/07-secrets-and-tokens.md) Boundary 3 (Telemetry) and consumed by [Playbook 11 (Monitoring)](playbooks/11-monitoring-detection.md) Family 3 (capability-based signals). Specifies nine required fields including `agent_id` (joins to the AI-BOM), `prior_scopes` and `new_scopes` (deterministic scope-diff computation), `actor`, `justification`, and `ticket_id` (audit-trail discipline). The `event_type` enum splits PB07's prose `scope_change` category into `scope_expansion` and `scope_reduction` for detection clarity. Semantic constraint: revocation events must end with empty `new_scopes`.
+
+- `schemas/kill-switch-api.md`: the runtime contract for Mode M0 through M5 activation. RFC 2119 conformance language (29 MUST, 6 SHOULD, 1 MAY) specifies the four API surfaces (Activate, Status, Deactivate, Probe) and the six per-mode contracts. Documents the four M3 containment variants (M3-RAG, M3-Delegation Cap, M3-Workflow, M3-Vendor) and the M4 corpus-scoped and Agent-suspended-for-user variants introduced across PB03, PB06, PB10, and PB12. TTA is measured as the elapsed time between `Activate.requested_at` and `Activate.effective_at` (the drill-measured definition from [`framework/01`](framework/01-minimum-viable-overlay.md) Measurement Scope). Eight-test conformance suite included for adopter validation.
+
+- `schemas/evidence-export.spec.md`: the contract for the Type A through F evidence export script referenced in [Minimum Evidence Set](evidence/minimum-evidence-set.md) and [Playbook 13 Metric 3](playbooks/13-six-metrics.md). RFC 2119 conformance language (34 MUST, 7 SHOULD, 3 MAY) specifies pre-staged access (the script cannot ask for credentials at incident time), parallel-export discipline (the 60-minute drill-measured bound is parallelism-dependent), telemetry emission (four events feeding PB13 Metric 3), and the export bundle's manifest, integrity hash, and chain-of-custody attestation requirements. Eight-test conformance suite included for adopter validation.
+
+### Changed
+
+- `CONTENT_MAP.md`: new "Schemas" section added between Templates and the Drafted but unshipped notes. Lists all five schemas with their repository locations and `v0.14.0` shipped status.
+
+- `README.md`: reading order extended to include the new schemas directory. The schemas are the machine-readable contracts adopters consume in CI to validate their AI-BOM, Privilege Matrix, and credential-event logs against the framework's normative rules.
+
+### Why now
+
+The framework's prior releases ship the playbooks (the narrative discipline) and the templates (the human-readable starting points). The schemas directory ships the **machine-readable contracts** that connect adopter CI pipelines to the framework's normative rules. Before v0.14.0, an adopter editing their AI-BOM YAML or Privilege Matrix CSV had no automated way to verify the file still satisfied the framework's CI rules. The risk-tier vocabulary could drift from T0/T1/T2 to "low/medium/high". A T2 row could ship to production without `approval_required=yes`. A write tool could ship without declared `write_targets`. The schemas close that gap: the same CI rules that appear as English prose in the playbooks now appear as JSON Schema conditional constraints that any modern validator can enforce.
+
+The two markdown specs (`kill-switch-api.md` and `evidence-export.spec.md`) close a parallel gap on the runtime side. Before v0.14.0, the Kill-Switch Mode M0 through M5 ladder was specified by behavior and TTA target, but not by API surface. Adopters building their own kill-switch automation had to derive the API from the playbooks. PB10's vendor copilots showed why the API surface needed formal specification: vendor-provided granular containment must be testable against a common contract. The Kill-Switch API spec and the Evidence Export Script spec together formalize the runtime contracts that PB13 Metric 2 (Time-to-Safe-Mode) and PB13 Metric 3 (Time-to-Evidence) implicitly measure against.
+
+The schemas are not a new framework chapter. They are the machine-readable encoding of contracts that already exist in the narrative framework. The shipping discipline is the same as the rest of the repository: the schemas trace back to the playbooks that specify their rules, the playbooks trace back to the newsletter issues, and the newsletter issues trace back to the operational practice. Adopters now have CI-ready artifacts they can drop into their existing validation pipelines without writing custom validators against framework prose.
+
 ## [0.13.0] · 2026-06-28 · Playbook 10: Vendor Copilots and Mutual Responsibility
 
 ### Added
@@ -292,7 +320,10 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.11.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.0...HEAD
+[0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
+[0.13.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.13.0
+[0.12.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.12.0
 [0.11.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.11.0
 [0.10.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.10.0
 [0.9.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.9.0
