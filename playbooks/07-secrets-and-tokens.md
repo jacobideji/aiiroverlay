@@ -41,7 +41,7 @@ The order matters. Reversing step 1 and step 3 below is the failure mode every p
 | 10–25 | **Narrow privileges immediately.** Before any rotation, reduce the blast radius. Remove write scopes the agent does not need right now. Disable high-risk tool integrations. Enforce approvals on Tier-2 actions per the [Privilege Matrix](../templates/agent-privilege-matrix.csv). This buys time. The business keeps running. The investigation gets clean state. | Agent business owner + Tier-1 SOC |
 | 25–45 | **Rotate credentials with documentation.** Now rotate: the agent's primary token, its downstream API keys, all delegated access. Every change goes into a credential-event log with the field set: `who, what, when, prior_scope, new_scope, reason, ticket_id`. The audit trail is the deliverable, not the rotation. | Identity / PAM team |
 | 45–55 | **Validate before re-enabling at full scope.** Re-enable in [Mode M1 Read-Only](../kill-switches/overview.md) first. Confirm logs flow with the new identity correctly attributed. Add approvals for Tier-2. Only then restore writes incrementally. | Incident Commander + Agent owner |
-| 55–60 | **Update the AI-BOM.** The agent's `identity` section, `kill_switches.tested_at` fields, and `incidents_history` entry must reflect the new credential state within 7 days. If the AI-BOM is not refreshed within 7 days of a credential change, the agent regresses to Maturity Roadmap Level 1 by definition (see [Playbook 20](20-maturity-roadmap.md)). | Agent owner |
+| 55–60 | **Update the AI-BOM.** The agent's `identity` section, `kill_switches.tested_at` fields, and `incidents_history` entry must reflect the new credential state within 7 days. If the AI-BOM is not refreshed within 7 days of a credential change, the agent regresses per the Maturity Roadmap operating guidance in [Playbook 20](20-maturity-roadmap.md). | Agent owner |
 
 **Discipline:** if step 3 happens before step 1 is complete, the evidence is degraded. Document the gap. Do not slow the rotation to fix it, but capture the gap as a [Post-Incident Hardening](18-post-incident-hardening.md) item with the 5-business-day SLA.
 
@@ -188,5 +188,6 @@ If the answer is "it depends on the current token," PB07 is the work plan. Snaps
 That is how credential discipline moves from documented to demonstrated. One agent, one rotation, one shrunk scope at a time, on a cadence that holds.
 
 ---
+
 *Source: AI IR Overlay newsletter, Issue #7, "Secrets and Tokens in an Agent World," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
