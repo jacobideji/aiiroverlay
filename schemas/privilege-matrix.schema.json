@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiir.jacobideji.com/schemas/privilege-matrix.schema.json",
+  "title": "Agent Privilege Matrix Row",
+  "description": "JSON Schema for a single row in the Agent Privilege Matrix CSV (templates/agent-privilege-matrix.csv). The matrix is the source of truth for Kill-Switch Mode M3 Tool Tiering: containment activates by filtering this CSV. The schema encodes the three CI rules from playbooks/04-tool-design-is-containment.md and aligns the tier vocabulary (T0/T1/T2) with templates/ai-bom.yaml and the wider framework. CSV consumers convert each row to a JSON object and validate against this schema.",
+  "type": "object",
+  "required": ["agent_name", "tool_name", "tool_category", "risk_tier", "read_write", "scope", "approval_required", "reversible"],
+  "properties": {
+    "agent_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The agent the tool belongs to. Must match templates/ai-bom.yaml `agent.name` field for cross-template join."
+    },
+    "tool_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable tool identifier matching the runtime tool registry and the corresponding entry in the AI-BOM `tools[]` block."
+    },
+    "tool_category": {
+      "type": "string",
+      "description": "High-level tool category (saas_read, saas_write, communication, vcs_write, infra_write, retrieval, etc.). Free-form to allow adopter-specific schemes."
+    },
+    "risk_tier": {
+      "enum": ["T0", "T1", "T2"],
+      "description": "Tier per playbooks/04-tool-design-is-containment.md. T0 = read-only or low risk. T1 = bounded writes. T2 = systems of record. Vocabulary aligned with schemas/ai-bom.schema.json."
+    },
+    "read_write": {
+      "enum": ["read", "write"],
+      "description": "Whether the tool changes state. The split must be enforced at the tool wrapper, not at the prompt, per playbooks/04-tool-design-is-containment.md."
+    },
+    "scope": {
+      "type": "string",
+      "description": "OAuth or platform scope string (e.g., 'mail.send', 'salesforce.write.opportunities')."
+    },
+    "write_targets": {
+      "type": "string",
+      "description": "Downstream system and object class the tool can modify (e.g., 'Salesforce.Opportunity', 'M365.Outlook.SentItems'). Required and non-empty for write tools (CI Rule 3); empty for read tools."
+    },
+    "allowlist": {
+      "type": "string",
+      "description": "Domain, tenant, repo, or record restriction (e.g., 'internal-domains-only', 'staging-cluster-only', 'branch-protection'). Empty if unrestricted. Allowlists must be enforced in the tool wrapper, not in the system prompt."
+    },
+    "cap_per_run": {
+      "type": "string",
+      "pattern": "^([0-9]+|unlimited)$",
+      "description": "Maximum invocations per agent run. Integer string or 'unlimited' for low-risk tools. Caps must count blast radius, not just request count, per playbooks/04-tool-design-is-containment.md Common Pitfalls."
+    },
+    "approval_required": {
+      "enum": ["yes", "no"],
+      "description": "Whether the tool requires human approval before invocation. T2 tools must be 'yes' per CI Rule 1."
+    },
+    "reversible": {
+      "type": "string",
+      "description": "Mechanism to undo a tool invocation (e.g., 'draft-mode preferred', 'via audit log', 'blue-green rollback', 'revert log'). For T0 read tools, 'n/a' is acceptable. T2 tools must have a real reversibility mechanism per CI Rule 2."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text caveats and adopter-specific context."
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "CI Rule 1 from playbooks/04-tool-design-is-containment.md: no risk_tier=T2 row has approval_required=no.",
+      "if": {
+        "properties": { "risk_tier": { "const": "T2" } },
+        "required": ["risk_tier"]
+      },
+      "then": {
+        "properties": { "approval_required": { "const": "yes" } }
+      }
+    },
+    {
+      "$comment": "CI Rule 2 from playbooks/04-tool-design-is-containment.md: no risk_tier=T2 row has empty reversible. T2 tools are systems of record; 'n/a' is not an acceptable reversibility mechanism for them.",
+      "if": {
+        "properties": { "risk_tier": { "const": "T2" } },
+        "required": ["risk_tier"]
+      },
+      "then": {
+        "properties": {
+          "reversible": {
+            "type": "string",
+            "minLength": 1,
+            "not": { "const": "n/a" }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "CI Rule 3 from playbooks/04-tool-design-is-containment.md: every row has a non-empty write_targets if read_write=write.",
+      "if": {
+        "properties": { "read_write": { "const": "write" } },
+        "required": ["read_write"]
+      },
+      "then": {
+        "required": ["write_targets"],
+        "properties": {
+          "write_targets": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}
