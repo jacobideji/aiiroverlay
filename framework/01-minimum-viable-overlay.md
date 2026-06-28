@@ -116,7 +116,7 @@ This stepwise approach prevents the most common recovery failure: re-enabling ev
 An AI deployment conforms to the AI IR Overlay Minimum Standard when:
 
 - [ ] **Inventory** exists, is current within 7 days, and is exportable in under 5 minutes
-- [ ] **Safe Modes** M1, M2, M3, M4 are implemented and tabletop-tested in the last 90 days
+- [ ] **Safe Modes** M1, M2, M3, M4, and M5 are implemented and tabletop-tested in the last 90 days
 - [ ] **Minimum Evidence Set** A–F is exportable within 60 minutes
 - [ ] **Controlled Re-Enable** procedure exists and is documented in the runbook
 
