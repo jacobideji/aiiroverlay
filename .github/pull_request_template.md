@@ -21,7 +21,7 @@
 
 ## Checklist
 
-- [ ] I have read [CONTRIBUTING.md](CONTRIBUTING.md)
+- [ ] I have read (../CONTRIBUTING.md)
 - [ ] Commits use conventional prefixes (`feat:`, `fix:`, `docs:`, `style:`, `chore:`)
 - [ ] Markdown passes `markdownlint-cli2` (or exceptions noted)
 - [ ] Internal cross-references updated where relevant
