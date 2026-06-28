@@ -94,19 +94,19 @@ kill_switches:
   m1_read_only:
     implemented: true
     tested_at: "2026-05-10"
-    tta_seconds: 180
+    tta_minutes: 3
   m2_approvals:
     implemented: true
     tested_at: "2026-05-10"
-    tta_seconds: 240
+    tta_minutes: 4
   m3_tool_tiering:
     implemented: true
     tested_at: "2026-05-10"
-    tta_seconds: 300
+    tta_minutes: 5
   m4_full_disable:
     implemented: true
     tested_at: "2026-05-10"
-    tta_seconds: 60
+    tta_minutes: 1
 
 evidence_export:
   runbook: "docs/runbooks/sales-copilot-evidence-export.md"
