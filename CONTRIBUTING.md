@@ -37,7 +37,7 @@ For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiir
 ### Framework-core changes (`framework/`, `triage/`, `kill-switches/`, `evidence/`)
 
 - Require **Lead Maintainer review**
-- Must preserve compatibility with the v0.1 conformance claims
+- Must preserve compatibility with the current MVO conformance claims (see [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md))
 - Must update the README's reading-order if the structure changes
 - Must update `CHANGELOG.md` (when present) under `[Unreleased]`
 
@@ -100,5 +100,4 @@ For vulnerabilities, **do not** open a public Issue. See **[SECURITY.md](SECURIT
 The **AI IR Overlay™** and **AI IR Overlay Certified™** word marks are protected. See `LICENSE`. Contributing code or content under Apache 2.0 does not grant rights to use the word marks commercially.
 
 ---
-
 *Questions? Open a [Discussion](https://github.com/jacobideji/aiiroverlay/discussions), or reach the maintainer at [jacobideji.com](https://jacobideji.com).*
