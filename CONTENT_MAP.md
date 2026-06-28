@@ -36,7 +36,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | 7 | Secrets and Tokens in an Agent World | [`playbooks/07-secrets-and-tokens.md`](playbooks/07-secrets-and-tokens.md) | ✅ `v0.8.0` |
 | 8 | Multi-Agent Systems Multiply Blast Radius | [`playbooks/08-multi-agent-blast-radius.md`](playbooks/08-multi-agent-blast-radius.md) | ✅ `v0.10.0` |
 | 9 | Leakage Without a Breach: AI Output Incidents | `playbooks/09-output-leakage.md` | 🟡 drafted, not yet released |
-| 10 | Vendor Copilots and Mutual Responsibility | `playbooks/10-vendor-copilots.md` | 🟡 drafted, not yet released |
+| 10 | Vendor Copilots and Mutual Responsibility | [`playbooks/10-vendor-copilots.md`](playbooks/10-vendor-copilots.md) | ✅ `v0.13.0` |
 | 11 | Monitoring That Truly Detects Agent Incidents | [`playbooks/11-monitoring-detection.md`](playbooks/11-monitoring-detection.md) | ✅ `v0.9.0` |
 | 12 | Insider Threat 3.0: AI-Driven Misuse | [`playbooks/12-insider-threat-3.md`](playbooks/12-insider-threat-3.md) | ✅ `v0.11.0` |
 | 13 | The Six Metrics | [`playbooks/13-six-metrics.md`](playbooks/13-six-metrics.md) | ✅ `v0.6.0` |
