@@ -32,7 +32,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | 3 | RAG and Knowledge-Base Forensics | [`playbooks/03-rag-knowledge-base-forensics.md`](playbooks/03-rag-knowledge-base-forensics.md) | ✅ `v0.6.0` |
 | 4 | Tool Design Is Containment | [`playbooks/04-tool-design-is-containment.md`](playbooks/04-tool-design-is-containment.md) | ✅ `v0.3.0` |
 | 5 | Executive Decision-Making with AI in the Loop | `playbooks/05-executive-decision-making.md` | 🟡 drafted, not yet released |
-| 6 | Rethinking Prompt Injection: A Workflow Threat | `playbooks/06-prompt-injection-workflow.md` | 🟡 drafted, not yet released |
+| 6 | Rethinking Prompt Injection: A Workflow Threat | [`playbooks/06-prompt-injection-workflow.md`](playbooks/06-prompt-injection-workflow.md) | ✅ `v0.12.0` |
 | 7 | Secrets and Tokens in an Agent World | [`playbooks/07-secrets-and-tokens.md`](playbooks/07-secrets-and-tokens.md) | ✅ `v0.8.0` |
 | 8 | Multi-Agent Systems Multiply Blast Radius | [`playbooks/08-multi-agent-blast-radius.md`](playbooks/08-multi-agent-blast-radius.md) | ✅ `v0.10.0` |
 | 9 | Leakage Without a Breach: AI Output Incidents | `playbooks/09-output-leakage.md` | 🟡 drafted, not yet released |
