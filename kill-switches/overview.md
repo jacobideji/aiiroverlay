@@ -32,7 +32,7 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 | **M4** | Full Disable | Active harm, confirmed misuse, or evidence of compromise | **≤ 10 min** | Tier-1 SOC |
 | **M5** | Controlled Re-Enable | Containment validated; staged recovery | n/a | CISO / IC |
 
-> **TTA** = Time-To-Activate. Measured from incident-commander order to mode in effect.
+> **TTA** = Time-To-Activate. Measured from incident-commander order to mode in effect. TTA targets are **drill-measured**. Live-incident TTA is tracked separately under [Playbook 13 Metric 2](../playbooks/13-six-metrics.md). The targets define readiness; live measurement reveals operational reality. A live TTA above target enters the [Playbook 18](../playbooks/18-post-incident-hardening.md) hardening cycle, not a conformance failure.
 
 ### Mode Variants
 
