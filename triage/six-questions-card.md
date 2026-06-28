@@ -39,7 +39,7 @@ Memory on/off · Per-user or shared · Retention · Sensitivity.
 
 ### 5 · WHAT IS THE LEAST DISRUPTIVE SAFE MODE?
 
-**M1** Read-Only · **M2** Approvals · **M3** Tool Tiering · **M4** Full Disable
+**M0** Observe · **M1** Read-Only · **M2** Approvals · **M3** Tool Tiering · **M4** Full Disable · **M5** Re-Enable
 
 ### 6 · WHAT IS THE EVIDENCE PLAN?
 
@@ -72,6 +72,5 @@ M5 Re-Enable     →  Containment validated, staged recovery
 
 *AI IR Overlay™ · Apache 2.0 · jacobideji.com*
 *Founded by Jacob Ideji*
-
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
