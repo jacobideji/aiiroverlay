@@ -113,10 +113,16 @@ evidence_export:
   emergency_access: "preapproved"      # preapproved | ticketed
   tested_export_minutes: 38
 
-compliance_tags:
-  - "SOC2"
-  - "ISO_42001"
-  - "EU_AI_Act_Article_26"             # if deployer in EU jurisdiction
+# List the compliance regimes this agent is in scope for.
+# Uncomment only what genuinely applies after audit or jurisdictional review.
+compliance_tags: []
+# compliance_tags:
+#   - "SOC2"
+#   - "ISO_42001"                       # requires completed ISO 42001 audit
+#   - "EU_AI_Act_Article_26"            # only if deployer in EU jurisdiction
+#   - "HIPAA"
+#   - "GDPR"
+#   - "GLBA"
 
 incidents_history:
   - date: "2026-05-22"
