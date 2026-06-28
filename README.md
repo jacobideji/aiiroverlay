@@ -46,6 +46,19 @@ The core mechanics of effective incident response remain unchanged:
 
 AI doesn't rewrite the rules of effective IR. It changes the map.
 
+## Scope
+
+The AI IR Overlay operationalizes **deployer obligations** for AI systems in production. A deployer is the organization that uses an AI system in its own operations, under its own oversight (per EU AI Act Article 3). This framework is for the security team responding to incidents in agents the deployer's organization runs.
+
+**Out of scope:**
+
+- **Provider obligations** for placing AI systems on the market (EU AI Act Articles 16-21)
+- **General-purpose AI model (GPAI) provider obligations** (EU AI Act Article 51 and following)
+- **Prohibited AI practices** (EU AI Act Article 5)
+- **Conformity assessment and CE marking** (EU AI Act Article 43)
+
+Vendor copilots that an organization deploys are in scope for the deployer (the customer side). The vendor's provider obligations are not addressed here.
+
 ## The Overlay model
 
 The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**, or MVO) on top of your existing IR program.
