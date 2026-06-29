@@ -54,7 +54,7 @@ For RAG-class incidents, containment maps to [Kill-Switch Modes](../kill-switche
 | **M1 Read-Only** | Agent can retrieve and respond but can't trigger write tools. **Doesn't stop the corpus from updating.** |
 | **M2 Approvals Required** | High-impact agent actions require human approval. Useful when the corpus is uncertain but operations can't pause. |
 | **M3 Tool Tiering** | Disable downstream Tier 2 actions that depend on retrieval. Useful when context integrity is suspected but read access is needed. |
-| **M3-RAG (NEW)** | **Disable retrieval against the suspect corpus while preserving retrieval against unaffected corpora.** Agent operates with reduced knowledge but no exposure to poisoned content. |
+| **M3-RAG** | **Disable retrieval against the suspect corpus while preserving retrieval against unaffected corpora.** Agent operates with reduced knowledge but no exposure to poisoned content. |
 | **M4 Full Disable** | Hard stop on the agent. **Doesn't freeze the corpus.** Corpus freeze is a separate action. |
 | **M5 Controlled Re-Enable** | Includes corpus revalidation as a gate before retrieval re-enables |
 
