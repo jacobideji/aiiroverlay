@@ -139,4 +139,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 -->
+<!-- Last revised: 2026-06-29 (v0.25.0 P0 consistency calibration) -->
