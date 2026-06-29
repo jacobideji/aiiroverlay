@@ -135,7 +135,7 @@ To claim conformance with the Minimum Evidence Set:
 - **RAG / Knowledge-Base Forensics** (Playbook 03): [`playbooks/03-rag-knowledge-base-forensics.md`](../playbooks/03-rag-knowledge-base-forensics.md) (Type C deep dive)
 - **Leakage Without a Breach** (Playbook 09): [`playbooks/09-output-leakage.md`](../playbooks/09-output-leakage.md) (Type F deep dive: the output distribution map as the Type F extension that scopes output-leakage incidents)
 - **Evidence Export Script Contract:** [`schemas/evidence-export.spec.md`](../schemas/evidence-export.spec.md) (the runtime contract that operationalizes the 60-minute export requirement; telemetry events feed [Playbook 13 Metric 3](../playbooks/13-six-metrics.md))
-- **Records, Retention, and Proving What Happened** (Playbook 15): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
+- **Records, Retention, and Proving What Happened** (Playbook 15): [`playbooks/15-records-retention.md`](../playbooks/15-records-retention.md) (lifecycle deep-dive across all six evidence types: the Two-Tier Retention Standard with metadata-tier and payload-tier windows calibrated per evidence class; the incident-triggered legal-hold mechanism; the chain-of-custody discipline with access-logged actor identity, timestamp, query, and access purpose; the tamper-evidence anchor with cryptographic integrity hashes at capture time; the quarterly Reconstructability Test that empirically validates the framework's evidence claims at 30, 60, and 90 days).
 - **Multi-Stakeholder Logging and Privacy** (Playbook 23): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 
 ---
