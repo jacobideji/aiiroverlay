@@ -69,11 +69,13 @@ This converts containment from a binary "kill the agent" decision to a surgical 
 
 ### Validation in CI
 
-Add a CI check that asserts:
+Validate every row against the JSON Schema [`schemas/privilege-matrix.schema.json`](../schemas/privilege-matrix.schema.json). The schema encodes the three CI rules below as conditional constraints:
 
 - No `risk_tier = T2` row has `approval_required = no`
 - No `risk_tier = T2` row has empty `reversible`
 - Every row has a non-empty `write_targets` if `read_write = write`
+
+CSV consumers convert each row to a JSON object and validate against the schema (`ajv` and `check-jsonschema` are the framework's reference validators).
 
 ### Import to Sheets / Excel / Airtable
 
@@ -86,6 +88,7 @@ Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark *
 ## Related
 
 - [`kill-switches/overview.md`](../kill-switches/overview.md): the six containment modes. Mode 3 (Tool Tiering) uses this matrix.
+- [`schemas/privilege-matrix.schema.json`](../schemas/privilege-matrix.schema.json): the JSON Schema row-validation contract that encodes the three CI rules.
 - [`templates/ai-bom.yaml`](ai-bom.yaml) ([README](README-ai-bom.md)): the per-agent inventory YAML that references these tools.
 - [Playbook 04: Tool Design Is Containment](../playbooks/04-tool-design-is-containment.md): the playbook that introduces the tier model.
 
