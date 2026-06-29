@@ -137,9 +137,10 @@ What turns the next incident into a defensible chronology rather than a guess:
 
 The boundary that determines whether the technical controls actually get exercised:
 
-- **Micro drills measure Time-to-Safe-Mode (TTSM) and Time-to-Evidence (TTE).** Quarterly per agent, results trended.
-- **Standardized messaging templates.** Internal, customer, regulator. Templates approved in advance, not drafted under pressure.
+- **Micro drills measure Time-to-Safe-Mode (TTSM) and Time-to-Evidence (TTE).** Quarterly per agent, results trended. The monthly micro-drill cadence and the Curriculum-of-Six are operationalized per [Playbook 16 (Training Your Team)](16-training-your-team.md).
+- **Standardized messaging templates.** Internal, customer, regulator. Templates approved in advance, not drafted under pressure. The Template Library, the Three-Status Taxonomy, and the Responsible Reframing discipline are operationalized per [Playbook 17 (Communication Techniques)](17-communication-techniques.md).
 - **Disciplined decision logging.** Every decision during an incident gets logged with timestamp, decider, and rationale. Templates make this mechanical.
+- **Three Realities application review.** Every post-incident retrospective includes an explicit evaluation against the [Playbook 02 (Evidence Lives in New Places)](02-evidence-lives-in-new-places.md) Three Realities: did the response team recognize the workflow-as-actor framing (Reality 1); did they preserve the language-as-payload evidence at the source, retrieval, and output layers (Reality 2); did they apply the snapshot-before-rotate reflex before any token rotation, prompt update, corpus cleanup, or redeployment (Reality 3)? A retrospective finding of Reality-application failure is a conceptual-discipline gap, not an individual-responder performance issue. The corrective enters the 5-business-day hardening SLA per the [Playbook 02 onboarding sequence](02-evidence-lives-in-new-places.md) and the [Playbook 16 monthly drill cadence](16-training-your-team.md), with the specific failure mode added to the drill scenario rotation. The Reality-application review closes the loop between PB02 (concepts), PB16 (training), and PB18 (post-incident hardening): incidents that surface conceptual gaps drive curriculum updates rather than just runbook clarifications.
 
 ### What does NOT count as hardening
 

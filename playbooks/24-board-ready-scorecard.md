@@ -83,14 +83,15 @@ This section is where Playbook 24 differs from the other playbooks. For the scor
 |---|---|---|
 | **C1** | Are agent permissions tiered and minimally scoped? | T0/T1/T2 per [Privilege Matrix](../templates/agent-privilege-matrix.csv); CI rejects T2 tools without `approval_required: yes` |
 | **C2** | Can write targets be limited dynamically during an incident? | M3 Tool Tiering operational; CSV-filterable in seconds, not minutes |
-| **C3** | Is materiality determination documented for every incident reaching Kill-Switch Mode M3 or higher? | [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) convened within 1 hour of M3 activation; CISO + General Counsel + Incident Commander documented in decision log; determination outcome (material / not material / undetermined) recorded with supporting evidence |
+| **C3** | Is materiality determination documented for every incident that triggered the canonical convening protocol? | The [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) convened within 1 hour of any canonical convening trigger from framework/04 (Mode M3 or higher activated, OR any condition-based trigger including external recipients, regulated data, customer-facing trust impact, or financial actions); CISO + General Counsel + Incident Commander documented in decision log; determination outcome (material / not material / undetermined) recorded with supporting evidence |
 | **C4** | Are risk-accepted non-conformant deployments documented and time-bound? | For every agent that does not satisfy framework conformance criteria (e.g., vendor copilots deployed without contracted Boundary 1 SLAs per [Playbook 10](10-vendor-copilots.md), or [Playbook 18](18-post-incident-hardening.md) hardening items that have exceeded their 5-business-day SLA without explicit risk acceptance and re-baseline): CISO-signed risk acceptance, recorded in the audit trail; named closure plan with target closure date no later than 90 days or the next vendor renewal cycle (whichever sooner); reviewed quarterly. In-flight hardening items still inside their 5-business-day SLA are governed by Playbook 18 itself and do not trigger C4 |
+| **C5** | Is the CIA+T impact framing applied to every incident's Executive Decision Packet, with Trust as a documented peer dimension to Confidentiality, Integrity, and Availability? | Per the [Playbook 05](05-executive-decision-making.md) CIA+T discipline: every Executive Decision Packet Section 4 (Impact) names Confidentiality, Integrity, Availability, AND Trust with status-tagged findings per the [Playbook 17](17-communication-techniques.md) Three-Status Taxonomy. For Trust specifically: the affected-stakeholder count is quantified rather than impressionistic; the visibility classification (private to recipient, visible to recipient's organization, public) is documented. Incidents whose Trust dimension was assessed loosely or omitted are documented as findings and enter the [Playbook 18](18-post-incident-hardening.md) 5-business-day hardening backlog |
 
 ### The Quarterly Cadence (Hardening as Governance)
 
 | Cadence | Action | Owner |
 |---|---|---|
-| **Every quarter** | Run the 12-item scorecard on the **top 3–5 production agents** with privileged access | CISO + agent business owners |
+| **Every quarter** | Run the 13-item scorecard on the **top 3–5 production agents** with privileged access | CISO + agent business owners |
 | **Every quarter** | Identify the **top two gaps** per agent | CISO |
 | **Every quarter** | Commit to closing **at least one gap per agent per quarter** | CISO + agent business owners + engineering |
 | **Every board meeting** | Use the Executive Incident Snapshot template to update the risk committee | CISO |
@@ -98,7 +99,7 @@ This section is where Playbook 24 differs from the other playbooks. For the scor
 
 ### Scoring Guidance
 
-For each agent, count the GAPS across the 12 scorecard items:
+For each agent, count the GAPS across the 13 scorecard items:
 
 | Gaps | Posture | Board narrative |
 |---|---|---|

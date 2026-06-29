@@ -103,6 +103,23 @@ Each stakeholder class has a defensible information need, a calibrated first-upd
 
 The matrix is the structural input for the Template Library; each row produces one or more pre-written templates.
 
+### Impact taxonomy: CIA+T as the cross-audience framing
+
+Every Stakeholder Communication Matrix row references the impact of the incident, calibrated to the audience. The framework's impact taxonomy is the **CIA+T framing** introduced in [Playbook 05 (Executive Decision-Making)](05-executive-decision-making.md): Confidentiality, Integrity, Availability, and **Trust** as a peer dimension. Communications drafted without applying the Trust dimension typically understate AI-incident harm because the dominant impact often lands in the trust dimension (incorrect information sent externally, customer-facing recommendations based on poisoned context, customer-visible records altered by the agent's actions) rather than in the traditional CIA triad.
+
+| Stakeholder class | CIA+T dimensions to address |
+|---|---|
+| **Internal executive** | All four: per the [Playbook 05 Executive Decision Packet](05-executive-decision-making.md) Section 4 |
+| **Internal business owners** | Integrity (records altered in their domain) + Trust (their customers' or stakeholders' trust posture) + Availability (operational impact); Confidentiality where the business owner's data was touched |
+| **Affected end-users** | Plain-language framing emphasizing Trust (what they experienced) and Availability (what is restored when); Confidentiality where individual data was touched |
+| **Customers (external)** | Confidentiality and Trust as primary; Integrity where customer records were affected; Availability where customer service was affected |
+| **Regulator** | Per regulator's specific disclosure standard; the Trust dimension is typically addressed through the affected-stakeholder count and the visibility classification from the [PB09 CIA+T assessment](09-output-leakage.md) |
+| **Board of directors** | All four with the CIA+T framing explicitly; the board's incident review uses the Executive Decision Packet's Section 4 as the impact-statement anchor |
+| **Press / public** | Trust and Availability are the typical communication-relevant dimensions; Confidentiality and Integrity are addressed only where the customer's disclosure determination has authorized publication |
+| **Employees broadly** | Trust as primary (organizational trust in the AI posture); the discipline is to frame the incident as something the customer is responding to under accountability framing |
+
+The CIA+T framing is **drafted into every template** in the Template Library. A template that addresses only Confidentiality (the breach-trained instinct) without naming the Trust impact understates the incident for non-classic-breach AI scenarios.
+
 ### The Template Library
 
 The Template Library is the customer's pre-positioned communication asset that operationalizes the Stakeholder Communication Matrix. Templates are designed at peace time, reviewed by Legal and Communications, and pre-approved for structure and language; incident-time customization fills in incident-specific facts within the pre-approved structure.
