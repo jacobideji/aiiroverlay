@@ -428,7 +428,7 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 [Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.15.0...HEAD
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
-[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
+[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2,
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
 [0.13.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.13.0
