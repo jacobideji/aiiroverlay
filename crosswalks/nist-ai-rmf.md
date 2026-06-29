@@ -37,7 +37,7 @@ The [AI-BOM template](../templates/ai-bom.yaml) (see [README](../templates/READM
 - **MAP 1.1:** *"Intended purposes, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented."*
 - **MAP 4.1:** *"Approaches for mapping AI technology and legal risks of its components, including the use of third-party data or software, are in place, followed, and documented."*
 
-**Gap note:** AI RMF does not specify an inventory schema. AI-BOM fills this gap with a concrete YAML template. AI RMF also does not specify the **discovery boundary** that brings previously-undocumented agents into inventory; [Playbook 21: Shadow AI](../playbooks/21-shadow-ai.md) fills this gap with the 24-hour intake standard, identity-level containment fallback discipline, and the migrate/redesign/retire decision path.
+**Gap note:** AI RMF does not specify an inventory schema. AI-BOM fills this gap with a concrete YAML template. AI RMF also does not specify the **discovery boundary** that brings previously-undocumented agents into inventory; [Playbook 21: Shadow AI](../playbooks/21-shadow-ai.md) fills this gap with the 24-hour intake standard, identity-level containment fallback discipline, and the migrate/redesign/retire decision path. AI RMF does not specify the **procurement-time precondition** that determines whether a platform can support the response disciplines at all; [Playbook 19: Build vs Buy for Agent Controls](../playbooks/19-build-vs-buy.md) fills this gap with the 60-minute Proof of Readiness Test, the eight critical procurement questions, the Build vs Buy Decision Matrix, and the post-procurement hardening discipline.
 
 ### MVO-2 Safe Modes ↔ MANAGE
 
