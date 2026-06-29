@@ -15,6 +15,44 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.28.0] · 2026-06-29 · P0-NEW sweep (Evidence Exporter conformance, CIA+T to PB12/21/22/23, pycache cleanup)
+
+### Changed
+
+- `reference-impls/evidence_exporter/evidence_exporter.py` **rewritten** to conform to the [Evidence Export Script Contract](schemas/evidence-export.spec.md). The v0.26.0 initial release of this implementation had material contract deviations identified in the v0.27.0 holistic re-audit: wrong output format (JSON-wrapped objects instead of JSONL), wrong field names (`user_identity` instead of `user_id`, `result_summary` instead of `result_payload_summary`, `query_text_hash` instead of `query`, etc.), wrong manifest schema (missing `script_version`, `overall_status`, per-type `source_system` and `output_path` fields), missing exit codes (3, 4, 5), and missing `--validate-access` mode. v0.28.0 rewrites the implementation to conform: JSON Lines format for record-stream types (A, B, C, F); JSON for snapshot types (D, E); per-type artifacts at `<output_destination>/<incident_id>/<type>/records.{jsonl|json}` instead of flat per-type files; manifest with full spec-required field set; exit codes 0-5; `--validate-access` pre-flight mode that exercises pre-staged access paths without capturing evidence.
+- `reference-impls/evidence_exporter/adapters/*.py` (6 stub adapters) updated to produce records using the spec's canonical field names per evidence-export.spec.md lines 90-95. Each adapter's record shape now matches the contract; field counts and types align with the spec's per-type artifact schema.
+- `reference-impls/evidence_exporter/README.md` updated with the corrected file layout (per-type subdirectories), expanded exit-code documentation, and a `--validate-access` invocation example. Includes a v0.28.0 callout noting the contract conformance rewrite.
+- `playbooks/12-insider-threat-3.md` Evidence Priorities section adds a **CIA+T Impact Assessment for Insider Threat 3.0** subsection. Names the investigator's triad (capability/intent/impact) as the internal forensic discipline and the CIA+T framing as the external accountability discipline. Maps each CIA+T dimension to insider-threat-specific questions (Confidentiality on data access scope; Integrity on record modification; Availability on containment-mode disruption; Trust on externally-visible impact with affected-stakeholder count and visibility classification). Closes the v0.27.0 re-audit ripple gap that PB12 did not reference CIA+T despite insider-threat incidents producing material Trust impact.
+- `playbooks/21-shadow-ai.md` Evidence Priorities section adds a **CIA+T Impact Assessment for Shadow AI discoveries** subsection. Acknowledges that shadow-AI discovery is unusual because the discovery itself is not yet an incident; the CIA+T framing applies retrospectively to the shadow agent's operating history. Names latent regulatory exposure as the framework's key Trust-dimension insight for shadow agents that have been operating for weeks or months. References the canonical convening trigger from framework/04 explicitly for materiality call activation.
+- `playbooks/22-model-policy-drift.md` Evidence Priorities section adds a **CIA+T Impact Assessment for Drift events** subsection. Names the silent customer-trust erosion pattern (subtly different responses for weeks absorbed by customers as routine variance) as the framework's key Trust-dimension insight for drift events. Maps each CIA+T dimension to drift-specific questions (Confidentiality on retrieval-scope changes; Integrity on tool-invocation-pattern changes; Availability on rollback-discipline cost; Trust on accumulation framing).
+- `playbooks/23-logging-privacy.md` Multi-Stakeholder Governance Matrix section adds a **Logging-incident CIA+T mapping** subsection. Maps logging-incident dimensions (redaction failure, access-control failure, overcollection finding, data-subject-right violation) to the four CIA+T dimensions with stakeholder-class implications. Notes the separate disclosure tracks: AI-incident materiality and privacy-incident materiality are evaluated separately and may both trigger per the canonical materiality framework.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.27.0` to `0.28.0`.
+
+### Pre-release housekeeping
+
+- **9 `__pycache__/.pyc` files on GitHub need to be deleted via web UI.** These were created by the v0.26.0 smoke testing of the evidence_exporter and uploaded via folder drag-and-drop. The `.gitignore` shipped in v0.26.0 prevents future git-tracked commits from including them but doesn't filter web-UI uploads. List for cleanup:
+  - `reference-impls/evidence_exporter/__pycache__/evidence_exporter.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/__init__.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/configuration_snapshot_stub.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/identity_saas_correlation_stub.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/memory_snapshot_stub.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/prompt_response_stub.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/retrieval_traces_stub.cpython-314.pyc`
+  - `reference-impls/evidence_exporter/adapters/__pycache__/tool_call_ledger_stub.cpython-314.pyc`
+  - `reference-impls/kill_switch_demo/__pycache__/kill_switch_demo.cpython-314.pyc`
+
+### Why now
+
+This release closes three of the most impactful new findings from the v0.27.0 second holistic critique:
+
+**P0-NEW.1 (pycache hygiene):** repo cleanliness; the .gitignore catches future git-tracked commits but doesn't filter web-UI folder-uploads. Documented in this release for manual cleanup.
+
+**P0-NEW.2 (Evidence Exporter contract deviations):** the most impactful single fix in this calibration cycle. The v0.26.0 reference implementation was actively misleading: adopters who forked it would ship non-compliant evidence artifacts. The rewrite restores conformance and demonstrates the contract elements (JSONL discipline, manifest schema, exit-code semantics, validate-access pre-flight) that the spec specifies. The kill_switch_demo did not have equivalent deviations and is unchanged in this release.
+
+**P0-NEW.3 (CIA+T ripple gap):** the v0.25.0 P0.1 fix propagated CIA+T into the four playbooks named in that release (PB05, PB09, PB17, PB24). The v0.27.0 re-audit identified that the same framing should apply to four additional sensitive-incident playbooks: PB12 (Insider Threat), PB21 (Shadow AI), PB22 (Drift), PB23 (Logging and Privacy). v0.28.0 closes the ripple gap with CIA+T sections calibrated to each playbook's specific incident class. Notably, each section introduces a Trust-dimension insight specific to that scenario: insider-threat triad-vs-CIA+T complementarity (PB12); latent regulatory exposure (PB21); silent customer-trust erosion (PB22); separate disclosure tracks (PB23).
+
+After v0.28.0, the framework's calibration story is more complete. The remaining P1/P2 findings from the v0.27.0 re-audit (materiality canonicalization ripple in PB10/19/21/22; Three Realities in PB01 response phase; QUICKSTART-startup pre-Week-0 checklist) are not yet addressed and remain open for a future calibration release.
+
 ## [0.27.0] · 2026-06-29 · P2 polish (CHANGELOG comma-annotation, PB02 mental-model cross-reference)
 
 ### Changed
@@ -732,7 +770,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.27.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.28.0...HEAD
+[0.28.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.28.0
 [0.27.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.27.0
 [0.26.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.26.0
 [0.25.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.25.0

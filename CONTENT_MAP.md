@@ -142,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.27.0 P2 polish: CHANGELOG comma annotation, PB02 mental-model cross-reference) -->
+<!-- Last revised: 2026-06-29 (v0.28.0 P0-NEW sweep: Evidence Exporter contract conformance rewrite, CIA+T propagation to PB12/21/22/23, pycache cleanup) -->
