@@ -181,6 +181,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | NIST AI RMF 1.0 | [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) | ✅ `v0.1.0` |
 | NIST CSF 2.0 + SP 800-61 r3 | [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) | ✅ `v0.1.5` |
 | OWASP Top 10 for Agentic Applications 2026 | [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) | ✅ `v0.1.5` |
+| ISO/IEC 27035 (Information security incident management) | *forthcoming* | ⬜ planned (referenced from `framework/01-minimum-viable-overlay.md` as a base IR discipline the MVO extends for AI agents) |
 | ISO/IEC 42001:2023 | *forthcoming* | ⬜ planned |
 | EU AI Act (Regulation 2024/1689) | *forthcoming* | ⬜ planned |
 | CIS Controls, SOC 2, HIPAA | *forthcoming* (community contributions welcome via Issues) | ⬜ planned |
