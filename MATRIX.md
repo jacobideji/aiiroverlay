@@ -7,15 +7,15 @@
 
 # AI IR Overlay Framework Matrix
 
-> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.32.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
+> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.33.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
 
-**Current release:** [v0.32.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.32.0) · 2026-06-29
+**Current release:** [v0.33.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0) · 2026-06-29
 
 ## How to read this document
 
 The matrix in [Section 1](#1-the-matrix-response-phases--operational-controls) is the primary artifact: response phases sequenced across the top per NIST SP 800-61 r3; controls, playbooks, and primitives listed in each phase column. Every cell points to a repo artifact that operationalizes the corresponding step.
 
-Sections 2 through 8 expand each cross-cutting reference (kill-switch ladder, evidence taxonomy, metrics, MVO controls, maturity levels, playbook index, standards crosswalk). Use them as appendices to the matrix.
+Sections 2 through 9 expand each cross-cutting reference (kill-switch ladder, evidence taxonomy, metrics, MVO controls, maturity levels, playbook index, standards crosswalk, quick-read legend). Use them as appendices to the matrix.
 
 This document is intended to be:
 
@@ -112,14 +112,14 @@ The six AI-agent-specific evidence types that disappear fastest in an incident. 
 
 The six metrics from PB13. Two have canonical acronyms (TTSM, TTE); the others use full names.
 
-| # | Metric | Maps To | NIST AI RMF |
+| # | Metric | Maps To | Standards mapping (per PB13) |
 |---|---|---|---|
-| 1 | **Inventory Currency** | AI-BOM freshness within the 7-day window | GOVERN 1.6 |
-| 2 | **Containment Time-to-Activate (TTSM)** | M1 through M4 activation latency from declaration | MANAGE 2.3 |
-| 3 | **Evidence Export Time (TTE)** | A through F capture latency from declaration | MEASURE 2.7 |
-| 4 | **Drill Currency** | Last live drill of M1 through M4 against drill-measured targets | MANAGE 4.2 |
-| 5 | **Hardening SLA Compliance** | [PB18](playbooks/18-post-incident-hardening.md) 5-business-day hardening backlog burndown | MANAGE 4.2 |
-| 6 | **Controlled Re-Enable Success Rate** | MVO-4 staged recovery success rate over rolling window | MANAGE 4.3 |
+| 1 | **Inventory Currency** | AI-BOM freshness within the 7-day window | NIST AI RMF GOVERN 1.6 |
+| 2 | **Containment Time-to-Activate (TTSM)** | M1 through M4 activation latency from declaration | NIST CSF 2.0 RS.MA-04 |
+| 3 | **Evidence Export Time (TTE)** | A through F capture latency from declaration | NIST AI RMF MEASURE 2.7 + MANAGE 4.1 |
+| 4 | **Drill Currency** | Last live drill of M1 through M4 against drill-measured targets | NIST AI RMF MANAGE 2.4 |
+| 5 | **Hardening SLA Compliance** | [PB18](playbooks/18-post-incident-hardening.md) 5-business-day hardening backlog burndown | NIST AI RMF MANAGE 4.2 |
+| 6 | **Controlled Re-Enable Success Rate** | MVO-4 staged recovery success rate over rolling window | NIST AI RMF MANAGE 4.3 |
 
 ---
 
@@ -213,7 +213,7 @@ For the full acronym list see the [README Acronyms section](README.md#acronyms).
 
 ## Source
 
-*This matrix synthesizes the AI IR Overlay™ framework at v0.32.0. It will be revised as the framework evolves toward v1.0.0 and as the Steering Committee announcement and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
+*This matrix synthesizes the AI IR Overlay™ framework at v0.33.0. It will be revised as the framework evolves toward v1.0.0 and as the Steering Committee announcement and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
