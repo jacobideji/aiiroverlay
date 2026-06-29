@@ -17,7 +17,7 @@
 
 ## Premise
 
-Single-agent incident response is a problem the framework's other response playbooks have already have solved. One privileged identity, one tool list, one scope of write targets, one chain of evidence. The Six Triage Questions answer the scoping problem in 60 seconds per question. The Kill-Switch ladder contains in under 10 minutes. The Minimum Evidence Set exports in 60 minutes.
+Single-agent incident response is a problem the framework's other response playbooks have already solved. One privileged identity, one tool list, one scope of write targets, one chain of evidence. The Six Triage Questions answer the scoping problem in 60 seconds per question. The Kill-Switch ladder contains in under 10 minutes. The Minimum Evidence Set exports in 60 minutes.
 
 Multi-agent architectures break these assumptions. When one agent researches, a second drafts, and a third executes, the workflow becomes a chain of delegation, parallel actions, and shared tool access. The same delegation that creates efficiency creates opacity. Without a complete chain of custody across agents, you cannot scope the incident, brief leadership, or defend the response. The blast radius is no longer additive. It is **multiplicative**. One compromised agent's output becomes every downstream agent's input. One injected instruction becomes a sequence of legitimate-looking, harmful actions that each downstream agent executes through its own valid credentials and authorized tools.
 
