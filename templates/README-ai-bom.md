@@ -89,6 +89,16 @@ The `kill_switches.maturity_target` field controls which Kill-Switch Modes must 
 
 The framework's discipline is **honest self-assessment**: customers below Level 2 should declare `level_1_aware` explicitly rather than leave the field blank or claim Level 2 conformance they cannot defend. See [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md) for the full level definitions.
 
+### Default behavior when `maturity_target` is omitted
+
+The framework's discipline is **deliberate opt-in**, not silent permissiveness. However, real-world adoption sometimes lands AI-BOM files in the customer's environment without the `maturity_target` field set (legacy AI-BOMs predating the v0.26.0 schema; copy-paste errors; partial migration from earlier framework versions). The framework's `kill_switches` schema requires the `maturity_target` field per the v0.26.0 enforcement (see [`schemas/ai-bom.schema.json`](../schemas/ai-bom.schema.json) line 222), so a file missing the field **fails schema validation** rather than silently defaulting.
+
+If the field is missing, the validator's error message names the field explicitly: `"'maturity_target' is a required property"`. The customer's CI integration catches this at validation time, not at incident time.
+
+**Adopter recommendation:** when starting AI-BOM adoption, set `maturity_target: "level_1_aware"` explicitly in every AI-BOM, even when the customer's actual operating posture is below Level 1 (no inventory yet). The explicit declaration signals to subsequent reviewers (auditors, regulators, internal governance) that the customer's posture is intentional rather than aspirational. As the customer's posture matures, the field's value is bumped to `level_2_containable`, then `level_3_provable`, then `level_4_resilient` per the [Maturity Roadmap](../framework/03-maturity-roadmap.md).
+
+**No default is provided** because the framework's position is that maturity claims must be explicit and defensible. A blank field that silently defaults would create the kind of false confidence the framework's discipline is designed to prevent.
+
 ### Mapping to other inventories
 
 If you maintain a CMDB or SBOM:
