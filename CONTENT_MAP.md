@@ -19,9 +19,121 @@ The remaining playbooks ship as future MINOR releases. `v1.0.0` is cut once the 
 
 The 24 currently-shipped playbooks (PB01 through PB24, with no absorptions remaining after PB02's promotion in v0.23.0) were prioritized along three axes:
 
-1. **Standards-gap closure.** Playbooks that closed a specific NIST CSF 2.0 function (PB11 closed DETECT, PB07 closed PR.AA-05, PB03+PB06 closed PR.DS-01, PB15 closed RS.AN-06/RS.AN-07 records integrity and provenance, PB23 closed PR.DS-01 privacy controls applied to AI logs and PR.AA access control on the evidence store) or OWASP Agentic Top 10 ASI category (PB08 closed ASI07/ASI08, PB10 closed ASI04, PB12 closed ASI10) shipped first so the framework's standards posture stayed coherent.
-2. **Operational arc completeness.** Foundation (PB01), Prevention (PB04), Closure (PB18), Governance (PB24), Measurement (PB13/PB14), and depth on retrieval (PB03) ship before scenario-specific playbooks so the framework reads as a complete arc rather than a list of scenarios. The MVO-3 Evidence taxonomy now has full depth coverage: PB03 is the Type C deep-dive, PB09 is the Type F deep-dive, PB15 is the lifecycle deep-dive across all six evidence types, and PB23 is the privacy-discipline companion to PB15 that specifies how each evidence type is captured without overcollecting regulated data in the process. Together PB15 and PB23 form the **capture / retain / prove triad** on top of the Minimum Evidence Set: PB23 specifies how to capture; PB15 specifies how to retain and prove.
-3. **2026 production-pattern relevance.** Workflow injection (PB06), output leakage (PB09), vendor copilots (PB10), AI-driven insider misuse (PB12), Shadow AI discovery (PB21), Build vs Buy for Agent Controls (PB19), Model and Policy Drift (PB22), Records, Retention, and Proving What Happened (PB15), and AI Logging and Privacy in a Multi-Stakeholder World (PB23) ship before less-time-sensitive scenarios because they map to deployment patterns common in current production AI agents. PB09 closes the dominant 2026 data-incident class (confidentiality failures stemming from AI outputs rather than traditional breach vectors) and forms the input → context → output coverage triad with PB06 + PB03. PB21 closes the inventory-gap precondition that makes every other playbook's discipline applicable to only the documented portion of the agent fleet; without Shadow AI discovery the AI-BOM is incomplete by definition. PB19 closes the procurement-time precondition that determines whether the response playbooks' commitments can be honored at all: the Proof of Readiness Test and the eight critical procurement questions convert vendor-feature evaluation into incident-capability evaluation. PB22 closes the **change-event precondition**: prior playbooks assume the AI system is operating in a steady state, but production AI systems are constantly evolving through model upgrades, prompt edits, policy tunes, retriever changes, and index rebuilds. PB22 introduces the change-window forensics discipline (Post-Change Configuration Snapshot, change-pipeline event ledger, Drift Canary pack, layered rollback) and the **M3-Drift** kill-switch variant. PB15 closes the **proof-discipline precondition**: prior playbooks specify what to capture and the 60-minute export discipline, but proof requires retention that survives the regulatory, legal, and business-trust review window. PB15 introduces the **Two-Tier Retention Standard** (metadata-tier vs payload-tier windows calibrated per evidence class), the **incident-triggered legal-hold mechanism**, the **chain-of-custody discipline** with tamper-evident integrity, and the quarterly **Reconstructability Test**. PB23 closes the **privacy-discipline precondition**: prior playbooks specify what to capture and how to retain it, but AI logs themselves carry regulated content (PII, PHI, secrets, customer-confidential data) and require multi-stakeholder governance to be defensible by Security, Privacy, Legal, and Engineering simultaneously. PB23 introduces the **Multi-Stakeholder Governance Matrix**, the **Three-Layer Logging Model** (Layer 1 metadata broadly retained, Layer 2 selective payload narrowly triggered, Layer 3 escalation capture under legal hold), the **Forensically Useful** standard (six questions logs must answer through metadata alone for typical incidents), and the **redaction-and-tokenization discipline** with role-separated access controls and audited break-glass procedures. PB17 closes the **communication-discipline precondition**: prior playbooks specify what the response team does technically, but stakeholder trust through the response window depends on what the response team says. PB17 introduces the **30-minute first-update SLA**, the **Three-Status Taxonomy** (Confirmed, Suspected, Validating), the **Four-Element Update Standard** (factual impact, immediate containment, evidence-collection activity, next-update timing), the **Stakeholder Communication Matrix** (internal executive, internal business owners, affected end-users, customers, regulator, board, press, employees broadly), the **Template Library** with version-controlled pre-approved templates per stakeholder class, and the **Responsible Reframing discipline** that converts anthropomorphizing language ("the AI did it") to system-accountability language ("an authorized automation behaved incorrectly under investigation"). PB16 closes the **training-discipline precondition**: prior playbooks specify what the response team does and says, but the framework's time budgets (TTSM ≤ 10 minutes, TTE ≤ 60 minutes, first-update inside 30 minutes) require trained execution under operational pressure. PB16 introduces the **30-Minute Micro-Drill** (Trigger and Contain → Pull Evidence → Scope and Brief, each 10 minutes), the **Four Core Moves** (activate safe mode, preserve and export evidence, scope impact in business terms, communicate with disciplined language), the **two permanent operating roles** (Safe Mode Owner and Evidence Owner), the **Curriculum-of-Six** (safe modes, tool tiering, retrieval traces, tool-call logs, memory state, configuration snapshots), the **monthly drill cadence**, and the **measurable training targets** that feed Six Metrics and PB24 board scorecard. PB16 and PB14 together form the **testing and training pair**: PB14 is system-side testing (does the substrate support the discipline?); PB16 is human-side training (can the responders execute it?). PB02 closes the **conceptual-foundation gap**: prior playbooks specify operational responses, but the response team's evidence-preservation reflexes depend on internalizing the three foundational realities of AI evidence (the actor is a workflow, not a workstation; the payload can be language, not malware; evidence is fragile). PB02 names these as the **Three Realities of AI Evidence** and establishes them as the pedagogical foundation of the framework's evidence discipline. PB02 was originally absorbed into the framework core via [`evidence/minimum-evidence-set.md`](evidence/minimum-evidence-set.md); v0.23.0 promoted PB02 to a separate foundational-concepts playbook to honor the "every newsletter issue maps to one playbook" provenance principle and to make the Three Realities explicit as named principles. PB02 and PB01 together form the framework's **two foundational playbooks**: PB02 is the conceptual foundation; PB01 is the operational keystone. PB05 closes the **executive decision-making discipline** that operationalizes accountable decisions under uncertainty during AI incidents. PB05 introduces the **Executive Decision Packet (AI Edition)** (a five-section structured update: Situation, Agent Capability Profile, Provenance Summary, Impact with CIA+T framing, Actions Taken and Next Steps with 4/24/72-hour planning horizons), the **CIA+T framing** that elevates Trust to peer status alongside Confidentiality, Integrity, and Availability, the **4-hour cadence** for subsequent Decision Packets, the **Approval Receipt discipline** that prevents human approval workflows from degrading into rubber-stamping (every high-impact action's approver sees the change preview, destination and domain, source citations, and object count or cap before approving), and the **Three Executive Routine Additions** (capability assessment, provenance tracking, approval-chain awareness). PB05, PB17, and PB24 together form the framework's **executive-layer trio**: PB05 is the decision-during-incident; PB17 is the communication-of-the-decision; PB24 is the periodic governance review of the customer's overall posture.
+#### 1. Standards-gap closure
+
+Playbooks that closed a specific function in **NIST CSF 2.0** or a category in the **OWASP Top 10 for Agentic Applications 2026** shipped first so the framework's standards posture stayed coherent.
+
+**NIST CSF 2.0 function closures:**
+
+- **PB11** closed **DETECT**
+- **PB07** closed **PR.AA-05**
+- **PB03 + PB06** closed **PR.DS-01**
+- **PB15** closed **RS.AN-06 and RS.AN-07** (records integrity and provenance)
+- **PB23** closed **PR.DS-01** (privacy controls applied to AI logs) and **PR.AA** (access control on the evidence store)
+
+**OWASP Agentic Top 10 category closures:**
+
+- **PB08** closed **ASI07 and ASI08**
+- **PB10** closed **ASI04**
+- **PB12** closed **ASI10**
+
+#### 2. Operational arc completeness
+
+Foundation, Prevention, Closure, Governance, Measurement, and depth on retrieval ship before scenario-specific playbooks so the framework reads as a complete arc rather than a list of scenarios.
+
+**The six-stage operational arc:**
+
+- **Foundation**: PB01 (Agent as Privileged Identity)
+- **Prevention**: PB04 (Tool Design Is Containment)
+- **Closure**: PB18 (Post-Incident Hardening)
+- **Governance**: PB24 (Board-Ready Scorecard)
+- **Measurement**: PB13 (Six Metrics) and PB14 (Testing for Agent Failure Modes)
+- **Depth on retrieval**: PB03 (RAG and Knowledge-Base Forensics)
+
+**Evidence taxonomy full-depth coverage (MVO-3):**
+
+- PB03 is the **Type C deep-dive**
+- PB09 is the **Type F deep-dive**
+- PB15 is the **lifecycle deep-dive** across all six evidence types
+- PB23 is the **privacy-discipline companion** to PB15 that specifies how each evidence type is captured without overcollecting regulated data
+
+Together PB15 and PB23 form the **capture / retain / prove triad** on top of the Minimum Evidence Set: PB23 specifies how to capture; PB15 specifies how to retain and prove.
+
+#### 3. 2026 production-pattern relevance
+
+Playbooks that map to deployment patterns common in current production AI agents ship before less-time-sensitive scenarios. Each closes a specific precondition that prior playbooks assumed but did not specify:
+
+- **PB09 (Output Leakage)** closes the dominant 2026 data-incident class: confidentiality failures stemming from AI outputs rather than traditional breach vectors. Completes the **input → context → output coverage triad** with PB06 + PB03 and introduces the **M3-Output containment variant** plus output-layer DLP and channel classification as architectural defense.
+
+- **PB21 (Shadow AI)** closes the **inventory-gap precondition** that makes every other playbook's discipline applicable to only the documented portion of the agent fleet; without Shadow AI discovery the AI-BOM is incomplete by definition. Introduces the **60-minute Discovery Snapshot**, the **24-hour Shadow Agent Intake Standard**, identity-level containment for non-modifiable runtimes, the **migrate / redesign / retire decision path**, and the four-boundary hardening including the governed integration path that prevents the next shadow agent from staying shadow.
+
+- **PB19 (Build vs Buy for Agent Controls)** closes the **procurement-time precondition** that determines whether the response playbooks' commitments can be honored at all. Introduces the **60-minute Proof of Readiness Test**, the **eight critical procurement questions**, the **Build vs Buy Decision Matrix**, and the post-procurement hardening that converts platform-capability gaps into contractual commitments or customer-side build commitments.
+
+- **PB22 (Model and Policy Drift)** closes the **change-event precondition**. Prior playbooks assume the AI system is operating in a steady state, but production AI systems are constantly evolving through model upgrades, prompt edits, policy tunes, retriever changes, and index rebuilds. Introduces the **change-window forensics discipline** (Post-Change Configuration Snapshot, change-pipeline event ledger, Drift Canary pack, layered rollback) and the **M3-Drift kill-switch variant**. PB22 and PB14 form the **pre-production-testing and continuous-monitoring pair**.
+
+- **PB15 (Records, Retention, and Proving What Happened)** closes the **proof-discipline precondition**. Prior playbooks specify what to capture and the 60-minute export discipline, but proof requires retention that survives the regulatory, legal, and business-trust review window. Introduces the **Two-Tier Retention Standard** (metadata-tier vs payload-tier windows calibrated per evidence class), the **incident-triggered legal-hold mechanism**, the **chain-of-custody discipline** with tamper-evident integrity, and the quarterly **Reconstructability Test**.
+
+- **PB23 (AI Logging and Privacy in a Multi-Stakeholder World)** closes the **privacy-discipline precondition**. AI logs themselves carry regulated content (PII, PHI, secrets, customer-confidential data) and require multi-stakeholder governance to be defensible by Security, Privacy, Legal, and Engineering simultaneously. Introduces the **Multi-Stakeholder Governance Matrix**, the **Three-Layer Logging Model** (Layer 1 metadata broadly retained, Layer 2 selective payload narrowly triggered, Layer 3 escalation capture under legal hold), the **Forensically Useful standard** (six questions logs must answer through metadata alone for typical incidents), and the **redaction-and-tokenization discipline** with role-separated access controls and audited break-glass procedures.
+
+- **PB17 (Communication Techniques)** closes the **communication-discipline precondition**. Prior playbooks specify what the response team does technically, but stakeholder trust through the response window depends on what the response team says. Introduces the **30-minute first-update SLA**, the **Three-Status Taxonomy** (Confirmed, Suspected, Validating), the **Four-Element Update Standard** (factual impact, immediate containment, evidence-collection activity, next-update timing), the **Stakeholder Communication Matrix** (internal executive, internal business owners, affected end-users, customers, regulator, board, press, employees broadly), the **Template Library** with version-controlled pre-approved templates per stakeholder class, and the **Responsible Reframing discipline** that converts anthropomorphizing language ("the AI did it") to system-accountability language ("an authorized automation behaved incorrectly under investigation").
+
+- **PB16 (Training Your Team)** closes the **training-discipline precondition**. Prior playbooks specify what the response team does and says, but the framework's time budgets (TTSM ≤ 10 minutes, TTE ≤ 60 minutes, first-update inside 30 minutes) require trained execution under operational pressure. Introduces the **30-Minute Micro-Drill** (Trigger and Contain → Pull Evidence → Scope and Brief, each 10 minutes), the **Four Core Moves** (activate safe mode, preserve and export evidence, scope impact in business terms, communicate with disciplined language), the **two permanent operating roles** (Safe Mode Owner and Evidence Owner), the **Curriculum-of-Six** (safe modes, tool tiering, retrieval traces, tool-call logs, memory state, configuration snapshots), the **monthly drill cadence**, and the **measurable training targets** that feed Six Metrics and the PB24 board scorecard. PB16 and PB14 together form the **testing and training pair**: PB14 is system-side testing (does the substrate support the discipline?); PB16 is human-side training (can the responders execute it?).
+
+- **PB02 (Evidence Lives in New Places)** closes the **conceptual-foundation gap**. Prior playbooks specify operational responses, but the response team's evidence-preservation reflexes depend on internalizing the three foundational realities of AI evidence. Names these as the **Three Realities of AI Evidence** (the actor is a workflow, not a workstation; the payload can be language, not malware; evidence is fragile) and establishes them as the pedagogical foundation of the framework's evidence discipline. PB02 was originally absorbed into the framework core via [`evidence/minimum-evidence-set.md`](evidence/minimum-evidence-set.md); v0.23.0 promoted PB02 to a separate foundational-concepts playbook to honor the "every newsletter issue maps to one playbook" provenance principle and to make the Three Realities explicit as named principles. PB02 and PB01 together form the framework's **two foundational playbooks**: PB02 is the conceptual foundation; PB01 is the operational keystone.
+
+- **PB05 (Executive Decision-Making)** closes the **executive decision-making discipline** that operationalizes accountable decisions under uncertainty during AI incidents. Introduces the **Executive Decision Packet (AI Edition)** (a five-section structured update: Situation, Agent Capability Profile, Provenance Summary, Impact with CIA+T framing, Actions Taken and Next Steps with 4/24/72-hour planning horizons), the **CIA+T framing** that elevates Trust to peer status alongside Confidentiality, Integrity, and Availability, the **4-hour cadence** for subsequent Decision Packets, the **Approval Receipt discipline** that prevents human approval workflows from degrading into rubber-stamping (every high-impact action's approver sees the change preview, destination and domain, source citations, and object count or cap before approving), and the **Three Executive Routine Additions** (capability assessment, provenance tracking, approval-chain awareness). PB05, PB17, and PB24 together form the framework's **executive-layer trio**: PB05 is the decision-during-incident; PB17 is the communication-of-the-decision; PB24 is the periodic governance review of the customer's overall posture.
+
+#### Framework concepts at a glance
+
+The 24-playbook arc introduces named framework concepts that are invented terminology, not borrowed from prior standards. For a reader who wants to know what the framework adds beyond NIST and OWASP, this table is the receipt:
+
+| Framework concept | Originating playbook(s) |
+|---|---|
+| **Three Realities of AI Evidence** (actor-as-workflow, language-as-payload, evidence-fragile) | PB02 |
+| **Two foundational playbooks** (conceptual + operational keystone) | PB02 + PB01 |
+| **Capture / retain / prove triad** | PB23 + PB15 + Minimum Evidence Set |
+| **Input → context → output coverage triad** | PB06 + PB03 + PB09 |
+| **Testing and training pair** | PB14 + PB16 |
+| **Pre-production-testing and continuous-monitoring pair** | PB14 + PB22 |
+| **Executive-layer trio** | PB05 + PB17 + PB24 |
+| **CIA+T framing** (Trust as a peer dimension with Confidentiality, Integrity, Availability) | PB05 |
+| **Executive Decision Packet (AI Edition)** | PB05 |
+| **Approval Receipt discipline** | PB05 |
+| **Three Executive Routine Additions** | PB05 |
+| **30-minute first-update SLA** | PB17 |
+| **Three-Status Taxonomy** (Confirmed / Suspected / Validating) | PB17 |
+| **Four-Element Update Standard** | PB17 |
+| **Stakeholder Communication Matrix** (eight stakeholder classes) | PB17 |
+| **Template Library** (version-controlled pre-approved templates) | PB17 |
+| **Responsible Reframing discipline** | PB17 |
+| **30-Minute Micro-Drill** | PB16 |
+| **Four Core Moves** | PB16 |
+| **Two permanent operating roles** (Safe Mode Owner, Evidence Owner) | PB16 |
+| **Curriculum-of-Six** | PB16 |
+| **Monthly drill cadence with measurable training targets** | PB16 |
+| **Two-Tier Retention Standard** | PB15 |
+| **Incident-triggered legal-hold mechanism** | PB15 |
+| **Chain-of-custody discipline** (tamper-evident integrity) | PB15 |
+| **Reconstructability Test** (quarterly at 30, 60, 90 days) | PB15 |
+| **Multi-Stakeholder Governance Matrix** (Security / Privacy / Legal / Engineering) | PB23 |
+| **Three-Layer Logging Model** | PB23 |
+| **Forensically Useful standard** (six questions logs must answer through metadata alone) | PB23 |
+| **Redaction-and-tokenization discipline** | PB23 |
+| **M3-Drift kill-switch variant** | PB22 |
+| **Post-Change Configuration Snapshot** | PB22 |
+| **Drift Canary pack** | PB22 |
+| **Layered rollback** | PB22 |
+| **60-minute Proof of Readiness Test** | PB19 |
+| **Eight critical procurement questions** | PB19 |
+| **Build vs Buy Decision Matrix** | PB19 |
+| **60-minute Discovery Snapshot** | PB21 |
+| **24-hour Shadow Agent Intake Standard** | PB21 |
+| **Migrate / redesign / retire decision path** | PB21 |
+| **90-minute Freeze-the-World sequence** | PB03 |
+| **M3-Output containment variant** | PB09 |
+| **Six Metrics** (TTSM, TTE, MEC, ER, RRT, KSC) | PB13 |
+| **Six M3 kill-switch variants** (RAG, Workflow, Output, Vendor, Delegation Cap, Drift) | PB03 / PB06 / PB09 / PB10 / PB08 / PB22 |
+| **MVO controls** (Inventory, Safe Modes M0 through M5, Evidence A through F, Controlled Re-Enable) | framework/01 |
 
 **The content gate is now complete.** All 24 playbooks (PB01 through PB24) are shipped. The v1.0 cut now turns entirely on the Steering Committee announcement (the governance gate) rather than the content gate.
 
@@ -142,4 +254,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.32.0 P2 polish sweep: README reading-order completeness for framework/04 and incident-walkthrough; CONTRIBUTORS.md initial file) -->
+<!-- Last revised: 2026-06-29 (v0.32.0 P2 polish + Why-24-shipped section restructured: sub-bullets per axis for NIST CSF 2.0 closures and OWASP Agentic closures, six-stage operational arc and evidence-taxonomy coverage broken out, bullet 3 split into per-playbook sub-bullets with framework concepts bolded up-front, and a new Framework Concepts at a Glance table added) -->
