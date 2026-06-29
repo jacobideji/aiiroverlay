@@ -128,6 +128,7 @@ The AI IR Overlay was developed through the *AI IR Overlay* LinkedIn newsletter 
 - NIST AI Risk Management Framework (AI RMF 1.0)
 - OWASP Top 10 for LLM Applications (2025.1)
 - OWASP Top 10 for Agentic Applications 2026 (ASI01 through ASI10, OWASP GenAI Security Project)
+- ISO/IEC 27035 (multi-part series): *Information security incident management* (the general IR discipline that the AI IR Overlay extends for AI agents; referenced as a base discipline in `framework/01-minimum-viable-overlay.md`)
 - ISO/IEC 42001:2023: *Information technology, Artificial intelligence, Management system* (AIMS)
 - EU AI Act (Regulation 2024/1689), Article 26 obligations for deployers
 - MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems): adjacent prior art on AI threat modeling. Not currently mapped in the crosswalks; an ATLAS crosswalk is welcome as a community contribution
