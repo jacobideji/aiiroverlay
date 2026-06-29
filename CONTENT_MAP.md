@@ -142,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.30.0 P1-NEW.3: QUICKSTART-startup Week-0 Pre-Adoption Readiness Check) -->
+<!-- Last revised: 2026-06-29 (v0.31.0 P2-NEW sweep: Three Realities in PB01 First-Hour, maturity_target default docs, PB08 multi-agent depth) -->

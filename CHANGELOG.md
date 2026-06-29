@@ -15,6 +15,30 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.31.0] · 2026-06-29 · P2-NEW sweep (Three Realities in PB01 First-Hour, maturity_target default docs, PB08 multi-agent depth)
+
+### Changed
+
+- `playbooks/01-agent-as-privileged-identity.md` First-Hour Actions section adds **The Three Realities reflex** subsection. The reflex is named as a foundational lens that runs **before** the Six Triage Questions: Reality 1 (the actor is a workflow, not a workstation; scope the response to the agent's identity and capabilities, not endpoint forensics), Reality 2 (the payload can be language, not malware; read prompts and retrieved content for the harmful instruction), Reality 3 (evidence is fragile; snapshot before rotate). Reality 3 is named as the single most load-bearing reflex; it overrides the standard IR instinct to contain first and document later. Closes the v0.27.0 re-audit P2-NEW.1 finding that the Three Realities were enforced only post-incident in PB18 Boundary 4 but not surfaced as a response-phase checkpoint.
+
+- `templates/README-ai-bom.md` Maturity-level progression section adds an explicit **Default behavior when `maturity_target` is omitted** subsection. Clarifies that the schema requires the field (omission fails validation with a clear error) rather than silently defaulting. Provides adopter recommendation: set `maturity_target: "level_1_aware"` explicitly during initial adoption rather than leaving blank. Documents the framework's "no silent default" position. Closes the v0.27.0 re-audit P2-NEW.2 finding.
+
+- `playbooks/08-multi-agent-blast-radius.md` adds a new **Multi-Agent Threat Patterns (2026 Production Reality)** section between Boundary 4 (Telemetry) and Common Pitfalls. The section documents five threat patterns with attack mechanism, topology surface, indicator family, and containment variant: (1) Orchestrator compromise (single-point-of-failure topology, orchestrator-first M4); (2) Peer-to-peer compromise (mesh topology, M3-Delegation Cap); (3) Supply-chain compromise via inter-agent protocol (MCP/A2A, M3-Vendor + identity-level containment); (4) Memory-mediated cross-agent compromise (shared-memory architectures, M3-RAG variant scoped to memory backend); (5) Cascading failure through trust chains (deep delegation chains, M3-Delegation Cap + handoff schema enforcement). Adds a cross-pattern detection subsection documenting the topology-anomaly signal family (inter-agent traffic patterns diverging from AI-BOM's documented topology). Closes the v0.24.0 original-critique P2.11 finding that PB08 was light on multi-agent depth relative to 2026 production reality.
+
+- `CITATION.cff` version + preferred-citation.version bumped from `0.30.0` to `0.31.0`.
+
+### Why now
+
+This release closes three P2 items remaining from the v0.24.0 original critique and the v0.27.0 re-audit:
+
+**P2-NEW.1 (Three Realities in PB01 First-Hour Actions):** the v0.25.0 P0.3 calibration added the Three Realities review to PB18 Boundary 4 (post-incident retrospective). The v0.27.0 re-audit identified that the Three Realities were enforced post-incident but not surfaced as a response-phase checkpoint, creating the risk that response teams under operational pressure would not apply the foundational lens during the response itself. v0.31.0 adds the explicit reflex to PB01's First-Hour Actions, closing the response-phase gap.
+
+**P2-NEW.2 (maturity_target default behavior):** the v0.26.0 P1.4 calibration added the `maturity_target` field to the AI-BOM schema. The v0.27.0 re-audit identified that the default behavior when the field was omitted was undocumented. v0.31.0 clarifies the framework's "no silent default" position: schema requires the field; omission fails validation; adopters must explicitly opt-in to a maturity level.
+
+**P2.11 (PB08 multi-agent depth):** the v0.24.0 critique identified that PB08 was light on multi-agent depth relative to 2026 production reality (26 KB vs newer playbooks at 35-50 KB). v0.31.0 adds the Multi-Agent Threat Patterns section with five named patterns covering orchestrator compromise, peer-to-peer compromise, MCP/A2A supply-chain compromise, memory-mediated cross-agent compromise, and cascading failure through trust chains. Each pattern names attack mechanism, topology surface, indicators, and containment variant.
+
+After v0.31.0, **all P0 and P1 items from both the v0.24.0 original critique and the v0.27.0 re-audit are closed**, plus three P2 items. The one remaining P2 item (P2.12 No formal threat-model artifact) is explicitly framed in v0.27.0 as a future enhancement, not a v1.0.0 blocker. The framework's only remaining v1.0.0 blocker is the Steering Committee announcement (governance gate, not content gate).
+
 ## [0.30.0] · 2026-06-29 · P1-NEW.3: QUICKSTART-startup Week-0 Pre-Adoption Readiness Check
 
 ### Changed
@@ -818,7 +842,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.30.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.31.0...HEAD
+[0.31.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.31.0
 [0.30.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.30.0
 [0.29.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.29.0
 [0.28.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.28.0
