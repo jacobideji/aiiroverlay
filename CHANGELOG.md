@@ -15,6 +15,25 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.14.1] · 2026-06-28 · Calibration Pass + Reference Validator
+
+### Added
+
+- `scripts/validate.py`: Python 3 reference validator that runs every AI-BOM YAML and Privilege Matrix CSV in `templates/` against the JSON Schemas in `schemas/`. Validates clean against the worked examples shipped with the framework. Supports a `--schemas-dir` flag and accepts arbitrary file paths so adopters can drop the script into their own CI.
+- `.github/workflows/validate-templates.yml`: GitHub Actions workflow that runs `scripts/validate.py` on every pull request and push to `main` touching `templates/`, `schemas/`, or the script itself. Demonstrates the schemas as live CI artifacts rather than static documentation.
+
+### Changed
+
+- `README.md` Provenance section reworded to remove the "field-tested" claim. The framework has not yet been deployed in a documented production AI incident; adopters who use it in a real incident are now invited to submit anonymized case studies via GitHub Discussions.
+- `README.md` reading order extended to item 11 (reference validator).
+- `GOVERNANCE.md` restructured to separate **current governance (v0.x)** from **future governance (v1.0.0 and beyond)**. The Steering Committee, Working Group Leads, certification program, and `CONTRIBUTORS.md` are now explicitly labeled as not-yet-established, conditional on v1.0.0 readiness and community adoption.
+- `CHANGELOG.md` "Why now" sections for `v0.12.0` and `v0.13.0` rewritten to remove unverifiable reviewer-attribution language. References to "SEC enforcement counsel, EU AI Act regulator, plaintiff's expert, and CISO reviewers" are replaced with the maintainer's own analysis based on the cited statutory and standards sources. The "dominant 2026 production deployment pattern" market-claim phrasing is softened to "a common 2026 deployment pattern" given the absence of supporting analyst data.
+- `CONTENT_MAP.md` adds a Reference implementations section.
+
+### Why now
+
+The v0.14.0 ship brought the framework to a coherent baseline (schemas + crosswalks + 14 playbooks). A hostile-critic review identified a calibration gap: the framework's positioning (governance scaffolding for a multi-party project, "field-tested" claim, unverifiable reviewer attribution) exceeded the project's actual scale (single-maintainer pre-1.0 synthesis with no documented production deployments). v0.14.1 closes that gap so the framework's presentation matches its real state, and ships a working reference validator so the schemas can be cited as live CI artifacts rather than static specifications.
+
 ## [0.14.0] · 2026-06-28 · Schemas Directory: Machine-Readable Contracts
 
 ### Added
@@ -57,7 +76,7 @@ The schemas are not a new framework chapter. They are the machine-readable encod
 
 ### Why now
 
-PB10 closes the second of the two most-requested missing playbooks named across CISO, engineering, consultant, and standards reviews. Vendor copilots (Microsoft 365 Copilot, Salesforce Einstein, ServiceNow Now Assist, Google Workspace Gemini, GitHub Copilot, the embedded copilots in CRM and ERP and ticketing platforms) are the dominant 2026 production deployment pattern for AI agents in regulated enterprises. The framework's existing playbooks assumed customer-managed agents; PB10 ships the operational discipline for the case where the customer is responsible to the regulator but the vendor controls the agent's operational levers.
+PB10 closes one of the two largest gaps the maintainer identified in the framework's coverage of 2026 production deployment patterns. Vendor copilots (Microsoft 365 Copilot, Salesforce Einstein, ServiceNow Now Assist, Google Workspace Gemini, GitHub Copilot, and the embedded copilots increasingly built into CRM, ERP, and ticketing platforms) are a common 2026 deployment pattern for AI agents in regulated enterprises. The framework's existing playbooks assumed customer-managed agents; PB10 ships the operational discipline for the case where the customer is responsible to the regulator but the vendor controls the agent's operational levers.
 
 PB10's defensive thesis (deploy behind customer-controlled identity boundary, contract for testable evidence and containment SLAs, rehearse quarterly through the Vendor Evidence Drill) is the framework's first formal supply-chain response playbook. It maps directly to OWASP Agentic Top 10 ASI04 (Agentic Supply Chain Compromise), NIST CSF 2.0 GV.SC (supply chain risk management), and the EU AI Act provider/deployer distinction. Customers acting as deployers of vendor-provided AI systems can now point at a specific operational playbook when responding to regulator inquiry or auditor question about vendor copilot incident readiness.
 
@@ -89,9 +108,9 @@ The Materiality and Disclosure integration (from v0.12.0) extends naturally to v
 
 ### Why now
 
-PB06 closes the framework's most-requested missing playbook. Across CISO, engineering, consultant, and standards reviews, indirect prompt injection (the workflow form, not the chat-UI form) was named as the dominant 2026 external attack vector against AI agents in production. The framework previously mentioned the threat but did not playbook it. PB06 ships the architectural-defense framing that distinguishes the framework from prompt-engineering shortcuts most competing frameworks settle for.
+PB06 closes one of the largest gaps the maintainer identified in the framework's previous releases. Indirect prompt injection in workflow form (harmful instructions hidden in tickets, emails, web pages, and ingested documents the agent reads as part of normal operation) is a distinct attack surface from the chat-UI form that earlier framework releases addressed in passing. PB06 ships the architectural-defense framing (untrusted content never directly triggers Tier-2 tools) as an alternative to the prompt-engineering posture common in published competing frameworks.
 
-The Materiality and Disclosure block closes the framework's single most consequential gap from the cross-perspective review. SEC enforcement counsel, EU AI Act regulator, plaintiff's expert, and CISO reviewers all named the absence of a materiality determination protocol as the framework's highest-leverage missing feature. The four-file chain (framework/04 authority, PB01 trigger, PB18 verification, PB24 governance signal) operationalizes the discipline across the response arc.
+The Materiality and Disclosure block addresses a gap the maintainer's review of SEC Item 1.05, EU AI Act Article 26/73, NY DFS Part 500, and HIPAA §164.408 surfaced: prior framework releases shipped containment and evidence machinery but did not specify the convening protocol that determines whether a regulatory disclosure clock has started. The four-file chain (framework/04 authority, PB01 trigger, PB18 verification, PB24 governance signal) operationalizes the discipline across the response arc.
 
 The Scope declaration and the Measurement Scope qualifier are the framework's first formal defensive language additions. They bound the framework's claims to a specific regulatory role (deployer obligations) and a specific measurement context (drill-measured targets, not live-incident performance). Both are the load-bearing language a publicly-traded adopter needs in their 10-K to defensibly cite framework conformance.
 
@@ -320,7 +339,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.1...HEAD
+[0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
 [0.13.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.13.0
 [0.12.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.12.0
