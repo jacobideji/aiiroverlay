@@ -1,0 +1,37 @@
+name: Validate templates against schemas
+
+on:
+  pull_request:
+    paths:
+      - "templates/**"
+      - "schemas/**"
+      - "scripts/validate.py"
+      - ".github/workflows/validate-templates.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "templates/**"
+      - "schemas/**"
+      - "scripts/validate.py"
+
+jobs:
+  validate:
+    name: Validate AI-BOM + Privilege Matrix against JSON Schemas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jsonschema pyyaml
+
+      - name: Run reference validator
+        run: python3 scripts/validate.py
