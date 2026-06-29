@@ -44,6 +44,14 @@ Walk the [Six Triage Questions](../triage/six-questions.md) **in order** on the 
 
 **Discipline:** if any answer takes more than 60 seconds to produce, you have an *inventory problem*, not an incident problem. The inventory gap is itself a finding. Document it in the decision log. Don't slow the bridge call to fix it.
 
+**The Three Realities reflex.** Before any of the Six Triage Questions are answered, the on-call responder applies the [Playbook 02 (Evidence Lives in New Places)](02-evidence-lives-in-new-places.md) Three Realities as the foundational lens:
+
+1. **Reality 1 (the actor is a workflow, not a workstation):** scope the response to the agent's identity and capabilities, not to endpoint forensics. EDR signatures do not detect AI incidents; the evidence lives in prompt logs, tool-call ledgers, retrieval traces, and downstream SaaS audit logs.
+2. **Reality 2 (the payload can be language, not malware):** read the prompts, retrieved content, agent response, and tool-call parameters for the harmful instruction. The payload may be plain English in a customer email, a poisoned document in the corpus, or a tool-call parameter that escalated scope.
+3. **Reality 3 (evidence is fragile):** **snapshot before rotate**. This is the single most load-bearing reflex for the entire response. It overrides the standard IR instinct to contain first and document later. Snapshot the agent's identity scope, configuration, and recent activity **before** any token rotation, prompt update, corpus cleanup, or redeployment.
+
+A response team that has internalized the Three Realities applies them automatically; a team that has not produces evidence-loss findings the post-incident retrospective per [Playbook 18 Boundary 4](18-post-incident-hardening.md) will document. The Reality-application discipline is evaluated retrospectively per PB18, but the application itself happens during the response, not after.
+
 **Decision log:** open it on minute zero. Capture the **time**, **the question**, **the answer** (with confidence), and **the action taken**. This becomes the chronology if regulators, customers, or the board ask later.
 
 **Materiality and Disclosure trigger:** if Question 5 lands on Mode **M3 (Tool Tiering) or higher**, OR if any of the trigger conditions named in [Materiality and Disclosure (framework/04)](../framework/04-materiality-and-disclosure.md) applies, the Incident Commander convenes the **Materiality and Disclosure call** within one hour. The call brings CISO, General Counsel, and Incident Commander together to determine whether a regulatory disclosure clock has started. **This is independent of incident closure.** The incident response continues in parallel.
