@@ -11,7 +11,7 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 ### Planned
 
 - Remaining playbooks: 05, 09, 15, 16, 17, 19, 21, 22, 23
-- Additional crosswalks: CIS Controls, SOC 2, HIPAA
+- Additional crosswalks: CIS Controls, SOC 2, HIPAA, and a companion NIST SP 800-61 r3 ↔ AI IR Overlay crosswalk (referenced from `crosswalks/nist-csf-2.md`)
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
