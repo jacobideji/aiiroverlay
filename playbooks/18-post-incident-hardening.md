@@ -183,8 +183,6 @@ These four data points are the [Maturity Roadmap](../framework/03-maturity-roadm
 
 ## Related
 
-Distributed as separate packages or files within the framework:
-
 - **The Minimum Viable Overlay:** [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md) (MVO-4 Controlled Re-Enable is the recovery gate this playbook fills)
 - **The Mental Model:** [`framework/02-mental-model.md`](../framework/02-mental-model.md) (clauses 2, 3, and 4: memory, retrieval, change disciplines)
 - **The Maturity Roadmap:** [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md) (Level 4 Resilient = measured improvement, this playbook's discipline)

@@ -131,8 +131,6 @@ These are the highest-frequency failure modes in this scenario class. Each one d
 
 ## Related
 
-Distributed as separate packages or files within the framework:
-
 - **The Six Triage Questions:** [`triage/six-questions.md`](../triage/six-questions.md) (the first-hour discipline this playbook orchestrates)
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md) (full mode specifications and TTA targets)
 - **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md) (A–F types, capture order, retention requirements)

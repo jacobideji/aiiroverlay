@@ -164,8 +164,6 @@ These are the highest-frequency failure modes in RAG-class incident response. Ea
 
 ## Related
 
-Distributed as separate packages or files within the framework:
-
 - **The Minimum Viable Overlay:** [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md) (MVO-3 Evidence Set + MVO-4 Controlled Re-Enable underpin this playbook)
 - **The Mental Model:** [`framework/02-mental-model.md`](../framework/02-mental-model.md) (clause 3: *if it can retrieve, protect it as a production system*)
 - **The Maturity Roadmap:** [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md) (Level 3 Provable requires Type C-extended capability)

@@ -179,8 +179,6 @@ This is the discipline that distinguishes Level 4 (Resilient) from Level 3 (Prov
 
 ## Related
 
-Distributed as separate packages:
-
 - **Maturity Roadmap:** [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md). Defines the four levels these metrics measure. The Level 4 (Resilient) test points directly at this playbook.
 - **AI-BOM template:** [`templates/README-ai-bom.md`](../templates/README-ai-bom.md). The primary data source for Metrics 1, 2, and 4.
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md). Source of the TTA targets that Metric 2 measures against.

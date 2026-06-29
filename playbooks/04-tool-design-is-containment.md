@@ -140,8 +140,6 @@ These are the highest-frequency failure modes in tool design. Each one quietly c
 
 ## Related
 
-Distributed as separate packages or files within the framework:
-
 - **Agent Privilege Matrix template:** [`templates/agent-privilege-matrix.csv`](../templates/agent-privilege-matrix.csv) (the artifact this playbook operationalizes)
 - **Privilege Matrix README:** [`templates/README-privilege-matrix.md`](../templates/README-privilege-matrix.md) (column-by-column explanation of the matrix)
 - **AI-BOM template:** [`templates/ai-bom.yaml`](../templates/ai-bom.yaml) (the `tools` section is the source of truth for the matrix)

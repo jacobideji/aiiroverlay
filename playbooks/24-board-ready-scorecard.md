@@ -191,8 +191,6 @@ The third metric is often the underprepared one. Tool-call ledgers and retrieval
 
 ## Related
 
-Distributed as separate packages or files within the framework:
-
 - **The Minimum Viable Overlay:** [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md) (the four MVO controls this scorecard audits)
 - **The Mental Model:** [`framework/02-mental-model.md`](../framework/02-mental-model.md) (the four-clause foundation the board narrative rests on)
 - **The Maturity Roadmap:** [`framework/03-maturity-roadmap.md`](../framework/03-maturity-roadmap.md) (the scorecard's annual trend maps to maturity levels)
