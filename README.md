@@ -85,7 +85,7 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 
 ## Reading order
 
-Read the framework in this order. Items 1 through 6 are the core. Items 7 through 10 are the working artifacts.
+Read the framework in this order. Items 1 through 6 are the core. Items 7 through 11 are the working artifacts.
 
 1. **The Minimum Viable Overlay.** The four controls in detail: [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md)
 2. **The Mental Model.** Four sentences that govern every decision: [`framework/02-mental-model.md`](framework/02-mental-model.md)
@@ -108,9 +108,11 @@ Read the framework in this order. Items 1 through 6 are the core. Items 7 throug
 
 10. **Schemas.** Machine-readable contracts for CI validation: [`schemas/ai-bom.schema.json`](schemas/ai-bom.schema.json) (AI-BOM validator) · [`schemas/privilege-matrix.schema.json`](schemas/privilege-matrix.schema.json) (Privilege Matrix row validator) · [`schemas/credential-event.schema.json`](schemas/credential-event.schema.json) (PB07 credential-event log validator) · [`schemas/kill-switch-api.md`](schemas/kill-switch-api.md) (Mode M0 through M5 activation API contract) · [`schemas/evidence-export.spec.md`](schemas/evidence-export.spec.md) (Type A through F evidence export script contract).
 
+11. **Reference validator.** [`scripts/validate.py`](scripts/validate.py) (Python 3, runs every AI-BOM YAML and Privilege Matrix CSV against the JSON Schemas). A GitHub Action at [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) runs the validator on every pull request touching `templates/`, `schemas/`, or the script itself.
+
 ## Provenance
 
-The AI IR Overlay was developed and field-tested through the *AI IR Overlay* LinkedIn newsletter series (Issues 1 through 24, 2025 to 2026), authored by Jacob Ideji. Each newsletter issue maps to one playbook in the full framework. See [CONTENT_MAP.md](CONTENT_MAP.md) for the issue-to-file index.
+The AI IR Overlay was developed through the *AI IR Overlay* LinkedIn newsletter series (Issues 1 through 24, 2025 to 2026), authored by Jacob Ideji, as a synthesis of NIST AI RMF 1.0, NIST CSF 2.0, NIST SP 800-61 r3, OWASP Top 10 for Agentic Applications 2026, EU AI Act deployer obligations, and the maintainer's incident response and AI security experience. The framework has not yet been deployed in a documented production AI incident; adopters who use it in a real incident are encouraged to submit anonymized case studies via [Discussions](https://github.com/jacobideji/aiiroverlay/discussions). Each newsletter issue maps to one playbook in the full framework. See [CONTENT_MAP.md](CONTENT_MAP.md) for the issue-to-file index.
 
 ## Related work
 
