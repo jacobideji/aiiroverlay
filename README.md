@@ -136,14 +136,26 @@ The AI IR Overlay was developed through the *AI IR Overlay* LinkedIn newsletter 
 
 - **AI-BOM**: AI Bill of Materials
 - **ASI**: Agentic Security Initiative (OWASP)
+- **CCPA**: California Consumer Privacy Act
 - **CSF**: (NIST) Cybersecurity Framework
+- **DFS**: (New York State) Department of Financial Services
+- **DLP**: Data Loss Prevention
+- **EDR**: Endpoint Detection and Response
+- **GDPR**: General Data Protection Regulation (EU)
+- **HIPAA**: Health Insurance Portability and Accountability Act
 - **IC**: Incident Commander
 - **IR**: Incident Response
+- **MCP**: Model Context Protocol
 - **MVO**: Minimum Viable Overlay
 - **PAM**: Privileged Access Management
+- **PHI**: Protected Health Information
+- **PII**: Personally Identifiable Information
 - **RAG**: Retrieval-Augmented Generation
 - **RMF**: (NIST AI) Risk Management Framework
+- **SIEM**: Security Information and Event Management
+- **SLA**: Service Level Agreement
 - **SOC**: Security Operations Center *(distinct from SOC 2, the AICPA audit standard)*
 - **TTA**: Time-to-Activate
 - **TTE**: Time-to-Evidence
 - **TTSM**: Time-to-Safe-Mode
+- **UEBA**: User and Entity Behavior Analytics
