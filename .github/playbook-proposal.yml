@@ -1,0 +1,48 @@
+name: Playbook proposal
+description: Propose a new playbook for an AI agent incident scenario not yet covered
+title: "[playbook]: "
+labels: ["playbook", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Playbooks are the highest-velocity contribution path. Each playbook ships as its own MINOR release.
+        See [CONTRIBUTING.md](https://github.com/jacobideji/aiiroverlay/blob/main/CONTRIBUTING.md) for the playbook template structure.
+  - type: input
+    id: scenario
+    attributes:
+      label: Scenario name
+      placeholder: "Voice agent: synthetic-identity attack"
+    validations:
+      required: true
+  - type: textarea
+    id: premise
+    attributes:
+      label: Premise
+      description: What is the incident archetype? Who is affected? What makes this its own playbook rather than a variant of an existing one?
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Primary domain
+      options:
+        - Voice / telephony
+        - Coding / dev tools
+        - SaaS copilots (multi-tenant)
+        - Healthcare / clinical decision support
+        - Financial / trading-floor copilots
+        - Citizen-facing chatbot
+        - Other (specify in Premise)
+    validations:
+      required: true
+  - type: textarea
+    id: mvo-touched
+    attributes:
+      label: Which MVO controls does this engage?
+      description: Note any of MVO-1 (Inventory), MVO-2 (Safe Modes), MVO-3 (Evidence), MVO-4 (Controlled Re-Enable).
+  - type: textarea
+    id: source
+    attributes:
+      label: Source / inspiration (optional)
+      description: Link to a public incident report, newsletter issue, paper, or other prior art. Anonymized case studies welcome.
