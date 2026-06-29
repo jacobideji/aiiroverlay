@@ -15,15 +15,15 @@ The framework ships incrementally. Earlier plans assumed one playbook per releas
 
 The remaining playbooks ship as future MINOR releases. `v1.0.0` is cut once the remaining playbooks ship (PB02 is absorbed into the framework core, so the target is 23 playbooks) and a Steering Committee is announced. See [GOVERNANCE.md](GOVERNANCE.md).
 
-### Why 15 playbooks shipped so far
+### Why 16 playbooks shipped so far
 
-The 15 currently-shipped playbooks (PB01, 03, 04, 06, 07, 08, 09, 10, 11, 12, 13, 14, 18, 20, 24) were prioritized along three axes:
+The 16 currently-shipped playbooks (PB01, 03, 04, 06, 07, 08, 09, 10, 11, 12, 13, 14, 18, 20, 21, 24) were prioritized along three axes:
 
 1. **Standards-gap closure.** Playbooks that closed a specific NIST CSF 2.0 function (PB11 closed DETECT, PB07 closed PR.AA-05, PB03+PB06 closed PR.DS-01) or OWASP Agentic Top 10 ASI category (PB08 closed ASI07/ASI08, PB10 closed ASI04, PB12 closed ASI10) shipped first so the framework's standards posture stayed coherent.
 2. **Operational arc completeness.** Foundation (PB01), Prevention (PB04), Closure (PB18), Governance (PB24), Measurement (PB13/PB14), and depth on retrieval (PB03) ship before scenario-specific playbooks so the framework reads as a complete arc rather than a list of scenarios.
-3. **2026 production-pattern relevance.** Workflow injection (PB06), output leakage (PB09), vendor copilots (PB10), and AI-driven insider misuse (PB12) ship before less-time-sensitive scenarios because they map to deployment patterns common in current production AI agents. PB09 specifically closes the dominant 2026 data-incident class (confidentiality failures stemming from AI outputs rather than traditional breach vectors), and forms the input → context → output coverage triad with PB06 + PB03.
+3. **2026 production-pattern relevance.** Workflow injection (PB06), output leakage (PB09), vendor copilots (PB10), AI-driven insider misuse (PB12), and Shadow AI discovery (PB21) ship before less-time-sensitive scenarios because they map to deployment patterns common in current production AI agents. PB09 closes the dominant 2026 data-incident class (confidentiality failures stemming from AI outputs rather than traditional breach vectors) and forms the input → context → output coverage triad with PB06 + PB03. PB21 closes the inventory-gap precondition that makes every other playbook's discipline applicable to only the documented portion of the agent fleet; without Shadow AI discovery the AI-BOM is incomplete by definition.
 
-The remaining 8 drafted playbooks (PB05, 15, 16, 17, 19, 21, 22, 23) ship as time permits and as community contribution demand emerges. **No fixed schedule.** Adopters who need a specific playbook prioritized can file an Issue.
+The remaining 7 drafted playbooks (PB05, 15, 16, 17, 19, 22, 23) ship as time permits and as community contribution demand emerges. **No fixed schedule.** Adopters who need a specific playbook prioritized can file an Issue.
 
 ## Foundational source
 
@@ -57,7 +57,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | 18 | Post-Incident Hardening | [`playbooks/18-post-incident-hardening.md`](playbooks/18-post-incident-hardening.md) | ✅ `v0.4.0` |
 | 19 | Build vs Buy for Agent Controls | `playbooks/19-build-vs-buy.md` | 🟡 drafted; no fixed schedule. Adopters who need this can file an Issue or contribute via PR. |
 | 20 | AI IR Maturity Roadmap | [`framework/03-maturity-roadmap.md`](framework/03-maturity-roadmap.md) (framework view) and [`playbooks/20-maturity-roadmap.md`](playbooks/20-maturity-roadmap.md) (operating view) | ✅ framework view (`v0.1.0`) · ✅ operating view (`v0.7.0`) |
-| 21 | The Evolution from Shadow IT to Shadow AI | `playbooks/21-shadow-ai.md` | 🟡 drafted; no fixed schedule. Adopters who need this can file an Issue or contribute via PR. |
+| 21 | The Evolution from Shadow IT to Shadow AI | [`playbooks/21-shadow-ai.md`](playbooks/21-shadow-ai.md) | ✅ `v0.16.0` |
 | 22 | Model and Policy Drift | `playbooks/22-model-policy-drift.md` | 🟡 drafted; no fixed schedule. Adopters who need this can file an Issue or contribute via PR. |
 | 23 | AI Logging and Privacy in a Multi-Stakeholder World | `playbooks/23-logging-privacy.md` and [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) | ✅ crosswalk (`v0.1.5`) · 🟡 playbook drafted |
 | 24 | Board-Ready Scorecard | [`playbooks/24-board-ready-scorecard.md`](playbooks/24-board-ready-scorecard.md) and `templates/board-scorecard.md` (printable) | ✅ playbook (`v0.5.0`) · ⬜ printable template planned |
@@ -135,7 +135,7 @@ This supports academic citability and the trademark and attribution model docume
 
 ## Why this file exists
 
-A reader who lands on the framework asking "where are playbooks 02, 05, 15 through 17, 19, and 21 through 23?" deserves an honest answer. This file is that answer. Every issue has a destination, every shipped artifact has a release tag, and every drafted-but-unreleased artifact is named so it can't pretend to be absent. The framework's promise is incremental shipping. This map is the receipt.
+A reader who lands on the framework asking "where are playbooks 02, 05, 15 through 17, 19, 22, and 23?" deserves an honest answer. This file is that answer. Every issue has a destination, every shipped artifact has a release tag, and every drafted-but-unreleased artifact is named so it can't pretend to be absent. The framework's promise is incremental shipping. This map is the receipt.
 
 ---
 
