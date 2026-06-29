@@ -15,6 +15,32 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.15.0] · 2026-06-29 · Playbook 09: Leakage Without a Breach (AI Output Incidents)
+
+### Added
+
+- `playbooks/09-output-leakage.md`: the output-side response playbook. Addresses the dominant 2026 AI data-incident class: confidentiality failures stemming from the agent's own output, distributed through authorized channels into ordinary business systems, without classic breach signals. Specifies the **two-perspectives scoping** discipline (what the agent saw, where the output traveled), the **output distribution map** as a Type F evidence extension, the **destination-class scoping principle** that calibrates containment to internal vs customer-facing vs external vs regulated destinations, and the **four-boundary hardening framework** (output channel classification; output-layer DLP; approval gates for outputs containing sensitive content; detection rules covering output-content, output-distribution, and retrieval-to-output correlation). Forms the input → context → output coverage triad with [Playbook 06 (Prompt Injection Workflow)](playbooks/06-prompt-injection-workflow.md) on the input side and [Playbook 03 (RAG Forensics)](playbooks/03-rag-knowledge-base-forensics.md) on the context side. Ten common pitfalls including the "AI outputs as low-risk text" cognitive bias, prompt-layer DLP as theatrical safety, skipping the distribution map, and the absence of output destination classification in the AI-BOM.
+- `kill-switches/overview.md` Mode Variants table adds the **M3-Output** variant: M3 Tool Tiering applied to a specific output channel or destination class, sourced from PB09. M3-Output disables a specific output channel (external email send, customer-facing ticket comment, public chat post, auto-CC) or destination class (external systems, customer-facing systems, regulated-data destinations) while preserving the agent's other capabilities. Useful when the channel cannot be globally locked but the leakage destination class is identified.
+
+### Changed
+
+- `CONTENT_MAP.md` Issue 9 status flipped from 🟡 drafted to ✅ `v0.15.0`. The "Why this file exists" gap statement now excludes PB09 from the unshipped list. The "Why 14 playbooks shipped so far" subsection renamed to "Why 15 playbooks shipped so far" with PB09 added to the prioritization rationale (closes the dominant 2026 data-incident class; completes the input → context → output coverage triad).
+- `README.md` reading order updated from "Fourteen shipped playbooks" to "Fifteen shipped playbooks". PB09 added to the Operations arc bucket with description naming the M3-Output containment variant and the input → context → output triad with PB06 and PB03.
+- `crosswalks/owasp-agentic-top-10.md` Status section updated. ASI06 (Memory & Context Poisoning) mapping extended to include PB09 for the output-side response when memory carries leaked content forward. New cross-reference to OWASP Top 10 for LLM Applications 2025.1 **LLM02 Sensitive Information Disclosure** as the OWASP-named risk PB09 directly operationalizes. Coverage status bumped from `through v0.14.x` to `through v0.15.0`.
+- `crosswalks/nist-csf-2.md` Status section adds PR.DS-02 (data-in-transit protection on the output path) coverage by PB09, covering output-layer DLP, channel classification, and destination-aware approval gates. PR.DS-01 attribution unchanged (PB03 + PB06).
+- `evidence/minimum-evidence-set.md` Related section adds PB09 as the Type F deep-dive reference (the output distribution map as the Type F extension that scopes output-leakage incidents).
+- `CITATION.cff` version + preferred-citation.version bumped from `0.14.3` to `0.15.0`.
+
+### Why now
+
+PB09 closes the largest remaining operational-arc gap in the framework's response posture. Prior releases shipped playbooks for input-side incidents (PB06 workflow injection), context-side incidents (PB03 RAG forensics), identity-side incidents (PB07 secrets and tokens, PB12 insider threat), tool-side incidents (PB04 tool design), multi-agent cascade (PB08), vendor-managed incidents (PB10), and detection (PB11). The framework had no dedicated response playbook for the dominant 2026 data-incident class: **output leakage**, the confidentiality failures stemming from authorized AI outputs that reach destinations they should not have reached, without classic breach signals firing.
+
+PB09's defensive thesis (treat output channels as exfiltration paths; ship output-layer DLP in the tool wrapper, not the system prompt; classify destinations and tier outputs accordingly; map output distribution before any cleanup begins) operationalizes the response discipline that practitioners have been improvising on a per-incident basis. The newsletter issue this playbook ships from (Issue 9: *"Leakage Without a Breach"*) explicitly cites the dominant 2026 data-incident pattern: a support copilot pasting internal escalation notes into a customer ticket, a sales assistant CC'ing the wrong customer on a contract draft, a code copilot logging credentials in a public response. None of these incidents trigger traditional breach detection. All of them are real exposures.
+
+The M3-Output containment variant introduced in this release is the architectural parallel to PB06's M3-Workflow (content-channel containment) and PB10's M3-Vendor (vendor-side containment). The framework's M3 family now covers the three production-relevant containment surfaces above the canonical M3 Tool Tiering: M3-Workflow for content channels feeding the agent, M3-Output for output channels the agent writes to, and M3-Vendor for vendor-managed deployments. Together with M3-RAG (retrieval-layer containment from PB03) and M3-Delegation Cap (inter-agent delegation from PB08), the framework now has five M3 variants documented in [`kill-switches/overview.md`](kill-switches/overview.md), each anchored to a source playbook.
+
+PB09 also addresses the OWASP Top 10 for LLM Applications 2025.1 **LLM02 Sensitive Information Disclosure** category that prior framework releases addressed only implicitly. After v0.15.0, the framework has substantive playbook coverage of both the OWASP Agentic Top 10 ASI01-ASI10 and the operationally-significant categories of the LLM Top 10 (LLM02 by PB09; LLM03/LLM04 supply-chain and poisoning by PB04 + PB06 + PB10).
+
 ## [0.14.3] · 2026-06-28 · Calibration Tuning + Cross-Doc Coherence
 
 ### Added
@@ -399,7 +425,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.3...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.15.0...HEAD
+[0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
 [0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
