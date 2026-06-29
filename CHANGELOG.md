@@ -10,10 +10,37 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbook: 05 (Executive Decision-Making With AI in the Loop)
+- **Content gate complete after v0.24.0.** No remaining drafted playbooks.
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA, and a companion NIST SP 800-61 r3 ↔ AI IR Overlay crosswalk (referenced from `crosswalks/nist-csf-2.md`)
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
-- Steering Committee announcement (cuts `v1.0.0`)
+- **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
+
+## [0.24.0] · 2026-06-29 · Playbook 05: Executive Decision-Making With AI in the Loop (content gate complete)
+
+### Added
+
+- `playbooks/05-executive-decision-making.md`: the executive decision-making discipline playbook. Closes the final content-gate playbook for v1.0; addresses the precondition that prior framework releases depended on but did not specify: AI incidents require defensible executive decisions under uncertainty, before facts are complete and before the regulatory or customer disclosure window forces a commitment. Establishes the **Executive Decision Packet (AI Edition)** as a five-section structured update (Situation with facts only and Three-Status-Taxonomy tagging; **Agent Capability Profile** with identity, enabled tools, systems of record, memory status, connected corpora; **Provenance Summary** with retrieval activity, newly edited or influential documents, instruction-hijack signs, memory entries; **Impact** with the CIA+T framing that elevates Trust to peer status alongside Confidentiality, Integrity, and Availability; **Actions Taken and Next Steps** with named owners across IR, Legal, Communications, Operations, Privacy and 4/24/72-hour planning horizons), the **4-hour cadence** for subsequent packets, the **Approval Receipt discipline** that prevents human approval workflows from degrading into rubber-stamping (every high-impact action's approver sees four required elements before approving: change preview or diff, destination and domain overview, source citations and provenance, object count or cap), the **Three Executive Routine Additions** (capability assessment, provenance tracking, approval-chain awareness as standing executive responsibilities), and the **decision-scope containment** (six actions including status-taxonomy enforcement, materiality-determination scoping, Approval-Receipt enforcement, two-trap callout activation, decision-log lock, disclosure-window clock activation). Sixteen common pitfalls including decision packet as status report not decision-support, CIA framing without Trust, no Three-Status Taxonomy on packet claims, Provenance section thin or absent, Approval Receipt absent for high-impact action, 4-hour cadence slips silently, over-correction under reputational pressure, re-enablement without re-qualification, no 4/24/72-hour planning horizon, owners not named per action item, Materiality determination made without the packet, Legal review skipped for time pressure, decision log absent or partial, no board-briefing readiness, no quarterly executive drill, and Trust impact assessed without affected-stakeholder count.
+
+### Changed
+
+- `CONTENT_MAP.md` Issue 5 status flipped from 🟡 drafted to ✅ `v0.24.0`. The "Why this file exists" section updated to acknowledge that all 24 playbooks are now shipped and the v1.0 cut turns entirely on the Steering Committee announcement. The "Why 23 playbooks shipped so far" subsection renamed to "Why 24 playbooks shipped (content gate complete)" with PB05 added to the operational-arc-completeness rationale (PB05, PB17, PB24 together form the **executive-layer trio**: decision-during-incident, communication-of-the-decision, periodic governance review).
+- `README.md` reading order updated from "Twenty-three shipped playbooks" to "All twenty-four playbooks shipped (content gate complete)". PB05 added to the Governance arc bucket alongside PB24 and PB17.
+- `crosswalks/nist-csf-2.md` Status section adds **GV.OV** (organizational oversight by senior leaders), **GV.OC** (organizational context for executive decision-making), and **GV.RM** (risk-management decision-making) operational coverage by PB05.
+- `crosswalks/nist-ai-rmf.md` GOVERN section adds an executive-decision-making gap-note acknowledging that AI RMF mandates organizational risk-management decision-making (GOVERN 1.4) and organizational accountability for AI risk (GOVERN 4.1) but does not specify the AI-specific executive-decision discipline; PB05 fills the gap with the Executive Decision Packet, the CIA+T framing, the 4-hour cadence, the 4/24/72-hour planning horizons, and the Approval Receipt discipline.
+- `crosswalks/owasp-agentic-top-10.md` ASI09 (Human-Agent Trust Exploitation) mapping extended to include PB05 as the executive-decision-making discipline that operationalizes accountable decisions under uncertainty when AI trust is broken. Coverage status bumped from `through v0.23.0` to `through v0.24.0`.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.23.0` to `0.24.0`.
+
+### Why now
+
+PB05 closes the **executive-decision-making discipline** that is the final piece of the framework's content gate. Every prior playbook specifies what the response team does (technical playbooks) or what the response team says (PB17) or how the team is trained (PB16) or how evidence is captured, retained, and proved (PB02, PB15, PB23). None of these specify how the **executive team** makes the decisions that the regulator, the customer, the board, and the press will hold the customer to. Executive decisions during AI incidents are made under three converging pressures (unfolding technical situation, running disclosure window, stakeholder anxiety) that produce a distinctive failure pattern that traditional-IR executive briefings do not address.
+
+PB05 addresses this with the Executive Decision Packet (AI Edition) (the five-section structured update that gives executives decision-support rather than status-narration), the CIA+T framing (elevating Trust to peer status with Confidentiality, Integrity, and Availability because AI incidents commonly produce trust impact that exceeds traditional-CIA impact even when no classic breach has occurred), the 4-hour cadence (an explicit time budget for executive-layer information density), the 4/24/72-hour planning horizons (the structured forward-look that prevents decisions from being made on immediate-only information), and the Approval Receipt discipline (the four required elements that prevent human approval workflows from degrading into rubber-stamping). The playbook makes the difference between **a defensible incident response** and **a defensible response coupled with credible executive accountability** an empirical question (does the customer's IC produce the first Decision Packet inside 60 minutes? does the Approval Receipt discipline apply to every Tier-T2 action?) rather than an asserted claim.
+
+The playbook completes the framework's **executive-layer trio** with PB17 (Communication Techniques) and PB24 (Board-Ready Scorecard). PB05 is the decision-during-incident; PB17 is the communication-of-the-decision; PB24 is the periodic governance review. Together they convert the framework's executive-readiness from a written commitment into a measurable, drillable, board-defensible discipline.
+
+**After v0.24.0, the framework's content gate is complete.** All 24 playbooks (PB01 through PB24) are shipped. The framework's coverage of the operational arc (Foundation, Prevention, Closure, Governance, Measurement and Depth, Operations), the six preconditions (procurement, inventory, change-event, proof, privacy, communication), the four discipline pairs (concepts-and-operations, capture-retain-prove triad, testing-and-training, governance-and-communication), and the executive-layer trio is comprehensive. The remaining v1.0 work is governance: the Steering Committee announcement and the public-interface freeze that converts the framework from single-maintainer pre-1.0 into a sustainable multi-maintainer artifact.
+
+PB05 also closes a long-standing standards-gap pattern: NIST CSF 2.0 mandates organizational oversight (GV.OV) and risk-management decision-making (GV.RM) but does not specify the AI-specific executive-decision discipline. NIST AI RMF mandates organizational accountability for AI risk (GOVERN 4.1) but does not specify the operational mechanism. OWASP's ASI09 Human-Agent Trust Exploitation addresses the trust-exploitation risk but does not address the executive-decision-making discipline that operationalizes accountable decisions under uncertainty. PB05 fills each of those gaps with concrete operational specifications that customers can adopt, regulators can audit against, and adopters can extend.
 
 ## [0.23.0] · 2026-06-29 · Playbook 02: Evidence Lives in New Places (foundational concepts)
 
@@ -633,7 +660,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.23.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.24.0...HEAD
+[0.24.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.24.0
 [0.23.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.23.0
 [0.22.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.22.0
 [0.21.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.21.0
