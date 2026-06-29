@@ -47,6 +47,8 @@ This file is intentionally short at v0.x. It will grow as external contributions
 
 ---
 
+*Last revised: 2026-06-29 (v0.32.0).*
+
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
 <https://www.linkedin.com/in/jacobideji/>
