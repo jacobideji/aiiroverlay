@@ -19,7 +19,7 @@ body:
     id: issue
     attributes:
       label: What is wrong?
-      description: Describe the bug — what you expected vs. what you found. Quote the problematic text if relevant.
+      description: Describe the bug. What you expected vs. what you found. Quote the problematic text if relevant.
     validations:
       required: true
   - type: input
@@ -32,4 +32,4 @@ body:
     id: suggested-fix
     attributes:
       label: Suggested fix (optional)
-      description: If you have a proposed correction, paste it here. PRs are welcome — see CONTRIBUTING.md.
+      description: If you have a proposed correction, paste it here. PRs are welcome. See CONTRIBUTING.md.

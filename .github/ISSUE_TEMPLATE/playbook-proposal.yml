@@ -12,7 +12,7 @@ body:
     id: scenario
     attributes:
       label: Scenario name
-      placeholder: "Voice agent — synthetic-identity attack"
+      placeholder: "Voice agent: synthetic-identity attack"
     validations:
       required: true
   - type: textarea

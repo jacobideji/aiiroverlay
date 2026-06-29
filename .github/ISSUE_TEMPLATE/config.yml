@@ -5,4 +5,4 @@ contact_links:
     about: For open-ended questions, design ideas, or general discussion, use Discussions instead of Issues.
   - name: Security vulnerability
     url: https://github.com/jacobideji/aiiroverlay/security/advisories/new
-    about: For security vulnerabilities, please use a private security advisory — not a public issue.
+    about: For security vulnerabilities, please use a private security advisory, not a public issue.
