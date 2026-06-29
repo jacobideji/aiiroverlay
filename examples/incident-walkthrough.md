@@ -29,6 +29,8 @@ This walkthrough demonstrates how the AI IR Overlay's controls work together whe
 
 **Pre-incident posture:** Northstar has adopted the AI IR Overlay through v0.14.1. They ran the 30-day [QUICKSTART](../QUICKSTART.md) on this agent two months ago. Last tabletop drill: 8 weeks ago. Last evidence export drill: 6 weeks ago. Maturity claim: Level 3 (Provable).
 
+**Regulatory posture:** Northstar is privately held (no SEC reporting obligations), incorporated and operating solely in the United States with no EU customers or operations (no EU AI Act Article 26 deployer obligations), not a financial-services entity (no NY DFS Part 500), and not a healthcare covered entity or business associate (BAA registry empty for this agent's data scope; no PHI processed). Standard SaaS compliance posture: SOC 2 Type II audit annual; GDPR scope limited to internal employee data unrelated to this agent.
+
 ## Incident timeline
 
 ### Minute 0 (Tuesday, 10:14am): detection signal
@@ -72,7 +74,9 @@ Sarah walks the six questions in order (no skipping):
 
 The platform engineer pauses retrieval from ticket `SUP-29481` and any documents recently created by the external email address. Other corpora (the main support KB, the customer-history vector store) remain available. The agent continues to triage other tickets in the queue.
 
-**Time-to-Activate (TTA):** 7 minutes from incident declaration (alert fire) to M3-Workflow effective. Within the 10-minute drill-measured target.
+**Time-to-Activate (TTA), per the framework definition in [`kill-switches/overview.md`](../kill-switches/overview.md):** approximately 2 minutes from the Incident Commander's order (around minute 10, after completing the Six Triage Questions walk) to mode effective (minute 12). Well within the 10-minute drill-measured target.
+
+**Alert-to-containment latency (a distinct, complementary metric):** 12 minutes from the detection signal fire (minute 0) to M3-Workflow effective (minute 12). This is the human-mediated equivalent of [Playbook 11](../playbooks/11-monitoring-detection.md)'s sub-60-second target, which applies to automated containment pipelines. Both metrics matter: TTA measures the framework's containment-machinery readiness; alert-to-containment measures the full detection-to-response loop including human triage. The framework specifies TTA as the conformance metric because the human-triage interval is organization-specific and not framework-controlled.
 
 ### Minute 15: convene the Materiality call
 
@@ -107,7 +111,7 @@ The Incident Commander presents:
 
 General Counsel walks the four-question materiality walkthrough:
 
-1. **What clocks run?** Northstar is not a US public registrant (SEC 1.05 does not apply). Northstar has no EU customers in this incident window (EU AI Act Article 26 deployer notification does not apply). Northstar is not NY DFS-covered. HIPAA does not apply.
+1. **What clocks run?** Per Northstar's Regulatory posture (see Scenario setup), no statutory clock applies in this incident: not a SEC registrant (Item 1.05 not applicable), no EU operations or customers (Article 26 deployer obligations not applicable), not NY DFS-covered, BAA registry empty for this agent's data scope (HIPAA not applicable). The Incident Commander documents the Regulatory posture review as the basis for the no-clock determination.
 2. **What does the evidence show?** Attempted unauthorized action; no successful action; no external recipient.
 3. **Is the evidence sufficient?** Yes.
 4. **What action follows?** **Outcome A: Not material.** Documented, with supporting evidence in the decision log.
