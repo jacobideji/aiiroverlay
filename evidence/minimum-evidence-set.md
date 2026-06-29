@@ -133,6 +133,7 @@ To claim conformance with the Minimum Evidence Set:
 
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md) (staged containment that preserves evidence)
 - **RAG / Knowledge-Base Forensics** (Playbook 03): [`playbooks/03-rag-knowledge-base-forensics.md`](../playbooks/03-rag-knowledge-base-forensics.md) (Type C deep dive)
+- **Leakage Without a Breach** (Playbook 09): [`playbooks/09-output-leakage.md`](../playbooks/09-output-leakage.md) (Type F deep dive: the output distribution map as the Type F extension that scopes output-leakage incidents)
 - **Evidence Export Script Contract:** [`schemas/evidence-export.spec.md`](../schemas/evidence-export.spec.md) (the runtime contract that operationalizes the 60-minute export requirement; telemetry events feed [Playbook 13 Metric 3](../playbooks/13-six-metrics.md))
 - **Records, Retention, and Proving What Happened** (Playbook 15): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 - **Multi-Stakeholder Logging and Privacy** (Playbook 23): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
