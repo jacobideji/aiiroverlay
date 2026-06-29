@@ -1,10 +1,12 @@
-# AI Bill of Materials (AI-BOM) — Template
+# AI Bill of Materials (AI-BOM) Template.
 #
 # One file per AI agent in production. Stored in source control alongside
 # the agent's deployment manifest. Updated on every change. Exportable as
 # the first artifact in any AI incident.
 #
-# Conforms to: AI IR Overlay™ Minimum Viable Overlay, Control 1 (Inventory)
+# Conforms to: AI IR Overlay™ Minimum Viable Overlay, Control 1 (Inventory).
+# Validates against: schemas/ai-bom.schema.json (JSON Schema 2020-12).
+# Run scripts/validate.py to confirm conformance before merging changes.
 
 agent:
   name: "sales-triage-copilot"
@@ -126,7 +128,7 @@ compliance_tags: []
 
 incidents_history:
   - date: "2026-05-22"
-    summary: "Tabletop drill — prompt-injection-via-email scenario"
+    summary: "Tabletop drill: prompt-injection-via-email scenario"
     mode_activated: "M1"
     duration_minutes: 45
     outcome: "passed"
