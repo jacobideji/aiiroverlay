@@ -201,7 +201,7 @@ The third metric is often the underprepared one. Tool-call ledgers and retrieval
 - **Agent Privilege Matrix:** [`templates/agent-privilege-matrix.csv`](../templates/agent-privilege-matrix.csv) (the tier discipline the Governance domain audits)
 - **Playbook 01: The Agent Is a Privileged Identity** ([`playbooks/01-agent-as-privileged-identity.md`](01-agent-as-privileged-identity.md)) (the response playbook the scorecard's Containment + Evidence domains validate)
 - **Playbook 04: Tool Design Is Containment** ([`playbooks/04-tool-design-is-containment.md`](04-tool-design-is-containment.md)) (the pre-incident discipline the Governance domain measures)
-- **Playbook 13: The Six Metrics** ([`playbooks/13-six-metrics.md`](13-six-metrics.md)) (the metric framework the scorecard's four domains derive from)
+- **Playbook 13: The Six Metrics** ([`playbooks/13-six-metrics.md`](13-six-metrics.md)) (the metric framework the scorecard's Containment, Evidence, and Recovery domains derive from; the Governance domain is scorecard-tracked discipline anchored on the AI-BOM substrate that Metric 1 tracks)
 - **Playbook 18: Post-Incident Hardening** ([`playbooks/18-post-incident-hardening.md`](18-post-incident-hardening.md)) (the quarterly hardening cadence the scorecard governs)
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.4, GOVERN 1.6, GOVERN 3.2, MANAGE 4.2)
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports GV.OV-01, GV.OV-02, GV.RR-02, ID.IM-01, RC.CO-03)
@@ -220,5 +220,6 @@ If no: the scorecard's quarterly cadence exists to close that distance, one gap 
 That's the test. That's the discipline. That's how AI risk stops being an abstract concern and becomes a tangible, evolving strength the board can defend.
 
 ---
+
 *Source: AI IR Overlay newsletter, Issue #24, "Translating AI Agent Risk into Executive Clarity: A Board-Ready Scorecard for Incident Readiness," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
