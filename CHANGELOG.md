@@ -15,6 +15,31 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.16.0] · 2026-06-29 · Playbook 21: Shadow AI (From Shadow IT to Shadow Agents)
+
+### Added
+
+- `playbooks/21-shadow-ai.md`: the Shadow AI discovery playbook. Addresses the inventory-gap precondition the framework's response-side playbooks depend on. Establishes the **60-minute Shadow AI Discovery Snapshot** (identity, credentials, connectors, write targets, retrieval scope, memory configuration captured before any access revocation), the **24-hour Shadow Agent Intake Standard** (owner, runtime, identity, tools, write targets, minimum viable logs, safe mode plan), **identity-level containment** as the fallback discipline when the agent's runtime is not customer-modifiable (vendor-hosted, employee-personal-account, no-code platform without admin access), the **Discover → Classify → Safe Mode → Log → Govern** sequence, and the **migrate / redesign / retire** decision path with the customer-controlled criteria for each. Ten common pitfalls including punitive response that drives the next shadow agent underground, treating shadow AI as employee misconduct rather than control gap, no identity-level containment fallback, and no governed integration path that lets teams legitimately deploy AI under governance.
+
+### Changed
+
+- `CONTENT_MAP.md` Issue 21 status flipped from 🟡 drafted to ✅ `v0.16.0`. The "Why this file exists" gap statement now excludes PB21 from the unshipped list. The "Why 15 playbooks shipped so far" subsection renamed to "Why 16 playbooks shipped so far" with PB21 added to the 2026 production-pattern relevance rationale.
+- `README.md` reading order updated from "Fifteen shipped playbooks" to "Sixteen shipped playbooks". PB21 added to the Operations arc bucket with description naming the 60-minute Discovery Snapshot, the 24-hour Intake Standard, identity-level containment, and the migrate/redesign/retire decision path.
+- `crosswalks/nist-csf-2.md` Status section adds **ID.AM** (asset management) operational discipline coverage by PB21, naming the Shadow AI discovery boundary as the closure of the inventory-gap precondition that prior framework releases depended on but did not specify.
+- `crosswalks/nist-ai-rmf.md` MVO-1 Inventory section adds a gap-note acknowledgment that AI RMF does not specify the discovery boundary itself; PB21 fills the gap with the 24-hour intake standard, identity-level containment discipline, and the migrate/redesign/retire decision path.
+- `crosswalks/owasp-agentic-top-10.md` ASI03 (Identity & Privilege Abuse) and ASI04 (Agentic Supply Chain Compromise) mappings extended to include PB21 as the discovery-boundary playbook that closes the inventory-gap precondition. Coverage status bumped from `through v0.15.0` to `through v0.16.0`.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.15.0` to `0.16.0`.
+
+### Why now
+
+PB21 closes the **inventory-gap precondition** the framework's response-side playbooks have been depending on without specifying. Every prior playbook assumes the agent it addresses is in the AI-BOM, has a documented identity, and has tier-classified tools. None of those assumptions hold for shadow agents. In a typical 2026 enterprise, the AI agents the security team knows about are a fraction of the agents actually running; the rest sit in product teams, marketing operations, finance automation, customer success workflows, and individual employee tooling. The first time the security team finds out about a shadow agent is often during the incident the shadow agent caused.
+
+PB21 addresses this with the discovery boundary, the 24-hour intake standard, and the **migrate / redesign / retire** decision path that converts discovery into governed inventory growth rather than discovery into churn. The playbook's identity-level containment discipline addresses the operational case where the agent's runtime is not customer-modifiable (vendor-hosted, personal-account-hosted, no-code platform without admin access), where traditional tool-level kill-switches do not apply.
+
+The playbook explicitly takes a non-punitive posture toward shadow agent creators: shadow AI emerges from organizational momentum and innovation, not malice. The response framework's job is to make the governed path faster than the shadow path, not to make the shadow path more painful. When the legitimate path takes a day and the shadow path takes a day, the discovery boundary becomes a governance boundary rather than an arms race. PB21 names the **governed integration path** as the fourth hardening boundary explicitly to prevent the discovery boundary from becoming a treadmill.
+
+After v0.16.0, the framework's coverage of the **input → context → output → identity → inventory** preconditions for every other playbook is complete: PB06 (input), PB03 (context), PB09 (output), PB07 (identity), PB21 (inventory). The remaining shipped playbooks (PB01 keystone, PB04 tool design, PB08 multi-agent, PB10 vendor copilots, PB11 monitoring, PB12 insider threat, PB13 metrics, PB14 testing, PB18 hardening, PB20 maturity, PB24 board scorecard) all operate on top of this foundational coverage.
+
 ## [0.15.0] · 2026-06-29 · Playbook 09: Leakage Without a Breach (AI Output Incidents)
 
 ### Added
@@ -425,7 +450,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.15.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.16.0...HEAD
+[0.16.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.16.0
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
 [0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2,
