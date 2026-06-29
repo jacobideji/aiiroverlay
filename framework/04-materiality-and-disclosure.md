@@ -101,11 +101,26 @@ Three outcomes are possible:
 
 ## Where this annex is referenced from
 
-Three live playbooks anchor back to this annex (all shipped in `v0.12.0` alongside this chapter):
+This annex is referenced from multiple live playbooks across three roles.
 
-- **[Playbook 01: The Agent Is a Privileged Identity](../playbooks/01-agent-as-privileged-identity.md):** the First-Hour Actions section names the Materiality and Disclosure call as a trigger condition once Kill-Switch Mode M3 or higher is reached, or when any of the trigger conditions named in this annex applies.
-- **[Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md):** the First-Hour Actions section verifies that the materiality determination is captured in the decision log. The 5-business-day hardening SLA does not run if the materiality record is incomplete.
+**Convening role (First-Hour Actions).** Nine playbooks convene the Materiality and Disclosure call as part of their First-Hour Actions, once Kill-Switch Mode M3 or higher is reached or when any of the canonical convening triggers named in this annex applies:
+
+- **[Playbook 01: The Agent Is a Privileged Identity](../playbooks/01-agent-as-privileged-identity.md):** the keystone response playbook.
+- **[Playbook 05: Executive Decision-Making](../playbooks/05-executive-decision-making.md):** the call is convened around the Executive Decision Packet.
+- **[Playbook 06: Prompt Injection as Workflow Threat](../playbooks/06-prompt-injection-workflow.md):** external recipients and regulated-data triggers are the most common condition-based triggers for workflow-injection incidents.
+- **[Playbook 09: Leakage Without a Breach](../playbooks/09-output-leakage.md):** the output distribution map drives the determination.
+- **[Playbook 10: Vendor Copilots and Mutual Responsibility](../playbooks/10-vendor-copilots.md):** the customer-side convening track does not wait for vendor cooperation.
+- **[Playbook 15: Records, Retention, and Proving What Happened](../playbooks/15-records-retention.md):** PB15 certifies the evidence required to defend the determination.
+- **[Playbook 21: Shadow AI](../playbooks/21-shadow-ai.md):** latent regulatory exposure surfaced through retrospective CIA+T assessment.
+- **[Playbook 22: Model and Policy Drift](../playbooks/22-model-policy-drift.md):** the disclosure window may have started before the drift was observed.
+- **[Playbook 23: AI Logging and Privacy in a Multi-Stakeholder World](../playbooks/23-logging-privacy.md):** privacy-side disclosure obligations run alongside the standard materiality call.
+
+**Gating role.** Two playbooks gate downstream discipline on the materiality determination:
+
+- **[Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md):** verifies that the materiality determination is captured in the decision log. The 5-business-day hardening SLA does not run if the materiality record is incomplete.
 - **[Playbook 24: Board-Ready Scorecard](../playbooks/24-board-ready-scorecard.md):** the Governance domain item C3 confirms that materiality determination is documented for every incident reaching Mode M3 or higher.
+
+**Referential role.** Four additional playbooks reference this annex in supporting context: [Playbook 02 (Evidence Lives in New Places)](../playbooks/02-evidence-lives-in-new-places.md) for the evidence foundation the determination depends on; [Playbook 16 (Training Your Team)](../playbooks/16-training-your-team.md) for the materiality-recognition criteria built into the team's training scope; [Playbook 17 (Communication Techniques)](../playbooks/17-communication-techniques.md) for the time-pressure / accuracy / accountability discipline the disclosure window imposes; and [Playbook 19 (Build vs Buy)](../playbooks/19-build-vs-buy.md) for the procurement-time evaluation of platform support for the materiality determination protocol.
 
 ## What this annex is not
 
