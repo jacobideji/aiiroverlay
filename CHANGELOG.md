@@ -15,6 +15,29 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.14.2] · 2026-06-28 · Release Hygiene + Operational Entry Points
+
+### Added
+
+- `QUICKSTART.md`: 30-day adoption path for one production AI agent. Day 1 AI-BOM, Day 7 Privilege Matrix, Day 14 tabletop M1-M4, Day 21 evidence drill, Day 30 maturity claim. Provides the operational entry point the framework was missing (the "what do I do on Monday" answer for CISOs and security engineers).
+- `examples/incident-walkthrough.md`: synthetic worked example of an end-to-end incident response. Walks the framework's controls across a fictional workflow-injection scenario at a mid-market SaaS organization, from detection at minute 0 through Day 30 scorecard rollup. Demonstrates the framework as a coherent system, not a list of disconnected controls.
+- `RELEASE_CHECKLIST.md`: pre-flight + post-push checklist for the maintainer. Codifies the release hygiene that broke between v0.11.0 and v0.14.1 (missing tags, stale CITATION.cff, workflow never firing).
+- `.github/workflows/validate-templates.yml`: added `workflow_dispatch:` trigger for manual runs from the Actions tab, and added the workflow's own path to the `push` trigger so future workflow edits self-validate.
+
+### Changed
+
+- `README.md` hero blockquote softened from "Establishing the minimum standard for safe and effective operations of AI agents in production" to "A candidate minimum-standard framework for AI agent incident response, intended as a baseline organizations can adopt, adapt, or critique". The absolutist framing was an overclaim from a single-maintainer v0.x project.
+- `README.md` "Standards" badge relabeled to "References" to remove implied third-party endorsement framing (the badge is a self-issued shields.io badge, not a NIST/OWASP-issued mark).
+- `README.md` Reading order section opens with a pointer to `QUICKSTART.md` and `examples/incident-walkthrough.md` so new readers find the operational entry points before the 11-item reading order.
+- `README.md` Related work updated to acknowledge MITRE ATLAS as adjacent prior art not currently mapped, with an invitation for a community-contributed ATLAS crosswalk (previously the bare ATLAS namedrop had no operational connection to the framework).
+- `CONTENT_MAP.md` adds a "Why 14 playbooks shipped so far" subsection naming the three prioritization axes (standards-gap closure, operational arc completeness, 2026 production-pattern relevance). The remaining 9 drafted playbooks are now labeled "no fixed schedule" with an invitation for Issue-based prioritization or PR contribution. Replaces the bare "drafted, not yet released" status that gave no signal about timing.
+- `CONTENT_MAP.md` adds an "Operational entry points" section listing QUICKSTART, the incident walkthrough, and the release checklist.
+- `CITATION.cff` version and preferred-citation version bumped from `0.14.0` to `0.14.1` (the calibration pass also bumped the citation file from `0.11.0` to `0.14.0`, but the v0.14.1 cut on 2026-06-28 left CITATION.cff stale; this release closes the gap).
+
+### Why now
+
+The v0.14.1 fresh hostile-critic review (post-release) surfaced three new defects introduced by the release itself: CITATION.cff went stale again, three CHANGELOG link references pointed to release tags that were never cut (v0.12.0, v0.13.0, v0.14.0), and the validator workflow had never run because its push trigger did not include its own path. The same review surfaced two carryover issues from earlier passes: the README's absolutist "the minimum standard" opening, and the absence of an operational entry point ("framework-as-architecture-document, not framework-as-operational-artifact"). v0.14.2 closes the release-hygiene defects, opens the operational entry point with QUICKSTART and the worked example, and softens the README opening to match the project's actual scale.
+
 ## [0.14.1] · 2026-06-28 · Calibration Pass + Reference Validator
 
 ### Added
@@ -339,7 +362,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.1...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.2...HEAD
+[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
 [0.13.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.13.0

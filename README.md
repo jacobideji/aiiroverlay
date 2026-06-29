@@ -14,9 +14,9 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
-[![Standards: NIST · OWASP](https://img.shields.io/badge/standards-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
+[![References: NIST · OWASP](https://img.shields.io/badge/references-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
 
-> Establishing the minimum standard for safe and effective operations of AI agents in production.
+> A candidate minimum-standard framework for AI agent incident response, intended as a baseline organizations can adopt, adapt, or critique.
 
 ## Why an overlay, not a replacement
 
@@ -85,7 +85,9 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 
 ## Reading order
 
-Read the framework in this order. Items 1 through 6 are the core. Items 7 through 11 are the working artifacts.
+**New here? Start with [QUICKSTART.md](QUICKSTART.md)** for a 30-day adoption path, or [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md) for an end-to-end worked example of an incident response using the framework.
+
+For the full conceptual reading order, items 1 through 6 are the core, items 7 through 11 are the working artifacts.
 
 1. **The Minimum Viable Overlay.** The four controls in detail: [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md)
 2. **The Mental Model.** Four sentences that govern every decision: [`framework/02-mental-model.md`](framework/02-mental-model.md)
@@ -122,7 +124,7 @@ The AI IR Overlay was developed through the *AI IR Overlay* LinkedIn newsletter 
 - OWASP Top 10 for Agentic Applications 2026 (ASI01 through ASI10, OWASP GenAI Security Project)
 - ISO/IEC 42001:2023: *Information technology, Artificial intelligence, Management system* (AIMS)
 - EU AI Act (Regulation 2024/1689), Article 26 obligations for deployers
-- MITRE ATLAS: Adversarial Threat Landscape for Artificial-Intelligence Systems
+- MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems): adjacent prior art on AI threat modeling. Not currently mapped in the crosswalks; an ATLAS crosswalk is welcome as a community contribution
 
 ## Acronyms
 
