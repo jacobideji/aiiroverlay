@@ -1,6 +1,8 @@
-# Evidence Exporter — Reference Implementation
+# Evidence Exporter — Reference Implementation (Contract-Conformant)
 
-A minimal Python CLI implementing the [Evidence Export Script Contract](../../schemas/evidence-export.spec.md) for Types A through F.
+A Python CLI implementing the [Evidence Export Script Contract](../../schemas/evidence-export.spec.md) for Types A through F. Conforms to the contract's MUST requirements: JSONL format for record-stream types (A, B, C, F), JSON for snapshot types (D, E), manifest at `<output_destination>/<incident_id>/manifest.json` with the spec's required fields, per-type artifacts at `<output_destination>/<incident_id>/<type>/`, exit codes 0-5, and `--validate-access` pre-flight mode.
+
+**Note on v0.28.0:** The v0.26.0 initial release of this implementation had material contract deviations (wrong format, wrong field names, wrong manifest schema, missing exit codes). v0.28.0 rewrites the implementation to conform. If you forked the v0.26.0 version, please diff against this version.
 
 ## Run the demo
 
@@ -12,15 +14,36 @@ python3 evidence_exporter.py \
     --window-start 2026-06-29T14:00:00Z \
     --window-end 2026-06-29T15:00:00Z \
     --evidence-types A,B,C,D,E,F \
-    --output-destination ./out/INC-2026-0042 \
+    --output-destination ./out \
     --actor incident_commander_jdoe
+
+# Pre-staged access pre-flight (no evidence captured):
+python3 evidence_exporter.py --validate-access \
+    --incident-id PREFLIGHT-Q2 \
+    --agent-id sales-triage-copilot \
+    --window-start 2026-06-29T14:00:00Z \
+    --window-end 2026-06-29T15:00:00Z \
+    --output-destination ./preflight \
+    --actor preflight_checker
 ```
 
-Expected output:
-- `./out/INC-2026-0042/manifest.json`: the chain-of-custody anchor
-- `./out/INC-2026-0042/type_A_prompt_response.json` (and Type B through F)
-- `./out/INC-2026-0042/telemetry.jsonl`: per-event observability stream
-- Exit code 0 on success, 1 on partial, 2 on failure
+Expected output (capture mode):
+- `./out/INC-2026-0042/manifest.json`: per the spec's required fields (script_version, requested_at, completed_at, overall_status, types[])
+- `./out/INC-2026-0042/A/records.jsonl`: Type A in JSON Lines (one record per line)
+- `./out/INC-2026-0042/B/records.jsonl`: Type B in JSON Lines
+- `./out/INC-2026-0042/C/records.jsonl`: Type C in JSON Lines
+- `./out/INC-2026-0042/D/records.json`: Type D snapshot (single JSON object)
+- `./out/INC-2026-0042/E/records.json`: Type E snapshot (single JSON object)
+- `./out/INC-2026-0042/F/records.jsonl`: Type F in JSON Lines
+- `./out/INC-2026-0042/telemetry.jsonl`: telemetry events (started, type_started, type_completed, completed)
+
+Exit codes per spec:
+- `0` overall_status success (all requested types captured)
+- `1` overall_status partial (some types failed)
+- `2` overall_status failed (all types failed)
+- `3` Invalid input (missing required field, malformed timestamp)
+- `4` Output destination unavailable
+- `5` Authorization failure
 
 ## File layout
 
