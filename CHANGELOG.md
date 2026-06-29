@@ -10,10 +10,36 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 
 ### Planned
 
-- Remaining playbooks: 05, 09, 15, 16, 17, 19, 21, 22, 23
+- Remaining playbooks: 05, 15, 16, 17, 23
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA, and a companion NIST SP 800-61 r3 ↔ AI IR Overlay crosswalk (referenced from `crosswalks/nist-csf-2.md`)
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
+
+## [0.18.0] · 2026-06-29 · Playbook 22: Model and Policy Drift
+
+### Added
+
+- `playbooks/22-model-policy-drift.md`: the change-event forensics playbook. Addresses the precondition that prior framework releases depended on but did not specify: production AI systems are constantly evolving through model upgrades, prompt edits, policy tunes, retriever changes, index rebuilds, tool-schema changes, and memory configuration changes. Each change can produce a behavior shift that looks like a regression, a new attack, or a quality issue depending on which component changed and what the operator expects. Establishes the **Post-Change Configuration Snapshot** as the chain-of-custody anchor (captured before any rollback so the post-incident analysis can prove what configuration produced the observed behavior), the **change-pipeline event ledger** as the time-axis equivalent of the tool-call ledger for the customer's own change pipeline, the **layered rollback sequence** (tool policies → retriever parameters → system prompt → policy and moderation configuration → memory and context window → tool schemas → retrieval index and corpus version → model version pin, with canary replay between each layer), and the **four-boundary post-incident hardening** (change control treated as release management; versioning, snapshotting, and pre-change state preservation; the Drift Canary pack with automatic blocking on canary fail; PB11 monitoring extensions for drift-class signals including tool-invocation-frequency, retrieval-pattern, and refusal-pattern shifts). Thirteen common pitfalls including rolling back before snapshotting, treating drift as an external attack, treating drift as routine production tuning, no pre-change snapshot, no change-pipeline event ledger, no Drift Canary pack, canary that gets routinely overridden, rollback at the wrong layer, vendor model version changes without notification, and no version pinning at the model layer.
+- `kill-switches/overview.md` Mode Variants table adds the **M3-Drift** variant: M3 Tool Tiering scoped to the specific recently-changed component while pre-change state is restored. M3-Drift is used when the change-window analysis has identified a specific component (model version pin, system prompt, policy configuration, retriever parameters, tool schema, memory configuration) as the most likely drift source. The rolled-back component is validated against the Drift Canary pack; if the canary passes, the agent returns to M0 with the rolled-back state in place. M3-Drift is the change-event parallel to M3-RAG (retrieval-layer containment), M3-Workflow (input-channel containment), M3-Output (output-channel containment), M3-Vendor (vendor-managed containment), and M3-Delegation Cap (inter-agent containment).
+
+### Changed
+
+- `CONTENT_MAP.md` Issue 22 status flipped from 🟡 drafted to ✅ `v0.18.0`. The "Why this file exists" gap statement now excludes PB22 from the unshipped list. The "Why 17 playbooks shipped so far" subsection renamed to "Why 18 playbooks shipped so far" with PB22 added to the 2026 production-pattern relevance rationale (closes the change-event precondition that prior playbooks depended on but did not specify; introduces the layered rollback sequence and the M3-Drift kill-switch variant).
+- `README.md` reading order updated from "Seventeen shipped playbooks" to "Eighteen shipped playbooks". PB22 added to the Measurement and Depth arc bucket alongside PB13, PB14, and PB03; together PB14 and PB22 form the **pre-production-testing / continuous-monitoring pair** for drift: PB14 catches drift before deployment with the canary pack; PB22 catches drift after deployment with the layered rollback discipline.
+- `crosswalks/nist-csf-2.md` Status section adds **ID.RA** (risk assessment for change events) and **PR.PS** (platform security configuration management) procurement-time discipline coverage by PB22, naming the change-pipeline event ledger and the Post-Change Configuration Snapshot as the empirical evidence that supports the ID.RA and PR.PS subcategory requirements. DE.CM continuous-monitoring coverage extended to include the drift-detection dimension (tool-invocation-frequency, retrieval-pattern, refusal-pattern signals).
+- `crosswalks/nist-ai-rmf.md` MANAGE 4 section adds a gap-note acknowledgment that AI RMF does not specify the change-event forensics discipline; PB22 fills the gap with the Post-Change and Pre-Change Configuration Snapshots, the change-pipeline event ledger, the Drift Canary pack, and the layered rollback sequence.
+- `crosswalks/owasp-agentic-top-10.md` ASI06 (Memory & Context Poisoning) and ASI10 (Rogue Agents) mappings extended to include PB22 as the change-event vector that produces drift when memory or retrieval changes accumulate, and the dominant 2026 form of rogue-agent emergence (unintentional drift accumulation rather than reward hacking or goal collusion). Coverage status bumped from `through v0.17.0` to `through v0.18.0`.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.17.0` to `0.18.0`.
+
+### Why now
+
+PB22 closes the **change-event precondition** that the framework's response-side playbooks have been depending on without specifying. Every prior playbook assumes the AI system it addresses is operating in a steady state: the AI-BOM entries reflect the current configuration, the canary baselines hold, the detection rules are tuned against the current behavior envelope. None of those assumptions survive routine production AI operation, where models are upgraded by vendors on their own cadence, system prompts are edited weekly, policies and moderation layers are tuned in response to user feedback, retriever parameters shift as the index is rebuilt, and tool schemas change as downstream APIs evolve. The first time the security team finds out about a drift event is often when downstream business owners report that *"the AI changed"* without a corresponding security or operational event.
+
+PB22 addresses this with the change-window forensics discipline (Post-Change Configuration Snapshot, change-pipeline event ledger, Drift Canary pack), the **layered rollback sequence** (tool policies → retriever parameters → system prompt → policy and moderation configuration → memory and context window → tool schemas → retrieval index and corpus version → model version pin, with canary replay between each layer), and the M3-Drift kill-switch variant that scopes containment to the specific recently-changed component while pre-change state is restored. The playbook makes the distinction between **routine production tuning** and **drift event** an empirical question (does the Drift Canary pack pass against the post-change state?) rather than a judgment call.
+
+The playbook also explicitly identifies the misdiagnosis cost as the dominant operational risk: a drift incident investigated as an external attack burns response capacity, may trigger disclosure protocols inappropriately, and ultimately fails to identify the actual cause because the change-window evidence has expired. PB22's two-snapshot pattern (Post-Change and Pre-Change Configuration Snapshots) and the change-pipeline event ledger make change-window evidence load-bearing rather than incidental.
+
+PB22 completes the framework's **pre-production-testing / continuous-monitoring pair** with PB14 (Testing for Agent Failure Modes). PB14 catches drift before deployment with the canary pack; PB22 catches drift after deployment with the layered rollback discipline. Together they convert the framework's continuous-monitoring capability from a written commitment into a change-event-verified reality. After v0.18.0, the framework's coverage of the **precondition chain → response → measurement → continuous monitoring** arc is complete: PB19 selects the platform; PB04 tiers the tools; PB07 disciplines the credentials; PB21 brings shadow agents into inventory; the response-side playbooks execute the incident response; PB13/PB14 measure and test; PB11 detects; PB22 closes the change-event feedback loop that keeps all of the above accurate as the AI system evolves.
 
 ## [0.17.0] · 2026-06-29 · Playbook 19: Build vs Buy for Agent Controls
 
@@ -475,7 +501,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.17.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.18.0...HEAD
+[0.18.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.18.0
 [0.17.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.17.0
 [0.16.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.16.0
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
