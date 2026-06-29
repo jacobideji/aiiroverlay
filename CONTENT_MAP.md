@@ -220,6 +220,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | [`QUICKSTART.md`](QUICKSTART.md) | 30-day adoption path for one production AI agent. Day 1 AI-BOM, Day 7 Privilege Matrix, Day 14 tabletop M1-M4, Day 21 evidence drill, Day 30 Level 2/3 maturity claim. | ✅ `v0.14.2` |
 | [`QUICKSTART-startup.md`](QUICKSTART-startup.md) | The startup-minimum adoption path. 3 playbooks + 2 templates + 1 triage card. 4-week path to Maturity Level 2. Targets security teams of 5 or fewer with limited platform control. | ✅ `v0.26.0` |
 | [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md) | Synthetic worked example of an end-to-end incident response, demonstrating the framework as a coherent system rather than a list of controls. | ✅ `v0.14.2` |
+| [`MATRIX.md`](MATRIX.md) | Self-contained tabular reference for the framework. Nine sections: response-phase matrix (Preparation, Detection, Triage, Containment, Evidence, Recovery, Closure), kill-switch ladder with all M3 variants, Minimum Evidence Set, Six Metrics, MVO controls, maturity levels, 24-playbook quick reference, standards crosswalk summary, quick-read legend. Calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references. | ✅ `v0.33.0` |
 | [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md) | Pre-flight and post-push checklist for the maintainer. Closes the release-hygiene gaps surfaced in v0.14.1. | ✅ `v0.14.2` |
 
 ## Drafted but unshipped: conversion notes
