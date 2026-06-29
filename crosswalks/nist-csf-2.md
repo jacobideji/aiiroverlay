@@ -122,8 +122,7 @@ A future release will formalize this layered relationship in a companion SP 800-
 
 ## Status
 
-- **Mapping completeness:** all six CSF 2.0 functions (GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER) have substantive playbook coverage. PR.AA-05 (access policies on AI agent identities) is covered by [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md). DE.CM (continuous monitoring) is covered by [Playbook 11: Monitoring That Truly Detects Agent Incidents](../playbooks/11-monitoring-detection.md).
-- **Remaining gap:** PR.DS-01 (data-at-rest protection for agent memory) needs dedicated playbook treatment. Planned for a future release.
+- **Mapping completeness:** all six CSF 2.0 functions (GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER) have substantive playbook coverage. PR.AA-05 (access policies on AI agent identities) is covered by [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md). PR.DS-01 (data-at-rest protection for agent memory and retrieval corpora) is covered by [Playbook 03: RAG / Knowledge-Base Forensics](../playbooks/03-rag-knowledge-base-forensics.md) (corpus and vector-store integrity discipline) and [Playbook 06: Rethinking Prompt Injection as a Workflow Threat](../playbooks/06-prompt-injection-workflow.md) (content-trust labeling at the ingestion boundary). DE.CM (continuous monitoring) is covered by [Playbook 11: Monitoring That Truly Detects Agent Incidents](../playbooks/11-monitoring-detection.md).
 - **Validation:** unreviewed by NIST. This is the maintainer's interpretation, offered in good faith.
 
 ## Source
@@ -133,7 +132,7 @@ A future release will formalize this layered relationship in a companion SP 800-
 
 ---
 
-*Last revised: 2026-06-26 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-06-28 · Maintainer interpretation, not a NIST publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
