@@ -15,6 +15,32 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.33.0] · 2026-06-29 · Flow diagrams introduced (docs/diagrams.md)
+
+### Added
+
+- `docs/diagrams.md` (NEW, 12.3 KB) introduces the framework's canonical visual references: three Mermaid flow diagrams that render natively on GitHub. (1) The **Component Map** shows what lives in the repo and how the seven layers stack (Onramps, Foundation, Operational Disciplines, the 24 Playbooks across six categories, Standards Crosswalks, Machine-Readable Contracts, Project Governance). (2) The **Incident Lifecycle Flow** shows how the framework runs end-to-end across the five NIST SP 800-61 r3 phases, with every node pointing to the specific repo artifact that drives that step and decision diamonds at the two convening points (anomaly signal at Phase 1 to Phase 2 transition; materiality threshold at Phase 3 to Phase 4 transition). (3) The **Canonical Playbook Internal Flow** shows the nine-section skeleton every playbook follows (Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related, The Question to Carry Forward) with the time-budget annotations (TTSM ≤ 10 min, TTE ≤ 60 min, first-update ≤ 30 min) as enforced through PB13, PB14, and PB16. The file uses HTML comment header decorations matching the CONTRIBUTORS.md convention and ships with a source footer citing Jacob Ideji's LinkedIn profile.
+
+### Changed
+
+- `README.md` reading order extended from 14 items to 15 items. New item 15 (**Flow diagrams**) points to `docs/diagrams.md` and frames the diagrams as orientation aids for board briefings and onboarding, not a substitute for the underlying playbooks. The working-artifacts range in the introduction prose updates from "items 9 through 14" to "items 9 through 15."
+- `CONTENT_MAP.md` Operational entry points table adds a row for `docs/diagrams.md` between the worked example and the RELEASE_CHECKLIST.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.32.0` to `0.33.0`.
+
+### Why now
+
+The framework reached content-gate completeness at v0.24.0 (all 24 playbooks shipped) and reached repo-meta polish completeness at v0.32.0 (CONTRIBUTORS.md introduced, reading order restructured). What remained was a comprehension gap: a new reader, board prospect, or onboarding engineer arriving at the repo had no compact visual reference for how the 24 playbooks, 4 foundation documents, 3 crosswalks, 5 schemas, 2 reference implementations, 6+ governance documents, 2 QUICKSTARTs, 1 worked example, and 4 operational disciplines compose into a coherent system. The reading order in README walks through it in prose, and the worked example demonstrates it in action, but neither offered a static "what is the shape of this thing" view that a reader could absorb in 60 seconds before diving deeper.
+
+v0.33.0 closes that comprehension gap with three diagrams calibrated to three distinct questions:
+
+- The **Component Map** answers "what is in the box?": the seven-layer architecture from Onramps through Governance.
+- The **Incident Lifecycle Flow** answers "how does it work end-to-end?": the five NIST SP 800-61 r3 phases with every node pointing to the specific repo artifact that drives that step, and the two convening decision diamonds (anomaly signal, materiality threshold).
+- The **Canonical Playbook Internal Flow** answers "what is inside a single playbook?": the nine-section skeleton plus the time-budget SLAs that PB13/PB14/PB16 enforce.
+
+These are not aspirational diagrams; every node is a real artifact in the repo at v0.33.0, every edge is a documented relationship, and every label uses the framework's canonical terminology. They are intended for steering committee prospects, board members, conference audiences, and onboarding engineers who need a compact visual reference before reading the 24 playbooks in depth. The diagrams render natively on GitHub via Mermaid and do not require any external tooling, slide deck, or rendering pipeline.
+
+After v0.33.0, the framework's content, calibration, polish, repository-meta discipline, and visual-orientation discipline are all at their highest-ever state. The remaining v1.0.0 blockers continue to be governance maturation (Steering Committee announcement, external contributors, trademark registration, production case studies) rather than content or comprehension gaps.
+
 ## [0.32.0] · 2026-06-29 · P2 polish sweep (README reading-order completeness, CONTRIBUTORS.md initial file)
 
 ### Added
