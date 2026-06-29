@@ -109,6 +109,7 @@ The downstream evidence. What the agent did in target systems, attributed to the
 To claim conformance with the Minimum Evidence Set:
 
 - [ ] All six types (A–F) can be **exported within 60 minutes** of incident declaration
+- [ ] The export procedure conforms to the [Evidence Export Script Contract](../schemas/evidence-export.spec.md): pre-staged access, parallel-export discipline, manifest and integrity hash, chain-of-custody attestation
 - [ ] Owners and access paths for each type are pre-documented
 - [ ] Pre-approved emergency access exists (no waiting on a ticket)
 - [ ] Logs A and B are retained for a minimum window matching your IR plan (typically 90 days)
@@ -132,6 +133,7 @@ To claim conformance with the Minimum Evidence Set:
 
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md) (staged containment that preserves evidence)
 - **RAG / Knowledge-Base Forensics** (Playbook 03): [`playbooks/03-rag-knowledge-base-forensics.md`](../playbooks/03-rag-knowledge-base-forensics.md) (Type C deep dive)
+- **Evidence Export Script Contract:** [`schemas/evidence-export.spec.md`](../schemas/evidence-export.spec.md) (the runtime contract that operationalizes the 60-minute export requirement; telemetry events feed [Playbook 13 Metric 3](../playbooks/13-six-metrics.md))
 - **Records, Retention, and Proving What Happened** (Playbook 15): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 - **Multi-Stakeholder Logging and Privacy** (Playbook 23): forthcoming. See [CHANGELOG.md](../CHANGELOG.md) and [CONTENT_MAP.md](../CONTENT_MAP.md) for status.
 
