@@ -84,7 +84,7 @@ This section is where Playbook 24 differs from the other playbooks. For the scor
 | **C1** | Are agent permissions tiered and minimally scoped? | T0/T1/T2 per [Privilege Matrix](../templates/agent-privilege-matrix.csv); CI rejects T2 tools without `approval_required: yes` |
 | **C2** | Can write targets be limited dynamically during an incident? | M3 Tool Tiering operational; CSV-filterable in seconds, not minutes |
 | **C3** | Is materiality determination documented for every incident reaching Kill-Switch Mode M3 or higher? | [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) convened within 1 hour of M3 activation; CISO + General Counsel + Incident Commander documented in decision log; determination outcome (material / not material / undetermined) recorded with supporting evidence |
-| **C4** | Are risk-accepted non-conformant deployments documented and time-bound? | For every agent that does not satisfy framework conformance criteria (e.g., vendor copilots deployed without contracted Boundary 1 SLAs per [Playbook 10](10-vendor-copilots.md), or any deployment with active [Playbook 18](18-post-incident-hardening.md) hardening items pending closure): CISO-signed risk acceptance, recorded in the audit trail; named closure plan with target closure date no later than 90 days or the next vendor renewal cycle (whichever sooner); reviewed quarterly |
+| **C4** | Are risk-accepted non-conformant deployments documented and time-bound? | For every agent that does not satisfy framework conformance criteria (e.g., vendor copilots deployed without contracted Boundary 1 SLAs per [Playbook 10](10-vendor-copilots.md), or [Playbook 18](18-post-incident-hardening.md) hardening items that have exceeded their 5-business-day SLA without explicit risk acceptance and re-baseline): CISO-signed risk acceptance, recorded in the audit trail; named closure plan with target closure date no later than 90 days or the next vendor renewal cycle (whichever sooner); reviewed quarterly. In-flight hardening items still inside their 5-business-day SLA are governed by Playbook 18 itself and do not trigger C4 |
 
 ### The Quarterly Cadence (Hardening as Governance)
 
@@ -220,6 +220,5 @@ If no: the scorecard's quarterly cadence exists to close that distance, one gap 
 That's the test. That's the discipline. That's how AI risk stops being an abstract concern and becomes a tangible, evolving strength the board can defend.
 
 ---
-
 *Source: AI IR Overlay newsletter, Issue #24, "Translating AI Agent Risk into Executive Clarity: A Board-Ready Scorecard for Incident Readiness," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
