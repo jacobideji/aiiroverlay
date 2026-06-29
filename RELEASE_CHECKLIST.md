@@ -23,6 +23,7 @@ This checklist exists because release hygiene has historically been the framewor
 - [ ] `CONTENT_MAP.md` Status column updated for any artifact whose status changed in this release.
 - [ ] If any new file is added under `templates/`, `schemas/`, or `scripts/validate.py`: the change touches a path that triggers `.github/workflows/validate-templates.yml`. This forces the workflow to fire on the release commit so the Actions tab shows a green run.
 - [ ] If the release is hygiene-only (no template/schema/script changes): manually dispatch the validate-templates workflow via the Actions tab so this release has a green CI run.
+- [ ] **Cross-reference existence check.** For every new cross-reference introduced in this release (e.g., "tracked as item C4 in PB24", "see Boundary 1 of PB10", "per `schemas/X.schema.json`"), confirm the referenced item actually exists in the target file at the moment of the release commit. This prevents the recurring failure mode (observed in Fixes 64, 65, 66) where one file points at vaporware in another. The hostile-critic pattern: if you cite item C4 of PB24, open PB24, search for C4. If you cite a Boundary number, open the playbook, find the Boundary. If you cite a schema field, open the schema. If the referenced thing does not exist, either add it in this release or rephrase the reference.
 
 ## Post-push (must complete after `git push`)
 
