@@ -7,9 +7,7 @@
 
 > **Mappings to GOVERN/MAP/MEASURE/MANAGE functions.**
 >
-> *This file is one self-contained piece of the AI IR Overlay™ framework.
-> Cross-references to other pieces point to other packages in the same set,
-> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
 
 ---
 
@@ -88,5 +86,6 @@ When responding to an auditor, regulator, or board question framed in AI RMF ter
 ---
 
 *Last revised: 2026-06-28 · Maintainer interpretation, not a NIST publication.*
+
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
