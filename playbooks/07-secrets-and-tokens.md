@@ -174,7 +174,7 @@ These are the highest-frequency failure modes specific to credential discipline 
 - **Playbook 20: Maturity Roadmap (Operating View)** ([`playbooks/20-maturity-roadmap.md`](20-maturity-roadmap.md)). The cadence that holds credential discipline honest over time.
 - **Playbook 11: Monitoring That Truly Detects Agent Incidents** ([`playbooks/11-monitoring-detection.md`](11-monitoring-detection.md)). The detection rules that consume this playbook's credential-event log. The three signal families (action, influence, capability) include the capability-based family that directly fires on credential lifecycle events.
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.6, MAP 4.1, MANAGE 1.3).
-- **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports PR.AA-01, PR.AA-05, PR.DS-01, ID.AM-04).
+- **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports PR.AA-01, PR.AA-05, ID.AM-04).
 - **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the direct operational response to ASI03 Identity & Privilege Abuse and ASI04 Agentic Supply Chain Compromise).
 
 ## The Question to Carry Forward
