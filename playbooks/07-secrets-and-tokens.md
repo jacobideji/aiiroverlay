@@ -7,9 +7,7 @@
 
 > **The credential-discipline playbook. Rotate scopes, not just keys. Capture before rotation. Build the credential lifecycle the framework already assumes.**
 >
-> *This file is one self-contained piece of the AI IR Overlay™ framework.
-> Cross-references to other pieces point to other packages in the same set,
-> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
 
 ---
 

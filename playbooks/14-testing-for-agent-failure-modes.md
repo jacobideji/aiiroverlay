@@ -7,9 +7,7 @@
 
 > **The pre-production playbook. If your Kill-Switch modes haven't been tested in the last 90 days, you don't have them.**
 >
-> *This file is one self-contained piece of the AI IR Overlay™ framework.
-> Cross-references to other pieces point to other packages in the same set,
-> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
 
 ---
 
@@ -222,5 +220,6 @@ Distributed as separate packages:
 If the regulator asked tomorrow *"when did your team last activate M3 on your highest-risk production agent, who approved it, and how long did it take?"*, do you have a date, a name, and a number? If any of the three is missing, this playbook is your work plan. Schedule the drill. Run it this quarter. Then schedule the next one before you leave the room.
 
 ---
+
 *Source: AI IR Overlay newsletter, Issue #14, "Testing for Agent Failure Modes," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>

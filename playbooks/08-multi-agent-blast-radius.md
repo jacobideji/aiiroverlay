@@ -7,9 +7,7 @@
 
 > **The multi-agent playbook. Blast radius multiplies non-linearly. One compromised agent's output becomes every downstream agent's input. Traceability is the discipline that makes the response possible.**
 >
-> *This file is one self-contained piece of the AI IR Overlay™ framework.
-> Cross-references to other pieces point to other packages in the same set,
-> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
 
 ---
 
@@ -215,5 +213,6 @@ If the answer is "the downstream agents would already be acting," PB08 is the wo
 That is how multi-agent containment moves from documented to demonstrated. One agent pair, one structured contract, one validated cascade-isolation gate at a time, on a cadence that holds.
 
 ---
+
 *Source: AI IR Overlay newsletter, Issue #8, "Multi-Agent Systems Multiply Blast Radius," by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>

@@ -7,9 +7,7 @@
 
 > **The insider threat playbook for the AI agent era. The credentials are legitimate. The behavior looks normal. The misuse runs at 100× the scale. Capability is not intent, and the response framework must separate them.**
 >
-> *This file is one self-contained piece of the AI IR Overlay™ framework.
-> Cross-references to other pieces point to other packages in the same set,
-> which you can obtain at [jacobideji.com](https://jacobideji.com).*
+> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
 
 ---
 
