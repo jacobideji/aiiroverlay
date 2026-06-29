@@ -81,6 +81,13 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | Kill-Switch API Contract | [`schemas/kill-switch-api.md`](schemas/kill-switch-api.md) | ✅ `v0.14.0` |
 | Evidence Export Script Contract | [`schemas/evidence-export.spec.md`](schemas/evidence-export.spec.md) | ✅ `v0.14.0` |
 
+## Reference implementations
+
+| Artifact | Repo home | Status |
+|---|---|---|
+| AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1` |
+| CI workflow (GitHub Actions) running the validator on every PR touching `templates/`, `schemas/`, or `scripts/validate.py` | [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) | ✅ `v0.14.1` |
+
 ## Drafted but unshipped: conversion notes
 
 Each playbook marked 🟡 drafted has source content in the maintainer's working folder (`AI IR Overlay-Linkedin-Post_completed/`) and in the package drafts under `aiiroverlay-packages/`. Promoting a drafted playbook to a shipped release means expanding the draft from its newsletter footprint (about 7 KB) to a full operational playbook (around 15 to 20 KB). The expansion follows the established skeleton:
