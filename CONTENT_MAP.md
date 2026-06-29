@@ -142,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.31.0 P2-NEW sweep: Three Realities in PB01 First-Hour, maturity_target default docs, PB08 multi-agent depth) -->
+<!-- Last revised: 2026-06-29 (v0.32.0 P2 polish sweep: README reading-order completeness for framework/04 and incident-walkthrough; CONTRIBUTORS.md initial file) -->

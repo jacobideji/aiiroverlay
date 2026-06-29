@@ -15,6 +15,33 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.32.0] · 2026-06-29 · P2 polish sweep (README reading-order completeness, CONTRIBUTORS.md initial file)
+
+### Added
+
+- `CONTRIBUTORS.md` (NEW, 3.6 KB) introduces the contributors recognition file at v0.x. Lists Jacob Ideji as Founding Maintainer with credit to the 24-playbook content arc and the framework's foundation documents. Lists External Contributors as "None yet" with explicit framing that the framework is at the beginning of its community-contribution arc. Names five highest-velocity contribution paths (new playbooks, crosswalk extensions, reference implementations, translations, real-incident anonymized case studies). Documents the recognition discipline ("lightweight and inclusive; every accepted PR earns a place"; no tiers between "core" and "occasional" contributors). Acknowledges intellectual sources (NIST, OWASP GenAI Security Project, ISO/IEC JTC 1/SC 42, EU AI Act, AI security practitioner community) without claiming endorsement. Closes the v0.27.0 re-audit P2.12 finding that the framework had no CONTRIBUTORS.md file despite the GOVERNANCE document referencing one.
+
+### Changed
+
+- `README.md` reading order restructured from 12 items to 14 items. Two new items added to the core (items 1-8):
+  - **Item 4: Materiality and Disclosure**: `framework/04-materiality-and-disclosure.md` is now an explicit reading-order entry rather than buried as a triage sub-reference. Names the canonical convening trigger (mode-based: M3+; condition-based: customer data, external recipients, financial actions, regulated data, customer-facing trust impact, public attention) so a fresh reader sees the materiality discipline as a framework foundation document on first read, not as an annex discovered via playbook footnotes.
+  - **Item 8: End-to-end worked example**: `examples/incident-walkthrough.md` is now an explicit reading-order entry. Previously mentioned only in the "New here?" preamble and in QUICKSTART link; the worked example is the framework's strongest single adoption artifact (the synthetic but specific incident response that demonstrates inventory → safe modes → evidence → materiality call → controlled re-enable → post-incident hardening as a coherent system). The new positioning surfaces it after the conceptual core (items 1-7) and before the working artifacts (items 9-14).
+- README.md reading-order numbering updated from 7-12 to 9-14 to accommodate the two insertions (Materiality at item 4, worked example at item 8). The conceptual core grows from 6 items to 8; the working artifacts grow from 5 items to 6.
+
+- `CITATION.cff` version + preferred-citation.version bumped from `0.31.0` to `0.32.0`.
+
+### Why now
+
+This release closes the final 3 P2 polish items from the v0.31.0 holistic Steering-Committee-readiness critique:
+
+**P2.10 (framework/04 orphaned from README reading order):** the v0.25.0 P0.2 calibration established framework/04 as the canonical source for the Materiality and Disclosure convening trigger. Six playbooks (PB01, PB06, PB09, PB10, PB21, PB22) reference it canonically per v0.29.0. But the README's reading order had not been updated to reflect framework/04's elevated role; it was listed only as a triage sub-reference (item 4's link to the Six Triage Questions). v0.32.0 promotes framework/04 to a top-level reading-order item (item 4), making it discoverable as a framework foundation document on first read rather than as a cross-reference discovered through playbook navigation.
+
+**P2.11 (examples/incident-walkthrough.md is buried):** the worked example is the framework's strongest single adoption artifact (the synthetic incident response showing the framework operating as a coherent system end-to-end). Prior to v0.32.0, it was mentioned only in the "New here?" preamble and in QUICKSTART link references. A reader who proceeded sequentially through the README's reading order would not encounter the walkthrough until they hit it incidentally through QUICKSTART. v0.32.0 elevates it to item 8 of the reading order, between the conceptual core (items 1-7) and the working artifacts (items 9-14). This positioning is intentional: a reader who has internalized the MVO, Mental Model, Maturity Roadmap, Materiality framework, Triage Questions, Kill-Switch Modes, and Minimum Evidence Set is exactly the audience the walkthrough is calibrated for. The walkthrough lands as the synthesis that connects the conceptual core to the operational artifacts.
+
+**P2.12 (No CONTRIBUTORS.md file):** the GOVERNANCE.md file referenced CONTRIBUTORS.md as a future artifact ("once external contributors exist") but the file did not exist. The chicken-and-egg problem: a prospect evaluating the framework's contribution readiness has no signal that the contribution discipline is operational because the recognition artifact is absent. v0.32.0 ships an initial CONTRIBUTORS.md that names Jacob Ideji as Founding Maintainer, lists External Contributors as "None yet" with explicit framing, documents the five highest-velocity contribution paths, and establishes the recognition discipline ("lightweight and inclusive; every accepted PR earns a place"). The file itself signals readiness for contributions even at zero-external-contributor state.
+
+After v0.32.0, **all P0, P1, and P2 items from both the v0.24.0 original critique and the v0.27.0/v0.31.0 holistic re-audits are closed**. The framework's content, calibration, polish, and repository-meta discipline are at their highest-ever state. The remaining v1.0.0 blockers are governance maturation: production case studies, external contributions, trademark registration, and the Steering Committee announcement itself (the v1.0.0-rc1 cut). None of these are content gaps; all are lifecycle-stage gaps that no further calibration release can close.
+
 ## [0.31.0] · 2026-06-29 · P2-NEW sweep (Three Realities in PB01 First-Hour, maturity_target default docs, PB08 multi-agent depth)
 
 ### Changed
@@ -842,7 +869,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.31.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.32.0...HEAD
+[0.32.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.32.0
 [0.31.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.31.0
 [0.30.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.30.0
 [0.29.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.29.0
