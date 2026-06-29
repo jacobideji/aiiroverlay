@@ -15,6 +15,33 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.33.0] · 2026-06-29 · Framework Matrix introduced (MATRIX.md)
+
+### Added
+
+- `MATRIX.md` (NEW, 18.1 KB) introduces the framework's self-contained tabular reference. Nine sections: (1) the primary matrix view (response phases Preparation, Detection, Triage, Containment, Evidence, Recovery, Closure × operational controls, every cell pointing to the repo artifact that operationalizes the step); (2) the Kill-Switch Ladder with M0 through M5 and all six M3 variants (M3-RAG, M3-Workflow, M3-Output, M3-Vendor, M3-Delegation Cap, M3-Drift) plus the M4 corpus-scoped and user-suspended variants from PB12; (3) the Minimum Evidence Set A through F with deep-dive pointers and the evidence-discipline concepts table (Two-Tier Retention, Reconstructability Test, Three-Layer Logging Model, Forensically Useful standard, redaction-and-tokenization, Multi-Stakeholder Governance Matrix, output distribution map); (4) the Six Metrics with NIST AI RMF mappings (Inventory Currency → GOVERN 1.6, TTSM → MANAGE 2.3, TTE → MEASURE 2.7, Drill Currency → MANAGE 4.2, Hardening SLA → MANAGE 4.2, Re-Enable Success Rate → MANAGE 4.3); (5) the four MVO controls with their NIST CSF 2.0 and SP 800-61 r3 base disciplines; (6) the four maturity levels (Aware, Containable, Provable, Resilient) with required controls per level; (7) the 24-playbook quick reference with category assignment and key concept introduced per playbook; (8) the standards crosswalk summary mapping AI IR Overlay artifacts to NIST AI RMF 1.0, NIST CSF 2.0 + SP 800-61 r3, OWASP Top 10 Agentic 2026, plus the three planned crosswalks (ISO/IEC 27035, ISO/IEC 42001:2023, EU AI Act); (9) the quick-read legend defining MVO, M0-M5, A-F, TTSM, TTE, CIA+T. The matrix is calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references. Every cell traces to a specific file in the repo; every named primitive resolves in its source playbook or framework document; zero invented terminology.
+
+### Changed
+
+- `README.md` reading order extended from 14 items to 15 items, adding item 15 (Framework Matrix) pointing to `MATRIX.md`. Working-artifacts range updated from "items 9 through 14" to "items 9 through 15." A new paragraph in the Reading Order intro surfaces `MATRIX.md` as the tabular orientation aid alongside `CONTENT_MAP.md`.
+- `CONTENT_MAP.md` Operational entry points table adds a row for `MATRIX.md` between the worked example and `RELEASE_CHECKLIST.md`.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.32.0` to `0.33.0`.
+
+### Why now
+
+The framework reached content-gate completeness at v0.24.0 (all 24 playbooks shipped), repo-meta polish completeness at v0.32.0 (CONTRIBUTORS.md introduced, reading order restructured, framework/04 reference list expanded, README current-release line added, crosswalk attribution gaps closed, acronyms section expanded to 25 entries). What remained was an orientation gap: a board prospect, an onboarding engineer, or an auditor arriving at the repo had no single document that surfaced the entire framework in tabular form. The README walks the conceptual order across 15 reading-order items; CONTENT_MAP narrates how the pieces fit; the per-playbook prose covers depth. None of these compress the framework to the matrix view that a reader can absorb in 90 seconds before deciding where to dive in.
+
+v0.33.0 closes that orientation gap with a single self-contained matrix document calibrated to four audiences:
+
+- **Board prospects** can read sections 4 (Six Metrics), 6 (Maturity Levels), and 7 (Playbook Quick Reference) in under five minutes and understand the framework's measurable shape.
+- **Onboarding engineers** can read section 1 (the matrix) and use sections 2 (Kill-Switch Ladder) and 3 (Minimum Evidence Set) as immediate operational reference.
+- **Auditors** can read section 8 (Standards Crosswalk Summary) and trace every claim to the corresponding crosswalk file plus the source playbook.
+- **One-page reference seekers** can print the matrix on one page and the eight supporting tables on subsequent pages.
+
+The matrix is structurally distinct from MITRE ATT&CK Insights pages: ATT&CK Insights are narrative summaries with selected technique highlights, while this is the matrix view itself with full enumeration. The structural analogue is the ATT&CK matrix poster, not the Insights page.
+
+After v0.33.0, the framework's content, calibration, polish, repository-meta discipline, attribution discipline, acronym discipline, and tabular-orientation discipline are all at their highest-ever state. The remaining v1.0.0 blockers continue to be governance maturation (Steering Committee announcement, external contributors, trademark registration, production case studies) rather than content or orientation gaps.
+
 ## [0.32.0] · 2026-06-29 · P2 polish sweep (README reading-order completeness, CONTRIBUTORS.md initial file)
 
 ### Added
