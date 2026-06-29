@@ -5,7 +5,7 @@
 <!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
 <!-- ────────────────────────────────────────────────────────────────── -->
 
-> **Four controls. Each small. Together: the minimum standard.**
+> **Four controls. Each small. Together: a practical baseline.**
 >
 > *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
 
@@ -13,7 +13,7 @@
 
 # The Minimum Viable Overlay (MVO): Four Essential Controls
 
-The MVO is the smallest set of controls that converts an AI deployment from *unreadiness* to *defensibility*. Adopt all four to claim minimum-standard conformance.
+The MVO is the smallest set of controls that converts an AI deployment from *unreadiness* to *defensibility*. Adopt all four to claim Minimum Viable Overlay (MVO) conformance.
 
 These four controls are referenced throughout the framework as **MVO-1 (Inventory)**, **MVO-2 (Safe Modes)**, **MVO-3 (Minimum Evidence Set)**, and **MVO-4 (Controlled Re-Enable)**.
 
@@ -117,9 +117,9 @@ Live-incident timing is tracked separately under [Playbook 13: The Six Metrics](
 
 ---
 
-## Conformance: Claiming Minimum Standard
+## MVO Conformance Criteria
 
-An AI deployment conforms to the AI IR Overlay Minimum Standard when:
+An AI deployment satisfies the AI IR Overlay Minimum Viable Overlay conformance criteria when:
 
 - [ ] **Inventory** exists, is current within 7 days, and is exportable in under 5 minutes
 - [ ] **Safe Modes** M1, M2, M3, M4, and M5 are implemented and tabletop-tested in the last 90 days
