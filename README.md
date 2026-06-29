@@ -16,7 +16,7 @@
 [![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
 [![References: NIST · OWASP](https://img.shields.io/badge/references-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
 
-> A candidate minimum-standard framework for AI agent incident response, intended as a baseline organizations can adopt, adapt, or critique.
+> A practical incident-response baseline for AI agents in production. Adapt and critique freely.
 
 ## Why an overlay, not a replacement
 
