@@ -109,7 +109,7 @@ Workflow-injection recovery follows [MVO-4 Controlled Re-Enable](../framework/01
 3. **Re-enable the agent in [Mode M1 Read-Only](../kill-switches/overview.md).** Reads continue; writes remain blocked.
 4. **Validate retrieval policy and content trust labeling.** Confirm the agent's retrieval layer correctly labels content from the affected channel as untrusted. Confirm the assembled prompt visibly distinguishes trusted system content from untrusted retrieved content.
 5. **Replay the injection scenario in a sandboxed harness** (*workflow-specific gate*). Run the original source artifact (the quarantined attack) through the recovered agent with the new architectural guardrail in place. The agent should produce a draft or a proposed action, not an executed tool call. If the agent executes the tool call, the architectural fix is insufficient. Return to step 2.
-6. **Re-enable Tier-1 tools incrementally** with caps at half pre-incident value for the first 24 to 72 hours.
+6. **Re-enable Tier-1 tools incrementally** with caps at half pre-incident value for the first 24–72 hours.
 7. **Re-enable Tier-2 tools one at a time** with [Approvals (M2)](../kill-switches/overview.md). Each Tier-2 re-enable is a separate decision with a separate approver and a separate monitoring window.
 8. **Return to M0 Observe** only after the agent has carried production traffic for 72 hours without anomaly. Lower the [Playbook 11](11-monitoring-detection.md) retrieval-anomaly threshold to mean + 2σ for the first 14 days post-incident.
 
