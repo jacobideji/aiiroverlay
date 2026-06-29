@@ -119,6 +119,19 @@ Each of the four primary stakeholder groups has a defensible interest in the log
 
 The matrix's discipline: a logging policy proposal that any one of the four stakeholders cannot defend is not yet a policy. The design loop continues until all four stakeholder acceptance criteria are simultaneously satisfiable.
 
+### Logging-incident CIA+T mapping
+
+When a logging-related incident is detected (redaction pipeline failure, access-control failure, overcollection finding, data-subject right violation), the [Playbook 05 (Executive Decision-Making)](05-executive-decision-making.md) CIA+T framing applies to the logging-incident itself, not just to the AI incident the logs were capturing. The mapping:
+
+| Dimension | Logging-incident question | Stakeholder-class implication |
+|---|---|---|
+| **Confidentiality** | What sensitive content in the logs was exposed to unauthorized actors, and what data class did it include? | Privacy + Legal coordinate on data-subject notification per regulatory regime; Security applies access-restriction tightening from the Privacy-scope containment menu |
+| **Integrity** | Was the evidence chain compromised? Did the failure produce false positives or false negatives in the customer's audit trail? | Legal assesses the chain-of-custody admissibility impact; Engineering's redaction pipeline failure is a configuration finding that flows to [PB22](22-model-policy-drift.md) drift-incident review |
+| **Availability** | Did the logging pipeline failure produce evidence gaps that compromise the Reconstructability Test at 30, 60, or 90 days? | Security flags the post-incident retention window; Engineering's pipeline-failure root-cause review feeds [PB18](18-post-incident-hardening.md) hardening |
+| **Trust** | Did the logging failure surface a privacy-disclosure obligation to data subjects, regulators, or customers? Did the failure produce externally-visible impact? | All four stakeholders coordinate; Privacy leads the disclosure determination per GDPR Article 33 / state breach-notification laws; Legal authorizes the customer-facing communication per the [Playbook 17](17-communication-techniques.md) Stakeholder Communication Matrix |
+
+The Trust dimension is particularly important for logging incidents because privacy-incidents commonly have separate disclosure obligations from the underlying AI incident (GDPR 72-hour, state breach-notification, HIPAA 60-day) that run alongside the framework's standard materiality call per [framework/04](../framework/04-materiality-and-disclosure.md). The CIA+T assessment in the Executive Decision Packet is the artifact that distinguishes the two disclosure tracks: the AI-incident materiality and the privacy-incident materiality are evaluated separately and may both trigger.
+
 ### The Three-Layer Logging Model
 
 The Three-Layer Logging Model is the technical specification that operationalizes the Multi-Stakeholder Governance Matrix. Each layer has a scope, a retention horizon, and an activation discipline.

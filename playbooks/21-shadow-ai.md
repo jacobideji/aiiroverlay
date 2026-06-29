@@ -107,6 +107,19 @@ In addition to A through F:
 
 **Operational requirement:** the full Shadow AI Discovery Snapshot must be capturable within **60 minutes** of discovery. The downstream Type F audit logs are typically capturable within the same window; the agent's own logs may not be. Where the agent's logs are not capturable in 60 minutes, document the logging gap as a finding for the post-incident hardening.
 
+### CIA+T Impact Assessment for Shadow AI discoveries
+
+Shadow AI discovery is unusual among incident classes because **the discovery itself is not yet an incident**: the shadow agent may be operating cleanly with poor governance. The CIA+T impact framing from [Playbook 05 (Executive Decision-Making)](05-executive-decision-making.md) is applied retrospectively to the shadow agent's operating history, not just to a current event. The assessment determines whether the discovery is a governance finding (no CIA+T impact identified) or an incident (CIA+T impact identified, possibly latent for weeks or months).
+
+| Dimension | Shadow-AI question | What to capture |
+|---|---|---|
+| **Confidentiality** | What regulated or sensitive data has the shadow agent accessed over its operating life? Has the agent's retrieval scope included corpora the security team has not authorized? | The Discovery Snapshot's retrieval scope; cross-reference with the customer's data-classification inventory; identify per-corpus access without documented business need |
+| **Integrity** | What records has the shadow agent created or modified in systems of record? Are those records correct, or has the agent's lack of governance produced data-quality issues that the business has been absorbing as routine error? | The Discovery Snapshot's write-target list; SaaS audit logs (Type F) for shadow-agent write history; the business owner's assessment of record-quality impact |
+| **Availability** | Has the shadow agent's containment response disrupted the workflow it serves? For vendor-hosted or personal-account-hosted shadow agents where identity-level containment is the only option, what business processes depend on this agent? | The containment-mode timeline; the affected business owner's operational impact statement; the migrate-vs-redesign-vs-retire path implication |
+| **Trust** | Has the shadow agent produced customer-facing or external-recipient impact during its operating life? Did the agent send emails, post tickets, generate customer-facing recommendations, or modify customer-visible records? | The agent's user base inventory; the affected-customer count; the visibility classification; **the most important Shadow AI Trust assessment is the regulatory-disclosure framing**: if the shadow agent touched regulated data over its lifetime, the disclosure window may have started months before discovery |
+
+The Trust dimension is the framework's recognition that Shadow AI discoveries often surface **latent regulatory exposure** that has been accumulating before discovery. A shadow customer-support copilot that has been operating for 6 months and has touched 8,000 customer records produces a different materiality determination than the discovery itself implies. The CIA+T framing in the [Executive Decision Packet](05-executive-decision-making.md) is the artifact that translates the discovery into the customer's regulatory disclosure posture; the [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) per the canonical convening trigger from framework/04 is triggered whenever the CIA+T assessment surfaces customer-data, external-recipient, or regulated-data conditions, regardless of containment mode.
+
 ## Recovery Sequence
 
 Shadow AI recovery is not incident closure. It is migration to governance. Three paths exist for each discovered shadow agent, and the choice is made by the agent's owner, the security team, and (where business need is material) the business owner of the affected function.

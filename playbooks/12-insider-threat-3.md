@@ -118,6 +118,19 @@ In addition to A–F, capture:
 
 **Operational requirement:** the full insider-threat evidence set must be exportable within **60 minutes** of incident declaration, with the requesting user identity correctly attributed to every prompt in the window. If the identity attribution gap exceeds 5% of prompts in the window, this is the highest-priority [Playbook 18](18-post-incident-hardening.md) hardening item from this incident.
 
+### CIA+T Impact Assessment for Insider Threat 3.0 incidents
+
+The investigator's triad (capability / intent / impact) is the **internal forensic discipline**; the CIA+T impact framing from [Playbook 05 (Executive Decision-Making)](05-executive-decision-making.md) is the **external accountability discipline** the Executive Decision Packet uses for materiality and disclosure. The two are complementary: the triad determines what happened; CIA+T determines what to communicate to executives, regulators, and customers. Both frameworks apply to insider-threat scenarios.
+
+| Dimension | Insider-threat question | What to capture |
+|---|---|---|
+| **Confidentiality** | What regulated or sensitive data did the agent access on the user's behalf? Was access scope appropriate to the documented business need? | The full retrieval trail (Type C) per user, with corpus classifications; the per-corpus access scope vs the user's role-based authorization; PII/PHI/payment-card exposure counts |
+| **Integrity** | Were any records altered or created by the agent's actions during the misuse window? Did the agent's outputs become inputs to downstream systems-of-record (CRM, ERP, code, ticketing)? | Tool-call ledger (Type B) for write actions; SaaS audit logs (Type F) for record-modification timestamps; the change-log discipline per [Playbook 22](22-model-policy-drift.md) where applicable |
+| **Availability** | Was service disrupted by the containment response? Did the user's access revocation cascade to other users via shared service accounts? | The TTSM and containment-mode change history; downstream-service-impact records during the incident window |
+| **Trust** | Did the misuse produce externally-visible impact (incorrect customer record, leaked communication, external recipient affected)? What is the affected-stakeholder count and the identifiability of those stakeholders? | The output distribution map per [Playbook 09](09-output-leakage.md) Type F extension; the affected-customer count; the visibility classification (private to user, visible to user's organization, visible externally); HR and Legal joint review of the trust-impact framing before any external communication |
+
+The Trust dimension is particularly relevant for insider-threat scenarios because the investigative posture (HR/Legal joint engagement, capability-intent-impact separation, soft-cap and hard-cap evidence) is itself communicated externally as evidence of the customer's discipline. The CIA+T framing in the [Executive Decision Packet](05-executive-decision-making.md) is the artifact that translates the investigative discipline into the customer's regulatory and board-facing posture. A response team that documents the triad without the CIA+T framing has the investigative substance but not the communication-ready artifact.
+
 ## Recovery Sequence
 
 Insider Threat 3.0 recovery follows [MVO-4 Controlled Re-Enable](../framework/01-minimum-viable-overlay.md) with **two insider-threat-specific gates** added. Both gates respect HR and Legal participation that began at minute zero.
