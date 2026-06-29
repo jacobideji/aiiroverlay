@@ -1,58 +1,58 @@
 """
 Type C: Retrieval Traces adapter (STUB).
 
+Spec field requirements (per schemas/evidence-export.spec.md line 92):
+  {timestamp, query, corpus_id, documents_retrieved: [{doc_id, version,
+   similarity_score, chunk_index}], reranker_version, top_k_setting,
+   filters_applied}
+
+Per spec PB03 Type C-extended: each retrieved chunk MUST carry doc_id,
+version, and ingestion_timestamp. Embedding model version MUST be captured
+because changes affect ranking and are forensically relevant.
+
 In production this connects to the vector store (Pinecone, Weaviate, Qdrant,
 pgvector) or the RAG framework's trace store (LangChain callbacks, LlamaIndex
-trace store, custom retrieval logging). The PB03 seven-component pipeline
-forensics live here.
-
-The stub returns 3 synthetic records demonstrating per-query retrieval results.
+trace store, custom retrieval logging).
 """
 from __future__ import annotations
 
 
 def capture(agent_id: str, window_start: str, window_end: str, incident_id: str) -> list[dict]:
+    """Return Type C records in the spec's canonical format."""
     return [
         {
-            "record_id": f"{incident_id}-c-001",
-            "timestamp": "2026-06-29T14:12:34Z",
-            "query_text_hash": "sha256:abc" + "0" * 61,
+            "timestamp": "2026-06-29T14:12:34.198Z",
+            "query": "[STUB: full query text; production redaction per PB23]",
             "corpus_id": "salesforce-opportunity-notes",
-            "corpus_version": "v2026-06-28",
-            "embedding_model": "text-embedding-3-small",
-            "retrieved_documents": [
-                {"doc_id": "doc-001", "version": "v3", "similarity_score": 0.87},
-                {"doc_id": "doc-002", "version": "v1", "similarity_score": 0.81},
-                {"doc_id": "doc-003", "version": "v2", "similarity_score": 0.74},
+            "documents_retrieved": [
+                {"doc_id": "doc-001", "version": "v3", "similarity_score": 0.87, "chunk_index": 0},
+                {"doc_id": "doc-002", "version": "v1", "similarity_score": 0.81, "chunk_index": 2},
+                {"doc_id": "doc-003", "version": "v2", "similarity_score": 0.74, "chunk_index": 0},
             ],
-            "top_k": 5,
-            "reranker_applied": True,
+            "reranker_version": "cohere-rerank-3-en-v1.0",
+            "top_k_setting": 5,
+            "filters_applied": {"corpus_class": "internal_only"},
         },
         {
-            "record_id": f"{incident_id}-c-002",
-            "timestamp": "2026-06-29T14:14:02Z",
-            "query_text_hash": "sha256:def" + "0" * 61,
+            "timestamp": "2026-06-29T14:14:02.331Z",
+            "query": "[STUB: query about runbook procedures]",
             "corpus_id": "internal-runbooks",
-            "corpus_version": "v2026-06-15",
-            "embedding_model": "text-embedding-3-small",
-            "retrieved_documents": [
-                {"doc_id": "runbook-042", "version": "v1", "similarity_score": 0.92},
+            "documents_retrieved": [
+                {"doc_id": "runbook-042", "version": "v1", "similarity_score": 0.92, "chunk_index": 0},
             ],
-            "top_k": 5,
-            "reranker_applied": False,
+            "reranker_version": "none",
+            "top_k_setting": 5,
+            "filters_applied": {},
         },
         {
-            "record_id": f"{incident_id}-c-003",
-            "timestamp": "2026-06-29T14:18:18Z",
-            "query_text_hash": "sha256:abc" + "0" * 61,
+            "timestamp": "2026-06-29T14:18:18.617Z",
+            "query": "[STUB: query with potential injection vector]",
             "corpus_id": "salesforce-opportunity-notes",
-            "corpus_version": "v2026-06-28",
-            "embedding_model": "text-embedding-3-small",
-            "retrieved_documents": [
-                {"doc_id": "doc-019-EXTERNAL-VENDOR-NOTE", "version": "v1", "similarity_score": 0.79},
+            "documents_retrieved": [
+                {"doc_id": "doc-019-EXTERNAL-VENDOR-NOTE", "version": "v1", "similarity_score": 0.79, "chunk_index": 0},
             ],
-            "top_k": 5,
-            "reranker_applied": True,
-            "note": "Possible workflow-injection vector per PB06; doc-019 originated from external email-to-CRM pipeline",
+            "reranker_version": "cohere-rerank-3-en-v1.0",
+            "top_k_setting": 5,
+            "filters_applied": {"corpus_class": "internal_only"},
         },
     ]

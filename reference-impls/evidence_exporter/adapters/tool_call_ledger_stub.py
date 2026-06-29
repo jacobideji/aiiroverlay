@@ -1,66 +1,61 @@
 """
 Type B: Tool-Call Ledger adapter (STUB).
 
+Spec field requirements (per schemas/evidence-export.spec.md line 91):
+  {timestamp, tool_name, agent_id, principal, parameters, result_status,
+   result_payload_summary, denied_reason}
+
+Per spec: "Attempted AND denied calls MUST be included." Denied calls are
+evidence of injection or misuse intent.
+
 In production this connects to the application middleware that wraps the
 agent's tool calls (LangGraph callbacks, Bedrock Agents tool-trace,
-custom function-calling logs). Both attempted and successful calls must be
-captured; denied calls are evidence of intent.
-
-The stub returns 4 synthetic records: 1 successful T0 call, 1 successful T2
-call (with approver), 1 denied T2 call, 1 failed T1 call.
+custom function-calling logs).
 """
 from __future__ import annotations
 
 
 def capture(agent_id: str, window_start: str, window_end: str, incident_id: str) -> list[dict]:
-    """Return Type B records for the incident window."""
+    """Return Type B records in the spec's canonical format."""
     return [
         {
-            "record_id": f"{incident_id}-b-001",
-            "timestamp": "2026-06-29T14:12:35Z",
+            "timestamp": "2026-06-29T14:12:35.124Z",
             "tool_name": "salesforce.lookup",
-            "risk_tier": "T0",
+            "agent_id": agent_id,
+            "principal": "sales-triage-copilot-svc-account",
             "parameters": {"opportunity_id": "0061a000ABC123"},
             "result_status": "success",
-            "result_summary": "1 record returned",
-            "duration_ms": 142,
-            "approver_identity": None,
-            "correlation_id": "trace-xyz-001",
+            "result_payload_summary": "1 record returned",
+            "denied_reason": None,
         },
         {
-            "record_id": f"{incident_id}-b-002",
-            "timestamp": "2026-06-29T14:14:03Z",
+            "timestamp": "2026-06-29T14:14:03.557Z",
             "tool_name": "salesforce.write.opportunity",
-            "risk_tier": "T2",
+            "agent_id": agent_id,
+            "principal": "sales-triage-copilot-svc-account",
             "parameters": {"opportunity_id": "0061a000ABC123", "stage": "Closed Won"},
             "result_status": "success",
-            "result_summary": "Updated opportunity 0061a000ABC123 stage to Closed Won",
-            "duration_ms": 318,
-            "approver_identity": "approver-manager-bob",
-            "correlation_id": "trace-xyz-002",
+            "result_payload_summary": "Updated opportunity 0061a000ABC123 stage; approver: manager-bob",
+            "denied_reason": None,
         },
         {
-            "record_id": f"{incident_id}-b-003",
-            "timestamp": "2026-06-29T14:16:21Z",
+            "timestamp": "2026-06-29T14:16:21.812Z",
             "tool_name": "salesforce.bulk_update.contacts",
-            "risk_tier": "T2",
+            "agent_id": agent_id,
+            "principal": "sales-triage-copilot-svc-account",
             "parameters": {"record_count": 47},
             "result_status": "denied",
-            "result_summary": "Denied by approval gate; cap exceeded (cap=10)",
-            "duration_ms": 23,
-            "approver_identity": None,
-            "correlation_id": "trace-xyz-003",
+            "result_payload_summary": None,
+            "denied_reason": "cap-exceeded-tier-2-tool-cap-10",
         },
         {
-            "record_id": f"{incident_id}-b-004",
-            "timestamp": "2026-06-29T14:18:19Z",
+            "timestamp": "2026-06-29T14:18:19.318Z",
             "tool_name": "outlook.send",
-            "risk_tier": "T1",
+            "agent_id": agent_id,
+            "principal": "sales-triage-copilot-svc-account",
             "parameters": {"to": ["external@vendor.example.net"], "subject": "[STUB]"},
             "result_status": "failure",
-            "result_summary": "Network timeout to upstream Microsoft Graph API",
-            "duration_ms": 30000,
-            "approver_identity": None,
-            "correlation_id": "trace-xyz-004",
+            "result_payload_summary": "Network timeout to Microsoft Graph API after 30s",
+            "denied_reason": None,
         },
     ]
