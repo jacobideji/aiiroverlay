@@ -9,7 +9,7 @@
 
 > *A fictional but specific scenario showing the framework end-to-end. This is not a real incident. Use it to internalize the response arc before adopting the framework.*
 
-This walkthrough demonstrates how the AI IR Overlay's controls work together when a real-looking AI agent incident occurs. The scenario is fictional. All organization names, ticket numbers, and customer identities are invented. The point is to show the framework operating as a coherent system, not to claim this incident actually happened.
+This walkthrough demonstrates how the AI IR Overlay's controls work together when a real-world AI agent incident occurs. The scenario is fictional. All organization names, ticket numbers, and customer identities are invented. The point is to show the framework operating as a coherent system, not to claim this incident actually happened.
 
 ## Scenario setup
 
