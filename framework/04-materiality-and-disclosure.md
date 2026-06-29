@@ -34,14 +34,23 @@ When an incident reaches **Kill-Switch Mode M3 (Tool Tiering) or higher**, OR wh
 | **Incident Commander** | Owns the timeline. Documents who said what, when. Maintains the decision log per [Playbook 01](../playbooks/01-agent-as-privileged-identity.md). |
 | **Communications lead** (observer) | Listens. Does not draft external statements until General Counsel signals the materiality determination. |
 
-**Trigger conditions that require the call regardless of Kill-Switch Mode:**
+**The canonical convening trigger.** The Materiality and Disclosure call is convened when **either** of the following applies. Downstream playbooks reference this canonical list rather than restating it.
+
+**Mode-based trigger:**
+
+- Kill-Switch Mode M3 (Tool Tiering) or higher is activated for the affected agent
+
+**Condition-based triggers (apply regardless of Kill-Switch Mode):**
 
 - Customer data exposure suspected or confirmed
 - External recipient of an unauthorized message (email, ticket, support response)
 - Financial action executed by the agent without authorization
 - Regulatory data category touched (PII, PHI, payment card data, regulated AI use case)
+- Customer-facing trust impact identified (incorrect information sent externally per the CIA+T framing in [Playbook 05](../playbooks/05-executive-decision-making.md))
 - Public attention (researcher disclosure, customer report, social media)
 - Any incident that would be embarrassing on the front page of a financial news outlet
+
+**The framework's convening posture is over-convene rather than under-convene.** Where a playbook's response sequence is uncertain whether to convene, the default is to convene; the materiality determination then runs through the four-question walkthrough below and may determine "not material," which is itself a documented outcome.
 
 **The CISO does not unilaterally defer the call.** General Counsel's calendar is not a precondition. If General Counsel is unreachable, the CISO documents the unavailability and proceeds with the materiality walkthrough, then re-convenes when GC is available.
 
