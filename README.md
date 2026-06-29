@@ -85,7 +85,7 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 
 ## Reading order
 
-**New here? Start with [QUICKSTART.md](QUICKSTART.md)** for a 30-day adoption path, or [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md) for an end-to-end worked example of an incident response using the framework.
+**New here? Start with [QUICKSTART.md](QUICKSTART.md)** for the standard 30-day adoption path. For startups and small security teams (5 or fewer people, limited platform control), [QUICKSTART-startup.md](QUICKSTART-startup.md) is the 4-week minimum-viable path targeting Maturity Level 2. For a worked end-to-end example, see [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md). For working code examples of the framework's API contracts, see [`reference-impls/`](reference-impls/).
 
 For the full conceptual reading order, items 1 through 6 are the core, items 7 through 11 are the working artifacts.
 
@@ -110,7 +110,9 @@ For the full conceptual reading order, items 1 through 6 are the core, items 7 t
 
 10. **Schemas.** Machine-readable contracts for CI validation: [`schemas/ai-bom.schema.json`](schemas/ai-bom.schema.json) (AI-BOM validator) · [`schemas/privilege-matrix.schema.json`](schemas/privilege-matrix.schema.json) (Privilege Matrix row validator) · [`schemas/credential-event.schema.json`](schemas/credential-event.schema.json) (PB07 credential-event log validator) · [`schemas/kill-switch-api.md`](schemas/kill-switch-api.md) (Mode M0 through M5 activation API contract) · [`schemas/evidence-export.spec.md`](schemas/evidence-export.spec.md) (Type A through F evidence export script contract).
 
-11. **Reference validator.** [`scripts/validate.py`](scripts/validate.py) (Python 3, runs every AI-BOM YAML and Privilege Matrix CSV against the JSON Schemas). A GitHub Action at [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) runs the validator on every pull request touching `templates/`, `schemas/`, or the script itself.
+11. **Reference validator.** [`scripts/validate.py`](scripts/validate.py) (Python 3.10+, jsonschema, pyyaml). Validates AI-BOM YAML and Privilege Matrix CSV against the JSON Schemas; v0.26.0 adds maturity-target-conditional kill-switch validation plus operational-currency staleness checks for `last_reviewed` (7-day window) and `kill_switches.mX.tested_at` (90-day window). Run with `--strict` to escalate staleness to CI errors. A GitHub Action at [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) runs the validator on every pull request touching `templates/`, `schemas/`, or the script itself.
+
+12. **Reference implementations.** [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) is a Python CLI implementing the [Evidence Export Script Contract](schemas/evidence-export.spec.md) for Types A through F with manifest discipline, integrity hashes, parallel-export, and telemetry events. [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) demonstrates the [Kill-Switch API contract](schemas/kill-switch-api.md) with M0/M1/M2/M3/M4 against a synthetic agent tool registry, including separation-of-duties enforcement and the M3 scope parameter. Both are Python 3.10+ standard library only; both run end-to-end with no vendor accounts required.
 
 ## Provenance
 

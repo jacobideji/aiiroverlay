@@ -15,6 +15,37 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.26.0] · 2026-06-29 · P1 adoption-friction fixes (maturity-target schema, validator staleness, reference implementations, startup QUICKSTART)
+
+### Added
+
+- `reference-impls/` directory introduces two minimal working implementations of the framework's API contracts. `reference-impls/evidence_exporter/` is a Python CLI implementing the [Evidence Export Script Contract](schemas/evidence-export.spec.md) for Types A through F: it accepts the contract's required CLI inputs (incident_id, agent_id, window_start, window_end, evidence_types, output_destination, actor), runs the six per-type captures in parallel via ThreadPoolExecutor, produces a manifest with SHA-256 integrity hashes per artifact, emits telemetry events in the contract's format, and exits with code 0 (success) / 1 (partial) / 2 (failure). Six stub adapter modules demonstrate per-type capture shape; adopters fork and replace each stub with vendor-specific implementations (OpenAI, Anthropic, Salesforce, Okta). `reference-impls/kill_switch_demo/` demonstrates the [Kill-Switch API contract](schemas/kill-switch-api.md) with Modes M0/M1/M2/M3/M4 against a synthetic in-memory tool registry: Activate / Status / Deactivate / Probe API shapes; effective_at set only after Probe returns pass; M3 scoped to specific tool lists; separation-of-duties enforcement on deactivation. Both implementations are Python 3.10+ standard library only (no pip dependencies); both run end-to-end without vendor accounts. Closes the v0.24.0 holistic-critique P1.6 finding (no reference implementations).
+- `QUICKSTART-startup.md` introduces the **startup-minimum adoption path** for security teams of 5 or fewer. Identifies the minimum-viable subset (3 playbooks: PB01 + PB02 + PB18; 2 templates: AI-BOM + Privilege Matrix; 1 triage card) and the 4-week adoption path that targets Maturity Level 2 (Containable). Honest about what is deliberately deferred (PB03/PB06/PB08/PB09/PB10/PB11/PB12/PB13/PB14/PB15/PB16/PB17/PB19/PB20/PB21/PB22/PB23 are on-demand or graduate-into rather than required for Level 2). Closes the v0.24.0 P1.7 finding (no startup-minimum subset artifact).
+
+### Changed
+
+- `schemas/ai-bom.schema.json` adds the **`kill_switches.maturity_target` field** (enum: level_1_aware, level_2_containable, level_3_provable, level_4_resilient) and an `allOf` conditional rule: Level 2 (Containable) and above require all four kill-switch modes (M1-M4) with `implemented: true`; Level 1 (Aware) customers may declare individual modes as `implemented: false` with null `tested_at` and `tta_minutes` during initial adoption. The `kill_switch_record.tested_at` and `tta_minutes` fields now accept null for Level 1. The framework's discipline of explicit maturity declaration is preserved: customers below Level 2 must declare `level_1_aware` rather than leave the field blank. Closes the v0.24.0 P1.4 finding (schema required all M1-M4 implemented as true).
+- `templates/ai-bom.yaml` adds `kill_switches.maturity_target: "level_2_containable"` as the default value for the worked example, with inline comments explaining the level vocabulary and the link to `framework/03-maturity-roadmap.md`.
+- `templates/README-ai-bom.md` adds a **Maturity-level progression** section documenting the four levels' kill-switch requirements. The CI Integration section is updated to describe the validator's staleness checks (`last_reviewed` 7-day window, `kill_switches.mX.tested_at` 90-day window) and the `--strict` flag.
+- `scripts/validate.py` adds **operational-currency staleness checks** beyond the JSON schema's static-shape validation. The validator now parses `last_reviewed` and `kill_switches.mX.tested_at` ISO-8601 dates and computes age against today's date. Findings older than the framework's thresholds (7 days for last_reviewed, 90 days for tested_at) are reported as WARNINGs in permissive mode (default) and as errors (exit code 1) in `--strict` mode. The validator also enforces the maturity-target-conditional implementation requirement (Level 2+ requires implemented=true on all modes). Five unit-tested scenarios pass smoke tests: current dates, stale last_reviewed, stale tested_at, level_1_aware with unimplemented modes, and level_2_containable with a mode not implemented. Closes the v0.24.0 P1.5 finding (validator lacked staleness enforcement).
+- `CONTENT_MAP.md` adds reference-implementations and QUICKSTART-startup entries to the operational entry points table.
+- `README.md` reading order extended with item 12 (Reference implementations). The "New here?" section now points to QUICKSTART-startup.md as the startup-minimum path alongside the standard QUICKSTART.md.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.25.0` to `0.26.0`.
+
+### Why now
+
+The v0.24.0 holistic critique identified four material adoption-friction items (P1.4 through P1.7). v0.26.0 closes all four in a single calibration release. The release does not change the framework's content gate (24 playbooks shipped per v0.24.0); it improves the **adopter experience** for customers who would otherwise stall on schema rigidity, validator under-enforcement, missing reference code, or framework-density overwhelm.
+
+**P1.4 (Schema rigidity for early adopters):** The v0.14.0 schema required all four kill-switch modes to be implemented=true for any AI-BOM to validate. This blocked early adopters at Level 1 (Aware) who had only inventory in place and were still building M1-M4. v0.26.0 introduces the explicit `kill_switches.maturity_target` field with maturity-conditional enforcement: Level 1 customers may declare unimplemented modes during initial adoption; Level 2 and above require full M1-M4 implementation. The framework's discipline of honest self-assessment is preserved by requiring explicit `level_1_aware` declaration (no blank fields).
+
+**P1.5 (Validator under-enforcement of staleness):** The framework's MVO conformance criteria specified 7-day `last_reviewed` and 90-day `tested_at` windows, but the JSON schema had no maximum-date constraint and the Python validator did no temporal logic. AI-BOM files could pass `validate.py` while violating the operational SLA. v0.26.0's validator now enforces staleness with a `--strict` flag for CI enforcement; permissive mode reports staleness as WARNINGs to support iterative adoption.
+
+**P1.6 (No reference implementations of the API contracts):** The framework's two operational contracts (`evidence-export.spec.md` and `kill-switch-api.md`) were exceptionally detailed but lacked working code. Every adopter re-invented the implementation independently, losing the convergence benefit the specs were designed to achieve. v0.26.0 ships minimal Python implementations of both contracts with stub adapters that demonstrate the contract's shape (manifest discipline, integrity hashes, telemetry events, probe-after-activate, separation-of-duties). Adopters fork and replace the stubs with vendor-specific implementations; the contract conformance is preserved through the adapter swap.
+
+**P1.7 (No startup-minimum subset):** The standard QUICKSTART.md targets well-resourced security teams with full platform control. For a 5-person team or a vendor-copilot-dependent organization, the 30-day path slipped to 6-8 weeks and faced blockers (instrumentation gaps, identity scope misalignment, control-plane access). v0.26.0 ships QUICKSTART-startup.md as the explicit minimum-viable alternative: 3 playbooks + 2 templates + 1 triage card, 4-week path, Level 2 (Containable) target, with explicit acknowledgment of what is deliberately deferred.
+
+After v0.26.0, the framework's content is structurally complete (per v0.24.0) AND adopter-experience-calibrated. The remaining v1.0 work is governance (Steering Committee announcement, public-interface freeze, v1.0.0-rc1 release candidate).
+
 ## [0.25.0] · 2026-06-29 · P0 consistency calibration (CIA+T propagation, materiality trigger canonicalization, Three Realities retrospective)
 
 ### Changed
@@ -684,7 +715,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.25.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.26.0...HEAD
+[0.26.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.26.0
 [0.25.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.25.0
 [0.24.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.24.0
 [0.23.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.23.0

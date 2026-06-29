@@ -95,14 +95,17 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 
 | Artifact | Repo home | Status |
 |---|---|---|
-| AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1` |
+| AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1`; v0.26.0 adds maturity-target-conditional schema validation, last_reviewed and kill_switches.tested_at staleness checks, and `--strict` flag |
 | CI workflow (GitHub Actions) running the validator on every PR touching `templates/`, `schemas/`, or `scripts/validate.py`. Supports manual dispatch via the Actions tab. | [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) | ✅ `v0.14.2` |
+| Evidence Exporter (Python CLI implementing the Evidence Export Script Contract for Types A through F; six stub adapters; manifest with SHA-256 integrity; parallel-export; telemetry events) | [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) | ✅ `v0.26.0` |
+| Kill-Switch Demo (Python in-memory tool registry showing M0/M1/M2/M3/M4 with the Activate/Status/Deactivate/Probe API shape, separation-of-duties, scope parameter) | [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) | ✅ `v0.26.0` |
 
 ## Operational entry points
 
 | Artifact | Purpose | Status |
 |---|---|---|
 | [`QUICKSTART.md`](QUICKSTART.md) | 30-day adoption path for one production AI agent. Day 1 AI-BOM, Day 7 Privilege Matrix, Day 14 tabletop M1-M4, Day 21 evidence drill, Day 30 Level 2/3 maturity claim. | ✅ `v0.14.2` |
+| [`QUICKSTART-startup.md`](QUICKSTART-startup.md) | The startup-minimum adoption path. 3 playbooks + 2 templates + 1 triage card. 4-week path to Maturity Level 2. Targets security teams of 5 or fewer with limited platform control. | ✅ `v0.26.0` |
 | [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md) | Synthetic worked example of an end-to-end incident response, demonstrating the framework as a coherent system rather than a list of controls. | ✅ `v0.14.2` |
 | [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md) | Pre-flight and post-push checklist for the maintainer. Closes the release-hygiene gaps surfaced in v0.14.1. | ✅ `v0.14.2` |
 
@@ -139,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.25.0 P0 consistency calibration) -->
+<!-- Last revised: 2026-06-29 (v0.26.0 P1 adoption-friction fixes: maturity-target schema, validator staleness, reference implementations, startup QUICKSTART) -->
