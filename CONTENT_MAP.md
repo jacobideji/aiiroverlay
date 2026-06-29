@@ -131,7 +131,7 @@ The 24-playbook arc introduces named framework concepts that are invented termin
 | **Migrate / redesign / retire decision path** | PB21 |
 | **90-minute Freeze-the-World sequence** | PB03 |
 | **M3-Output containment variant** | PB09 |
-| **Six Metrics** (TTSM, TTE, MEC, ER, RRT, KSC) | PB13 |
+| **Six Metrics** (Inventory Currency, Containment TTSM, Evidence TTE, Drill Currency, Hardening SLA Compliance, Re-Enable Success Rate) | PB13 |
 | **Six M3 kill-switch variants** (RAG, Workflow, Output, Vendor, Delegation Cap, Drift) | PB03 / PB06 / PB09 / PB10 / PB08 / PB22 |
 | **MVO controls** (Inventory, Safe Modes M0 through M5, Evidence A through F, Controlled Re-Enable) | framework/01 |
 
