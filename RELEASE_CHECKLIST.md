@@ -9,7 +9,7 @@
 
 > *Run this checklist before tagging any release. Each step prevents a real defect that surfaced in a prior cycle.*
 
-This checklist exists because release hygiene has historically been the framework's weakest link. Three release tags (v0.12.0, v0.13.0, v0.14.0) were not cut despite CHANGELOG entries, and `CITATION.cff` has gone stale on two consecutive releases. This checklist closes those gaps.
+This checklist exists because release hygiene has historically been the framework's weakest link. Three release tags (v0.12.0, v0.13.0, v0.14.0) were originally not cut despite CHANGELOG entries (now backfilled), and `CITATION.cff` had gone stale on two consecutive releases. This checklist closes those gaps for future releases.
 
 ## Pre-flight (must complete before `git push`)
 
@@ -33,23 +33,21 @@ This checklist exists because release hygiene has historically been the framewor
 - [ ] Open the CHANGELOG link reference (`[X.Y.Z]: ...`) in a browser. Confirm it resolves to HTTP 200.
 - [ ] Open `https://aiir.jacobideji.com/schemas/ai-bom.schema.json`. Confirm it serves the latest schema content.
 
-## Backfill (one-time, applies to historical releases that pre-date this checklist)
+## Backfill (completed): historical releases that pre-dated this checklist
 
-These tags exist in `CHANGELOG.md` link references but have not been cut on GitHub. Backfill them by tagging the appropriate historical main-branch commit:
+These tags were originally missing from GitHub despite having `CHANGELOG.md` entries. All three have been backfilled by tagging the appropriate historical main-branch commits, and every CHANGELOG link reference now resolves to HTTP 200:
 
-- [ ] `v0.12.0` (Playbook 06 + Materiality and Disclosure)
-- [ ] `v0.13.0` (Playbook 10: Vendor Copilots)
-- [ ] `v0.14.0` (Schemas Directory)
+- [x] `v0.12.0` (Playbook 06 + Materiality and Disclosure)
+- [x] `v0.13.0` (Playbook 10: Vendor Copilots)
+- [x] `v0.14.0` (Schemas Directory)
 
-Backfill command pattern (substitute the actual commit SHA from `git log --oneline` for each release commit):
+Backfill command pattern, retained as reference for any future historical-release tagging:
 
 ```bash
 gh release create v0.12.0 --target <commit-sha> \
   --title "v0.12.0: Playbook 06 + Materiality and Disclosure" \
   --notes-file <(awk '/^## \[0.12.0\]/,/^## \[/' CHANGELOG.md | head -n -2)
 ```
-
-Repeat for `v0.13.0` and `v0.14.0`. Once backfilled, every CHANGELOG link reference resolves to HTTP 200.
 
 ## Why this checklist exists
 
