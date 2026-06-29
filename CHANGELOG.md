@@ -15,6 +15,25 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.29.0] · 2026-06-29 · P1-NEW.2: Materiality canonicalization ripple closure (PB10/21/22)
+
+### Changed
+
+- `playbooks/10-vendor-copilots.md` First-Hour Actions row 55-60 updated: convening trigger reframed to reference the canonical list from `framework/04-materiality-and-disclosure.md` rather than restate a vendor-copilot-specific subset. The playbook-specific commentary (vendor-copilot incidents nearly always meet canonical triggers; customer-side track does not wait for vendor cooperation) is preserved as clarification rather than as the primary trigger definition.
+- `playbooks/21-shadow-ai.md` First-Hour Actions row 55-60 similarly reframed: convening trigger references the canonical list; the playbook-specific commentary (shadow agent discovery surfaces latent regulatory exposure; disclosure window may have started before agent was discovered) is preserved.
+- `playbooks/22-model-policy-drift.md` First-Hour Actions row 55-60 similarly reframed: convening trigger references the canonical list; the playbook-specific commentary (drift produces latent-exposure tail; disclosure window may have started weeks before drift was observed) is preserved.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.28.0` to `0.29.0`.
+
+### Why now
+
+This release closes **P1-NEW.2** from the v0.27.0 holistic re-audit. The v0.25.0 P0.2 calibration established `framework/04-materiality-and-disclosure.md` as the canonical source for the convening trigger and updated PB06 and PB09 to reference it. The v0.27.0 re-audit identified that **three additional playbooks (PB10, PB21, PB22) still restated trigger conditions locally** rather than referencing the canonical list, producing the same drift risk the v0.25.0 fix set out to prevent.
+
+v0.29.0 closes the ripple gap. After this release, **all 6 playbooks that convene the Materiality and Disclosure call** (PB01, PB06, PB09, PB10, PB21, PB22) reference the canonical trigger from framework/04 rather than restate it. PB05 introduces the canonical framing; PB18 verifies the convening determination is documented; PB24 audits the convening discipline at the scorecard level.
+
+The pattern preserved across these playbooks: reference the canonical first; then add the playbook-specific commentary about which triggers are most commonly applicable for that incident class (vendor copilots, shadow agents, drift events). This pattern keeps the canonical source authoritative while allowing each playbook to honestly describe its scenario's most-common convening conditions.
+
+After v0.29.0, the framework's calibration is materially more complete: 8 of 24 playbooks operationalize CIA+T (v0.28.0); 6 playbooks reference canonical materiality (v0.29.0); reference implementations are contract-conformant (v0.28.0); repo hygiene is clean. The remaining P1-NEW/P2-NEW items (QUICKSTART-startup pre-Week-0 checklist, Three Realities in PB01 response phase, maturity_target default behavior) are not blockers for v1.0.0-rc1.
+
 ## [0.28.0] · 2026-06-29 · P0-NEW sweep (Evidence Exporter conformance, CIA+T to PB12/21/22/23, pycache cleanup)
 
 ### Changed
@@ -770,7 +789,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.28.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.29.0...HEAD
+[0.29.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.29.0
 [0.28.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.28.0
 [0.27.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.27.0
 [0.26.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.26.0

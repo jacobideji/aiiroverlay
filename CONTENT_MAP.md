@@ -142,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.28.0 P0-NEW sweep: Evidence Exporter contract conformance rewrite, CIA+T propagation to PB12/21/22/23, pycache cleanup) -->
+<!-- Last revised: 2026-06-29 (v0.29.0 P1-NEW.2: Materiality canonicalization ripple closure for PB10/21/22) -->
