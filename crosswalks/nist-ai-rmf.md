@@ -65,6 +65,8 @@ Staged recovery operationalizes:
 - **MANAGE 4.2:** *"Measurable activities for continual improvements are integrated into AI system updates and include regular engagement with interested parties, including relevant AI actors."*
 - **MANAGE 4.3:** *"Incidents and errors are communicated to relevant AI actors, including affected communities. Processes for tracking, responding to, and recovering from incidents and errors are followed and documented."*
 
+**Gap note:** AI RMF specifies the *requirement* for continual improvement integrated with AI system updates (MANAGE 4.2) and for monitoring post-deployment (MANAGE 4.1) but not the *change-event forensics discipline* that connects an observed behavior shift to the specific update that produced it. [Playbook 22: Model and Policy Drift](../playbooks/22-model-policy-drift.md) fills this gap with the Post-Change and Pre-Change Configuration Snapshots, the change-pipeline event ledger, the Drift Canary pack, the layered rollback sequence (tool policies → retriever parameters → system prompt → policy and moderation configuration → memory and context window → tool schemas → retrieval index and corpus version → model version pin), and the M3-Drift kill-switch variant that scopes containment to the specific recently-changed component while pre-change state is restored.
+
 ## How to Use This Crosswalk
 
 When responding to an auditor, regulator, or board question framed in AI RMF terms, this crosswalk lets you point to specific AI IR Overlay artifacts as evidence of conformance to the corresponding RMF subcategory.
@@ -85,7 +87,7 @@ When responding to an auditor, regulator, or board question framed in AI RMF ter
 
 ---
 
-*Last revised: 2026-06-28 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-06-29 · Maintainer interpretation, not a NIST publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
