@@ -14,6 +14,8 @@ on:
       - "templates/**"
       - "schemas/**"
       - "scripts/validate.py"
+      - ".github/workflows/validate-templates.yml"
+  workflow_dispatch:
 
 jobs:
   validate:
