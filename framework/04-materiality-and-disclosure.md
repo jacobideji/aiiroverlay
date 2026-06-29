@@ -63,7 +63,7 @@ The General Counsel names which clock(s) apply. The Incident Commander documents
 
 ### 2. What does the evidence currently show?
 
-The CISO walks the [A-F evidence set](../evidence/minimum-evidence-set.md) at its current capture state:
+The CISO walks the [A–F evidence set](../evidence/minimum-evidence-set.md) at its current capture state:
 
 - **Type A (Prompt and Response Record):** what did the agent receive and produce
 - **Type B (Tool-Call Ledger):** what did the agent attempt and what succeeded
@@ -106,7 +106,7 @@ This annex is **not** a substitute for jurisdiction-specific legal counsel. The 
 
 - **[Six Triage Questions](../triage/six-questions.md):** the first-15-minutes discipline; the materiality call follows the triage
 - **[Kill-Switch Modes](../kill-switches/overview.md):** the M3-or-higher threshold that triggers the materiality call
-- **[Minimum Evidence Set](../evidence/minimum-evidence-set.md):** the A-F evidence at the determination point
+- **[Minimum Evidence Set](../evidence/minimum-evidence-set.md):** the A–F evidence at the determination point
 - **[Playbook 01](../playbooks/01-agent-as-privileged-identity.md):** the response playbook the materiality call sits within
 
 ---

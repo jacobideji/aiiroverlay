@@ -70,7 +70,7 @@ If you cannot identify the owning team for each clause **before** an incident, y
 ## Related
 
 - **The Six Triage Questions:** [`triage/six-questions.md`](../triage/six-questions.md). The first-hour discipline that operationalizes the four clauses.
-- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A-F evidence taxonomy each clause maps onto.
+- **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A–F evidence taxonomy each clause maps onto.
 - **The Agent Is a Privileged Identity** ([Playbook 01](../playbooks/01-agent-as-privileged-identity.md)). The keystone playbook. The Mental Model's *"if it can act, govern it as a privileged identity"* clause is the lens PB01 operationalizes for every response sequence.
 - **Tool Design Is Containment** ([Playbook 04](../playbooks/04-tool-design-is-containment.md)). The pre-incident discipline that makes the Acts clause operational. The tool layer is where governance becomes containment.
 - **Insider Threat 3.0** ([Playbook 12](../playbooks/12-insider-threat-3.md)). The AI-driven insider misuse playbook. Covers the human-with-agent and agent-as-insider scenarios; the capability vs intent vs impact investigator triad; HR and Legal joint engagement from minute zero; intent vector documentation; and soft cap / hard cap discipline for bulk-summarize attacks.
