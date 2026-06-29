@@ -142,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.29.0 P1-NEW.2: Materiality canonicalization ripple closure for PB10/21/22) -->
+<!-- Last revised: 2026-06-29 (v0.30.0 P1-NEW.3: QUICKSTART-startup Week-0 Pre-Adoption Readiness Check) -->

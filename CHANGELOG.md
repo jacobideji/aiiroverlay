@@ -15,6 +15,35 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.30.0] · 2026-06-29 · P1-NEW.3: QUICKSTART-startup Week-0 Pre-Adoption Readiness Check
+
+### Changed
+
+- `QUICKSTART-startup.md` adds a new **Week 0: Pre-Adoption Readiness Check** section before Week 1. The section addresses the three discovery-friction issues identified in the v0.27.0 holistic re-audit: vendor-copilot evidence SLA validation, tool reversibility audit, identity coordination, plus three additional pre-checks (multi-agent sequencing, regulated-data scope, RAG enabled). Each pre-check names: what to confirm, what to do if the condition is not met, and which conditional playbook (PB03, PB10, PB15, PB23) should be added to the customer's Week 0 reading list rather than deferred.
+- `QUICKSTART-startup.md` "What you are deliberately deferring" section restructured to distinguish **conditional deferrals** (PB03, PB10, PB15, PB23: defer ONLY IF the condition does not apply) from **absolute deferrals** (PB05, PB06, PB08, PB09, PB11, PB12, PB13, PB14, PB16, PB17, PB19, PB20, PB21, PB22, PB24: defer until growth conditions are met). The previous list treated all deferrals as absolute, which created false confidence about Level 2 maturity for startups using vendor copilots or touching regulated data.
+- `QUICKSTART-startup.md` adds a **voice note for solo founders and single-security-person startups** acknowledging that the QUICKSTART path is written for "the security team" but recognizing the common reality that the security team is one person combining engineering, security, and IT roles. The note names the most common solo-operator failure pattern (committing to the 4-week timeline before validating Week 0 preconditions, then absorbing the slip silently) and frames a 6-week or 8-week honest path as materially better than a 4-week path that creates false-confidence about maturity.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.29.0` to `0.30.0`.
+
+### Why now
+
+This release closes **P1-NEW.3** from the v0.27.0 holistic re-audit. The v0.26.0 initial QUICKSTART-startup release identified the 3-playbook + 2-template minimum subset and the 4-week adoption path, but the v0.27.0 re-audit found that the 4-week timeline was structurally bounded by three pre-Week-1 preconditions that the QUICKSTART did not surface:
+
+1. **Vendor-copilot bottleneck**: a startup's Week 3 tabletop discovers that M3 (Tool Tiering) for a vendor copilot requires vendor support with a 24-72 hour SLA, not a 10-minute TTA. The maturity claim lands as "Level 2 for customer-managed agents, Level 1 for vendor copilots." False confidence about maturity level.
+
+2. **Evidence export infrastructure does not exist**: a startup begins Week 1 with zero understanding of vendor log retention, API export mechanisms, or legal holds on evidence. By Week 4, they have not validated whether evidence export is even possible. Months of wasted effort claiming Level 2 while being structurally unable to reach Level 3.
+
+3. **Tool reversibility discovery creates mid-project redesign**: Week 2 tool tiering surfaces that 30-40% of high-risk tools cannot be reversed. The startup discovers it cannot deploy M1 (Read-Only) or M3 (Tool Tiering) as designed; all containment defaults to M4 (Full Disable), which breaks business continuity. Week 2-3 derails into tool-design discussions; the 4-week timeline becomes 6-8 weeks.
+
+v0.30.0 closes the discovery-friction gap by adding the explicit Week 0 readiness check. The pattern: surface the structural preconditions as Week 0 actions rather than discovering them mid-project. A startup that completes Week 0 honestly will either confirm the 4-week timeline is achievable OR document the specific extension needed (1-3 additional weeks for vendor coordination, 2-4 additional weeks for tool-reversibility redesign, etc.). Either outcome is materially better than the prior "discover-during-Week-3" pattern.
+
+Three secondary improvements:
+
+- **Conditional deferral distinction**: the previous "deferred playbooks" list treated all deferrals as absolute. The revised list distinguishes conditional deferrals (PB03 if RAG enabled; PB10 if vendor copilots present; PB15/PB23 if regulated data) from absolute deferrals (PB05/PB17/PB24 executive layer; PB13/PB14 measurement; PB16 training; etc.). Conditional deferrals are flagged in the Week 0 pre-checks so adopters know to include the relevant playbook in their Week 0 reading rather than skip it entirely.
+- **Solo-founder voice acknowledgment**: the prior document was written for security-teams-with-bandwidth but does not acknowledge the cognitive load and time-constraint reality of solo operators. The new voice note explicitly addresses this.
+- **Multi-agent sequencing**: the Week 0 multi-agent sequencing pre-check tells adopters with 2-3 agents to run Week 1 in parallel and weeks 2-4 sequentially; for 4+ agents, defer the bottom-tier agents to the standard QUICKSTART progression.
+
+After v0.30.0, the QUICKSTART-startup path is structurally honest about the discovery work the original 4-week timeline elided. The remaining P2-NEW items (Three Realities in PB01 First-Hour Actions, maturity_target default behavior documented) are polish-grade and not blockers for v1.0.0-rc1.
+
 ## [0.29.0] · 2026-06-29 · P1-NEW.2: Materiality canonicalization ripple closure (PB10/21/22)
 
 ### Changed
@@ -789,7 +818,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.29.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.30.0...HEAD
+[0.30.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.30.0
 [0.29.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.29.0
 [0.28.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.28.0
 [0.27.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.27.0

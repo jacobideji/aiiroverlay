@@ -44,6 +44,25 @@ The full framework has 24 playbooks, 4 framework foundation docs, 5 templates, 3
 
 ## The 4-week adoption path
 
+The path below assumes three Week-0 preconditions are met. **If any of these is not met before you start Week 1, add 1-3 weeks for discovery work and document the constraint.** The Week-0 checklist exists because the most common reason small-team adoptions slip from 4 weeks to 8-12 weeks is hitting these preconditions mid-project.
+
+### Week 0: Pre-Adoption Readiness Check (do not skip)
+
+**Goal:** confirm the structural preconditions are met before committing to the 4-week timeline. Each check is ~30-90 minutes; the full Week 0 sweep is ~1 day for a single security person.
+
+| Pre-check | What to confirm | If not met |
+|---|---|---|
+| **Vendor-copilot evidence SLA** | For each vendor-managed agent (Copilot for Microsoft 365, Salesforce Einstein, ChatGPT Enterprise, custom vendor copilots): document the contracted evidence-export SLA (target: ≤ 60 minutes), the named escalation contact, the proof-of-M3-availability (can the vendor disable individual tools, or is M4 the only granularity?), and the vendor's audit-log retention window for your tenant. If any vendor copilot you depend on cannot meet the customer-side 60-minute evidence target, the Level 3 maturity claim is structurally bounded for those agents | Read [Playbook 10 (Vendor Copilots)](playbooks/10-vendor-copilots.md) (the deferred-but-conditional playbook this Week 0 acknowledges). Document the vendor constraint in the AI-BOM `notes` field. Plan for separate maturity tracks per agent class (customer-managed vs vendor-managed). |
+| **Tool reversibility audit** | For each AI agent's high-impact tools: confirm what "reversibility" actually means in your stack. *"via audit log"* is **passive** (you can see what happened but cannot undo it); *"via blue-green rollback"* or *"draft-mode preferred"* is **active**. Audit your top 5 T2-class tools per agent for reversibility category. If 30%+ of your tools are passive-reversibility (cross-tenant email sends, immutable CRM records, public posts without recall), Week 2 will surface this as a structural blocker | Defer the affected tools to vendor or platform-team work. Re-classify passive-reversibility T2 tools as approval-required-and-audit-only with explicit risk acceptance per [Playbook 24](playbooks/24-board-ready-scorecard.md) C4. The 4-week path continues with the tools that have active reversibility |
+| **Identity coordination** | Confirm you (or one named person on the security team) has IdP admin access to inspect OAuth grants, service accounts, and scope assignments. The AI-BOM Day 3 step requires this; for a startup with engineering managing IdP separately, plan a Day 0.5 IdP-team walkthrough | Schedule the IdP-team walkthrough before Week 1 Day 3. If IdP access is not available within 7 days, defer the affected agents (continue Week 1 with the agents whose identity can be inspected) |
+| **Multi-agent sequencing** | If you have 2-3 agents, decide upfront: run Week 1 on all agents in parallel (1-2 weeks for inventory), then continue weeks 2-4 sequentially. If you have 1 agent, the 4-week path applies as-written | For 4+ agents, run the QUICKSTART-startup path on the top 2 highest-risk agents first; defer the others to the standard QUICKSTART progression |
+| **Regulated-data scope** | If any agent touches regulated data (PII, PHI, payment card, FERPA, GDPR personal data, sectoral regulated data): your retention and logging discipline is audit-relevant immediately, not "deferred until Level 3" | Include [Playbook 15 (Records and Retention)](playbooks/15-records-retention.md) and [Playbook 23 (Logging and Privacy)](playbooks/23-logging-privacy.md) in your Week 0 reading. Plan for retention-and-redaction design in Week 1 alongside the AI-BOM |
+| **RAG enabled** | If any agent has retrieval-augmented generation (knowledge base, vector search, document corpora): your retrieval forensics discipline is load-bearing for any output-leakage or context-poisoning incident | Include [Playbook 03 (RAG Forensics)](playbooks/03-rag-knowledge-base-forensics.md) in your Week 0 reading. The 7-component pipeline forensics from PB03 informs your evidence-instrumentation choices in Week 1 |
+
+**Week 0 deliverable:** a one-page Pre-Adoption Readiness Report with each of the six pre-checks answered. The report becomes the Week 1 input; the 4-week timeline is calibrated against the confirmed-met preconditions.
+
+**Voice note for solo founders and single-security-person startups:** the QUICKSTART-startup path is written for "the security team" but recognizes that in many 5-person organizations the security team is one person (often combining engineering, security, and IT roles). For solo operators, the Week 0 checks are particularly important: each unmet precondition compounds with the cognitive load of running the 4-week path on top of regular operations. The most common solo-operator failure pattern is committing to the 4-week timeline before validating the Week 0 preconditions, then absorbing the slip silently. The framework's discipline is to make the slip visible and named: a 6-week or 8-week path that completes Week 0 honestly is materially better than a 4-week path that creates false-confidence about maturity.
+
 ### Week 1: Inventory (Maturity Level 1: Aware)
 
 **Goal:** know what AI agents you run.
@@ -98,20 +117,27 @@ The full framework has 24 playbooks, 4 framework foundation docs, 5 templates, 3
 
 ## What you are deliberately deferring
 
-This 4-week path **deliberately defers** the following from the full framework:
+This 4-week path **deliberately defers** the following from the full framework. Several of the deferrals are **conditional** rather than absolute: the Week 0 readiness check should flag the conditions that override the deferral, and you should include the affected playbook in your Week 0 reading and Week 1 planning.
 
-- **PB03 (RAG Forensics):** only adopt if your agents have retrieval-augmented generation and the volume justifies the depth.
-- **PB06, PB08, PB09, PB10, PB11, PB12** (response-class specific playbooks): read on-demand when you encounter an incident class. Not required for Level 2.
-- **PB13 (Six Metrics):** adopt at Level 3 when you have at least 6 months of incident data.
-- **PB14 (Testing):** adopt as your drill cadence formalizes past quarterly.
-- **PB15, PB23** (records, privacy): adopt when your retention discipline becomes audit-relevant.
-- **PB17, PB05, PB24** (executive layer): adopt when your board engagement requires it.
-- **PB16 (Training):** adopt when you have more than one on-call responder.
-- **PB19, PB22** (procurement, drift): adopt when you make your next AI platform purchase or major model upgrade.
-- **PB20 (Maturity Roadmap):** read for context but defer formal level-progression discipline until you have multiple agents at Level 2.
-- **PB21 (Shadow AI):** adopt when your organization has more than one team building AI agents.
+### Conditional deferrals (override if condition applies)
 
-The framework's discipline is **"adopt only what you can sustainably operate"**. A 5-person team operating PB01 + PB02 + PB18 well is materially better than a 5-person team gesturing at all 24 playbooks badly.
+- **PB03 (RAG Forensics)**: defer **only if** none of your agents have retrieval-augmented generation. If any agent uses a knowledge base, vector search, or document corpora: PB03's 7-component pipeline forensics is load-bearing for output-leakage and context-poisoning incidents. Include in Week 0 reading per the Week 0 RAG-enabled pre-check.
+- **PB10 (Vendor Copilots)**: defer **only if** all your agents are customer-managed (you control the runtime). If you depend on vendor copilots (most enterprise startups in 2026 do): PB10's contracted-SLA discipline, customer-side track, and M3-Vendor variant are load-bearing for vendor-managed incidents. Include in Week 0 reading per the Week 0 vendor-copilot pre-check.
+- **PB15 (Records and Retention) + PB23 (Logging and Privacy)**: defer **only if** none of your agents touch regulated data (PII, PHI, payment card, FERPA, GDPR personal data, sectoral regulated data). If any agent touches regulated data: your retention and logging discipline is audit-relevant immediately, not "deferred until Level 3." Include in Week 0 reading per the Week 0 regulated-data pre-check.
+
+### Absolute deferrals (defer until growth conditions are met)
+
+- **PB05, PB17, PB24** (executive layer): adopt when your board engagement, customer-trust posture, or regulatory exposure requires the Executive Decision Packet, the Stakeholder Communication Matrix, or the Board-Ready Scorecard
+- **PB06, PB08, PB09, PB11, PB12** (response-class specific playbooks): read on-demand when you encounter an incident class. PB01's Six Triage Questions card will identify the incident class; the specific playbook informs the response detail
+- **PB13 (Six Metrics)**: adopt at Level 3 when you have at least 6 months of incident data to compute trend lines
+- **PB14 (Testing)**: adopt as your drill cadence formalizes past quarterly
+- **PB16 (Training)**: adopt when you have more than one on-call responder
+- **PB19 (Build vs Buy)**: adopt when you make your next AI platform purchase or major vendor renewal
+- **PB20 (Maturity Roadmap)**: read for context but defer formal level-progression discipline until you have multiple agents at Level 2
+- **PB21 (Shadow AI)**: adopt when your organization has more than one team building AI agents (the discovery boundary becomes operationally relevant at that scale)
+- **PB22 (Drift)**: adopt at your first major model upgrade, prompt refactor, or retriever-parameter change
+
+The framework's discipline is **"adopt only what you can sustainably operate"**. A 5-person team operating PB01 + PB02 + PB18 well plus the conditional playbooks their Week 0 check identified is materially better than a 5-person team gesturing at all 24 playbooks badly.
 
 ## Limits and honest acknowledgments
 
