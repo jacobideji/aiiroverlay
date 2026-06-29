@@ -211,7 +211,7 @@ The script MUST emit the following events to the customer's observability stack 
 
 Per Playbook 13:
 
-> *Metric 3: Evidence Export Time. Median minutes from incident-declaration order to full Minimum Evidence Set A-F captured.*
+> *Metric 3: Evidence Export Time. Median minutes from incident-declaration order to full Minimum Evidence Set A–F captured.*
 
 The script's emitted telemetry MUST permit computation of:
 
