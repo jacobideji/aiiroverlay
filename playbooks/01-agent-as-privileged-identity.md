@@ -140,7 +140,7 @@ These are the highest-frequency failure modes in this scenario class. Each one d
 - **Agent Privilege Matrix:** [`templates/agent-privilege-matrix.csv`](../templates/agent-privilege-matrix.csv) (the tool-tier matrix that makes M3 Tool Tiering surgical)
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports MANAGE 1.3, 2.3, 2.4, 4.1)
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports RS.MA-01, RS.MA-04, RS.MI-01, RS.MI-02)
-- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook responds primarily to ASI01 Agent Goal Hijack, ASI02 Tool Misuse, ASI03 Identity & Privilege Abuse, ASI05 Unexpected Code Execution)
+- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the general-response operational playbook for ASI01 Agent Goal Hijack, alongside [Playbook 06](06-prompt-injection-workflow.md) for the workflow-injection variant)
 
 ## The Question to Carry Forward
 
