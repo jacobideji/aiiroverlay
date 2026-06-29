@@ -218,14 +218,34 @@
     },
     "kill_switches": {
       "type": "object",
-      "required": ["m1_read_only", "m2_approvals", "m3_tool_tiering", "m4_full_disable"],
+      "required": ["maturity_target", "m1_read_only", "m2_approvals", "m3_tool_tiering", "m4_full_disable"],
       "properties": {
+        "maturity_target": {
+          "type": "string",
+          "enum": ["level_1_aware", "level_2_containable", "level_3_provable", "level_4_resilient"],
+          "description": "The customer's currently-claimed maturity level for this agent per framework/03-maturity-roadmap.md. Determines which Kill-Switch Modes must be implemented. level_1_aware: only inventory required; M1-M4 may have implemented=false during initial adoption. level_2_containable and above: M1-M4 must all be implemented=true and tested within 90 days. The framework rejects ambiguity: customers below Level 2 must explicitly claim Level 1 rather than leave fields blank."
+        },
         "m1_read_only": { "$ref": "#/$defs/kill_switch_record" },
         "m2_approvals": { "$ref": "#/$defs/kill_switch_record" },
         "m3_tool_tiering": { "$ref": "#/$defs/kill_switch_record" },
         "m4_full_disable": { "$ref": "#/$defs/kill_switch_record" }
       },
-      "description": "Kill-Switch Mode implementation and drill status. Per framework/01-minimum-viable-overlay.md Conformance checklist, M1 through M5 must be implemented and tabletop-tested in the last 90 days for conformance."
+      "description": "Kill-Switch Mode implementation and drill status. Per framework/01-minimum-viable-overlay.md Conformance checklist, M1 through M4 must be implemented and tabletop-tested in the last 90 days for Maturity Level 2 (Containable) conformance. Level 1 (Aware) customers may declare implemented=false on individual modes during initial adoption; the validator's --strict mode enforces conformance for the claimed maturity level.",
+      "allOf": [
+        {
+          "if": {
+            "properties": { "maturity_target": { "enum": ["level_2_containable", "level_3_provable", "level_4_resilient"] } }
+          },
+          "then": {
+            "properties": {
+              "m1_read_only": { "properties": { "implemented": { "const": true } } },
+              "m2_approvals": { "properties": { "implemented": { "const": true } } },
+              "m3_tool_tiering": { "properties": { "implemented": { "const": true } } },
+              "m4_full_disable": { "properties": { "implemented": { "const": true } } }
+            }
+          }
+        }
+      ]
     },
     "kill_switch_record": {
       "type": "object",
@@ -233,18 +253,18 @@
       "properties": {
         "implemented": {
           "type": "boolean",
-          "description": "Whether the mode is implemented in code or configuration, not just in the runbook."
+          "description": "Whether the mode is implemented in code or configuration, not just in the runbook. May be false only when kill_switches.maturity_target is level_1_aware; conformance to Level 2 (Containable) or higher requires implemented=true (enforced by the schema's allOf rule)."
         },
         "tested_at": {
-          "type": "string",
+          "type": ["string", "null"],
           "format": "date",
-          "description": "Most recent tabletop or live drill date. Per playbooks/14-testing-for-agent-failure-modes.md, must be within 90 days for Maturity Level 2 conformance."
+          "description": "Most recent tabletop or live drill date. Per playbooks/14-testing-for-agent-failure-modes.md, must be within 90 days for Maturity Level 2 conformance. May be null when implemented=false at maturity level_1_aware; the validator's --strict mode enforces the 90-day window on implemented modes."
         },
         "tta_minutes": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "minimum": 0,
           "maximum": 10,
-          "description": "Measured Time-to-Activate in minutes. Per framework/01-minimum-viable-overlay.md and kill-switches/overview.md, must be <= 10 for Tier-1 SOC activation. Drill-measured per framework/01 Measurement Scope section."
+          "description": "Measured Time-to-Activate in minutes. Per framework/01-minimum-viable-overlay.md and kill-switches/overview.md, must be <= 10 for Tier-1 SOC activation. Drill-measured per framework/01 Measurement Scope section. May be null when implemented=false."
         }
       }
     },
