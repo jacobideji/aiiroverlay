@@ -32,7 +32,7 @@ The schema captures, **per agent**:
 | `agent` | Name, business owner, technical owner, environment, deployment dates |
 | `identity` | Service account, OAuth grant, scopes, rotation cadence |
 | `model` | Provider, model ID, version pinning, fallback model |
-| `tools` | Every enabled tool with risk tier (0/1/2), read vs. write, write targets |
+| `tools` | Every enabled tool with risk tier (`T0`/`T1`/`T2`), read vs. write, write targets |
 | `retrieval` | Each corpus, URI, sensitivity, refresh cadence |
 | `memory` | Scope (off / per-user / shared), retention, sensitivity, PII handling |
 | `guardrails` | Active policies (prompt-injection detection, PII redaction, rate limits) |
@@ -65,13 +65,14 @@ The AI IR Overlay sets a hard target: **the AI-BOM must be exportable in under 5
 
 ### CI integration
 
-Add a CI step that:
+Validate every AI-BOM file against the JSON Schema [`schemas/ai-bom.schema.json`](../schemas/ai-bom.schema.json) (JSON Schema 2020-12). The schema enforces the `T0`/`T1`/`T2` risk-tier vocabulary, the 10-minute Kill-Switch Mode TTA upper bound, the 60-minute Evidence Set export upper bound, and the conditional rule that write tools must declare `write_targets`.
 
-- Parses every `*.yaml` in your AI-BOM directory
+Add the following operational-currency checks alongside schema validation:
+
 - Fails the build if any required field is missing or stale (older than 7 days for `last_reviewed`)
 - Asserts that each `kill_switches.mX.tested_at` is within the last 90 days
 
-The schema is intentionally flat enough to validate with `yq` or any YAML schema validator.
+Any JSON Schema validator (`ajv`, `jsonschema`, `check-jsonschema`) validates YAML inputs after a YAML-to-JSON conversion step (`yq` is the framework's reference converter).
 
 ### Mapping to other inventories
 
@@ -91,6 +92,7 @@ Apache 2.0. Free to use, fork, adapt, and ship in your products. The word mark *
 ## Related
 
 - [`framework/01-minimum-viable-overlay.md`](../framework/01-minimum-viable-overlay.md): describes the four MVO controls. Inventory is the first.
+- [`schemas/ai-bom.schema.json`](../schemas/ai-bom.schema.json): the JSON Schema 2020-12 contract for CI validation, including the conditional rule that write tools must declare `write_targets`.
 - [`templates/agent-privilege-matrix.csv`](agent-privilege-matrix.csv) ([README](README-privilege-matrix.md)): the companion CSV mapping tools to risk tiers.
 - [`kill-switches/overview.md`](../kill-switches/overview.md): the six modes referenced by the `kill_switches` section.
 - [Playbook 01: The Agent Is a Privileged Identity](../playbooks/01-agent-as-privileged-identity.md): the response playbook that uses the inventory.
