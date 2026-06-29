@@ -15,6 +15,33 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.23.0] · 2026-06-29 · Playbook 02: Evidence Lives in New Places (foundational concepts)
+
+### Added
+
+- `playbooks/02-evidence-lives-in-new-places.md`: the foundational concepts playbook. Establishes the **Three Realities of AI Evidence** as named principles: (1) **the actor is a workflow, not a workstation** (the agent acts through legitimate service identities and authorized API calls, so evidence lives in prompt logs, tool-call ledgers, retrieval traces, memory snapshots, configuration histories, and downstream SaaS audit records rather than on endpoints); (2) **the payload can be language, not malware** (the harmful artifact may be plain text in a prompt, a retrieved document, an agent response, or a tool-call parameter rather than an executable, so antivirus and intrusion-detection signatures do not apply); (3) **evidence is fragile** (routine response actions like token rotation, prompt updates, corpus cleanups, and redeployment destroy state by default, so the snapshot-before-rotate reflex is the precondition to defensible investigation). Maps the Three Realities to the framework's existing operational machinery: the Capture Order, the Minimum Evidence Set A through F, the Two-Tier Retention Standard from PB15, the chain-of-custody discipline, the Three-Layer Logging Model from PB23, the Reconstructability Test. Includes the **First-Hour Reflexes** that apply to every AI incident response regardless of scenario, the **state-preservation containment discipline** (snapshot-first containment, M1 over M4, identity-level over runtime destruction, corpus version preservation, configuration snapshot before policy tune, vendor-side evidence preservation request), the **A-F Quick Reference** with each evidence type mapped to the Reality it operationalizes, the **conceptual recovery paths** (recovery from an evidence-loss event, recovery from a "this was traditional IR" misframing, recovery from a "the AI did it" framing), and twelve **conceptual misframings** that PB02 exists to correct.
+
+### Changed
+
+- `CONTENT_MAP.md` Issue 2 row updated: PB02 status promoted from 📚 absorbed-into-framework-core to ✅ playbook + ✅ framework-core operational specification. The "Why this file exists" gap statement now excludes PB02 from the unshipped list (only PB05 remains drafted-but-unshipped). The "Why 22 playbooks shipped so far" subsection renamed to "Why 23 playbooks shipped so far" with PB02 added to the standards-gap-closure rationale (closes the conceptual-foundation gap through the Three Realities as named principles). The v1.0 criteria updated from "the target is 23 playbooks" to "the target is 24 playbooks", reflecting the PB02 promotion from absorbed-into-core to separate foundational-concepts playbook.
+- `README.md` reading order updated from "Twenty-two shipped playbooks" to "Twenty-three shipped playbooks". The Foundation arc bucket now includes both PB02 (the conceptual-foundation playbook) and PB01 (the operational keystone). Foundation expanded from one playbook to two; both are referenced explicitly by every operational playbook.
+- `evidence/minimum-evidence-set.md` Related section adds PB02 as the conceptual companion (the Three Realities), with `evidence/minimum-evidence-set.md` itself as the operational specification. Together they form the **concepts-and-operations pair** for the framework's evidence discipline.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.22.0` to `0.23.0`.
+
+### Why now
+
+PB02 closes the **conceptual-foundation gap** that the framework's operational playbooks have been depending on without specifying as a separate artifact. Every prior playbook references the Minimum Evidence Set A-F taxonomy and the Capture Order discipline; both flow from the three foundational realities of AI evidence that newsletter Issue 2 introduced. The original maintainer decision in v0.1.0 was to absorb PB02 into the framework core (`evidence/minimum-evidence-set.md`) because the operational substance (the A-F taxonomy, the Capture Order, the pitfalls list) was fully captured there. The decision had three downstream effects that v0.23.0 resolves:
+
+First, the **Three Realities were not named as principles**. Issue 2's conceptual contributions ("the actor is a workflow, not a workstation"; "the payload can be language, not malware"; "evidence is fragile") were referenced implicitly across the framework but never named explicitly. Responders could read the operational playbooks without internalizing the mental shifts that the operations are built on; PB02 makes the realities explicit and named.
+
+Second, the **"every newsletter issue maps to one playbook in the framework" provenance principle** from the README's Provenance section was violated. The v0.23.0 promotion restores the principle: PB02 now has its own playbook (the conceptual companion) alongside the framework-core operational specification.
+
+Third, **newcomers lacked a pedagogical entry point**. The framework's existing entry points (QUICKSTART for 30-day adoption, `examples/incident-walkthrough.md` for an end-to-end worked example) are action-oriented and scenario-oriented respectively. PB02 adds a concepts-oriented entry point: "first principles of AI evidence, before any specific scenario." The three entry points (action, scenario, concept) together cover the major learning modalities for newcomers.
+
+The playbook uses a **modified canonical skeleton** that preserves coherence with the framework's standard 9-section structure while adapting content to the foundational nature: First-Hour Actions become first-hour reflexes that apply to every AI incident; Containment Options become state-preservation discipline; Evidence Priorities map the Three Realities to the A-F taxonomy; Recovery Sequence is conceptual rather than operational. The structural coherence supports framework-wide consistency; the content adaptation honors PB02's foundational pedagogical role.
+
+The v1.0 criteria are updated accordingly: the target is now 24 playbooks (PB01 through PB24, no absorption), 23 of which are shipped after v0.23.0. The remaining playbook is PB05 (Executive Decision-Making With AI in the Loop). After PB05 ships, the content gate is fully closed and the v1.0 cut turns entirely on the **Steering Committee announcement** (the governance gate).
+
 ## [0.22.0] · 2026-06-29 · Playbook 16: Training Your Team for AI Incidents
 
 ### Added
@@ -606,7 +633,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.22.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.23.0...HEAD
+[0.23.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.23.0
 [0.22.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.22.0
 [0.21.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.21.0
 [0.20.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.20.0
