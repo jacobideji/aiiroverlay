@@ -15,6 +15,31 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.17.0] · 2026-06-29 · Playbook 19: Build vs Buy for Agent Controls
+
+### Added
+
+- `playbooks/19-build-vs-buy.md`: the procurement-time playbook. Addresses the precondition that determines whether the framework's response-side playbooks are executable on a given AI platform. Establishes the **60-minute Proof of Readiness Test** (activate read-only mode, export tool-call and retrieval logs from the past hour, identify the most-frequently-retrieved document, produce a one-page executive update), the **eight critical procurement questions** that distinguish incident-capable platforms from feature-impressive ones (tool gating, exportable logging, configurable retention, correlation identifiers, identity management, RAG governance, escalation contacts and SLAs, Build-vs-Buy clarity), the **Build vs Buy Decision Matrix** with capability-class recommendations (buy foundation model, logging pipelines, IdP, policy engines, credential stores, baseline monitoring; build workflow logic, domain-specific retrieval rules, enterprise approval workflows, golden-prompt regression suites, output-layer DLP rules, materiality protocol operationalization), and the **four-boundary post-procurement hardening framework** (capability gap closure, operational instrumentation, build-side discipline, continued vendor relationship). Ten common pitfalls including feature-driven procurement, demo-driven evaluation without proof-of-readiness testing, no correlation-identifier requirement in RFPs, vendor SLA accepted without testing, and the Build-vs-Buy decision made by procurement alone without IR input.
+
+### Changed
+
+- `CONTENT_MAP.md` Issue 19 status flipped from 🟡 drafted to ✅ `v0.17.0`. The "Why this file exists" gap statement excludes PB19 from the unshipped list. The "Why 16 playbooks shipped so far" subsection renamed to "Why 17 playbooks shipped so far" with PB19 added to the 2026 production-pattern relevance rationale.
+- `README.md` reading order updated from "Sixteen shipped playbooks" to "Seventeen shipped playbooks". PB19 added to the Prevention arc bucket alongside PB04 (Tool Design); together PB04 and PB19 form the **pre-incident discipline pair**: PB19 selects the platform that supports response, PB04 tiers the tools that platform exposes.
+- `crosswalks/nist-csf-2.md` Status section adds **GV.SC** (supply-chain risk management) procurement-time discipline coverage by PB19, naming the Proof of Readiness Test as the empirical evidence that supports the GV.SC subcategory requirements.
+- `crosswalks/nist-ai-rmf.md` MVO-1 Inventory section adds a gap-note acknowledgment that AI RMF does not specify the procurement-time precondition; PB19 fills the gap with the Proof of Readiness Test and the eight critical procurement questions.
+- `crosswalks/owasp-agentic-top-10.md` ASI04 (Agentic Supply Chain Compromise) mapping extended to include PB19 as the procurement-time discipline that closes the precondition gap behind ASI04 response. Coverage status bumped from `through v0.16.0` to `through v0.17.0`.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.16.0` to `0.17.0`.
+
+### Why now
+
+PB19 closes the **procurement-time precondition** that determines whether the framework's response playbooks are executable at all. Every prior playbook assumes the underlying AI platform can do specific things: activate read-only mode in under 10 minutes, export prompt and tool-call logs within 60 minutes, correlate tool calls to SaaS audit records with traceable identifiers, configure data retention to match the customer's regulatory window. If the platform cannot do these things, the response playbooks cannot do these things either. The procurement decision is therefore not a vendor-selection question; it is an incident-readiness question.
+
+PB19 addresses this with the Proof of Readiness Test (the operational substitute for vendor demonstration), the eight critical procurement questions (the framework's distillation of platform dependencies into a procurement checklist), the Build vs Buy Decision Matrix (which capabilities are typically appropriate to buy and which to build), and the post-procurement hardening discipline that converts the readiness test's findings into either contractual commitments, customer-side build commitments, or documented risk-acceptance with [PB24 C4 scorecard tracking](playbooks/24-board-ready-scorecard.md).
+
+The playbook completes the framework's **pre-incident discipline pair** with PB04 (Tool Design Is Containment). PB19 selects the platform; PB04 tiers the tools the platform exposes. Together they convert the framework's response capability from a written commitment into a deployment-time-verified reality. After v0.17.0, the framework's coverage of the **procurement → tool design → response** pre-incident chain is complete: a CISO can use PB19 to decide whether to buy a platform, PB04 to tier the platform's tools, and the response-side playbooks (PB01, PB03, PB06, PB07, PB08, PB09, PB10, PB11, PB12, PB18) to execute the incident response the platform was selected to support.
+
+PB19 also closes a long-standing strategic positioning gap: prior framework releases positioned the response discipline but did not specify how to verify the platform supports it. The eight critical procurement questions and the Proof of Readiness Test give CISOs a defensible artifact to take into vendor evaluations and a measurable check against existing deployments. The artifact is the kind of thing standards-body engagement (NIST AI Safety Institute, OWASP GenAI Security Project, ISO/IEC JTC 1/SC 42) can reference as a concrete operational test.
+
 ## [0.16.0] · 2026-06-29 · Playbook 21: Shadow AI (From Shadow IT to Shadow Agents)
 
 ### Added
@@ -450,7 +475,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.16.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.17.0...HEAD
+[0.17.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.17.0
 [0.16.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.16.0
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
