@@ -15,6 +15,39 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - Steering Committee announcement (cuts `v1.0.0`)
 
+## [0.14.3] · 2026-06-28 · Calibration Tuning + Cross-Doc Coherence
+
+### Added
+
+- `playbooks/24-board-ready-scorecard.md` Governance Scorecard adds **C4: "Are risk-accepted non-conformant deployments documented and time-bound?"**. C4 tracks agents that do not satisfy framework conformance criteria (e.g., vendor copilots deployed without contracted Boundary 1 SLAs per PB10, or PB18 hardening items past their 5-business-day SLA without explicit risk acceptance) with CISO-signed risk acceptance, audit-trail recording, named closure plan, and quarterly review. Scoring guidance bumped from 11 to 12 items; thresholds adjusted (`0-3 strong`, `4-8 exposed`, `9+ urgent`).
+- `RELEASE_CHECKLIST.md` adds two complementary pre-flight discipline guards: a **Cross-reference existence check** (catches vaporware references where one file points at an item that does not exist in the target file) and an **Attribution correctness check** (catches mis-attribution where one file claims "X maps to Y" but X and Y describe different conceptual things).
+
+### Changed
+
+- `README.md` hero blockquote rewritten from `"A candidate minimum-standard framework... intended as a baseline organizations can adopt, adapt, or critique"` (4 hedges) to `"A practical incident-response baseline for AI agents in production. Adapt and critique freely."` (1 hedge). The previous calibration overcorrected; this release restores confident-honest framing.
+- `framework/01-minimum-viable-overlay.md` softens absolutist language: blockquote header `"Together: the minimum standard"` → `"Together: a practical baseline"`; conformance section renamed from `"Conformance: Claiming Minimum Standard"` → `"MVO Conformance Criteria"`. Adds an explicit **"overlay, not a replacement"** paragraph that frames the four MVO controls as AI-agent-specific extensions of NIST CSF 2.0 ID.AM/RS/RC functions, NIST SP 800-61 r3, and ISO/IEC 27035 disciplines (not as replacements), with crosswalk references for each base discipline.
+- `playbooks/12-insider-threat-3.md` adds an explicit acknowledgment that "Insider Threat 3.0" is the framework's own coined working label, not an industry-accepted taxonomy. Alternative labels (AI-mediated insider risk, agent-assisted misuse, AI-augmented insider threat) are invited as substitutes.
+- `playbooks/10-vendor-copilots.md` contractual-leverage callout reframed to use explicit risk-acceptance language: deployment without Boundary 1 SLAs is now a **"documented risk-acceptance decision, not claiming conformance to the framework's standard"**, signed by the CISO, audit-trailed, and tracked as PB24 scorecard item C4 until Boundary 1 closes. Resolves the prior tension between PB10's defensive thesis ("vendor copilots must be deployed... contracted with explicit evidence and containment SLAs") and the accommodation path.
+- `playbooks/10-vendor-copilots.md` adds a Common Pitfalls row for "Contractual leverage assumed, not measured": the failure mode where the hardening framework's Boundary 1 items are written as if every customer can negotiate them into a vendor MSA.
+- `playbooks/24-board-ready-scorecard.md` C4 narrowed: the original wording flagged "any deployment with active PB18 hardening items pending closure" as overbroad (would have triggered on every operationally-mature agent with normal in-flight hardening). C4 now fires only on (a) non-conformant deployments (e.g., vendor copilots without contracted Boundary 1 SLAs) and (b) PB18 hardening items that have **exceeded** their 5-business-day SLA without explicit risk acceptance. In-flight hardening items still inside their 5-business-day SLA are governed by PB18 itself, not C4.
+- `playbooks/13-six-metrics.md` Governance-domain-to-metrics mapping rewritten for accuracy. The prior simplification (`"Governance domain = Metric 1"`) was imprecise. The new framing separates the metric-derived domains (Containment, Evidence, Recovery map directly to Six Metric values) from the scorecard-tracked Governance domain (C1 tier discipline, C2 M3 operational readiness, C3 materiality documentation, C4 risk-acceptance tracking are not directly metric-quantified but depend on the AI-BOM substrate that Metric 1 tracks).
+- `playbooks/24-board-ready-scorecard.md` Related-section parenthetical for PB13 aligned to match the new Governance-domain framing in PB13.
+- `examples/incident-walkthrough.md` Minute 12 callout rewritten to align with the canonical TTA definition in `kill-switches/overview.md`. The walkthrough now correctly distinguishes **TTA (~2 minutes, IC-order-to-effective)** from **alert-to-containment latency (12 minutes, detection-to-effective)** as two complementary metrics. Prior wording conflated the two.
+- `examples/incident-walkthrough.md` Scenario setup adds an explicit **Regulatory posture** paragraph naming Northstar Cloud's SEC, NY DFS, EU AI Act, and HIPAA scope. The Materiality call's clock-question now references this posture rather than asserting "HIPAA does not apply" without basis.
+- `CHANGELOG.md` v0.14.2 "Why now" section expanded from 1 paragraph to 3 paragraphs explaining why the operational entry point (QUICKSTART + worked example) is load-bearing for adopter onboarding.
+- `RELEASE_CHECKLIST.md` historical-fix references made evergreen ("v0.14.x calibration cycle" rather than "Fixes 64, 65, 66" specific numbers) so the checklist stays useful as the framework evolves.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.14.1` to `0.14.3` (closes the recurring CITATION-stale pattern that has now followed every release; the next release-cut following the RELEASE_CHECKLIST will keep this in sync automatically).
+
+### Why now
+
+The v0.14.2 ship surfaced a **second-order pattern** through six follow-on hostile-critic verification passes: every internal fix that touched cross-doc claims had a non-trivial chance of introducing a new inconsistency (the "ripple"). Fix 65 introduced 1 inconsistency (PB10 callout cited PB24 functionality that did not exist). Fix 66 introduced 2 (framework/01 still said "the minimum standard" after the README softened it; PB10 callout conflicted with PB10's own defensive thesis). Fix 67 introduced 1 substantive (C4 row referenced "in-flight hardening" as overbroad scope). Fix 68 introduced 1 (PB13's precision attempt at Governance-to-Metric-1 mapping was technically wrong). Fix 69 introduced 1 stylistic (PB24 Related parenthetical still said "four domains derive from" after PB13 clarified Governance is structurally different).
+
+Each ripple was small. Cumulatively they represented a recurring failure mode that the RELEASE_CHECKLIST did not yet catch. v0.14.3 closes all six ripples and adds the two RELEASE_CHECKLIST discipline guards (**Cross-reference existence check**, **Attribution correctness check**) that should bound this failure mode going forward.
+
+The release also addresses two carryover positioning observations from the holistic full-repo review: the "Insider Threat 3.0" framing in PB12 was presented as established taxonomy (now explicitly framed as the framework's coined working label), and framework/01 did not preempt the "how does MVO-1 differ from NIST CSF ID.AM" question (now explicitly framed as an AI-agent-specific overlay layered on existing standards-body disciplines, not a replacement).
+
+v0.14.3 is the calibration-arc completion release. After this release, the framework is in the most internally-consistent state internal work can produce; further improvements depend on outside-in signals (adoption case studies in Discussions, community PRs, standards-body engagement).
+
 ## [0.14.2] · 2026-06-28 · Release Hygiene + Operational Entry Points
 
 ### Added
@@ -366,7 +399,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.2...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.14.3...HEAD
+[0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
 [0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
