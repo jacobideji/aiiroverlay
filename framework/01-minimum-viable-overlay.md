@@ -15,6 +15,8 @@
 
 The MVO is the smallest set of controls that converts an AI deployment from *unreadiness* to *defensibility*. Adopt all four to claim Minimum Viable Overlay (MVO) conformance.
 
+The MVO is an **overlay**, not a replacement. It layers on top of the asset-management, incident-response, and recovery disciplines that existing standards already specify (NIST CSF 2.0 ID.AM, RS, and RC functions; NIST SP 800-61 r3; ISO/IEC 27035). The four MVO controls are the **AI-agent-specific extensions** to those disciplines: MVO-1 extends asset management to capture AI-agent identity, tooling, write targets, retrieval corpora, and memory configuration in one canonical artifact (the AI-BOM); MVO-2 extends containment to a graduated kill-switch ladder calibrated to agent action surface; MVO-3 extends evidence collection to the six AI-agent-specific data types (A through F) that disappear fastest in an incident; MVO-4 extends recovery to the staged re-enablement pattern AI agents require. Each MVO control has a crosswalk to its base discipline ([NIST AI RMF](../crosswalks/nist-ai-rmf.md), [NIST CSF 2.0](../crosswalks/nist-csf-2.md), [OWASP Agentic Top 10](../crosswalks/owasp-agentic-top-10.md)).
+
 These four controls are referenced throughout the framework as **MVO-1 (Inventory)**, **MVO-2 (Safe Modes)**, **MVO-3 (Minimum Evidence Set)**, and **MVO-4 (Controlled Re-Enable)**.
 
 ---
