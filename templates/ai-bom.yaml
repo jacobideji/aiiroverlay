@@ -93,6 +93,13 @@ logging:
   config_versioning: true
 
 kill_switches:
+  # maturity_target controls which Kill-Switch Modes must be implemented.
+  # level_1_aware:        only inventory required; modes may be implemented=false during initial adoption
+  # level_2_containable:  M1-M4 must all be implemented=true and tested within 90 days
+  # level_3_provable:     Level 2 + 60-minute Evidence Set export tested within 90 days
+  # level_4_resilient:    Level 3 + measured Six Metrics trending over rolling 90 days
+  # See framework/03-maturity-roadmap.md.
+  maturity_target: "level_2_containable"
   m1_read_only:
     implemented: true
     tested_at: "2026-05-10"
