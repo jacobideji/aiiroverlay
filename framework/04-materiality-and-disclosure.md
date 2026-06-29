@@ -53,9 +53,9 @@ The call walks four questions in order. The answers are documented in the decisi
 
 For US registrants: SEC Item 1.05 of Form 8-K runs 4 business days from materiality determination. The clock starts when the registrant determines the incident is material, not when the incident occurred.
 
-For EU deployers of high-risk AI systems: EU AI Act Article 26(7) requires reporting of "serious incidents" to providers and market surveillance authorities. The reporting window is 15 days from awareness for serious incidents (Article 73).
+For EU deployers of high-risk AI systems: EU AI Act Article 26 requires the deployer, upon identifying a serious incident, to inform the provider, distributor, and the relevant market surveillance authority without undue delay. EU AI Act Article 73 then runs against the **provider** to report the serious incident to market surveillance authorities. The reporting window under Article 73 is 15 days from awareness in the default case, 2 days for incidents resulting in the death of a person or in serious and irreversible harm, and 10 days for widespread infringement. Deployer detection effectively starts the provider's clock, so the deployer's own materiality determination timing is load-bearing for the cumulative regulatory window.
 
-For NY DFS-covered entities: 23 NYCRR Part 500.17(c) requires notification within 72 hours of a cybersecurity event determination.
+For NY DFS-covered entities: 23 NYCRR Part 500.17(a) (as amended in November 2023) requires notification to the Superintendent within 72 hours after determining that a Cybersecurity Event has occurred.
 
 For HIPAA covered entities or business associates: 45 CFR §164.408 requires breach notification timelines that depend on the size and category.
 
