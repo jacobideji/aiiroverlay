@@ -56,7 +56,7 @@ The Minimum Evidence Set (A–F) operationalizes:
 - **MEASURE 2.7:** *"AI system security and resilience, as identified in the map function, are evaluated and documented."*
 - **MANAGE 4.1:** *"Post-deployment AI system monitoring plans are implemented, including mechanisms for capturing and evaluating input from users and other relevant AI actors, appeal and override, decommissioning, incident response, recovery, and change management."*
 
-**Gap note:** AI RMF does not enumerate evidence types. The A–F set provides the operational specification.
+**Gap note:** AI RMF does not enumerate evidence types. The A–F set provides the operational specification. AI RMF also does not specify the **evidence-retention lifecycle** that determines whether captured evidence remains defensible across the regulatory, legal, and business-trust review window where post-incident proof is required; [Playbook 15: Records, Retention, and Proving What Happened](../playbooks/15-records-retention.md) fills this gap with the Two-Tier Retention Standard (metadata-tier and payload-tier windows calibrated per evidence class), the incident-triggered legal-hold mechanism, the chain-of-custody discipline (every access to the evidence store is access-logged with actor identity, timestamp, query, and access purpose), the tamper-evidence anchor (cryptographic integrity hashes computed at capture time and verifiable on subsequent access), and the quarterly Reconstructability Test that empirically validates the framework's evidence claims at 30, 60, and 90 days.
 
 ### MVO-4 Controlled Re-Enable ↔ MANAGE
 
