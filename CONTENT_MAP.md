@@ -142,4 +142,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.26.0 P1 adoption-friction fixes: maturity-target schema, validator staleness, reference implementations, startup QUICKSTART) -->
+<!-- Last revised: 2026-06-29 (v0.27.0 P2 polish: CHANGELOG comma annotation, PB02 mental-model cross-reference) -->

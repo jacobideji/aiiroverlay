@@ -15,6 +15,23 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+## [0.27.0] · 2026-06-29 · P2 polish (CHANGELOG comma-annotation, PB02 mental-model cross-reference)
+
+### Changed
+
+- `CHANGELOG.md` adds an HTML comment above the `[0.14.2]` link reference explaining the literal-trailing-comma workaround. The v0.14.2 release tag was inadvertently created with a trailing comma ("v0.14.2,") and the tag could not be deleted or renamed; the link reference points at the actual malformed URL so the reference resolves to HTTP 200. The annotation prevents future readers from "fixing" the comma and unintentionally 404'ing the link.
+- `framework/02-mental-model.md` Related section now references [Playbook 02 (Evidence Lives in New Places)](../playbooks/02-evidence-lives-in-new-places.md) as the foundational concepts companion. PB02 was promoted from absorbed-into-framework-core to a separate foundational playbook in v0.23.0; the Mental Model document did not receive the ripple cross-reference in that release. v0.27.0 closes the cross-reference gap: the Mental Model determines how to govern the agent (Acts, Remembers, Retrieves, Changes); PB02's Three Realities determine how to investigate the agent (actor is workflow, payload can be language, evidence is fragile). The two foundational artifacts together produce the framework's pedagogical entry point for newcomers.
+- `CITATION.cff` version + preferred-citation.version bumped from `0.26.0` to `0.27.0`.
+
+### Why now
+
+This release closes the two remaining P2 polish items from the v0.24.0 holistic critique:
+
+- **P2.9 CHANGELOG `[0.14.2]` trailing comma:** the v0.24.0 critique flagged the comma as a typo. Subsequent investigation confirmed the comma is a deliberate workaround: the GitHub tag itself is malformed (literal "v0.14.2,") and could not be deleted or renamed. The link reference must include the comma for the URL to resolve. v0.27.0 adds an HTML comment explaining the workaround so future readers do not "fix" the comma and 404 the link.
+- **P2.10 framework/02-mental-model.md missing PB02 reference:** PB02 was promoted in v0.23.0 but the Mental Model document did not receive the ripple cross-reference. v0.27.0 closes this gap, completing the foundational-playbook-pair (PB02 concepts + PB01 keystone) cross-referencing across all framework artifacts.
+
+After v0.27.0, the framework is **content-complete (v0.24.0) + consistency-calibrated (v0.25.0) + adoption-experience-calibrated (v0.26.0) + cosmetically polished (v0.27.0)**. The remaining v1.0.0 work is governance maturation only (Steering Committee announcement, public-interface freeze, v1.0.0-rc1 release candidate).
+
 ## [0.26.0] · 2026-06-29 · P1 adoption-friction fixes (maturity-target schema, validator staleness, reference implementations, startup QUICKSTART)
 
 ### Added
@@ -715,7 +732,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.26.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.27.0...HEAD
+[0.27.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.27.0
 [0.26.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.26.0
 [0.25.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.25.0
 [0.24.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.24.0
@@ -729,6 +747,7 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 [0.16.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.16.0
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
+<!-- The v0.14.2 release tag was inadvertently created with a literal trailing comma ("v0.14.2,") and the tag could not be deleted or renamed after the fact. The link reference below points at the actual malformed URL so the reference resolves to HTTP 200; do NOT remove the trailing comma without first verifying the GitHub-side tag has been renamed. See v0.14.2 release page for context. -->
 [0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2,
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
