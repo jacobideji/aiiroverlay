@@ -91,7 +91,7 @@ The framework's discipline is **honest self-assessment**: customers below Level 
 
 ### Default behavior when `maturity_target` is omitted
 
-The framework's discipline is **deliberate opt-in**, not silent permissiveness. However, real-world adoption sometimes lands AI-BOM files in the customer's environment without the `maturity_target` field set (legacy AI-BOMs predating the v0.26.0 schema; copy-paste errors; partial migration from earlier framework versions). The framework's `kill_switches` schema requires the `maturity_target` field per the v0.26.0 enforcement (see [`schemas/ai-bom.schema.json`](../schemas/ai-bom.schema.json) line 222), so a file missing the field **fails schema validation** rather than silently defaulting.
+The framework's discipline is **deliberate opt-in**, not silent permissiveness. However, real-world adoption sometimes lands AI-BOM files in the customer's environment without the `maturity_target` field set (legacy AI-BOMs predating the v0.26.0 schema; copy-paste errors; partial migration from earlier framework versions). The framework's `kill_switches` schema requires the `maturity_target` field per the v0.26.0 enforcement (see the `kill_switches.maturity_target` property in [`schemas/ai-bom.schema.json`](../schemas/ai-bom.schema.json)), so a file missing the field **fails schema validation** rather than silently defaulting.
 
 If the field is missing, the validator's error message names the field explicitly: `"'maturity_target' is a required property"`. The customer's CI integration catches this at validation time, not at incident time.
 
