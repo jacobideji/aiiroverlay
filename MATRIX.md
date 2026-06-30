@@ -65,6 +65,8 @@ The canonical containment surface. Modes M0 through M5 are conformance scope; M3
 
 ### M3 and M4 Variants (operational refinements, not new mode numbers)
 
+PB12 (Insider Threat 3.0) also uses the canonical **M4 Full Disable** (agent-wide) for the highest-severity insider-misuse scenarios; that sub-mode is identical to the M0-M5 ladder's M4 row and is not enumerated separately below.
+
 | Variant | What It Scopes | Use When | Source |
 |---|---|---|---|
 | **M3-RAG** | M3 applied to the retrieval layer | Suspected corpus poisoning | [PB03](playbooks/03-rag-knowledge-base-forensics.md) |
