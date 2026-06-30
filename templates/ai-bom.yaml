@@ -7,6 +7,11 @@
 # Conforms to: AI IR Overlay™ Minimum Viable Overlay, Control 1 (Inventory).
 # Validates against: schemas/ai-bom.schema.json (JSON Schema 2020-12).
 # Run scripts/validate.py to confirm conformance before merging changes.
+#
+# Response-time navigation: opening this file for the affected agent is
+# step 1 of 4 in the paged-responder navigation path. See RESPONSE-START.md
+# at the repo root for the full path (AI-BOM -> triage/six-questions ->
+# kill-switches/overview -> framework/04-materiality-and-disclosure).
 
 agent:
   name: "sales-triage-copilot"
