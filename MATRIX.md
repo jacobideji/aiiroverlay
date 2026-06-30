@@ -20,7 +20,7 @@ Sections 2 through 9 expand each cross-cutting reference (kill-switch ladder, ev
 This document is intended to be:
 
 - **Printable.** Fits on one large screen or two letter pages.
-- **Citable.** Section anchors are stable. Cite as `MATRIX.md#section-N`.
+- **Citable.** Section anchors are stable. Cite using the GitHub-generated heading slug (e.g., `MATRIX.md#1-the-matrix-response-phases--operational-controls` or `MATRIX.md#4-six-metrics-measurement-discipline`).
 - **Auditor-ready.** Every cell traces to a specific file in the repo.
 
 ---
