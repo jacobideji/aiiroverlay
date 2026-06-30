@@ -213,6 +213,14 @@ For the full acronym list see the [README Acronyms section](README.md#acronyms).
 
 ---
 
+## Related
+
+- **Live response navigation:** [`RESPONSE-START.md`](RESPONSE-START.md) (the paged-responder entry point; MATRIX is the structural reference, RESPONSE-START is the response-time navigation path)
+- **Provenance + repository navigation:** [`CONTENT_MAP.md`](CONTENT_MAP.md)
+- **Project home:** [`README.md`](README.md)
+
+---
+
 ## Source
 
 *This matrix synthesizes the AI IR Overlay™ framework at v0.33.0. It will be revised as the framework evolves toward v1.0.0 and as the Steering Committee announcement and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
