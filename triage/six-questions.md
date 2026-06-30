@@ -78,6 +78,23 @@ See the [Minimum Evidence Set](../evidence/minimum-evidence-set.md).
 
 ---
 
+## Where each answer routes
+
+Each question's answer points the Incident Commander to the playbook that handles the corresponding response surface. Walk the questions in order; navigate to the indicated playbook(s) when the answer surfaces an issue.
+
+| Question | If the answer reveals... | Go to |
+|---|---|---|
+| **Q1 (tools)** | Risky tool tiering or overly-permissive write tools | [Playbook 04: Tool Design Is Containment](../playbooks/04-tool-design-is-containment.md) |
+| **Q2 (write targets)** | Output-leakage or unauthorized writes to external systems | [Playbook 09: Leakage Without a Breach](../playbooks/09-output-leakage.md) |
+| **Q3 (identity)** | Credential compromise or shared/delegated token misuse | [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md); also [Playbook 12: Insider Threat 3.0](../playbooks/12-insider-threat-3.md) if user-attributable |
+| **Q4 (memory)** | Cross-tenant or cross-user memory bleed; regulated data in memory | [Playbook 23: AI Logging and Privacy](../playbooks/23-logging-privacy.md) |
+| **Q5 (safe mode)** | Need to select the right Kill-Switch Mode and variant | [Kill-Switch Modes](../kill-switches/overview.md) (use the **Variant Selector** quick reference at the top of the Mode Variants section) |
+| **Q6 (evidence)** | Need to capture Type A through F evidence before rotation | [Playbook 02: Evidence Lives in New Places](../playbooks/02-evidence-lives-in-new-places.md); [Minimum Evidence Set](../evidence/minimum-evidence-set.md); [Playbook 15: Records, Retention, and Proving What Happened](../playbooks/15-records-retention.md) |
+
+**After Q5:** if the selected Mode is **M3 or higher**, OR any condition trigger applies (customer data, external recipients, regulated data, financial actions, customer-facing trust impact, public attention), convene the [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) within 1 hour. The call is CISO + General Counsel + Incident Commander; the incident response continues in parallel.
+
+---
+
 ## Printable Card
 
 A single-page printable version of these six questions, designed to live on a SOC wall: [`triage/six-questions-card.md`](six-questions-card.md).
