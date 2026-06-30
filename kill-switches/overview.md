@@ -38,6 +38,21 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 The six modes above are canonical. Several playbooks document scenario-specific **variants** that scope an existing mode more narrowly. Variants are extensions of an existing mode, not new modes. The canonical ladder remains M0 through M5.
 
+**Variant Selector (quick reference for 3am responders).** Match your signal pattern to the recommended variant; the source playbook holds the full activation discipline.
+
+| Signal pattern (what you observe) | Recommended variant | Source playbook |
+|---|---|---|
+| Suspected corpus poisoning; retrieved content tampered or includes injected instructions | **M3-RAG** | [PB03](../playbooks/03-rag-knowledge-base-forensics.md) |
+| Injection arriving through a content channel (email, ticket, calendar, document) the agent reads | **M3-Workflow** | [PB06](../playbooks/06-prompt-injection-workflow.md) |
+| Output-leakage incident; data exposure through routine agent outputs | **M3-Output** | [PB09](../playbooks/09-output-leakage.md) |
+| Vendor copilot under shared responsibility; vendor-side containment needed | **M3-Vendor** | [PB10](../playbooks/10-vendor-copilots.md) |
+| Cascade propagating through multi-agent delegation chain | **M3-Delegation Cap** | [PB08](../playbooks/08-multi-agent-blast-radius.md) |
+| Behavior shift traceable to a recent model upgrade, prompt edit, policy tune, retriever change, or index rebuild | **M3-Drift** | [PB22](../playbooks/22-model-policy-drift.md) |
+| Active misuse confirmed against a single corpus only; other corpora can keep serving | **M4 (corpus-scoped)** | [PB12](../playbooks/12-insider-threat-3.md) |
+| Single user identified as suspect; their broader access must stay live for HR/Legal protocols | **M4 (agent-suspended-for-user)** | [PB12](../playbooks/12-insider-threat-3.md) |
+
+**Full variant catalog (with scoping detail and use-case prose):**
+
 | Variant | Scopes | Source playbook | Use when |
 |---|---|---|---|
 | **M3-RAG** | M3 Tool Tiering applied to the retrieval layer | [Playbook 03: RAG / Knowledge-Base Forensics](../playbooks/03-rag-knowledge-base-forensics.md) | Suspected corpus poisoning. Disable retrieval against the suspect corpus while preserving the agent's other capabilities. |
