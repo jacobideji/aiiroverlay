@@ -126,6 +126,35 @@ This annex is referenced from multiple live playbooks across three roles.
 
 This annex is **not** a substitute for jurisdiction-specific legal counsel. The clocks, triggers, and thresholds named here are the framework's operational discipline based on publicly-available regulation text current as of 2026. Your General Counsel reads the current regulations of your specific jurisdictions and operating contexts. The framework's contribution is the discipline of having that conversation at minute sixty rather than minute six-thousand.
 
+## Flow at a glance (outbound from the convening call)
+
+```text
+   CONVENE (CISO + GC + IC) within 1 hour of trigger
+                          ↓
+   ┌──────────────────────┼──────────────────────┐
+   ↓                      ↓                      ↓
+Outcome A:            Outcome B:            Outcome C:
+NOT MATERIAL          MATERIAL              CANNOT DETERMINE
+   ↓                      ↓                      ↓
+• Document            • Disclosure clock     • Continue response
+  determination         runs                   in parallel
+• Decision log        • Comms drafts         • Schedule re-convene
+  preserved             disclosure to the      at next checkpoint
+• Close via             most-restrictive     • Document the
+  Playbook 18           applicable clock       inability to
+  hardening           • Continue response      determine; re-evaluate
+                        in parallel            at re-convene
+                      • Playbook 17 for
+                        stakeholder
+                        communication
+                      • Playbook 18 for
+                        hardening (gate:
+                        materiality record
+                        complete)
+                      • Playbook 24 item
+                        C3 governance signal
+```
+
 ## Related
 
 - **[Six Triage Questions](../triage/six-questions.md):** the first-15-minutes discipline; the materiality call follows the triage
