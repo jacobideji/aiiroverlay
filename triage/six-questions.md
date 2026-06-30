@@ -87,9 +87,9 @@ Each question's answer points the Incident Commander to the playbook that handle
 | **Q1 (tools)** | Risky tool tiering or overly-permissive write tools | [Playbook 04: Tool Design Is Containment](../playbooks/04-tool-design-is-containment.md) |
 | **Q2 (write targets)** | Output-leakage or unauthorized writes to external systems | [Playbook 09: Leakage Without a Breach](../playbooks/09-output-leakage.md) |
 | **Q3 (identity)** | Credential compromise or shared/delegated token misuse | [Playbook 07: Secrets and Tokens](../playbooks/07-secrets-and-tokens.md); also [Playbook 12: Insider Threat 3.0](../playbooks/12-insider-threat-3.md) if user-attributable |
-| **Q4 (memory)** | Cross-tenant or cross-user memory bleed; regulated data in memory | [Playbook 23: AI Logging and Privacy](../playbooks/23-logging-privacy.md) |
+| **Q4 (memory)** | Cross-tenant or cross-user memory bleed; regulated data in memory | **Primary:** [Playbook 23: AI Logging and Privacy](../playbooks/23-logging-privacy.md). **Secondary:** [Playbook 12: Insider Threat 3.0](../playbooks/12-insider-threat-3.md) if user-attributable memory misuse; [Playbook 03: RAG / Knowledge-Base Forensics](../playbooks/03-rag-knowledge-base-forensics.md) if the retrieval-memory boundary is the issue |
 | **Q5 (safe mode)** | Need to select the right Kill-Switch Mode and variant | [Kill-Switch Modes](../kill-switches/overview.md) (use the **Variant Selector** quick reference at the top of the Mode Variants section) |
-| **Q6 (evidence)** | Need to capture Type A through F evidence before rotation | [Playbook 02: Evidence Lives in New Places](../playbooks/02-evidence-lives-in-new-places.md); [Minimum Evidence Set](../evidence/minimum-evidence-set.md); [Playbook 15: Records, Retention, and Proving What Happened](../playbooks/15-records-retention.md) |
+| **Q6 (evidence)** | Need to capture Type A through F evidence before rotation | **Primary:** [Playbook 02: Evidence Lives in New Places](../playbooks/02-evidence-lives-in-new-places.md); [Minimum Evidence Set](../evidence/minimum-evidence-set.md); [Playbook 15: Records, Retention, and Proving What Happened](../playbooks/15-records-retention.md). **Secondary:** [Playbook 23: AI Logging and Privacy](../playbooks/23-logging-privacy.md) (privacy-discipline twin of PB15; together they form the capture / retain / prove triad) |
 
 **After Q5:** if the selected Mode is **M3 or higher**, OR any condition trigger applies (customer data, external recipients, regulated data, financial actions, customer-facing trust impact, public attention), convene the [Materiality and Disclosure call](../framework/04-materiality-and-disclosure.md) within 1 hour. The call is CISO + General Counsel + Incident Commander; the incident response continues in parallel.
 
@@ -101,6 +101,7 @@ A single-page printable version of these six questions, designed to live on a SO
 
 ## Related
 
+- **Live response navigation:** [`RESPONSE-START.md`](../RESPONSE-START.md) (the paged-responder entry point; this file is step 2 of 4 in the response-time navigation path)
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md)
 - **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md)
 - **Playbook 01: The Agent Is a Privileged Identity:** [`playbooks/01-agent-as-privileged-identity.md`](../playbooks/01-agent-as-privileged-identity.md)
