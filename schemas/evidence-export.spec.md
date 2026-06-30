@@ -80,6 +80,7 @@ Per-type record schema:
 | `duration_seconds` | integer | `completed_at - started_at` in seconds. |
 | `failure_reason` | string | Required when status is `partial` or `failed`. Stable error code (e.g., `retention-exceeded`, `auth-failure`, `source-unreachable`, `timeout`). |
 | `failure_detail` | string | Human-readable detail when status is not `success`. |
+| `sha256_hash` | string | SHA-256 hex digest of the artifact file content (lowercase, 64 chars). **Required** when status is `success` or `partial`; omitted or `null` when status is `skipped` or `failed` (no artifact exists). The tamper-evidence anchor per [Playbook 15: Records, Retention, and Proving What Happened](../playbooks/15-records-retention.md). Verifiers MUST recompute and compare on access to confirm the artifact has not been altered post-capture. |
 
 #### The artifacts
 
@@ -286,7 +287,7 @@ A script claiming conformance with this contract MUST pass the following test se
 4. **Vendor copilot export:** export from a vendor copilot. Confirm the manifest correctly identifies vendor-side vs customer-side sources.
 5. **Validate-access dry run:** invoke `--validate-access` against all pre-staged paths. Confirm no gaps.
 6. **Partial-failure reporting:** simulate Type F source-system unreachability. Confirm overall status is `partial` and other types still capture.
-7. **Output integrity:** confirm the output destination preserves chain-of-custody (tamper-evident storage, audit logging of access).
+7. **Output integrity:** confirm the output destination preserves chain-of-custody (tamper-evident storage, audit logging of access). Recompute `sha256_hash` for each artifact and confirm it matches the manifest's declared value (per PB15 tamper-evidence anchor verification).
 8. **Telemetry consumption:** confirm the telemetry events feed into the customer's Playbook 13 Metric 3 dashboard. Compute the simulated Metric 3 value from the drill.
 
 Drill results MUST be recorded in the AI-BOM `evidence_export.tested_export_minutes` field per [`ai-bom.schema.json`](ai-bom.schema.json).
