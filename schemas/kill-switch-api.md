@@ -46,6 +46,8 @@ A conformant agent runtime MUST expose four API surfaces. The transport (REST, g
 | `ticket_id` | string | yes | Reference to the incident ticket or change-management record. |
 | `scope` | object | conditional | Required for M3 variants: which tools, corpora, agents, or users are affected. |
 
+**Note on variant naming.** The enum values use **kebab-case wire form** (e.g., `agent-suspended-for-user`, `M4-corpus-scoped`) for code-safety and JSON serialization. The corresponding canonical prose labels are **"Agent suspended for user"** and **"M4 (corpus-scoped)"**, used in human-readable surfaces like [`kill-switches/overview.md`](../kill-switches/overview.md) and [`MATRIX.md`](../MATRIX.md). Conformant implementations should accept the wire form on the API surface and surface the prose label in any human-readable output (logs, UI, decision packets).
+
 **Required outputs:**
 
 | Field | Type | Description |
