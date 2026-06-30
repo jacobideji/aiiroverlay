@@ -135,6 +135,8 @@ The "what does this mean" anchor. Translates the technical situation into busine
 
 The Trust dimension is the framework's recognition that AI incidents produce material harm even when the classic CIA triad shows minimal impact. A finance copilot that recommended an incorrect payment based on a poisoned invoice has produced an Integrity impact (the agent's recommendation was incorrect) and a Trust impact (the executive who acted on the recommendation has the customer's trust at stake), but may have produced zero Confidentiality impact and minimal Availability impact. A traditional CIA framing would understate the actual material harm.
 
+**Metrology qualification (v0.33.0):** Confidentiality, Integrity, and Availability have established quantitative measurement instruments (classification levels, hash/signature checks, SLO numbers respectively). Trust at v0.33.0 is a **qualitative impact lens**, not a measurable property with peer instrumentation. The Executive Decision Packet captures Trust as the affected-stakeholder count, the identifiability scope, the externally-visible-harm flag, and the trust-restoration trajectory; these are scoping signals, not metric values. A v1.1 candidate is the operational metrology specification that would convert Trust to a measurable peer dimension (see [`CHANGELOG.md`](../CHANGELOG.md) `[Unreleased]` v1.1 backlog).
+
 #### Section 5: Actions Taken and Next Steps (With Owners)
 
 The "what are we doing" anchor. Defines the response's current state and the planned trajectory, with named owners for accountability.
