@@ -157,6 +157,7 @@ NOT MATERIAL          MATERIAL              CANNOT DETERMINE
 
 ## Related
 
+- **Live response navigation:** [`RESPONSE-START.md`](../RESPONSE-START.md) (the paged-responder entry point; this file is step 4 of 4 in the response-time navigation path)
 - **[Six Triage Questions](../triage/six-questions.md):** the first-15-minutes discipline; the materiality call follows the triage
 - **[Kill-Switch Modes](../kill-switches/overview.md):** the M3-or-higher threshold that triggers the materiality call
 - **[Minimum Evidence Set](../evidence/minimum-evidence-set.md):** the A–F evidence at the determination point
