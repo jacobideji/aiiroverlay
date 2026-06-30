@@ -63,7 +63,7 @@ The canonical containment surface. Modes M0 through M5 are conformance scope; M3
 | **M4** | Full Disable | Active harm, confirmed misuse, or evidence of compromise | ≤ 10 min | Tier-1 SOC | [`kill-switches/overview.md`](kill-switches/overview.md) |
 | **M5** | Controlled Re-Enable | Containment validated; staged recovery | n/a | CISO / IC | [`kill-switches/overview.md`](kill-switches/overview.md) |
 
-### M3 Variants (operational refinements, not new mode numbers)
+### M3 and M4 Variants (operational refinements, not new mode numbers)
 
 | Variant | What It Scopes | Use When | Source |
 |---|---|---|---|
