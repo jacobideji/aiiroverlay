@@ -15,6 +15,23 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
 
+### v1.1 scope backlog (acknowledged gaps from expert-domain audit)
+
+The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIST AI RMF/CSF/SP 800-61 r3 contributor, OWASP Agentic working group, securities counsel, GDPR/HIPAA counsel, AI safety researcher, evidence/forensics, ML engineer, AI red-teamer lenses). Each is acknowledged here as a v1.1 candidate; in-place qualification notes are added to the most directly affected files at v0.33.0.
+
+- **CIA+T metrology.** Trust is currently a qualitative impact lens, not a measurable peer to Confidentiality, Integrity, Availability. v1.1 should specify Trust measurement instruments (affected-stakeholder count, identifiability score, externally-visible-harm flag, trust-restoration trajectory) or label Trust explicitly as a qualitative lens. PB05 carries a qualification note at v0.33.0.
+- **Email/calendar/document indirect injection.** The 2025-2026 prevalent injection vector. PB06 covers workflow injection generally via M3-Workflow but does not name email/calendar/document content as explicit subsections. v1.1 candidate: PB06 named-vector subsections.
+- **Multimodal injection (image OCR, audio TTS).** Evidence Type A implicitly assumes text. v1.1 candidate: Type A input-modality sub-field; per-modality capture discipline; multimodal injection vectors in PB06.
+- **Browser-using agents (Operator, Computer Use, Claude Computer Use).** Distinct evidence needs (DOM screenshots, action recordings, cursor traces) not covered by Types A-F. v1.1 candidate: Evidence Type G (UI Action Trace).
+- **Voice/conversational agents (Sierra, Decagon, voice support).** Audio capture, 1:1 transcript correlation, voice-cloning impersonation as injection vector. v1.1 candidate: audio-capture extension to Type A; voice-specific PB.
+- **Agentic coding tools (Cursor, Claude Code, Devin, Windsurf, Copilot Workspace).** Distinctive risk surfaces (committing secrets, modifying CI, opening PRs to repos with deploy hooks) absent. v1.1 candidate: dedicated coding-agent PB or named subsections in PB04 + PB08.
+- **Model extraction / weight exfiltration.** Not in ASI04 supply-chain coverage. v1.1 candidate: extend ASI04 mapping or add a new response surface for model-IP-exfiltration incidents.
+- **Token-level attribution / inference logits.** Many adversarial-ML forensic claims depend on logprobs at decision points. v1.1 candidate: optional sub-field of Type A capturing per-decision-point logits where available.
+- **Post-quantum migration for evidence integrity.** SHA-256 is defensible today but not in 5-10 years as PQC standardization proceeds. PB15 carries a migration note at v0.33.0. v1.1 candidate: NIST PQC algorithm options (CRYSTALS-Dilithium signatures over evidence manifests) per finalized PQC standards.
+- **Insider threat from the AI security team itself.** PB12 covers user-side insider threat; PB23 includes evidence-store access auditing; but there is no explicit scenario for the Evidence Owner exfiltrating Type-A prompts (which often contain PII) or tampering with manifests. v1.1 candidate: named subsection in PB12 or PB23.
+- **Cross-border data transfer for cloud-hosted agents.** GDPR Article 44 / Schrems II implications, US CLOUD Act considerations. Not covered in PB23 or PB10 despite direct relevance to vendor-hosted agents touching EU subjects. v1.1 candidate: PB23 cross-border-transfer subsection; PB10 vendor-data-residency boundary.
+- **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
+
 ## [0.33.0] · 2026-06-29 · Framework Matrix introduced (MATRIX.md)
 
 ### Added
