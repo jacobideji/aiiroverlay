@@ -9,7 +9,7 @@
 
 > *A fictional but specific scenario showing the framework end-to-end. This is not a real incident. Use it to internalize the response arc before adopting the framework.*
 
-This walkthrough demonstrates how the AI IR Overlay's controls work together when a real-world AI agent incident occurs. The scenario is fictional. All organization names, ticket numbers, and customer identities are invented. The point is to show the framework operating as a coherent system, not to claim this incident actually happened.
+This walkthrough demonstrates how the AI IR Overlay's controls work together when a real-looking AI agent incident occurs. The scenario is fictional. All organization names, ticket numbers, and customer identities are invented. The point is to show the framework operating as a coherent system, not to claim this incident actually happened.
 
 ## Scenario setup
 
@@ -27,7 +27,7 @@ This walkthrough demonstrates how the AI IR Overlay's controls work together whe
 - **Memory:** per-user, 30-day retention
 - **Retrieval:** SharePoint corpus `support-knowledge-base`; vector store `customer-history`
 
-**Pre-incident posture:** Northstar has adopted the AI IR Overlay through v0.14.1. They ran the 30-day [QUICKSTART](../QUICKSTART.md) on this agent two months ago. Last tabletop drill: 8 weeks ago. Last evidence export drill: 6 weeks ago. Maturity claim: Level 3 (Provable).
+**Pre-incident posture:** Northstar has adopted the AI IR Overlay through v0.33.0. They ran the 30-day [QUICKSTART](../QUICKSTART.md) on this agent two months ago. Last tabletop drill: 8 weeks ago. Last evidence export drill: 6 weeks ago. Maturity claim: Level 3 (Provable).
 
 **Regulatory posture:** Northstar is privately held (no SEC reporting obligations), incorporated and operating solely in the United States with no EU customers or operations (no EU AI Act Article 26 deployer obligations), not a financial-services entity (no NY DFS Part 500), and not a healthcare covered entity or business associate (BAA registry empty for this agent's data scope; no PHI processed). Standard SaaS compliance posture: SOC 2 Type II audit annual; GDPR scope limited to internal employee data unrelated to this agent.
 
