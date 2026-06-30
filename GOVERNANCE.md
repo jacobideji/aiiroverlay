@@ -17,7 +17,7 @@ The framework's roadmap to v1.0.0 is documented in [CHANGELOG.md](CHANGELOG.md) 
 ### Roles
 
 - **Lead Maintainer (Jacob Ideji):** founder, original author, current sole decision-maker. Owns the trademark and certification mark (see [LICENSE](LICENSE)). Holds final authority during the `v0.x` series.
-- **Contributors:** anyone, via Pull Request. Substantive contributors are credited in release notes. A `CONTRIBUTORS.md` file will be created once external contributors exist.
+- **Contributors:** anyone, via Pull Request. Substantive contributors are credited in release notes and in [`CONTRIBUTORS.md`](CONTRIBUTORS.md) (introduced in v0.32.0). External contributors are listed under "External Contributors" on first merged PR per the recognition discipline.
 
 ### Decision-making
 
