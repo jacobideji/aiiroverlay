@@ -35,8 +35,7 @@ The crosswalk gives auditors, regulators, and boards a direct path from AI IR Ov
 
 The [AI-BOM template](../templates/ai-bom.yaml) (see [README](../templates/README-ai-bom.md)) operationalizes:
 
-- **ID.AM-01:** *"Inventories of hardware managed by the organization are maintained."* Extends to runtime hosts of AI agents.
-- **ID.AM-02:** *"Inventories of software, services, and systems managed by the organization are maintained."* Captures agent platforms, model providers, retrieval frameworks.
+- **ID.AM-02:** *"Inventories of software, services, and systems managed by the organization are maintained."* Captures agent platforms, model providers, retrieval frameworks, agent identities, tooling, write targets, retrieval corpora, and memory configuration via the AI-BOM artifact (the AI-agent-specific extension that AI RMF and CSF 2.0 do not specify natively). The framework's AI-BOM is an ID.AM-02 artifact, not an ID.AM-01 artifact: it inventories software/services/systems, not the GPU/host hardware on which AI agents run. Hardware-host attestation for AI workloads is out of scope for the AI-BOM and falls back to the organization's existing ID.AM-01 hardware inventory.
 - **ID.AM-04:** *"Inventories of services provided by suppliers are maintained."* Captures SaaS targets the agent can write to.
 - **ID.AM-05:** *"Assets are prioritized based on classification, criticality, resources, and impact."* The `risk_tier` field on each tool drives prioritization.
 - **GV.OC-02:** *"Internal and external stakeholders are understood…"* The `business_owner` and `technical_owner` fields per agent satisfy this.
