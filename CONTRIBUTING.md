@@ -85,7 +85,7 @@ This is part of how the framework remains academically citable.
 
 ## Recognition
 
-Substantive contributors are credited in release notes. Once a `CONTRIBUTORS.md` exists, your name lands there too.
+Substantive contributors are credited in release notes. Your name also lands in [`CONTRIBUTORS.md`](CONTRIBUTORS.md) under "External Contributors" on first merged PR.
 
 ## Code of Conduct
 
@@ -100,4 +100,5 @@ For vulnerabilities, **do not** open a public Issue. See **[SECURITY.md](SECURIT
 The **AI IR Overlay™** and **AI IR Overlay Certified™** word marks are protected. See `LICENSE`. Contributing code or content under Apache 2.0 does not grant rights to use the word marks commercially.
 
 ---
+
 *Questions? Open a [Discussion](https://github.com/jacobideji/aiiroverlay/discussions), or reach the maintainer at [jacobideji.com](https://jacobideji.com).*
