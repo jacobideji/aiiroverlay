@@ -271,7 +271,8 @@ class KillSwitchAPI:
             if scope:
                 for tool_name in scope:
                     if tool_name in self.tools:
-                        self.tools[tool_name].requires_approval = True
+                        # M3 spec: disable scoped tools (not approval-gate, which is M2 semantics)
+                        self.tools[tool_name].enabled = False
         elif mode == Mode.M4:
             for t in self.tools.values():
                 t.enabled = False
