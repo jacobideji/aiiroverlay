@@ -49,7 +49,7 @@ The six modes above are canonical. Several playbooks document scenario-specific 
 | Cascade propagating through multi-agent delegation chain | **M3-Delegation Cap** | [PB08](../playbooks/08-multi-agent-blast-radius.md) |
 | Behavior shift traceable to a recent model upgrade, prompt edit, policy tune, retriever change, or index rebuild | **M3-Drift** | [PB22](../playbooks/22-model-policy-drift.md) |
 | Active misuse confirmed against a single corpus only; other corpora can keep serving | **M4 (corpus-scoped)** | [PB12](../playbooks/12-insider-threat-3.md) |
-| Single user identified as suspect; their broader access must stay live for HR/Legal protocols | **M4 (agent-suspended-for-user)** | [PB12](../playbooks/12-insider-threat-3.md) |
+| Single user identified as suspect; their broader access must stay live for HR/Legal protocols | **Agent suspended for user** | [PB12](../playbooks/12-insider-threat-3.md) |
 
 **Full variant catalog (with scoping detail and use-case prose):**
 
@@ -211,6 +211,7 @@ If any of the above is "not yet," the agent is not production-ready.
 
 ## Related
 
+- **Live response navigation:** [`RESPONSE-START.md`](../RESPONSE-START.md) (the paged-responder entry point; this file is step 3 of 4 in the response-time navigation path)
 - **The Six Triage Questions:** [`triage/six-questions.md`](../triage/six-questions.md)
 - **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md)
 - **Tool Design Is Containment** (Playbook 04): [`playbooks/04-tool-design-is-containment.md`](../playbooks/04-tool-design-is-containment.md)
