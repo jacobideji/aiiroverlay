@@ -126,6 +126,8 @@ This annex is referenced from multiple live playbooks across three roles.
 
 This annex is **not** a substitute for jurisdiction-specific legal counsel. The clocks, triggers, and thresholds named here are the framework's operational discipline based on publicly-available regulation text current as of 2026. Your General Counsel reads the current regulations of your specific jurisdictions and operating contexts. The framework's contribution is the discipline of having that conversation at minute sixty rather than minute six-thousand.
 
+This annex is **also not** a specification of org-level decision rights. The canonical convening triad is CISO + General Counsel + Incident Commander, but the specific rules for who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, and who holds the tie-break vote when the triad disagrees on a materiality determination are the customer's governance discipline. The framework names the roles; the customer's RACI, charter, or governance policy defines who in those roles holds which decision right. A formal decision-rights specification is a v1.x candidate (see [`CHANGELOG.md`](../CHANGELOG.md) `[Unreleased]` v1.1 backlog).
+
 ## Flow at a glance (outbound from the convening call)
 
 ```text
