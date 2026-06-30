@@ -63,29 +63,33 @@ Vendor copilots that an organization deploys are in scope for the deployer (the 
 
 The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**, or MVO) on top of your existing IR program.
 
-> **Note:** The NIST 800-61 r2 phases shown below remain widely understood operational shorthand. r3 (April 2025) restructures incident response around CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover). See the AI IR Overlay to CSF 2.0 crosswalk at [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md).
+> **Note:** The phases shown below align with NIST SP 800-61 r3 (April 2025), unpacked into seven operationally-distinct columns per [`MATRIX.md`](MATRIX.md) Section 1. NIST SP 800-61 r3 restructures incident response around NIST CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover); see the AI IR Overlay to CSF 2.0 crosswalk at [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) for the function-level mapping.
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                NIST 800-61 IR Lifecycle                 │
-│  Preparation → Detection → Containment → Eradication →  │
-│              Recovery → Post-Incident                   │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│              AI IR Overlay · MVO Controls               │
-│                                                         │
-│  1. INVENTORY     · Agents · Identities · Tools ·       │
-│                     Write Targets                       │
-│  2. SAFE MODES    · Kill-Switch Ladder (Modes 0 to 5)   │
-│  3. EVIDENCE      · Minimum AI Evidence Set (A–F)       │
-│  4. CONTROLLED    · Staged, validated re-enablement     │
-│     RE-ENABLE                                           │
-└─────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────┐
+│        AI IR Overlay Response Flow (NIST SP 800-61 r3, unpacked)       │
+│                                                                       │
+│  Preparation → Detection → Triage → Containment → Evidence →           │
+│                                       Recovery → Closure              │
+└───────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌───────────────────────────────────────────────────────────────────────┐
+│              AI IR Overlay · MVO Controls (4)                          │
+│                                                                       │
+│  1. INVENTORY     · Agents · Identities · Tools · Write Targets        │
+│  2. SAFE MODES    · Kill-Switch Ladder (Modes M0–M5 + 6 M3 variants)   │
+│  3. EVIDENCE      · Minimum AI Evidence Set (Types A–F)                │
+│  4. CONTROLLED    · Staged, validated re-enablement                    │
+│     RE-ENABLE                                                          │
+└───────────────────────────────────────────────────────────────────────┘
 ```
 
+For the full phase-by-control matrix view, see [`MATRIX.md`](MATRIX.md) Section 1.
+
 ## Reading order
+
+**If you are responding to an AI agent incident right now**, start with [`RESPONSE-START.md`](RESPONSE-START.md) for the four-file navigation path that takes you from 3am page to a defensible 60-minute checkpoint.
 
 **New here? Start with [QUICKSTART.md](QUICKSTART.md)** for the standard 30-day adoption path. For startups and small security teams (5 or fewer people, limited platform control), [QUICKSTART-startup.md](QUICKSTART-startup.md) is the 4-week minimum-viable path targeting Maturity Level 2. For a worked end-to-end example, see [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md). For working code examples of the framework's API contracts, see [`reference-impls/`](reference-impls/).
 
