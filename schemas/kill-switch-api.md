@@ -39,7 +39,7 @@ A conformant agent runtime MUST expose four API surfaces. The transport (REST, g
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `mode` | enum | yes | One of `M0`, `M1`, `M2`, `M3`, `M4`, `M5`, or a documented variant (`M3-RAG`, `M3-Delegation Cap`, `M3-Workflow`, `M3-Vendor`, `M4-corpus-scoped`, `agent-suspended-for-user`). |
+| `mode` | enum | yes | One of `M0`, `M1`, `M2`, `M3`, `M4`, `M5`, or a documented variant (`M3-RAG`, `M3-Delegation Cap`, `M3-Workflow`, `M3-Vendor`, `M3-Output`, `M3-Drift`, `M4-corpus-scoped`, `agent-suspended-for-user`). |
 | `agent_id` | string | yes | Identifier matching the AI-BOM `agent.name` field. |
 | `actor` | string | yes | Who or what triggered the activation. Human email, automation pipeline name, or detection rule ID. |
 | `reason` | string | yes | Free-text justification. Becomes part of the [decision log](../playbooks/01-agent-as-privileged-identity.md) and the [credential-event log](credential-event.schema.json) if the activation triggers credential operations. |
@@ -208,6 +208,8 @@ The framework documents variants of M3 in [kill-switches/overview.md Mode Varian
 - **M3-Delegation Cap** (per [Playbook 08](../playbooks/08-multi-agent-blast-radius.md)): scope is a maximum delegation depth (default 2 hops).
 - **M3-Workflow** (per [Playbook 06](../playbooks/06-prompt-injection-workflow.md)): scope is the affected content channel.
 - **M3-Vendor** (per [Playbook 10](../playbooks/10-vendor-copilots.md)): scope is the vendor-side tool or integration to disable.
+- **M3-Output** (per [Playbook 09](../playbooks/09-output-leakage.md)): scope is the affected output channel or destination class.
+- **M3-Drift** (per [Playbook 22](../playbooks/22-model-policy-drift.md)): scope is the specific recently-changed component (e.g., system prompt, retriever parameters, tool schema, model version pin) being rolled back while pre-change state is restored.
 
 ### M4 Full Disable
 
