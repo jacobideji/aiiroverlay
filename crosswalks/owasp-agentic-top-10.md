@@ -81,6 +81,8 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 - **MVO-3, type E (Configuration Snapshot).** Captures tool definitions and retriever settings at incident time, enabling supply-chain forensics.
 - **Mental Model clause 3** ("if it can retrieve, protect it as a production system"): corpora updates are change-control events, tracked in CMDB.
 
+**Coverage qualification (v0.33.0):** ASI04 framing in this crosswalk covers compromised models, retrieval corpora, tool definitions, and middleware libraries injected upstream of an agent. It does NOT yet cover **model extraction / weight exfiltration** (an outbound supply-chain failure where the adopter's own model weights or fine-tunes are stolen from the deployment). Model-IP-exfiltration is a distinct response surface from upstream-injection ASI04 and is a v1.1 candidate (see [`CHANGELOG.md`](../CHANGELOG.md) `[Unreleased]` v1.1 backlog).
+
 **Operational priority:** Pin model versions in AI-BOM and treat corpus refreshes as production deployments.
 
 ### ASI05: Unexpected Code Execution
