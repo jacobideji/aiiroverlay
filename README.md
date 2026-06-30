@@ -78,7 +78,7 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 │              AI IR Overlay · MVO Controls (4)                          │
 │                                                                       │
 │  1. INVENTORY     · Agents · Identities · Tools · Write Targets        │
-│  2. SAFE MODES    · Kill-Switch Ladder (Modes M0–M5 + 6 M3 variants)   │
+│  2. SAFE MODES    · Kill-Switch Ladder (M0–M5; 6 M3 + 2 M4 variants)   │
 │  3. EVIDENCE      · Minimum AI Evidence Set (Types A–F)                │
 │  4. CONTROLLED    · Staged, validated re-enablement                    │
 │     RE-ENABLE                                                          │
