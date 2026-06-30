@@ -112,6 +112,7 @@ class TypeRecord:
     duration_seconds: int
     failure_reason: Optional[str] = None
     failure_detail: Optional[str] = None
+    sha256_hash: Optional[str] = None  # Per-artifact integrity anchor (PB15 tamper-evidence). None for skipped types.
 
 
 @dataclass
@@ -157,6 +158,15 @@ def write_artifact(records: list[dict], path: Path, format: str) -> int:
     return path.stat().st_size
 
 
+def compute_sha256(path: Path) -> str:
+    """Compute SHA-256 of a file's contents; returns hex digest. PB15 tamper-evidence anchor."""
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def capture_one_type(
     type_code: str,
     incident_id: str,
@@ -195,6 +205,7 @@ def capture_one_type(
         extension = "jsonl" if output_format == "jsonl" else "json"
         artifact_path = output_dir / type_code / f"records.{extension}"
         write_artifact(records, artifact_path, output_format)
+        artifact_sha256 = compute_sha256(artifact_path)
 
         completed_at = datetime.now(timezone.utc)
         return TypeRecord(
@@ -206,6 +217,7 @@ def capture_one_type(
             started_at=started_iso,
             completed_at=completed_at.isoformat(),
             duration_seconds=int((completed_at - started_at).total_seconds()),
+            sha256_hash=artifact_sha256,
         )
 
     except Exception as e:
@@ -395,7 +407,8 @@ def run_export(args) -> int:
                 "I attest that this evidence export was performed under documented "
                 "incident response authority. The script_version, requested_at, and "
                 "completed_at fields establish the export window; the per-type records "
-                "establish the per-source capture audit trail."
+                "(including SHA-256 integrity hashes per artifact) establish the "
+                "per-source capture audit trail and the PB15 tamper-evidence anchor."
             ),
         },
     }
