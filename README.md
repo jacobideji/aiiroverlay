@@ -16,7 +16,7 @@
 [![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
 [![References: NIST · OWASP](https://img.shields.io/badge/references-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
 
-**Current release:** [v0.32.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.32.0) · 2026-06-29 · [CHANGELOG](CHANGELOG.md)
+**Current release:** [v0.33.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0) · 2026-06-29 · [CHANGELOG](CHANGELOG.md)
 
 > A practical incident-response baseline for AI agents in production. Adapt and critique freely.
 
@@ -120,7 +120,7 @@ For a self-contained tabular reference (matrix view of the framework: phases, ki
 
 14. **Reference implementations.** [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) is a Python CLI implementing the [Evidence Export Script Contract](schemas/evidence-export.spec.md) for Types A through F with manifest discipline, integrity hashes, parallel-export, and telemetry events. [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) demonstrates the [Kill-Switch API contract](schemas/kill-switch-api.md) with M0/M1/M2/M3/M4 against a synthetic agent tool registry, including separation-of-duties enforcement and the M3 scope parameter. Both are Python 3.10+ standard library only; both run end-to-end with no vendor accounts required.
 
-15. **Framework Matrix.** [`MATRIX.md`](MATRIX.md): self-contained tabular reference for the framework at v0.32.0. Nine sections covering the response-phase matrix (Preparation through Closure), the kill-switch ladder with all six M3 variants, the Minimum Evidence Set with deep-dive pointers, the Six Metrics, the four MVO controls, the four maturity levels, the 24-playbook quick reference, the standards crosswalk summary, and a quick-read legend. Calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references. Every cell traces to a specific file in the repo.
+15. **Framework Matrix.** [`MATRIX.md`](MATRIX.md): self-contained tabular reference for the framework at v0.33.0. Nine sections covering the response-phase matrix (Preparation through Closure), the kill-switch ladder with all six M3 variants, the Minimum Evidence Set with deep-dive pointers, the Six Metrics, the four MVO controls, the four maturity levels, the 24-playbook quick reference, the standards crosswalk summary, and a quick-read legend. Calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references. Every cell traces to a specific file in the repo.
 
 ## Provenance
 
