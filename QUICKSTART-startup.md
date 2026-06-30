@@ -29,7 +29,7 @@ If you are at a 50-person-plus security team with full platform control, use [QU
 
 ## The startup-minimum subset
 
-The full framework has 24 playbooks, 4 framework foundation docs, 5 templates, 3 crosswalks, and a validator. The startup-minimum subset is **3 playbooks + 2 templates + 1 triage card**:
+The full framework has 24 playbooks, 4 framework foundation docs, 2 templates, 5 schemas, 3 crosswalks, and a validator. The startup-minimum subset is **3 playbooks + 2 templates + 1 triage card**:
 
 | Artifact | Why it is in the minimum subset |
 |---|---|
