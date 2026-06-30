@@ -252,8 +252,8 @@ This supports academic citability and the trademark and attribution model docume
 
 ## Why this file exists
 
-A reader who lands on the framework asking "are all 24 playbooks shipped?" deserves an honest answer: **yes, as of v0.24.0 (content gate complete; current release is v0.32.0)**. Every issue has a destination, every shipped artifact has a release tag, and the framework's content gate is complete. The v1.0 cut now turns entirely on the Steering Committee announcement (see [GOVERNANCE.md](GOVERNANCE.md)). The framework's promise was incremental shipping; this map is the receipt.
+A reader who lands on the framework asking "are all 24 playbooks shipped?" deserves an honest answer: **yes, as of v0.24.0 (content gate complete; current release is v0.33.0)**. Every issue has a destination, every shipped artifact has a release tag, and the framework's content gate is complete. The v1.0 cut now turns entirely on the Steering Committee announcement (see [GOVERNANCE.md](GOVERNANCE.md)). The framework's promise was incremental shipping; this map is the receipt.
 
 ---
 
-<!-- Last revised: 2026-06-29 (v0.32.0 P2 polish + Why-24-shipped section restructured: sub-bullets per axis for NIST CSF 2.0 closures and OWASP Agentic closures, six-stage operational arc and evidence-taxonomy coverage broken out, bullet 3 split into per-playbook sub-bullets with framework concepts bolded up-front, and a new Framework Concepts at a Glance table added) -->
+<!-- Last revised: 2026-06-29 (v0.33.0 added MATRIX.md row to Operational entry points; v0.32.0 P2 polish + Why-24-shipped section restructured: sub-bullets per axis for NIST CSF 2.0 closures and OWASP Agentic closures, six-stage operational arc and evidence-taxonomy coverage broken out, bullet 3 split into per-playbook sub-bullets with framework concepts bolded up-front, and a new Framework Concepts at a Glance table added) -->
