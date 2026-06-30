@@ -32,6 +32,8 @@ Binary on/off is rarely appropriate in production. The Overlay defines **six mod
 
 > **TTA** = Time-To-Activate. Measured from incident-commander order to mode in effect. TTA targets are **drill-measured**. Live-incident TTA is tracked separately under [Playbook 13 Metric 2](../playbooks/13-six-metrics.md). The targets define readiness; live measurement reveals operational reality. A live TTA above target enters the [Playbook 18](../playbooks/18-post-incident-hardening.md) hardening cycle, not a conformance failure.
 
+> **Autonomous-agent qualification (v0.33.0):** the ≤ 10-min Tier-1 SOC activation owner assumes a staffed Security Operations Center available to receive the incident-commander order. For purely autonomous agents in 24/7 operation where no SOC is staffed off-hours (and the agent owner is the only human in the loop), the M3/M4 activation path requires **automation** that this v0.33.0 specification does not yet define. Adopters in this profile should treat automated activation triggers as an MVO-2 prerequisite and document the trigger rules (signal source, threshold, mode, scope) per their own conformance discipline pending the v1.1 automation-trigger specification (see [`CHANGELOG.md`](../CHANGELOG.md) `[Unreleased]` v1.1 backlog).
+
 ### Mode Variants
 
 The six modes above are canonical. Several playbooks document scenario-specific **variants** that scope an existing mode more narrowly. Variants are extensions of an existing mode, not new modes. The canonical ladder remains M0 through M5.
