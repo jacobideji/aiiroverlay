@@ -217,6 +217,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 
 | Artifact | Purpose | Status |
 |---|---|---|
+| [`RESPONSE-START.md`](RESPONSE-START.md) | Paged-responder entry point for live AI incidents. Four-file navigation path (AI-BOM → triage/six-questions → kill-switches → framework/04) from 3am page to defensible 60-minute checkpoint. Distinct from QUICKSTART (adoption-time) and MATRIX (structural reference): RESPONSE-START is the response-time entry document. | ✅ `v0.33.0` |
 | [`QUICKSTART.md`](QUICKSTART.md) | 30-day adoption path for one production AI agent. Day 1 AI-BOM, Day 7 Privilege Matrix, Day 14 tabletop M1-M4, Day 21 evidence drill, Day 30 Level 2/3 maturity claim. | ✅ `v0.14.2` |
 | [`QUICKSTART-startup.md`](QUICKSTART-startup.md) | The startup-minimum adoption path. 3 playbooks + 2 templates + 1 triage card. 4-week path to Maturity Level 2. Targets security teams of 5 or fewer with limited platform control. | ✅ `v0.26.0` |
 | [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md) | Synthetic worked example of an end-to-end incident response, demonstrating the framework as a coherent system rather than a list of controls. | ✅ `v0.14.2` |
