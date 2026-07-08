@@ -4,11 +4,12 @@ The AI IR Overlay is open, vendor-neutral, and Apache 2.0 licensed. This documen
 
 ## Project status
 
-This is a **single-maintainer, pre-1.0 project**. Current scale:
+This is a **pre-1.0 project with governance maturation in progress**. Current scale:
 
-- **Lead Maintainer:** Jacob Ideji (founder, original author, current sole contributor)
-- **External contributors:** none yet
-- **Steering Committee, Working Group Leads, certification program:** **not yet established.** All multi-party governance structures described below under "Future governance (v1.0.0 and beyond)" are aspirational and will be convened only if v1.0.0 readiness criteria are met and community adoption justifies the structure.
+- **Lead Maintainer:** Jacob Ideji (founder, original author, primary decision-maker)
+- **Steering Committee:** founding cohort formation in progress. First external member (Chukwunenye Amadi) seated at v0.34.0. Target: 5 members total (Founding Maintainer + 4 external). See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) for full bio and personal-capacity disclosure.
+- **External contributors:** first external contribution in preparation. Chukwunenye Amadi's contributions (a new playbook, a new reference implementation, and the framework's first documented production-incident anonymized case study) are in review for upcoming v0.34.x / v0.35.x releases.
+- **Working Group Leads, certification program:** **not yet established.** These multi-party governance structures described below under "Future governance (v1.0.0 and beyond)" will be convened as v1.0.0 readiness criteria are met and community adoption justifies the structure.
 
 The framework's roadmap to v1.0.0 is documented in [CHANGELOG.md](CHANGELOG.md) `[Unreleased]` and [CONTENT_MAP.md](CONTENT_MAP.md).
 
@@ -16,12 +17,16 @@ The framework's roadmap to v1.0.0 is documented in [CHANGELOG.md](CHANGELOG.md) 
 
 ### Roles
 
-- **Lead Maintainer (Jacob Ideji):** founder, original author, current sole decision-maker. Owns the trademark and certification mark (see [LICENSE](LICENSE)). Holds final authority during the `v0.x` series.
+- **Lead Maintainer (Jacob Ideji):** founder, original author, primary decision-maker during v0.x. Owns the trademark and certification mark (see [LICENSE](LICENSE)). Holds final authority during the `v0.x` series.
+- **Steering Committee:** guides the v1.0.0 arc, reviews major release proposals, and shapes external contribution acceptance. The founding cohort is currently being seated; the framework's target is 5 members (Founding Maintainer + 4 external members). Sustained membership above 7 is not anticipated during the v1.x series. Current Steering Committee members (as of v0.34.0):
+
+  - **Chukwunenye Amadi** (joined at v0.34.0). See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) for full bio and personal-capacity disclosure.
+
 - **Contributors:** anyone, via Pull Request. Substantive contributors are credited in release notes and in [`CONTRIBUTORS.md`](CONTRIBUTORS.md) (introduced in v0.32.0). External contributors are listed under "External Contributors" on first merged PR per the recognition discipline.
 
 ### Decision-making
 
-- Lead Maintainer decides.
+- **During v0.x with founding cohort forming (v0.34.0 and later):** Lead Maintainer decides on all matters. Steering Committee members provide advisory input on major release proposals and external contribution acceptance via asynchronous review. Formal quorum and voting discipline activate when the founding cohort seats 3+ members total (Lead Maintainer + 2 or more external Steering Committee members).
 - Changes to the `framework/` directory or the six-question card get a 5-day public comment window.
 - Everything else (playbooks, crosswalks, templates, schemas) runs on lazy consensus: silence after 5 days of public visibility counts as approval.
 
@@ -103,4 +108,4 @@ This project adopts the **Contributor Covenant v2.1**. See [`CODE_OF_CONDUCT.md`
 
 For vulnerabilities, follow the private reporting path in [`SECURITY.md`](SECURITY.md).
 
-<!-- Last revised: 2026-06-28 -->
+<!-- Last revised: 2026-07-08 (v0.34.0: first external Steering Committee member seated; Project status, Roles, and Decision-making sections updated to reflect founding-cohort formation) -->
