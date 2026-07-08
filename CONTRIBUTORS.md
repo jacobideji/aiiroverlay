@@ -11,11 +11,31 @@ This file recognizes the people who have contributed to the AI IR Overlay™ fra
 
 ## Founding Maintainer
 
-- **Jacob Ideji** ([jacobideji.com](https://jacobideji.com) · [LinkedIn](https://www.linkedin.com/in/jacobideji/)): founder, original author, current sole decision-maker during the v0.x series. Holds the AI IR Overlay™ and AI IR Overlay Certified™ word marks per [GOVERNANCE.md](GOVERNANCE.md). All 24 framework playbooks (PB01 through PB24), the four framework foundation documents, the three crosswalks, the templates, the schemas, the validator, the reference implementations, the QUICKSTART paths, and the worked example trace back to the *AI IR Overlay* LinkedIn newsletter series authored by Jacob through 2025 to 2026 (Issues 1 through 24).
+- **Jacob Ideji** ([jacobideji.com](https://jacobideji.com) · [LinkedIn](https://www.linkedin.com/in/jacobideji/)): founder, original author, primary decision-maker during the v0.x series. Holds the AI IR Overlay™ and AI IR Overlay Certified™ word marks per [GOVERNANCE.md](GOVERNANCE.md). All 24 framework playbooks (PB01 through PB24), the four framework foundation documents, the three crosswalks, the templates, the schemas, the validator, the reference implementations, the QUICKSTART paths, and the worked example trace back to the *AI IR Overlay* LinkedIn newsletter series authored by Jacob through 2025 to 2026 (Issues 1 through 24).
+
+## Steering Committee
+
+The Steering Committee guides the AI IR Overlay™'s v1.0.0 arc, reviews major release proposals, and shapes how external contributions enter the framework. The founding cohort is currently being seated; the framework's target is 5 members (Founding Maintainer + 4 external members) per [GOVERNANCE.md](GOVERNANCE.md). Sustained membership above 7 is not anticipated during the v1.x series.
+
+Founding cohort (as of v0.34.0):
+
+- **Chukwunenye Amadi** (Steering Committee Member, joined at v0.34.0):
+
+  Chukwunenye Amadi is a cybersecurity engineer with more than 10 years of experience protecting enterprise applications, cloud services, and production systems.
+
+  He currently works as an Application Security Engineer at Amazon Web Services, where he reviews cloud services before launch and works with engineering teams to identify and address security risks early in the development lifecycle. His work includes threat modeling, secure design reviews, security architecture assessments, risk analysis, pentest scoping, and security guidance for large-scale AWS services. He is particularly interested in applying AI and automation to application security workflows, including threat modeling, security design analysis, security review acceleration, security knowledge management, and developer security enablement.
+
+  Before AWS, Chukwunenye held cybersecurity leadership and consulting roles across financial services and enterprise environments, with experience in application security, penetration testing, threat intelligence, incident response, and security advisory services.
+
+  As a contributor to AI IR Overlay, he is interested in the security challenges introduced by AI systems, autonomous agents, and large-scale cloud platforms. His focus areas include AI security, AI governance, security automation, threat modeling for AI-enabled systems, and practical approaches to securing agentic workflows.
+
+  Chukwunenye holds an MSc in Cybersecurity from the University of York and certifications including CISSP, OSCP, GWEB, GCSA and AWS Solutions Architect Associate.
+
+  Chukwunenye is participating in and contributing to the AI IR Overlay™ framework in his personal capacity. Nothing in this framework should be construed as an endorsement, statement, or position of his current or former employers, including Amazon Web Services.
 
 ## External Contributors
 
-**None yet.** The framework is at the very beginning of its community-contribution arc.
+**None yet.** The framework is at the very beginning of its community-contribution arc. The founding Steering Committee member named above has multiple artifacts in preparation (a new playbook, a new reference implementation, and the framework's first documented production-incident anonymized case study) for upcoming v0.34.x / v0.35.x releases; contributor recognition in this section follows the first-merged-PR discipline described below.
 
 If you would like to contribute, please read [CONTRIBUTING.md](CONTRIBUTING.md) first. The highest-velocity contribution paths are:
 
@@ -47,7 +67,7 @@ This file is intentionally short at v0.x. It will grow as external contributions
 
 ---
 
-*Last revised: 2026-06-29 (file last modified in v0.32.0).*
+*Last revised: 2026-07-08 (v0.34.0: first Steering Committee member seated; Steering Committee section introduced).*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
