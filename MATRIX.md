@@ -7,9 +7,9 @@
 
 # AI IR Overlay Framework Matrix
 
-> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.33.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
+> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.34.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
 
-**Current release:** [v0.33.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0) · 2026-06-29
+**Current release:** [v0.34.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0) · 2026-07-08
 
 ## How to read this document
 
@@ -223,10 +223,10 @@ For the full acronym list see the [README Acronyms section](README.md#acronyms).
 
 ## Source
 
-*This matrix synthesizes the AI IR Overlay™ framework at v0.33.0. It will be revised as the framework evolves toward v1.0.0 and as the Steering Committee announcement and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
+*This matrix synthesizes the AI IR Overlay™ framework at v0.34.0. It will be revised as the framework evolves toward v1.0.0 and as additional Steering Committee members are seated and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
-*Last revised: 2026-06-29 (v0.33.0 introduction).*
+*Last revised: 2026-07-08 (v0.34.0 governance milestone: first external Steering Committee member seated).*
 
 <https://www.linkedin.com/in/jacobideji/>

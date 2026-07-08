@@ -13,7 +13,8 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - **Content gate complete after v0.24.0.** No remaining drafted playbooks.
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA, and a companion NIST SP 800-61 r3 ↔ AI IR Overlay crosswalk (referenced from `crosswalks/nist-csf-2.md`)
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
-- **Steering Committee announcement (cuts `v1.0.0`)**: the remaining governance gate
+- **Full Steering Committee founding cohort seated (cuts `v1.0.0`)**: v0.34.0 seated the first external Steering Committee member (Chukwunenye Amadi, joined at v0.34.0). Target: 5 total seats (Founding Maintainer + 4 external members). Additional external seats to be seated through v0.34.x / v0.35.x releases.
+- **First external contributor artifacts merged**: the founding Steering Committee member has three artifacts in preparation (new playbook, new reference implementation, and the framework's first documented production-incident anonymized case study). These will land as coordinated releases in v0.34.x / v0.35.x pending review discipline (case study specifically requires additional anonymization and subject-organization approval).
 
 ### v1.1 scope backlog (acknowledged gaps from expert-domain audit)
 
@@ -32,6 +33,36 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Cross-border data transfer for cloud-hosted agents.** GDPR Article 44 / Schrems II implications, US CLOUD Act considerations. Not covered in PB23 or PB10 despite direct relevance to vendor-hosted agents touching EU subjects. v1.1 candidate: PB23 cross-border-transfer subsection; PB10 vendor-data-residency boundary.
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
+
+## [0.34.0] · 2026-07-08 · Governance milestone: First external Steering Committee member seated
+
+### Changed
+
+- `GOVERNANCE.md`: Steering Committee moved from "not yet established" (project-status section) to founding-cohort formation status. First external Steering Committee member seated. Updated Roles section with new Steering Committee subsection; updated Decision-making section to reflect the Steering Committee's advisory role during founding-cohort formation (formal quorum and voting discipline activate when the cohort seats 3+ members total: Lead Maintainer + 2 or more external Steering Committee members).
+
+- `CONTRIBUTORS.md`: NEW `## Steering Committee` section introduced between "Founding Maintainer" and "External Contributors" sections. First external Steering Committee member named with full biographical detail (provided verbatim by the member) and personal-capacity disclosure. External Contributors section framing acknowledges that first-external-contributor artifacts are in preparation for upcoming v0.34.x / v0.35.x releases.
+
+- `CITATION.cff` version + preferred-citation.version bumped from `0.33.0` to `0.34.0`. `date-released` bumped to `2026-07-08`.
+
+- `README.md` Current release line updated to v0.34.0 · 2026-07-08.
+
+- `MATRIX.md` self-version references (three occurrences: intro callout, Current release line, Source paragraph) updated from v0.33.0 to v0.34.0. `Last revised` footer updated to note the v0.34.0 governance milestone.
+
+- `SECURITY.md` Supported Versions table refreshed: v0.34.x latest, v0.33.x previous with critical fixes only, ≤ v0.32.x unsupported.
+
+### Why now
+
+v0.34.0 is the framework's first governance-maturation release. Two of the four v1.0.0 governance-gate items are now on track:
+
+- **Steering Committee announcement.** The framework's target is 5 total seats (Founding Maintainer + 4 external members). v0.34.0 seats the first external Steering Committee member: **Chukwunenye Amadi**, Application Security Engineer at Amazon Web Services (participating in his personal capacity). Chukwunenye brings 10+ years of enterprise application security experience across financial services, consulting, and cloud services, plus current AWS AppSec work in AI and automation for application security workflows. His focus areas include AI security, AI governance, security automation, threat modeling for AI-enabled systems, and practical approaches to securing agentic workflows. His full bio, focus areas, and personal-capacity disclosure are in [`CONTRIBUTORS.md`](CONTRIBUTORS.md). The founding cohort will continue seating additional members through v0.34.x / v0.35.x releases; the framework does not require all 4 external seats to be filled before shipping content releases.
+
+- **First external contributor.** Chukwunenye Amadi is also the framework's founding external contributor, with three artifacts in preparation for upcoming v0.34.x / v0.35.x releases: (a) a new playbook, (b) a new reference implementation, and (c) the framework's first documented production-incident anonymized case study. Each artifact will land as its own coordinated release with appropriate review discipline; the case study specifically requires additional anonymization and subject-organization approval discipline before publication.
+
+The remaining v1.0.0 governance-gate items are (a) trademark registration (currently unregistered word marks) and (b) additional Steering Committee members through the founding-cohort formation.
+
+This release is content-neutral: no playbooks, crosswalks, schemas, or reference implementations changed. The framework's 24 playbooks, 3 crosswalks, 5 schemas, 2 reference implementations, and all other content remain at v0.33.0 state. What changed is the governance posture: the framework is now a collaboratively-governed project rather than a single-maintainer artifact. Adopters, auditors, and readers can continue relying on the v0.33.0 content without any changes at this release.
+
+The naming of Chukwunenye Amadi as a Steering Committee member is a personal-capacity participation. Nothing in this framework should be construed as an endorsement, statement, or position of his current or former employers, including Amazon Web Services.
 
 ## [0.33.0] · 2026-06-29 · Framework Matrix introduced (MATRIX.md)
 
@@ -914,7 +945,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.33.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.34.0...HEAD
+[0.34.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0
 [0.33.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0
 [0.32.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.32.0
 [0.31.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.31.0
