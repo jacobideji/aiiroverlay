@@ -41,7 +41,7 @@ Founding cohort (as of v0.34.0):
 
   An advocate for open-source collaboration, Willy enjoys contributing practical solutions, technical documentation, and operational guidance that help engineers solve real-world challenges. As a contributor to the AI IR Overlay project, he brings a multidisciplinary perspective combining cybersecurity, infrastructure engineering, cloud architecture, and secure software development to advance practical guidance and resources for AI incident response practitioners.
 
-  Dr. Willy Takang is participating in and contributing to the AI IR Overlay™ framework in his personal capacity. Nothing in this framework should be construed as an endorsement, statement, or position of his current or former employers, including Capital One Financial Corporation.
+  Dr. Willy Takang is participating in and contributing to the AI IR Overlay™ framework in his personal capacity. Nothing in this framework should be construed as an endorsement, statement, or position of his current or former employers.
 
 ## External Contributors
 
