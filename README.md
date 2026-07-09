@@ -16,7 +16,7 @@
 [![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
 [![References: NIST · OWASP](https://img.shields.io/badge/references-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
 
-**Current release:** [v0.34.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0) · 2026-07-08 · [CHANGELOG](CHANGELOG.md)
+**Current release:** [v0.35.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0) · 2026-07-09 · [CHANGELOG](CHANGELOG.md)
 
 > A practical incident-response baseline for AI agents in production. Adapt and critique freely.
 

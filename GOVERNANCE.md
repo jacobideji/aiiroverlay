@@ -7,8 +7,8 @@ The AI IR Overlay is open, vendor-neutral, and Apache 2.0 licensed. This documen
 This is a **pre-1.0 project with governance maturation in progress**. Current scale:
 
 - **Lead Maintainer:** Jacob Ideji (founder, original author, primary decision-maker)
-- **Steering Committee:** founding cohort formation in progress. First external member (Chukwunenye Amadi) seated at v0.34.0. Target: 5 members total (Founding Maintainer + 4 external). See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) for full bio and personal-capacity disclosure.
-- **External contributors:** first external contribution in preparation. Chukwunenye Amadi's contributions (a new playbook, a new reference implementation, and the framework's first documented production-incident anonymized case study) are in review for upcoming v0.34.x / v0.35.x releases.
+- **Steering Committee:** founding cohort formation in progress. Two external members seated: Chukwunenye Amadi (joined at v0.34.0) and Dr. Willy Takang (joined at v0.35.0). Target: 5 members total (Founding Maintainer + 4 external). See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) for full bios and personal-capacity disclosures.
+- **External contributors:** first external contributions in preparation. Both Chukwunenye Amadi and Dr. Willy Takang have contribution artifacts in review for upcoming v0.34.x / v0.35.x / v0.36.x releases, including a new playbook, a new reference implementation, and the framework's first documented production-incident anonymized case study.
 - **Working Group Leads, certification program:** **not yet established.** These multi-party governance structures described below under "Future governance (v1.0.0 and beyond)" will be convened as v1.0.0 readiness criteria are met and community adoption justifies the structure.
 
 The framework's roadmap to v1.0.0 is documented in [CHANGELOG.md](CHANGELOG.md) `[Unreleased]` and [CONTENT_MAP.md](CONTENT_MAP.md).
@@ -21,12 +21,13 @@ The framework's roadmap to v1.0.0 is documented in [CHANGELOG.md](CHANGELOG.md) 
 - **Steering Committee:** guides the v1.0.0 arc, reviews major release proposals, and shapes external contribution acceptance. The founding cohort is currently being seated; the framework's target is 5 members (Founding Maintainer + 4 external members). Sustained membership above 7 is not anticipated during the v1.x series. Current Steering Committee members (as of v0.34.0):
 
   - **Chukwunenye Amadi** (joined at v0.34.0). See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) for full bio and personal-capacity disclosure.
+  - **Dr. Willy Takang** (joined at v0.35.0). See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) for full bio and personal-capacity disclosure.
 
 - **Contributors:** anyone, via Pull Request. Substantive contributors are credited in release notes and in [`CONTRIBUTORS.md`](CONTRIBUTORS.md) (introduced in v0.32.0). External contributors are listed under "External Contributors" on first merged PR per the recognition discipline.
 
 ### Decision-making
 
-- **During v0.x with founding cohort forming (v0.34.0 and later):** Lead Maintainer decides on all matters. Steering Committee members provide advisory input on major release proposals and external contribution acceptance via asynchronous review. Formal quorum and voting discipline activate when the founding cohort seats 3+ members total (Lead Maintainer + 2 or more external Steering Committee members).
+- **During v0.x with founding cohort forming:** Lead Maintainer decides on all matters and retains final authority per the trademark ownership described elsewhere in this document. Steering Committee members provide advisory input on major release proposals and external contribution acceptance via asynchronous review. The 3-member threshold (Lead Maintainer + 2 or more external Steering Committee members) was reached at v0.35.0 with the seating of Dr. Willy Takang; the Steering Committee may hold structured advisory votes on matters the Lead Maintainer refers going forward. Formal voting discipline binding the Lead Maintainer activates only at v1.0.0 per the Future governance section below.
 - Changes to the `framework/` directory or the six-question card get a 5-day public comment window.
 - Everything else (playbooks, crosswalks, templates, schemas) runs on lazy consensus: silence after 5 days of public visibility counts as approval.
 
@@ -108,4 +109,4 @@ This project adopts the **Contributor Covenant v2.1**. See [`CODE_OF_CONDUCT.md`
 
 For vulnerabilities, follow the private reporting path in [`SECURITY.md`](SECURITY.md).
 
-<!-- Last revised: 2026-07-08 (v0.34.0: first external Steering Committee member seated; Project status, Roles, and Decision-making sections updated to reflect founding-cohort formation) -->
+<!-- Last revised: 2026-07-09 (v0.35.0: second external Steering Committee member seated; founding cohort now at 2 of 4 target external members; 3-member threshold reached) -->

@@ -13,8 +13,8 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 - **Content gate complete after v0.24.0.** No remaining drafted playbooks.
 - Additional crosswalks: CIS Controls, SOC 2, HIPAA, and a companion NIST SP 800-61 r3 ↔ AI IR Overlay crosswalk (referenced from `crosswalks/nist-csf-2.md`)
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
-- **Full Steering Committee founding cohort seated (cuts `v1.0.0`)**: v0.34.0 seated the first external Steering Committee member (Chukwunenye Amadi, joined at v0.34.0). Target: 5 total seats (Founding Maintainer + 4 external members). Additional external seats to be seated through v0.34.x / v0.35.x releases.
-- **First external contributor artifacts merged**: the founding Steering Committee member has three artifacts in preparation (new playbook, new reference implementation, and the framework's first documented production-incident anonymized case study). These will land as coordinated releases in v0.34.x / v0.35.x pending review discipline (case study specifically requires additional anonymization and subject-organization approval).
+- **Full Steering Committee founding cohort seated (cuts `v1.0.0`)**: v0.34.0 seated the first external Steering Committee member (Chukwunenye Amadi); v0.35.0 seated the second (Dr. Willy Takang). Target: 5 total seats (Founding Maintainer + 4 external members). Additional external seats to be seated through v0.35.x / v0.36.x releases.
+- **First external contributor artifacts merged**: both founding Steering Committee members have contribution artifacts in preparation, including a new playbook, new reference implementation, and the framework's first documented production-incident anonymized case study from Chukwunenye Amadi. These will land as coordinated releases in v0.34.x / v0.35.x / v0.36.x pending review discipline (case study specifically requires additional anonymization and subject-organization approval). Dr. Willy Takang's contribution artifacts to follow.
 
 ### v1.1 scope backlog (acknowledged gaps from expert-domain audit)
 
@@ -33,6 +33,46 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Cross-border data transfer for cloud-hosted agents.** GDPR Article 44 / Schrems II implications, US CLOUD Act considerations. Not covered in PB23 or PB10 despite direct relevance to vendor-hosted agents touching EU subjects. v1.1 candidate: PB23 cross-border-transfer subsection; PB10 vendor-data-residency boundary.
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
+
+## [0.35.0] · 2026-07-09 · Governance milestone: Second external Steering Committee member seated
+
+### Changed
+
+- `GOVERNANCE.md`: Project status Steering Committee bullet updated to reflect 2 external members seated (Chukwunenye Amadi at v0.34.0 + Dr. Willy Takang at v0.35.0). Roles section Steering Committee subsection expanded to include Dr. Willy Takang. Decision-making section updated to note the 3-member threshold (Lead Maintainer + 2+ external Steering Committee members) has been reached at v0.35.0; the Steering Committee may hold structured advisory votes on matters the Lead Maintainer refers going forward, but formal voting discipline binding the Lead Maintainer activates only at v1.0.0.
+
+- `CONTRIBUTORS.md`: Steering Committee section expanded to include Dr. Willy Takang's full biographical detail (provided verbatim by the member) and personal-capacity disclosure. External Contributors section preamble updated to reference both founding members. Last revised footer updated.
+
+- `CITATION.cff` version + preferred-citation.version bumped from `0.34.0` to `0.35.0`. `date-released` bumped to `2026-07-09`.
+
+- `README.md` Current release line updated to v0.35.0 · 2026-07-09.
+
+- `MATRIX.md` self-version references (three occurrences: intro callout, Current release line, Source paragraph) updated from v0.34.0 to v0.35.0. `Last revised` footer updated to note the v0.35.0 governance milestone.
+
+- `SECURITY.md` Supported Versions table refreshed: v0.35.x latest, v0.34.x previous with critical fixes only, ≤ v0.33.x unsupported.
+
+### Why now
+
+v0.35.0 is the framework's second governance-maturation release. The Steering Committee founding cohort now has 2 of 4 target external members seated:
+
+- **Chukwunenye Amadi** (Application Security Engineer at Amazon Web Services; joined at v0.34.0)
+- **Dr. Willy Takang** (Lead Platform Engineer at Capital One Financial Corporation; joined at v0.35.0)
+
+Both members are participating in their personal capacity. Nothing in this framework should be construed as an endorsement, statement, or position of their current or former employers, including Amazon Web Services and Capital One Financial Corporation.
+
+Dr. Willy Takang brings a multidisciplinary perspective combining cybersecurity, infrastructure engineering, cloud architecture, and secure software development to the framework. His experience spans Linux systems, cloud infrastructure, Kubernetes, containerization, infrastructure automation, Python development, observability, and incident response. He holds a Doctorate in Computer Science, a Master of Science in Information Security, an MBA, and a Bachelor of Science degree. His industry certifications include Cisco Certified Network Associate (CCNA), Cisco Certified Design Associate (CCDA), Cisco Certified Design Professional (CCDP), and AWS Certified Solutions Architect – Associate. His focus areas as a contributor include practical guidance and resources for AI incident response practitioners. His full bio and personal-capacity disclosure are in [`CONTRIBUTORS.md`](CONTRIBUTORS.md).
+
+At v0.35.0, the 3-member threshold (Lead Maintainer + 2 or more external Steering Committee members) that the framework's founding-cohort governance discipline referenced is now reached. Under the current governance framework, the Steering Committee may hold structured advisory votes going forward; formal voting discipline binding the Lead Maintainer activates only at v1.0.0 per the Future governance section of `GOVERNANCE.md`.
+
+Dr. Willy Takang joins the framework as its second external contributor, with contributions in preparation for upcoming v0.35.x / v0.36.x releases. The specific artifact scope, review discipline, and release cadence for his contributions will be documented as they land.
+
+This release is content-neutral: no playbooks, crosswalks, schemas, or reference implementations changed. The framework's 24 playbooks, 3 crosswalks, 5 schemas, 2 reference implementations, and all other content remain at v0.33.0 state. What changed is the governance posture: the founding cohort has passed the 3-member threshold and moved from "single external voice" to "collaboratively-formed founding cohort."
+
+Progress on v1.0.0 governance gates:
+
+- **Steering Committee announcement:** 2 of 4 external seats filled.
+- **External contributors:** 2 external contributors named; artifacts in preparation for upcoming v0.34.x / v0.35.x / v0.36.x releases.
+- **Trademark registration:** still unregistered.
+- **Production case studies:** first case study in review pipeline (via Chukwunenye Amadi's contributions).
 
 ## [0.34.0] · 2026-07-08 · Governance milestone: First external Steering Committee member seated
 
@@ -945,7 +985,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.34.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.35.0...HEAD
+[0.35.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0
 [0.34.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0
 [0.33.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0
 [0.32.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.32.0

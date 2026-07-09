@@ -33,9 +33,19 @@ Founding cohort (as of v0.34.0):
 
   Chukwunenye is participating in and contributing to the AI IR Overlay™ framework in his personal capacity. Nothing in this framework should be construed as an endorsement, statement, or position of his current or former employers, including Amazon Web Services.
 
+- **Dr. Willy Takang** (Steering Committee Member, joined at v0.35.0):
+
+  Dr. Willy Takang is a cybersecurity and infrastructure engineer with expertise in secure systems design, cloud architecture, networking, DevOps, and software engineering. He holds a Doctorate in Computer Science, a Master of Science in Information Security,  an MBA, and a Bachelor of Science degree, along with industry certifications including Cisco Certified Network Associate (CCNA), Cisco Certified Design Associate (CCDA), Cisco Certified Design Professional (CCDP), and AWS Certified Solutions Architect – Associate.
+
+  His experience spans Linux systems, cloud infrastructure, Kubernetes, containerization, infrastructure automation, Python development, observability, and incident response. Throughout his career, he has designed, deployed, and supported secure enterprise environments while helping organizations improve resilience through automation, modern infrastructure practices, and sound security engineering. Willy is currently a Lead Platform Engineer at Capital One Financial Corporation.
+
+  An advocate for open-source collaboration, Willy enjoys contributing practical solutions, technical documentation, and operational guidance that help engineers solve real-world challenges. As a contributor to the AI IR Overlay project, he brings a multidisciplinary perspective combining cybersecurity, infrastructure engineering, cloud architecture, and secure software development to advance practical guidance and resources for AI incident response practitioners.
+
+  Dr. Willy Takang is participating in and contributing to the AI IR Overlay™ framework in his personal capacity. Nothing in this framework should be construed as an endorsement, statement, or position of his current or former employers, including Capital One Financial Corporation.
+
 ## External Contributors
 
-**None yet.** The framework is at the very beginning of its community-contribution arc. The founding Steering Committee member named above has multiple artifacts in preparation (a new playbook, a new reference implementation, and the framework's first documented production-incident anonymized case study) for upcoming v0.34.x / v0.35.x releases; contributor recognition in this section follows the first-merged-PR discipline described below.
+**None yet.** The framework is at the very beginning of its community-contribution arc. Both founding Steering Committee members named above (Chukwunenye Amadi and Dr. Willy Takang) have contribution artifacts in preparation for upcoming v0.34.x / v0.35.x / v0.36.x releases; contributor recognition in this section follows the first-merged-PR discipline described below.
 
 If you would like to contribute, please read [CONTRIBUTING.md](CONTRIBUTING.md) first. The highest-velocity contribution paths are:
 
@@ -67,7 +77,7 @@ This file is intentionally short at v0.x. It will grow as external contributions
 
 ---
 
-*Last revised: 2026-07-08 (v0.34.0: first Steering Committee member seated; Steering Committee section introduced).*
+*Last revised: 2026-07-09 (v0.35.0: second external Steering Committee member seated; founding cohort now at 2 of 4 target external members).*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
