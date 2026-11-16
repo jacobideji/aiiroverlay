@@ -1,6 +1,6 @@
 # Kill-Switch Demo — Reference Implementation
 
-A minimal Python implementation of the [Kill-Switch API contract](../../schemas/kill-switch-api.md) showing Modes M0, M1, M2, M3, M4 against a synthetic in-memory agent tool registry.
+A minimal Python implementation of the [Kill-Switch API contract](../../schemas/kill-switch-api.md) showing Modes M0 through M5 against a synthetic in-memory agent tool registry.
 
 ## Run the demo
 
@@ -16,9 +16,10 @@ Expected demonstration:
 1. Initial state in M0 (Observe)
 2. Activate M1 (Read-Only); test that writes are denied and reads pass
 3. Demonstrate separation-of-duties on deactivation (same actor blocked)
-4. Activate M3 (Tool Tiering) scoped to specific tools; test that scoped tools require approval but unscoped tools do not
+4. Activate M3 (Tool Tiering) scoped to specific tools; test that scoped tools are disabled while unscoped tools keep working. (Approval-gating is M2 semantics; M3 disables.)
 5. Escalate to M4 (Full Disable); test that all tools are denied
-6. Print full activation history
+6. Demonstrate M5 (Controlled Re-Enable): direct M4 to M0 refused, M5 activated read-only, premature return refused on an incomplete gate, insufficient approver authority refused, then the gated return to M0
+7. Print full activation history
 
 ## File layout
 
