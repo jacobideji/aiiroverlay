@@ -34,6 +34,7 @@ import argparse
 import sys
 import time
 import uuid
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
@@ -59,6 +60,33 @@ APPROVER_ROLES = {"ciso", "incident_commander"}
 # ─── Synthetic agent and tool registry ────────────────────────────────────
 
 @dataclass
+class ToolCall:
+    """Evidence record for one tool invocation.
+
+    Opened at the invocation boundary *before* dispatch, with the outcome
+    written back afterwards. That ordering is the point: a log emitted from the
+    success path records only the calls that did not need recording, and the
+    denials, queued calls and retries - the sequence that matters during
+    containment - leave no trace. It also means a call that dies mid-dispatch
+    still leaves a record, with `outcome` unset.
+
+    `activation_id` links the call to the containment decision in force when it
+    was made, which is what lets a responder answer "was this denied because we
+    contained the agent, or did it fail for some other reason?".
+    """
+    call_id: str
+    tool: str
+    params: dict[str, Any]
+    agent_id: str
+    mode: str
+    activation_id: str | None
+    correlation_id: str | None
+    called_at: str
+    outcome: str | None = None   # success | queued | denied; None if dispatch died
+    reason: str | None = None
+
+
+@dataclass
 class Tool:
     """A registered tool with its risk tier and current state."""
     name: str
@@ -66,15 +94,31 @@ class Tool:
     is_write: bool
     enabled: bool = True
     requires_approval: bool = False
+    # Set by KillSwitchAPI when it builds the registry. Recording lives here,
+    # not in a wrapper method, so that an existing call site cannot bypass it by
+    # forgetting to use the new entry point.
+    recorder: Callable[..., "ToolCall"] | None = field(
+        default=None, repr=False, compare=False
+    )
 
-    def call(self, params: dict[str, Any]) -> dict[str, Any]:
+    def call(
+        self, params: dict[str, Any], correlation_id: str | None = None
+    ) -> dict[str, Any]:
         """Simulate a tool call. Returns result and approver if any."""
+        record = self.recorder(self, params, correlation_id) if self.recorder else None
+
         if not self.enabled:
-            return {"status": "denied", "reason": f"tool {self.name} is disabled"}
-        if self.requires_approval:
+            result = {"status": "denied", "reason": f"tool {self.name} is disabled"}
+        elif self.requires_approval:
             # In production: queue for approval; here we just note it
-            return {"status": "queued", "reason": f"tool {self.name} requires approval"}
-        return {"status": "success", "result": f"called {self.name} with {params}"}
+            result = {"status": "queued", "reason": f"tool {self.name} requires approval"}
+        else:
+            result = {"status": "success", "result": f"called {self.name} with {params}"}
+
+        if record is not None:
+            record.outcome = result["status"]
+            record.reason = result.get("reason")
+        return result
 
 
 @dataclass
@@ -131,6 +175,7 @@ class KillSwitchAPI:
         self.verbose = verbose
         self.current_mode: str = Mode.M0
         self.activation_history: list[Activation] = []
+        self.tool_call_history: list[ToolCall] = []
         self.tools: dict[str, Tool] = {
             "salesforce.lookup": Tool("salesforce.lookup", "T0", is_write=False),
             "internal_kb_search": Tool("internal_kb_search", "T0", is_write=False),
@@ -139,6 +184,8 @@ class KillSwitchAPI:
             "salesforce.bulk_update": Tool("salesforce.bulk_update", "T2", is_write=True),
             "code_execution": Tool("code_execution", "T2", is_write=True),
         }
+        for tool in self.tools.values():
+            tool.recorder = self._open_tool_call
 
     # ─── Activate ──────────────────────────────────────────────────────────
 
@@ -223,6 +270,38 @@ class KillSwitchAPI:
         return activation
 
     # ─── Status ────────────────────────────────────────────────────────────
+
+    def _open_tool_call(
+        self, tool: Tool, params: dict[str, Any], correlation_id: str | None
+    ) -> ToolCall:
+        """Open an evidence record before the call is dispatched."""
+        active = next(
+            (a for a in reversed(self.activation_history)
+             if a.deactivated_at is None and a.effective_at),
+            None,
+        )
+        record = ToolCall(
+            call_id=str(uuid.uuid4()),
+            tool=tool.name,
+            params=dict(params),
+            agent_id=self.agent_id,
+            mode=self.current_mode,
+            activation_id=active.activation_id if active else None,
+            correlation_id=correlation_id,
+            called_at=_now(),
+        )
+        self.tool_call_history.append(record)
+        return record
+
+    def tool_calls(
+        self, outcome: str | None = None, tool: str | None = None
+    ) -> list[ToolCall]:
+        """Query the tool-call evidence. Denials and queued calls are the point."""
+        return [
+            c for c in self.tool_call_history
+            if (outcome is None or c.outcome == outcome)
+            and (tool is None or c.tool == tool)
+        ]
 
     def status(self) -> dict[str, Any]:
         """Return current Kill-Switch state for this agent."""
@@ -519,6 +598,15 @@ def run_demo(verbose: bool) -> int:
     print_status(api, "After M5 step 6 (return to M0):")
 
     # Summary
+    print("\n--- Tool-call evidence ---")
+    for c in api.tool_call_history:
+        act = c.activation_id[:8] if c.activation_id else "-"
+        print(f"  {c.called_at[11:19]}  mode={c.mode:<3} {c.tool:<28} "
+              f"outcome={c.outcome:<8} activation={act}")
+    denied = api.tool_calls(outcome="denied")
+    print(f"  {len(api.tool_call_history)} calls recorded, {len(denied)} denied - "
+          f"every outcome recorded, not just the successes")
+
     print("\n--- Activation history ---")
     for a in api.activation_history:
         deact = a.deactivated_at or "still active"
