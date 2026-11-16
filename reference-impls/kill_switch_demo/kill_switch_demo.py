@@ -60,6 +60,34 @@ APPROVER_ROLES = {"ciso", "incident_commander"}
 # ─── Synthetic agent and tool registry ────────────────────────────────────
 
 @dataclass
+class ConfigSnapshot:
+    """The effective tool registry at a moment in time, and what moved it.
+
+    Mode and scope say what was *requested*. They do not say which tools were
+    actually callable afterwards, which is the question an investigation asks:
+    "what could this agent do at 02:14?" Reconstructing that from mode alone
+    requires assuming the apply logic was correct, which is the thing under
+    investigation.
+    """
+    taken_at: str
+    cause: str                       # activation | rollback | deactivation
+    mode: str
+    activation_id: str | None
+    tools: dict[str, dict[str, bool]]  # name -> {enabled, requires_approval}
+
+
+@dataclass
+class PendingApproval:
+    """A tool call held at M2 awaiting a human decision."""
+    approval_id: str
+    tool: str
+    params: dict[str, Any]
+    correlation_id: str | None
+    requested_at: str
+    call_id: str
+
+
+@dataclass
 class ToolCall:
     """Evidence record for one tool invocation.
 
@@ -84,6 +112,12 @@ class ToolCall:
     called_at: str
     outcome: str | None = None   # success | queued | denied; None if dispatch died
     reason: str | None = None
+    approval_id: str | None = None      # set when the call is queued at M2
+    decision: str | None = None         # approved | denied
+    decided_by: str | None = None
+    decided_at: str | None = None
+    decision_reason: str | None = None
+    approved_by: str | None = None      # set on the execution that an approval released
 
 
 @dataclass
@@ -100,18 +134,36 @@ class Tool:
     recorder: Callable[..., "ToolCall"] | None = field(
         default=None, repr=False, compare=False
     )
+    pending_handler: Callable[..., str] | None = field(
+        default=None, repr=False, compare=False
+    )
 
     def call(
-        self, params: dict[str, Any], correlation_id: str | None = None
+        self,
+        params: dict[str, Any],
+        correlation_id: str | None = None,
+        approved_by: str | None = None,
     ) -> dict[str, Any]:
-        """Simulate a tool call. Returns result and approver if any."""
+        """Simulate a tool call. Returns result and approver if any.
+
+        `approved_by` is set only by KillSwitchAPI.approve(), which releases a
+        call an approver has cleared. It bypasses the approval gate and nothing
+        else: a disabled tool stays denied, because an approver may release a
+        queued call but may not un-contain a tool.
+        """
         record = self.recorder(self, params, correlation_id) if self.recorder else None
+        if record is not None and approved_by:
+            record.approved_by = approved_by
 
         if not self.enabled:
             result = {"status": "denied", "reason": f"tool {self.name} is disabled"}
-        elif self.requires_approval:
-            # In production: queue for approval; here we just note it
+        elif self.requires_approval and not approved_by:
+            # Held for a human decision. The call is retained so it can actually
+            # be approved or denied later - a queue nothing can act on is a
+            # denial with a friendlier word.
             result = {"status": "queued", "reason": f"tool {self.name} requires approval"}
+            if self.pending_handler is not None and record is not None:
+                result["approval_id"] = self.pending_handler(self, params, correlation_id, record)
         else:
             result = {"status": "success", "result": f"called {self.name} with {params}"}
 
@@ -176,6 +228,9 @@ class KillSwitchAPI:
         self.current_mode: str = Mode.M0
         self.activation_history: list[Activation] = []
         self.tool_call_history: list[ToolCall] = []
+        self.configuration_history: list[ConfigSnapshot] = []
+        self.approval_queue: dict[str, PendingApproval] = {}
+        self.approval_decisions: list[ToolCall] = []
         self.tools: dict[str, Tool] = {
             "salesforce.lookup": Tool("salesforce.lookup", "T0", is_write=False),
             "internal_kb_search": Tool("internal_kb_search", "T0", is_write=False),
@@ -186,6 +241,8 @@ class KillSwitchAPI:
         }
         for tool in self.tools.values():
             tool.recorder = self._open_tool_call
+            tool.pending_handler = self._enqueue_for_approval
+        self._snapshot_configuration("activation", None)
 
     # ─── Activate ──────────────────────────────────────────────────────────
 
@@ -256,11 +313,13 @@ class KillSwitchAPI:
             for name, (enabled, requires_approval) in snapshot.items():
                 self.tools[name].enabled = enabled
                 self.tools[name].requires_approval = requires_approval
+            self._snapshot_configuration("rollback", activation.activation_id)
 
         # effective_at is set ONLY if probe passes (per the contract)
         if activation.probe_result == "pass":
             activation.effective_at = _now()
             self.current_mode = mode
+            self._snapshot_configuration("activation", activation.activation_id)
 
         self.activation_history.append(activation)
 
@@ -292,6 +351,77 @@ class KillSwitchAPI:
         )
         self.tool_call_history.append(record)
         return record
+
+    def _snapshot_configuration(self, cause: str, activation_id: str | None) -> ConfigSnapshot:
+        """Record the effective registry, so a past moment can be reconstructed."""
+        snap = ConfigSnapshot(
+            taken_at=_now(),
+            cause=cause,
+            mode=self.current_mode,
+            activation_id=activation_id,
+            tools={
+                name: {"enabled": tool.enabled, "requires_approval": tool.requires_approval}
+                for name, tool in self.tools.items()
+            },
+        )
+        self.configuration_history.append(snap)
+        return snap
+
+    def configuration_at(self, when: str) -> ConfigSnapshot | None:
+        """The effective registry as of an ISO timestamp. Evidence, not inference."""
+        prior = [s for s in self.configuration_history if s.taken_at <= when]
+        return prior[-1] if prior else None
+
+    def _enqueue_for_approval(
+        self, tool: Tool, params: dict[str, Any], correlation_id: str | None, record: ToolCall
+    ) -> str:
+        approval_id = str(uuid.uuid4())
+        self.approval_queue[approval_id] = PendingApproval(
+            approval_id=approval_id,
+            tool=tool.name,
+            params=dict(params),
+            correlation_id=correlation_id,
+            requested_at=_now(),
+            call_id=record.call_id,
+        )
+        record.approval_id = approval_id
+        return approval_id
+
+    def _decide(self, approval_id: str, approver: str, reason: str, decision: str) -> ToolCall:
+        if approval_id not in self.approval_queue:
+            raise KeyError(f"no pending approval {approval_id}")
+        if approver == self.agent_id:
+            raise PermissionError(
+                f"the agent ({self.agent_id}) may not approve its own tool calls"
+            )
+        pending = self.approval_queue.pop(approval_id)
+        record = next(c for c in self.tool_call_history if c.call_id == pending.call_id)
+        record.decision = decision
+        record.decided_by = approver
+        record.decided_at = _now()
+        record.decision_reason = reason
+        self.approval_decisions.append(record)
+        return record
+
+    def approve(self, approval_id: str, approver: str, reason: str) -> dict[str, Any]:
+        """Release one held call. One id per call: there is no bulk approve."""
+        record = self._decide(approval_id, approver, reason, "approved")
+        pending_tool = self.tools[record.tool]
+        return pending_tool.call(record.params, record.correlation_id, approved_by=approver)
+
+    def deny(self, approval_id: str, approver: str, reason: str) -> dict[str, Any]:
+        """Refuse one held call. The call does not execute."""
+        record = self._decide(approval_id, approver, reason, "denied")
+        return {"status": "denied", "reason": f"approver {approver} denied: {reason}"}
+
+    def approval_metrics(self) -> dict[str, int]:
+        """Queue depth and decision counts. A denial rate of zero is a finding."""
+        decided = self.approval_decisions
+        return {
+            "pending": len(self.approval_queue),
+            "approved": sum(1 for c in decided if c.decision == "approved"),
+            "denied": sum(1 for c in decided if c.decision == "denied"),
+        }
 
     def tool_calls(
         self, outcome: str | None = None, tool: str | None = None
@@ -384,6 +514,7 @@ class KillSwitchAPI:
             tool.requires_approval = False
 
         self.current_mode = Mode.M0
+        self._snapshot_configuration("deactivation", active.activation_id)
         if self.verbose:
             print(f"  DEACTIVATE: mode {active.mode} -> M0 by {actor}")
         return active
@@ -596,6 +727,36 @@ def run_demo(verbose: bool) -> int:
 
     api.deactivate(actor="ciso", reason="Recovered", approver_role="ciso", gate=gate)
     print_status(api, "After M5 step 6 (return to M0):")
+
+    print("\n--- Step 6: M2 (Approvals Required) with a real approver ---")
+    api.activate(
+        mode=Mode.M2,
+        actor="ic_jdoe",
+        reason="Resume writes under two-person rule",
+        ticket_id="INC-2026-0042",
+    )
+    held = api.tools["outlook.send"].call({"to": "customer@example.com"})
+    print(f"  outlook.send -> {held['status']} (approval_id {held['approval_id'][:8]})")
+    try:
+        api.approve(held["approval_id"], approver=api.agent_id, reason="self")
+    except PermissionError as exc:
+        print(f"  Agent self-approval refused: {exc}")
+    denied = api.deny(held["approval_id"], approver="tier1_soc",
+                      reason="Recipient not on the allowlist")
+    print(f"  Approver denied it -> {denied['status']}; the call did not execute")
+
+    second = api.tools["outlook.send"].call({"to": "internal@example.com"})
+    released = api.approve(second["approval_id"], approver="tier1_soc", reason="Verified")
+    print(f"  Approver released the next one -> {released['status']}")
+    print(f"  Approval metrics: {api.approval_metrics()}")
+
+    print("\n--- Configuration evidence ---")
+    print(f"  {len(api.configuration_history)} registry snapshots recorded")
+    first_m1 = next(s for s in api.configuration_history if s.mode == Mode.M1)
+    enabled = sorted(n for n, s in first_m1.tools.items() if s["enabled"])
+    print(f"  Reconstructed state at {first_m1.taken_at[11:19]} (mode {first_m1.mode}, "
+          f"{first_m1.cause}): callable = {enabled}")
+    print("  Mode alone cannot answer that; it assumes the apply logic was correct.")
 
     # Summary
     print("\n--- Tool-call evidence ---")
