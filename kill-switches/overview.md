@@ -99,6 +99,7 @@ A reader claiming framework conformance is conforming to **M0 through M5**. Vari
 - [ ] All write tools confirmed disabled in production config
 - [ ] Test query confirms reads still function
 - [ ] Logging continues at M0 fidelity
+- [ ] Memory state snapshotted **before** the transition and retained as evidence (see the [Minimum Evidence Set](../evidence/minimum-evidence-set.md)). Required on the first transition out of M0, whichever mode that is. Some runtimes discard memory on reconfiguration, so a containment action taken to preserve evidence can destroy this class of it. This snapshot is the **incident state**, and the memory validation step in M5 diffs it against a pre-incident baseline.
 
 **Exit criteria:** Investigation confirms benign (return to M0), confirms harm (step up to M3/M4), or needs continued operation with control (step to M2).
 
@@ -182,14 +183,20 @@ A reader claiming framework conformance is conforming to **M0 through M5**. Vari
 
 1. **Re-enable in Read-Only (M1).** Confirm the agent functions and logs flow.
 2. **Validate retrieval and tool policies.** Corpora versions confirmed clean.
-3. **Replay the incident scenario in a safe harness.** Confirm fix holds.
-4. **Re-enable tools incrementally.** Start with low-risk, monitor for drift.
-5. **Return to M0 Observe.** Only after all of the above.
+3. **Validate and reset memory state.** Diff the containment snapshot against the last pre-incident baseline to identify what the incident wrote. Remove those entries, scoped to the incident window where the runtime allows it and a full reset where it does not. Retain the containment snapshot as evidence; it is not a restore source.
+4. **Replay the incident scenario in a safe harness.** Confirm fix holds.
+5. **Re-enable tools incrementally.** Start with low-risk, monitor for drift.
+6. **Return to M0 Observe.** Only after all of the above.
+
+> **Why memory is its own step.** Steps 2 and 4 do not reach it. A corpus is validated by version, but memory is written by the agent *during* the incident, so what must be checked is the delta the incident produced. Memory also carries **instructions**, not only facts: an entry written before containment executes on the first turn after re-enable, which corpora validation and harness replay both miss.
+
+> **Memory baseline prerequisite:** step 3 assumes a pre-incident memory baseline to diff against. Where a deployment keeps none, the step degrades to a full memory reset, which is safe but costs whatever the agent had legitimately learned. Adopters should treat periodic memory baselines as an MVO-1 prerequisite and document their cadence.
 
 **Approver:** CISO or designated Incident Commander. **Never** the original agent owner alone.
 
 **Operational checks:**
 
+- [ ] Memory diffed against a pre-incident baseline and incident-written entries removed; the containment snapshot retained separately as evidence
 - [ ] Post-incident hardening complete (see [Playbook 18: Post-Incident Hardening](../playbooks/18-post-incident-hardening.md))
 - [ ] Monitoring thresholds updated to detect recurrence
 - [ ] Tabletop scheduled within 30 days to validate the fix
