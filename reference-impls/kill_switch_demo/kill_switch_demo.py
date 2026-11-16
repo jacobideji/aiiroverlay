@@ -51,6 +51,10 @@ class Mode:
 
 ALL_MODES = [Mode.M0, Mode.M1, Mode.M2, Mode.M3, Mode.M4, Mode.M5]
 
+# M5 approver: "CISO or designated Incident Commander. Never the original agent
+# owner alone." Independence alone is not sufficient; authority is also required.
+APPROVER_ROLES = {"ciso", "incident_commander"}
+
 
 # ─── Synthetic agent and tool registry ────────────────────────────────────
 
@@ -71,6 +75,32 @@ class Tool:
             # In production: queue for approval; here we just note it
             return {"status": "queued", "reason": f"tool {self.name} requires approval"}
         return {"status": "success", "result": f"called {self.name} with {params}"}
+
+
+@dataclass
+class ReEnableGate:
+    """Steps 1-5 of M5 Controlled Re-Enable, per kill-switches/overview.md.
+
+    Step 6 is the return to M0, which is what `deactivate()` performs once every
+    step below is complete. Memory validation is step 3: corpora are validated by
+    version, but memory is written by the agent during the incident and carries
+    instructions as well as facts, so an entry made before containment executes
+    on the first turn after re-enable.
+
+    Step 3 involves two distinct artifacts, and collapsing them is the defect the
+    step exists to prevent. The *containment snapshot* is taken as the mode is
+    applied and captures the incident state: it is evidence, and it is never a
+    restore source. The *pre-incident baseline* is what the agent is restored
+    from. Diff one against the other to find what the incident wrote.
+    """
+    read_only_confirmed: bool = False            # 1. re-enable in M1, logs flow
+    retrieval_and_tools_validated: bool = False  # 2. corpora versions clean
+    memory_validated_and_reset: bool = False     # 3. diff vs last-known-good, reset
+    incident_replayed: bool = False              # 4. fix holds in a safe harness
+    tools_reenabled_incrementally: bool = False  # 5. low-risk first, watch for drift
+
+    def outstanding(self) -> list[str]:
+        return [name for name, done in vars(self).items() if not done]
 
 
 @dataclass
@@ -211,12 +241,27 @@ class KillSwitchAPI:
 
     # ─── Deactivate ────────────────────────────────────────────────────────
 
-    def deactivate(self, actor: str, reason: str) -> Activation | None:
+    def deactivate(
+        self,
+        actor: str,
+        reason: str,
+        approver_role: str | None = None,
+        gate: "ReEnableGate | None" = None,
+    ) -> Activation | None:
         """Deactivate the current mode. Returns to M0 (Observe).
 
         Separation-of-duties rule: the deactivating actor must differ from
         the most recent activating actor. In production this is enforced
         by an IdP-side authorization check; here we enforce it inline.
+
+        Two further rules come from the ladder itself:
+
+          - M4's exit criteria are "eradication complete, move to M5", so M4
+            does not return to M0 directly.
+          - M5 is a *gated* recovery. Returning to M0 from M5 is step 6, and it
+            requires every prior step recorded complete on a ReEnableGate plus an
+            approver holding CISO or Incident Commander authority. Independence
+            is necessary but not sufficient.
         """
         active = next(
             (a for a in reversed(self.activation_history) if a.deactivated_at is None and a.effective_at),
@@ -229,6 +274,28 @@ class KillSwitchAPI:
                 f"separation-of-duties violation: deactivator ({actor}) must differ from "
                 f"activator ({active.actor}) per kill-switch-api.md"
             )
+
+        if active.mode == Mode.M4:
+            raise PermissionError(
+                "M4 does not return to M0 directly: its exit criteria are eradication "
+                "complete, then M5 Controlled Re-Enable. Activate M5 and complete its "
+                "ReEnableGate."
+            )
+
+        if active.mode == Mode.M5:
+            if gate is None or gate.outstanding():
+                outstanding = gate.outstanding() if gate else ["<no gate supplied>"]
+                raise PermissionError(
+                    f"M5 re-enable gate incomplete; outstanding steps: {outstanding}. "
+                    f"Per kill-switches/overview.md, step 6 (return to M0) follows only "
+                    f"after steps 1-5."
+                )
+            if approver_role not in APPROVER_ROLES:
+                raise PermissionError(
+                    f"M5 approver must hold CISO or Incident Commander authority; got "
+                    f"approver_role={approver_role!r}. Separation of duties is necessary "
+                    f"but not sufficient."
+                )
 
         active.deactivated_at = _now()
 
@@ -284,6 +351,17 @@ class KillSwitchAPI:
             # M4: all tools disabled
             return all(not t.enabled for t in self.tools.values())
 
+        if mode == Mode.M5:
+            # M5 step 1: the agent is back up read-only. Writes must be off and
+            # reads must function, same predicate as M1 - the difference between
+            # the two modes is the gate on the way out, not the tool state.
+            for t in self.tools.values():
+                if t.is_write and t.enabled:
+                    return False
+                if not t.is_write and not t.enabled:
+                    return False
+            return True
+
         return False
 
     # ─── Private: apply a mode's effects ───────────────────────────────────
@@ -313,6 +391,13 @@ class KillSwitchAPI:
         elif mode == Mode.M4:
             for t in self.tools.values():
                 t.enabled = False
+        elif mode == Mode.M5:
+            # Step 1 of the staged sequence: re-enable in Read-Only. The
+            # remaining steps are gated by ReEnableGate and checked on
+            # deactivate(), which performs step 6.
+            for t in self.tools.values():
+                t.enabled = not t.is_write
+                t.requires_approval = False
 
 
 # ─── Helpers ───────────────────────────────────────────────────────────────
@@ -399,6 +484,39 @@ def run_demo(verbose: bool) -> int:
     # Verify all tools denied
     result = api.tools["salesforce.lookup"].call({"id": "0061a000ABC123"})
     print(f"  Test: salesforce.lookup -> {result}")
+
+    print("\n--- Step 5: M5 (Controlled Re-Enable) ---")
+    try:
+        api.deactivate(actor="ic_jdoe", reason="Looks fine now")
+    except PermissionError as exc:
+        print(f"  Direct M4 -> M0 refused: {exc}")
+
+    api.activate(
+        mode=Mode.M5,
+        actor="ic_jdoe",
+        reason="Eradication complete; staged recovery",
+        ticket_id="INC-2026-0042",
+    )
+    print_status(api, "After M5 activation (step 1: read-only):")
+    print(f"  Test: salesforce.lookup -> {api.tools['salesforce.lookup'].call({'id': 'X'})['status']}")
+    print(f"  Test: outlook.send     -> {api.tools['outlook.send'].call({'to': 'x'})['status']}")
+
+    gate = ReEnableGate(read_only_confirmed=True, retrieval_and_tools_validated=True)
+    try:
+        api.deactivate(actor="ciso", reason="Recovered", approver_role="ciso", gate=gate)
+    except PermissionError as exc:
+        print(f"  Premature return to M0 refused: {exc}")
+
+    gate.memory_validated_and_reset = True
+    gate.incident_replayed = True
+    gate.tools_reenabled_incrementally = True
+    try:
+        api.deactivate(actor="ciso", reason="Recovered", approver_role="analyst", gate=gate)
+    except PermissionError as exc:
+        print(f"  Insufficient approver authority refused: {exc}")
+
+    api.deactivate(actor="ciso", reason="Recovered", approver_role="ciso", gate=gate)
+    print_status(api, "After M5 step 6 (return to M0):")
 
     # Summary
     print("\n--- Activation history ---")
