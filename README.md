@@ -1,170 +1,138 @@
 <!-- ────────────────────────────────────────────────────────────────── -->
-<!--  AI IR Overlay · Framework Overview                                -->
-<!--  Part of the AI IR Overlay™ framework, by Jacob Ideji              -->
-<!--  https://jacobideji.com                                            -->
-<!--  License: Apache 2.0. See LICENSE file in this package.            -->
+<!--  Offensive Lens: Overview  -->
+<!--  Part of the AI IR Overlay™ framework — by Jacob Ideji                 -->
+<!--  https://jacobideji.com                                                -->
+<!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
 <!-- ────────────────────────────────────────────────────────────────── -->
 
-> **Why an overlay, not a replacement. The thesis.**
+> **The overlay specifies what to do. The lens tests whether it would work.**
 >
-> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](CONTENT_MAP.md) for the full repository map.*
+> *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../CONTENT_MAP.md) for the full repository map.*
+
 ---
 
-# The AI IR Overlay: Framework Overview
+# AI IR Overlay — Offensive Lens
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Latest release](https://img.shields.io/github/v/release/jacobideji/aiiroverlay?label=release)](https://github.com/jacobideji/aiiroverlay/releases)
-[![References: NIST · OWASP](https://img.shields.io/badge/references-NIST%20800--61%20r3%20%C2%B7%20AI%20RMF%20%C2%B7%20OWASP-informational)](#related-work)
+**Version 0.36.0** · companion to [AI IR Overlay™](https://github.com/jacobideji/aiiroverlay) v0.35.0 · Apache 2.0
 
-**Current release:** [v0.35.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0) · 2026-07-09 · [CHANGELOG](CHANGELOG.md)
+> The overlay specifies what to do when an AI agent incident happens.
+> The Offensive Lens tests whether any of it would actually work.
 
-> A practical incident-response baseline for AI agents in production. Adapt and critique freely.
+## Why this exists
 
-## Why an overlay, not a replacement
+The overlay's own documentation states plainly that the framework *"has not yet been deployed in a documented production AI incident."* Waiting for one is not a validation strategy. It is the absence of one.
 
-Traditional incident response (codified in NIST SP 800-61 r3, which superseded r2 in April 2025) was built around unauthorized access vectors: malware, exploits, credential theft, lateral movement. AI agents change the failure mode.
+The Offensive Lens is the alternative. It is a structured adversarial exercise program aimed not at the agent, but at **the four controls the overlay installs around the agent**. Each exercise attacks one control's core assumption and produces a pass/partial/fail record with evidence attached.
 
-AI incidents often manifest through *authorized* channels:
+Run it and you can answer, with artifacts rather than assertions:
 
-- **Legitimate identities.** Service accounts or delegated OAuth grants that execute unintended actions.
-- **Legitimate APIs.** Tool calls to email, CRM, and ERP that operate within allowed parameters but still produce harm.
-- **Legitimate sources.** Retrieval layers pulling from trusted but outdated or inappropriate knowledge.
-- **Legitimate workflows.** Automations that execute policy as written, yet produce harmful outcomes.
+- Is the AI-BOM an accurate description of runtime capability, or a stale declaration?
+- When you call M1, does write capability actually leave the agent?
+- Do all six evidence classes survive the act of containment?
+- Does controlled re-enable restore the service without restoring the foothold?
 
-When the actor is authorized, the question shifts from *"who got in?"* to *"what could it touch, and what did it do?"* Crucial evidence now lives in prompts, tool calls, retrieval traces, and configuration state. Not on endpoints.
+That is the evidence the overlay is currently missing, obtainable without a breach.
 
-## What stays the same
+## What this is / is not
 
-The core mechanics of effective incident response remain unchanged:
+| This is | This is not |
+|---|---|
+| A control-validation program for the overlay's four MVO controls | A penetration-testing methodology for AI products |
+| Adversarial *exercises* with defined pass criteria | An exploit collection or payload library |
+| Run against agents **your organization operates** | Run against third-party or vendor-hosted agents |
+| Output: findings mapped to overlay playbooks | Output: access, data, or persistence |
 
-- Clear command and control
-- Evidence-first discipline
-- Rapid containment with minimal disruption
-- Scoping using *confirmed* versus *suspected* terminology
-- Recovery via controlled, staged re-enablement
-- Defensible decision logs
+Every exercise assumes you already hold write authority over the target agent. The lens is about whether your *controls* hold, not whether you can get in.
 
-AI doesn't rewrite the rules of effective IR. It changes the map.
+**Read [SCOPE-AND-ETHICS.md](SCOPE-AND-ETHICS.md) before running anything.** Authorization is a gate, not a formality.
 
-## Scope
+## Structure
 
-The AI IR Overlay operationalizes **deployer obligations** for AI systems in production. A deployer is the organization that uses an AI system in its own operations, under its own oversight (per EU AI Act Article 3). This framework is for the security team responding to incidents in agents the deployer's organization runs.
+The lens mirrors the overlay's four Minimum Viable Overlay controls. One lens per control:
 
-**Out of scope:**
+| Lens | Attacks overlay control | Core premise | CSF 2.0 function |
+|---|---|---|---|
+| **[L1, Inventory Drift](lenses/L1-inventory-drift.md)** | 1 · Inventory (AI-BOM) | The AI-BOM is a declaration; the runtime is the truth. Measure the delta. | Identify |
+| **[L2, Containment Bypass](lenses/L2-containment-bypass.md)** | 2 · Safe Modes (M0–M5) | A ladder mode is a *claim* about capability removal. Test whether capability left. | Respond |
+| **[L3, Evidence Starvation](lenses/L3-evidence-starvation.md)** | 3 · Evidence (six classes) | The minimum evidence set is only as good as what survives contact. | Detect / Respond |
+| **[L4, Recovery Re-entry](lenses/L4-recovery-reentry.md)** | 4 · Controlled Re-enable | Re-enable restores capability. Does it also restore the attacker's foothold? | Recover |
 
-- **Provider obligations** for placing AI systems on the market (EU AI Act Articles 16-21)
-- **General-purpose AI model (GPAI) provider obligations** (EU AI Act Article 51 and following)
-- **Prohibited AI practices** (EU AI Act Article 5)
-- **Conformity assessment and CE marking** (EU AI Act Article 43)
+31 techniques across the four lenses, covering every mode of the ladder. Full index: **[MATRIX.md](MATRIX.md)**.
 
-Vendor copilots that an organization deploys are in scope for the deployer (the customer side). The vendor's provider obligations are not addressed here.
+## Is the lens itself any good?
 
-## The Overlay model
+A technique that has never failed anything proves nothing. Before trusting a verdict, run the fixture:
 
-The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**, or MVO) on top of your existing IR program.
-
-> **Note:** The phases shown below align with NIST SP 800-61 r3 (April 2025), unpacked into seven operationally-distinct columns per [`MATRIX.md`](MATRIX.md) Section 1. NIST SP 800-61 r3 restructures incident response around NIST CSF 2.0 functions (Govern, Identify, Protect, Detect, Respond, Recover); see the AI IR Overlay to CSF 2.0 crosswalk at [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) for the function-level mapping.
-
-```text
-┌───────────────────────────────────────────────────────────────────────┐
-│        AI IR Overlay Response Flow (NIST SP 800-61 r3, unpacked)       │
-│                                                                       │
-│  Preparation → Detection → Triage → Containment → Evidence →           │
-│                                       Recovery → Closure              │
-└───────────────────────────────────────────────────────────────────────┘
-                                  │
-                                  ▼
-┌───────────────────────────────────────────────────────────────────────┐
-│              AI IR Overlay · MVO Controls (4)                          │
-│                                                                       │
-│  1. INVENTORY     · Agents · Identities · Tools · Write Targets        │
-│  2. SAFE MODES    · Kill-Switch Ladder (M0–M5; 6 M3 + 2 M4 variants)   │
-│  3. EVIDENCE      · Minimum AI Evidence Set (Types A–F)                │
-│  4. CONTROLLED    · Staged, validated re-enablement                    │
-│     RE-ENABLE                                                          │
-└───────────────────────────────────────────────────────────────────────┘
+```
+python3 fixture/run_fixture.py
 ```
 
-For the full phase-by-control matrix view, see [`MATRIX.md`](MATRIX.md) Section 1.
+[`fixture/`](fixture/) simulates one deployment in three states (control absent, control holding unevidenced, control holding and recorded) and asserts that every probe tells them apart. 24 of 31 techniques, 0 blind. [VALIDATION.md](VALIDATION.md) sets out what "the overlay works" decomposes into, which parts evidence can reach, and what result would falsify the framework.
+
+The fixture has already produced one finding against the overlay. Its `spec-m5` profile implements M5 exactly as published and is hardened in every other respect; two techniques fail against it, both attacking memory re-entry. **A conforming implementation of M5 as written does not pass L4.**
+
+The lens has also been run against the overlay's own kill-switch reference implementation, where it found two containment defects: a scope that silently lifts containment while the API reports it in force, and an M5 that cannot be activated. Both are fixed in the fix in this release, along with the specification gap behind the second, and each is verified by re-running the technique that found it: every FAIL closed in a patched working copy, **5 FAIL / 7 PARTIAL / 0 PASS → 0 FAIL / 5 PARTIAL / 7 PASS**. The patches are **not merged upstream**: validated against live HEAD on 2026-11-15, the published artifact is still 5 FAIL. See [upstream status](VALIDATION.md#upstream-status). [Results and records](VALIDATION.md#reference-validation-result).
+
+## Landing it in the framework
+
+[UPLOAD.md](UPLOAD.md) is the manual procedure: four phases, seventeen steps, each ending in a check that must pass before the next begins, with an at-a-glance table per phase. Every command in it was dry-run end to end against a pristine clone. [ANNOUNCEMENT.md](ANNOUNCEMENT.md) holds the launch copy.
 
 ## Reading order
 
-**If you are responding to an AI agent incident right now**, start with [`RESPONSE-START.md`](RESPONSE-START.md) for the four-file navigation path that takes you from 3am page to a defensible 60-minute checkpoint.
+1. **[SCOPE-AND-ETHICS.md](SCOPE-AND-ETHICS.md)**, authorization gate and rules of engagement.
+2. **[START-HERE.md](START-HERE.md)**: the 90-minute first pass. Four exercises, one per lens, enough to produce a baseline.
+3. **[MATRIX.md](MATRIX.md)**: the technique index and its mapping back to overlay controls and standards.
+4. **[VALIDATION.md](VALIDATION.md)**. The conformance ladder, and what would prove the framework wrong.
+5. **[FINDINGS.md](FINDINGS.md)**: every finding, why it was wrong, what replaced it, and what now stops the correction from becoming wrong again.
+6. The lens document for whichever control you have the least confidence in.
 
-**New here? Start with [QUICKSTART.md](QUICKSTART.md)** for the standard 30-day adoption path. For startups and small security teams (5 or fewer people, limited platform control), [QUICKSTART-startup.md](QUICKSTART-startup.md) is the 4-week minimum-viable path targeting Maturity Level 2. For a worked end-to-end example, see [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md). For working code examples of the framework's API contracts, see [`reference-impls/`](reference-impls/).
+## Scoring
 
-For the full conceptual reading order, items 1 through 8 are the core, items 9 through 15 are the working artifacts.
+Each technique yields one verdict:
 
-For a self-contained tabular reference (matrix view of the framework: phases, kill-switch ladder, evidence types, metrics, MVO controls, maturity levels, playbook index, standards crosswalk), see [`MATRIX.md`](MATRIX.md).
+- **PASS**: the control held; the attempted bypass produced no effect and the expected defensive signal was observed.
+- **PARTIAL**. The control held but the signal was absent, late, or unattributable. The control works and you cannot prove it.
+- **FAIL**. The control's premise does not hold in this deployment.
+- **N/A**. The technique does not apply (document why; an undocumented N/A is treated as PARTIAL).
 
-1. **The Minimum Viable Overlay.** The four controls in detail: [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md)
-2. **The Mental Model.** Four sentences that govern every decision: [`framework/02-mental-model.md`](framework/02-mental-model.md)
-3. **The Maturity Roadmap.** Where your program is, and how to advance it: [`framework/03-maturity-roadmap.md`](framework/03-maturity-roadmap.md)
-4. **Materiality and Disclosure.** The convening protocol that decides which regulatory clock applies and when it starts: [`framework/04-materiality-and-disclosure.md`](framework/04-materiality-and-disclosure.md). The canonical convening trigger (mode-based: M3+; condition-based: customer data, external recipients, financial actions, regulated data, customer-facing trust impact, public attention) referenced by every playbook that may convene the call.
-5. **The Six Triage Questions.** First-hour discipline: [`triage/six-questions.md`](triage/six-questions.md). Printable card: [`triage/six-questions-card.md`](triage/six-questions-card.md).
-6. **Kill-Switch Modes.** Containment ladder: [`kill-switches/overview.md`](kill-switches/overview.md)
-7. **Minimum Evidence Set.** What to preserve, and in what order: [`evidence/minimum-evidence-set.md`](evidence/minimum-evidence-set.md)
-8. **End-to-end worked example.** A synthetic but specific incident response showing the framework operating as a coherent system (inventory → safe modes → evidence → materiality call → controlled re-enable → post-incident hardening): [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md). Read this after items 1-7 to see how the controls hand off to each other under operational pressure.
-9. **Templates.** [`templates/ai-bom.yaml`](templates/ai-bom.yaml) (AI Bill of Materials for MVO-1 Inventory) · [`templates/agent-privilege-matrix.csv`](templates/agent-privilege-matrix.csv) (tool-tier matrix for MVO-2 Mode M3)
-10. **Crosswalks.** [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) (NIST AI RMF 1.0) · [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) (NIST CSF 2.0 and SP 800-61 r3) · [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) (OWASP Agentic Top 10 2026)
-11. **Playbooks.** All twenty-four playbooks shipped (content gate complete), organized by the arc described in [CONTENT_MAP.md](CONTENT_MAP.md):
+A lens is **validated** when every applicable technique is PASS. `PARTIAL` is the most common and most useful result: it is where the overlay is correct on paper and silent in practice.
 
-   - **Foundation:** [`playbooks/02-evidence-lives-in-new-places.md`](playbooks/02-evidence-lives-in-new-places.md) (the conceptual-foundation playbook; the Three Realities of AI Evidence: the actor is a workflow, not a workstation; the payload can be language, not malware; evidence is fragile; read first for newcomers and re-read after any incident whose evidence chain failed), [`playbooks/01-agent-as-privileged-identity.md`](playbooks/01-agent-as-privileged-identity.md) (the keystone response playbook; every later playbook builds on the privileged-identity lens).
-   - **Prevention:** [`playbooks/04-tool-design-is-containment.md`](playbooks/04-tool-design-is-containment.md) (pre-incident tool tiering T0/T1/T2 that makes Kill-Switch Mode M3 surgical), [`playbooks/19-build-vs-buy.md`](playbooks/19-build-vs-buy.md) (procurement-time discipline: the 60-minute Proof of Readiness Test, the eight critical procurement questions, the Build vs Buy Decision Matrix, and the post-procurement hardening that converts platform-capability gaps into contractual commitments or customer-side build commitments).
-   - **Closure:** [`playbooks/18-post-incident-hardening.md`](playbooks/18-post-incident-hardening.md) (the 5-business-day hardening SLA that turns lessons into permanent guardrails).
-   - **Governance:** [`playbooks/24-board-ready-scorecard.md`](playbooks/24-board-ready-scorecard.md) (executive-layer scorecard across four domains: Containment, Evidence, Governance, Recovery), [`playbooks/17-communication-techniques.md`](playbooks/17-communication-techniques.md) (the crisis-communication discipline: 30-minute first-update SLA, the Three-Status Taxonomy of Confirmed/Suspected/Validating, the Four-Element Update Standard, the Stakeholder Communication Matrix across internal executive / business owner / end-user / customer / regulator / board / press / employee classes, the Template Library, and the Responsible Reframing discipline that converts "the AI did it" to system-accountability language), [`playbooks/05-executive-decision-making.md`](playbooks/05-executive-decision-making.md) (the executive decision-making discipline: the Executive Decision Packet AI Edition with five sections including the Agent Capability Profile and Provenance Summary, the CIA+T impact framing that elevates Trust to peer status alongside Confidentiality, Integrity, and Availability, the 4-hour cadence, the 4/24/72-hour planning horizons, and the Approval Receipt discipline that prevents human approval from degrading into rubber-stamping).
-   - **Measurement and Depth:** [`playbooks/13-six-metrics.md`](playbooks/13-six-metrics.md) (the six metrics), [`playbooks/14-testing-for-agent-failure-modes.md`](playbooks/14-testing-for-agent-failure-modes.md) (pre-production Kill-Switch testing), [`playbooks/16-training-your-team.md`](playbooks/16-training-your-team.md) (the training-discipline playbook that converts the framework's documented capabilities into operational muscle memory through the 30-Minute Micro-Drill, the Four Core Moves, the two permanent roles of Safe Mode Owner and Evidence Owner, the Curriculum-of-Six, and the monthly cadence with measurable training targets; forms the testing-and-training pair with PB14), [`playbooks/03-rag-knowledge-base-forensics.md`](playbooks/03-rag-knowledge-base-forensics.md) (90-minute Freeze-the-World sequence for retrieval incidents), [`playbooks/22-model-policy-drift.md`](playbooks/22-model-policy-drift.md) (change-event forensics for model upgrades, prompt edits, policy tunes, retriever changes, and index rebuilds; introduces the M3-Drift containment variant, the Post-Change Configuration Snapshot, the change-pipeline event ledger, the Drift Canary pack, and the layered rollback sequence; forms the pre-production-testing / continuous-monitoring pair with PB14), [`playbooks/15-records-retention.md`](playbooks/15-records-retention.md) (the proof-discipline playbook: the lifecycle deep-dive on the A-F evidence taxonomy across capture, retention, chain-of-custody, tamper-evidence, and disposal; introduces the Two-Tier Retention Standard, the incident-triggered legal-hold mechanism, and the quarterly Reconstructability Test that empirically validates the framework's evidence claims at 30, 60, and 90 days), [`playbooks/23-logging-privacy.md`](playbooks/23-logging-privacy.md) (the privacy-discipline playbook: how to capture AI evidence without overcollecting regulated content; introduces the Multi-Stakeholder Governance Matrix across Security, Privacy, Legal, and Engineering, the Three-Layer Logging Model with Layer 1 metadata + Layer 2 selective payload + Layer 3 escalation under legal hold, the Forensically Useful standard, and the redaction-and-tokenization discipline; forms the capture / retain / prove triad with PB15).
-   - **Operations:** [`playbooks/20-maturity-roadmap.md`](playbooks/20-maturity-roadmap.md) (operating view of the Maturity Roadmap), [`playbooks/07-secrets-and-tokens.md`](playbooks/07-secrets-and-tokens.md) (credential discipline), [`playbooks/11-monitoring-detection.md`](playbooks/11-monitoring-detection.md) (three signal families for authorized misuse), [`playbooks/06-prompt-injection-workflow.md`](playbooks/06-prompt-injection-workflow.md) (workflow injection: harmful instructions hidden in tickets, emails, web pages, and documents the agent reads; architectural defense over prompt engineering), [`playbooks/09-output-leakage.md`](playbooks/09-output-leakage.md) (leakage without a breach: data exposure through routine AI outputs; M3-Output containment variant; output-layer DLP and channel classification as architectural defense; completes the input → context → output coverage triad with PB06 and PB03), [`playbooks/08-multi-agent-blast-radius.md`](playbooks/08-multi-agent-blast-radius.md) (multi-agent topologies, orchestrator-first containment), [`playbooks/10-vendor-copilots.md`](playbooks/10-vendor-copilots.md) (vendor copilots: customer-controlled identity boundary, contracted evidence and containment SLAs, quarterly Vendor Evidence Drill; M3-Vendor containment variant), [`playbooks/12-insider-threat-3.md`](playbooks/12-insider-threat-3.md) (Insider Threat 3.0, capability-intent-impact triad, HR/Legal joint engagement), [`playbooks/21-shadow-ai.md`](playbooks/21-shadow-ai.md) (Shadow AI discovery: the 60-minute Discovery Snapshot, the 24-hour Shadow Agent Intake Standard, identity-level containment for non-modifiable runtimes, migrate/redesign/retire decision path, and the four-boundary hardening including the governed integration path that prevents the next shadow agent from staying shadow).
+## Repository layout
 
-   More playbooks ship as MINOR releases. See [CHANGELOG.md](CHANGELOG.md) for the full release schedule.
+```
+MATRIX.md                   technique index → overlay control → standards
+SCOPE-AND-ETHICS.md         authorization gate, rules of engagement
+START-HERE.md               90-minute first pass
+lenses/                     L1–L4, technique definitions and procedures
+schemas/                    JSON Schema for findings and assessments
+templates/                  engagement authorization, report, finding stub
+crosswalks/                 overlay playbooks, OWASP Agentic Top 10, MITRE ATLAS
+scripts/verify.py           CI validation: schema conformity + freshness
+fixture/                    simulated agent in three states; proves the probes discriminate
+fixture/probe_kill_switch_demo.py   the lens, run against the overlay's reference implementation
+scripts/trajectory.py       generates examples/TRAJECTORY.md from the record chains
+scripts/build_merge_tree.py generates dist/offensive-lens/, the tree that ships inside the overlay
+scripts/build_upload_steps.py generates the numbered step folders below
+offensive-lens/          the complete upload: 18 self-contained step folders
+dist/                    generated: the component as it lands in the framework repository
+VALIDATION.md               conformance ladder and pre-registered falsification criteria
+examples/                   a filled assessment for shape reference
+```
 
-12. **Schemas.** Machine-readable contracts for CI validation: [`schemas/ai-bom.schema.json`](schemas/ai-bom.schema.json) (AI-BOM validator) · [`schemas/privilege-matrix.schema.json`](schemas/privilege-matrix.schema.json) (Privilege Matrix row validator) · [`schemas/credential-event.schema.json`](schemas/credential-event.schema.json) (PB07 credential-event log validator) · [`schemas/kill-switch-api.md`](schemas/kill-switch-api.md) (Mode M0 through M5 activation API contract) · [`schemas/evidence-export.spec.md`](schemas/evidence-export.spec.md) (Type A through F evidence export script contract).
+## Where this ships
 
-13. **Reference validator.** [`scripts/validate.py`](scripts/validate.py) (Python 3.10+, jsonschema, pyyaml). Validates AI-BOM YAML and Privilege Matrix CSV against the JSON Schemas; v0.26.0 adds maturity-target-conditional kill-switch validation plus operational-currency staleness checks for `last_reviewed` (7-day window) and `kill_switches.mX.tested_at` (90-day window). Run with `--strict` to escalate staleness to CI errors. A GitHub Action at [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) runs the validator on every pull request touching `templates/`, `schemas/`, or the script itself.
+The lens is a **component of the AI IR Overlay**, not a companion to it. It ships inside the framework repository as `offensive-lens/`, because validation that lives in a different repository is something a reader has to go and find.
 
-14. **Reference implementations.** [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) is a Python CLI implementing the [Evidence Export Script Contract](schemas/evidence-export.spec.md) for Types A through F with manifest discipline, integrity hashes, parallel-export, and telemetry events. [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) demonstrates the [Kill-Switch API contract](schemas/kill-switch-api.md) with M0/M1/M2/M3/M4 against a synthetic agent tool registry, including separation-of-duties enforcement and the M3 scope parameter. Both are Python 3.10+ standard library only; both run end-to-end with no vendor accounts required.
+`python3 scripts/build_merge_tree.py` generates [`dist/offensive-lens/`](dist/), the tree exactly as it lands: the framework's file banner applied, the provenance blockquote added, links resolved from one directory below the repository root, and the cross-repository machinery removed. [`dist/INTEGRATION.md`](dist/INTEGRATION.md) lists the seven edits to existing framework files that make it a component rather than a directory.
 
-15. **Framework Matrix.** [`MATRIX.md`](MATRIX.md): self-contained tabular reference for the framework at v0.33.0. Nine sections covering the response-phase matrix (Preparation through Closure), the kill-switch ladder with all six M3 variants, the Minimum Evidence Set with deep-dive pointers, the Six Metrics, the four MVO controls, the four maturity levels, the 24-playbook quick reference, the standards crosswalk summary, and a quick-read legend. Calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references. Every cell traces to a specific file in the repo.
+The generated tree is checked in CI, so it cannot drift from the source.
 
-## Provenance
+## Relationship to the overlay
 
-The AI IR Overlay was developed through the *AI IR Overlay* LinkedIn newsletter series (Issues 1 through 24, 2025 to 2026), authored by Jacob Ideji, as a synthesis of NIST AI RMF 1.0, NIST CSF 2.0, NIST SP 800-61 r3, OWASP Top 10 for Agentic Applications 2026, EU AI Act deployer obligations, and the maintainer's incident response and AI security experience. The framework has not yet been deployed in a documented production AI incident; adopters who use it in a real incident are encouraged to submit anonymized case studies via [Discussions](https://github.com/jacobideji/aiiroverlay/discussions). Each newsletter issue maps to one playbook in the full framework. See [CONTENT_MAP.md](CONTENT_MAP.md) for the issue-to-file index.
+This repository takes no dependency on overlay code and does not vendor its content. It references overlay controls by number and playbooks by ID. When the overlay's `MATRIX.md` changes, [crosswalks/overlay-mapping.md](crosswalks/overlay-mapping.md) is the single file that needs updating.
 
-## Related work
+Findings produced here are intended to flow back as overlay hardening input: the post-incident hardening path, reached without an incident.
 
-- NIST SP 800-61 r3: *Incident Response Recommendations and Considerations for Cybersecurity Risk Management*, a CSF 2.0 Community Profile (April 2025, supersedes r2)
-- NIST AI Risk Management Framework (AI RMF 1.0)
-- OWASP Top 10 for LLM Applications (2025.1)
-- OWASP Top 10 for Agentic Applications 2026 (ASI01 through ASI10, OWASP GenAI Security Project)
-- ISO/IEC 27035 (multi-part series): *Information security incident management* (the general IR discipline that the AI IR Overlay extends for AI agents; referenced as a base discipline in `framework/01-minimum-viable-overlay.md`)
-- ISO/IEC 42001:2023: *Information technology, Artificial intelligence, Management system* (AIMS)
-- EU AI Act (Regulation 2024/1689), Article 26 obligations for deployers
-- MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems): adjacent prior art on AI threat modeling. Not currently mapped in the crosswalks; an ATLAS crosswalk is welcome as a community contribution
+## Status
 
-## Acronyms
-
-- **AI-BOM**: AI Bill of Materials
-- **ASI**: Agentic Security Initiative (OWASP)
-- **CCPA**: California Consumer Privacy Act
-- **CSF**: (NIST) Cybersecurity Framework
-- **DFS**: (New York State) Department of Financial Services
-- **DLP**: Data Loss Prevention
-- **EDR**: Endpoint Detection and Response
-- **GDPR**: General Data Protection Regulation (EU)
-- **HIPAA**: Health Insurance Portability and Accountability Act
-- **IC**: Incident Commander
-- **IR**: Incident Response
-- **MCP**: Model Context Protocol
-- **MVO**: Minimum Viable Overlay
-- **PAM**: Privileged Access Management
-- **PHI**: Protected Health Information
-- **PII**: Personally Identifiable Information
-- **RAG**: Retrieval-Augmented Generation
-- **RMF**: (NIST AI) Risk Management Framework
-- **SIEM**: Security Information and Event Management
-- **SLA**: Service Level Agreement
-- **SOC**: Security Operations Center *(distinct from SOC 2, the AICPA audit standard)*
-- **TTA**: Time-to-Activate
-- **TTE**: Time-to-Evidence
-- **TTSM**: Time-to-Safe-Mode
-- **UEBA**: User and Entity Behavior Analytics
+Pre-release. Conformance level **L0 Specified** per [VALIDATION.md](VALIDATION.md): the fixture is green and 24 of 31 techniques are shown to discriminate, but no exercise in this repository has been executed against a real deployment by anyone. `TODO` markers indicate crosswalk cells awaiting authoritative standard IDs.
