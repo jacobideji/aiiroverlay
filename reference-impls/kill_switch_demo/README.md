@@ -19,7 +19,8 @@ Expected demonstration:
 4. Activate M3 (Tool Tiering) scoped to specific tools; test that scoped tools are disabled while unscoped tools keep working. (Approval-gating is M2 semantics; M3 disables.)
 5. Escalate to M4 (Full Disable); test that all tools are denied
 6. Demonstrate M5 (Controlled Re-Enable): direct M4 to M0 refused, M5 activated read-only, premature return refused on an incomplete gate, insufficient approver authority refused, then the gated return to M0
-7. Print full activation history
+7. Print the tool-call evidence: every invocation recorded with its outcome, mode and activation link
+8. Print full activation history
 
 ## File layout
 
@@ -51,6 +52,7 @@ The demo is structured so adopters can fork and wire it up to real agent runtime
 | `KillSwitchAPI.tools` (in-memory dict) | LangGraph tool registry, Bedrock Agents action group, vendor copilot tool-management API |
 | `_apply_mode()` per-mode logic | Vendor-specific tool-toggle calls (LangGraph runtime reconfiguration, Bedrock UpdateAgent, Copilot Studio policy change) |
 | `Activation` history (in-memory list) | Database-backed audit table; entries are evidence per PB07 + PB15 |
+| `tool_call_history` (in-memory list) | SIEM or audit pipeline. These are the tool-call records of the Minimum Evidence Set; without them a containment verdict cannot be evidenced from the system's own logs |
 | `_now()` timestamp helper | Use the customer's authoritative time source if your environment has clock-skew sensitivity |
 | Separation-of-duties check | Replace inline `if active.actor == actor` with IdP-side authorization (Okta workflows, Azure PIM) |
 
