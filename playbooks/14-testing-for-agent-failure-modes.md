@@ -138,9 +138,10 @@ The Overlay defines four testable Kill-Switch modes plus Controlled Re-Enable. E
 1. After an M4 drill, run the M5 sequence end-to-end.
 2. Step 1: re-enable in M1 only. Confirm logs flow.
 3. Step 2: validate retrieval and tool policies against the hardened configuration.
-4. Step 3: replay the incident scenario in a sandbox. Confirm the fix holds.
-5. Step 4: re-enable Tier-0 (read-only) tools first, then Tier-1 (bounded writes), incrementally with monitoring.
-6. Step 5: return to M0 Observe only after all of the above passes.
+4. Step 3: validate and reset memory state. Diff the containment snapshot against the last pre-incident baseline, remove what the incident wrote, and retain the snapshot as evidence rather than as a restore source.
+5. Step 4: replay the incident scenario in a sandbox. Confirm the fix holds.
+6. Step 5: re-enable Tier-0 (read-only) tools first, then Tier-1 (bounded writes), incrementally with monitoring.
+7. Step 6: return to M0 Observe only after all of the above passes.
 
 **Pass criteria:**
 
