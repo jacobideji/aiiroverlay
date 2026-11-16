@@ -73,10 +73,6 @@ The fixture has already produced one finding against the overlay. Its `spec-m5` 
 
 The lens has also been run against the overlay's own kill-switch reference implementation, where it found two containment defects: a scope that silently lifts containment while the API reports it in force, and an M5 that cannot be activated. Both are fixed in the fix in this release, along with the specification gap behind the second, and each is verified by re-running the technique that found it: every FAIL closed in a patched working copy, **5 FAIL / 7 PARTIAL / 0 PASS → 0 FAIL / 5 PARTIAL / 7 PASS**. The patches are **not merged upstream**: validated against live HEAD on 2026-11-15, the published artifact is still 5 FAIL. See [upstream status](VALIDATION.md#upstream-status). [Results and records](VALIDATION.md#reference-validation-result).
 
-## Landing it in the framework
-
-[UPLOAD.md](UPLOAD.md) is the manual procedure: four phases, seventeen steps, each ending in a check that must pass before the next begins, with an at-a-glance table per phase. Every command in it was dry-run end to end against a pristine clone. [ANNOUNCEMENT.md](ANNOUNCEMENT.md) holds the launch copy.
-
 ## Reading order
 
 1. **[SCOPE-AND-ETHICS.md](SCOPE-AND-ETHICS.md)**, authorization gate and rules of engagement.
@@ -118,14 +114,6 @@ dist/                    generated: the component as it lands in the framework r
 VALIDATION.md               conformance ladder and pre-registered falsification criteria
 examples/                   a filled assessment for shape reference
 ```
-
-## Where this ships
-
-The lens is a **component of the AI IR Overlay**, not a companion to it. It ships inside the framework repository as `offensive-lens/`, because validation that lives in a different repository is something a reader has to go and find.
-
-`python3 scripts/build_merge_tree.py` generates [`dist/offensive-lens/`](dist/), the tree exactly as it lands: the framework's file banner applied, the provenance blockquote added, links resolved from one directory below the repository root, and the cross-repository machinery removed. [`dist/INTEGRATION.md`](dist/INTEGRATION.md) lists the seven edits to existing framework files that make it a component rather than a directory.
-
-The generated tree is checked in CI, so it cannot drift from the source.
 
 ## Relationship to the overlay
 
