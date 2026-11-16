@@ -124,6 +124,23 @@ class KillSwitchAPI:
         if mode not in ALL_MODES:
             raise ValueError(f"invalid mode: {mode}; expected one of {ALL_MODES}")
 
+        # Validate the request BEFORE touching the registry. An activation that
+        # cannot succeed must not leave the agent in a different state than it
+        # found it; rejecting here is what keeps that promise.
+        if mode == Mode.M3:
+            if not scope:
+                raise ValueError(
+                    "M3 (Tool Tiering) requires a non-empty scope: the list of tools to "
+                    "disable. Without it there is nothing to tier."
+                )
+            unknown = [name for name in scope if name not in self.tools]
+            if unknown:
+                raise ValueError(
+                    f"M3 scope names tools absent from the registry: {unknown}. "
+                    f"Registered tools: {sorted(self.tools)}. A scope entry that does not "
+                    f"resolve would silently contain nothing."
+                )
+
         activation = Activation(
             activation_id=str(uuid.uuid4()),
             mode=mode,
@@ -134,6 +151,14 @@ class KillSwitchAPI:
             scope=scope,
             requested_at=_now(),
         )
+
+        # Snapshot before applying. The contract says effective_at is set only
+        # after a passing probe; the registry has to honor the same rule, or a
+        # failed activation leaves tool state it never acknowledged.
+        snapshot = {
+            name: (tool.enabled, tool.requires_approval)
+            for name, tool in self.tools.items()
+        }
 
         # Apply the mode's per-tool effects
         self._apply_mode(mode, scope)
@@ -146,6 +171,14 @@ class KillSwitchAPI:
         probe = self.probe(mode, scope)
         activation.last_probed_at = _now()
         activation.probe_result = "pass" if probe else "fail"
+
+        if not probe:
+            # Roll back to the pre-activation registry. Without this a failed
+            # activation can leave containment lifted while status() still
+            # reports the previous mode in force.
+            for name, (enabled, requires_approval) in snapshot.items():
+                self.tools[name].enabled = enabled
+                self.tools[name].requires_approval = requires_approval
 
         # effective_at is set ONLY if probe passes (per the contract)
         if activation.probe_result == "pass":
@@ -234,13 +267,17 @@ class KillSwitchAPI:
             return True
 
         if mode == Mode.M3:
-            # M3 with scope: specific tools must be disabled or approval-gated
+            # M3 with scope: every scoped tool must resolve, and must now be
+            # contained. A name that does not resolve is a failed probe, not a
+            # skipped one - otherwise a typo verifies as containment.
             if not scope:
                 return False
             for tool_name in scope:
-                if tool_name in self.tools and self.tools[tool_name].enabled:
-                    if not self.tools[tool_name].requires_approval:
-                        return False
+                tool = self.tools.get(tool_name)
+                if tool is None:
+                    return False
+                if tool.enabled and not tool.requires_approval:
+                    return False
             return True
 
         if mode == Mode.M4:
