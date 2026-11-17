@@ -107,10 +107,11 @@ Recovery follows [MVO-4 Controlled Re-Enable](../framework/01-minimum-viable-ove
 1. **Re-enable the agent in Read-Only (M1) on the new credential.** Confirm the agent functions. Confirm logs flow with the new identity correctly attributed across IdP, application, and SaaS audit trails. Identity attribution is the validation, not the agent's response quality.
 2. **Validate scope minimization** (*credential-specific gate*). Confirm the new credential's scope set is **narrower** than the pre-incident scope set, or that any retained scope is documented with current business need. Drift between the prior scope set and the new one is itself a finding.
 3. **Validate the credential-event log.** Confirm credential lifecycle events (issuance, refresh, revocation) are emitting to the SIEM with the field set the framework expects. If the log was not emitting before the incident, this is a hardening item, not a recovery blocker, but it must be tracked.
-4. **Re-enable Tier-1 tools incrementally** with caps at half the pre-incident value for the first 24 to 72 hours. Monitor.
-5. **Re-enable Tier-2 tools one at a time** with approvals (M2). Each Tier-2 re-enablement is a separate decision with a separate approver and a separate monitoring window. Do not batch-enable.
-6. **Validate the credential break-glass procedure** (*credential-specific gate*). Drill the switch to break-glass and back at least once before declaring recovery complete. A break-glass that was not exercised during recovery is theoretical.
-7. **Return to M0 Observe** only after the new credential has carried production traffic for a documented observation window (typically 24 to 72 hours) without anomaly.
+4. **Validate and reset memory state.** Diff the containment snapshot against the last pre-incident baseline and remove what the incident wrote. The retired credential may be cached in agent memory, where rotation does not reach it, and an entry holding it survives re-enable. Retain the snapshot as evidence; it is not a restore source.
+5. **Re-enable Tier-1 tools incrementally** with caps at half the pre-incident value for the first 24 to 72 hours. Monitor.
+6. **Re-enable Tier-2 tools one at a time** with approvals (M2). Each Tier-2 re-enablement is a separate decision with a separate approver and a separate monitoring window. Do not batch-enable.
+7. **Validate the credential break-glass procedure** (*credential-specific gate*). Drill the switch to break-glass and back at least once before declaring recovery complete. A break-glass that was not exercised during recovery is theoretical.
+8. **Return to M0 Observe** only after the new credential has carried production traffic for a documented observation window (typically 24 to 72 hours) without anomaly.
 
 **Approver:** CISO or designated Incident Commander. **Never** the agent owner alone, **never** the engineer who set up the credential originally. The original engineer has implementation bias.
 
