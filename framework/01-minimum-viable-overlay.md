@@ -103,9 +103,10 @@ Recovery is not binary. Systems are restored in stages, each with validation:
 
 1. **Restore read-only access first.** Re-enable the agent in observe mode.
 2. **Validate retrieval and tool policies.** Confirm fixes hold post-incident.
-3. **Replay the incident scenario in a safe harness.** Sandbox the original trigger.
-4. **Re-enable tools incrementally.** Monitor for regression or drift after each.
-5. **Return to full operation.** Only after the above passes.
+3. **Validate and reset memory state.** Diff the containment snapshot against the last pre-incident baseline, remove what the incident wrote, and retain the snapshot as evidence rather than as a restore source.
+4. **Replay the incident scenario in a safe harness.** Sandbox the original trigger.
+5. **Re-enable tools incrementally.** Monitor for regression or drift after each.
+6. **Return to full operation.** Only after the above passes.
 
 This stepwise approach prevents the most common recovery failure: re-enabling everything at once and re-triggering the same incident.
 
