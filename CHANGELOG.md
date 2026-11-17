@@ -50,10 +50,11 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 
 0.36.0 closed G2 in the mode specification and in the reference implementation, then left it open in the file that defines the control. The lens found that the same way it found the original: by reading the framework against itself and checking whether every statement of a sequence says the same thing.
 
-No control, mode, technique or line of reference code changes in this release. Every edit makes an existing document agree with one that was already right.
+No control, mode, technique or line of reference code changes in this release…
+
+## [0.36.0] · 2026-11-17 · Validation
 
 ### Added
-
 - **Offensive Lens** (`offensive-lens/`): validation exercises that test whether the four Minimum Viable Overlay controls hold in a deployment. Thirty-one techniques across four lenses, one per control, each with a premise, a numbered procedure, and written PASS, PARTIAL and FAIL criteria. PARTIAL is the common first result and the one worth knowing about: the control held and nothing recorded that it held.
 - `offensive-lens/templates/`: the engagement authorization record that gates every exercise, an assessment report, and a finding record.
 - `offensive-lens/FINDINGS.md`: every finding this produced against the framework, why it was wrong, what replaced it, and the guard that keeps the correction right.
@@ -1027,8 +1028,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.0...HEAD
-[0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.1....HEAD
+[0.36.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 [0.35.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0
 [0.34.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0
 [0.33.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0
