@@ -1010,6 +1010,7 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
+
 [Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.0...HEAD
 [0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 [0.35.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0
