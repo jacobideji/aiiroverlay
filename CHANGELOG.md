@@ -34,7 +34,23 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
-## [0.36.0] · 2026-11-17 · Validation
+## [0.36.1] · 2026-11-17 · Propagation
+
+### Fixed
+
+- **MVO-4 Controlled Re-Enable gains the memory validation step in `framework/01-minimum-viable-overlay.md`.** The 0.36.0 release added it to `kill-switches/overview.md` and to the three playbooks that restate the sequence in full, but not to the framework file that defines the control. The core and the mode specification disagreed, and a reader starting from the core got the sequence gap G2 was raised against. MVO-4 is now six steps, in the same order as the mode specification.
+- **PB06, PB07 and PB12 gain the step as well.** Each rates Memory Snapshot as high-value evidence in its own table and then omitted memory from its recovery sequence: injection persists as an instruction, a retired credential can sit in memory where rotation does not reach it, and shared memory carries an insider's framing of what is permitted. The step states the scenario-specific reason in each. All three existing numeric back-references point above their insertion, so none moved.
+- `RELEASE_CHECKLIST.md` asked whether a sequence "restated in a playbook" was updated. `framework/` is not a playbook, which is how the omission above survived the 0.36.0 sweep. The gate now names `framework/`, `kill-switches/` and the playbooks, and says to grep for the sequence rather than to remember where it appears.
+- `offensive-lens/crosswalks/overlay-mapping.md` described M5 as five staged steps and mapped techniques to the pre-0.36.0 numbers, while its own gaps section declared G2 closed and M5 six steps. One file, both positions. The ladder row, three technique mappings and one back-reference are corrected, and OL-T204 is credited against the step it tests.
+- `offensive-lens/VALIDATION.md` said step 3 resets memory "against a last-known-good snapshot" and that M1 captures that snapshot. A containment snapshot is the incident state, so resetting to it would restore what the incident wrote, which is the error G2 exists to name. The paragraph now matches `kill-switches/overview.md`.
+- `offensive-lens/FINDINGS.md` records all six findings above, each with the guard that keeps its correction right. **What guards the guards** no longer claims that every correction is held by a technique and every technique by the fixture: six of these are documentation agreeing with documentation, and what holds them is a text detector rather than a probe. The section says which, and records that these six are the clearest instance of the limit it already named.
+- `MATRIX.md` dated itself to v0.35.0 after gaining the **Validated By** column in 0.36.0, while `README.md` described the same file as v0.33.0. All three statements now read v0.36.1.
+
+### Why now
+
+0.36.0 closed G2 in the mode specification and in the reference implementation, then left it open in the file that defines the control. The lens found that the same way it found the original: by reading the framework against itself and checking whether every statement of a sequence says the same thing.
+
+No control, mode, technique or line of reference code changes in this release. Every edit makes an existing document agree with one that was already right.
 
 ### Added
 
