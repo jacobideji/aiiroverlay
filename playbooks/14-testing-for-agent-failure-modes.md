@@ -138,9 +138,10 @@ The Overlay defines four testable Kill-Switch modes plus Controlled Re-Enable. E
 1. After an M4 drill, run the M5 sequence end-to-end.
 2. Step 1: re-enable in M1 only. Confirm logs flow.
 3. Step 2: validate retrieval and tool policies against the hardened configuration.
-4. Step 3: replay the incident scenario in a sandbox. Confirm the fix holds.
-5. Step 4: re-enable Tier-0 (read-only) tools first, then Tier-1 (bounded writes), incrementally with monitoring.
-6. Step 5: return to M0 Observe only after all of the above passes.
+4. Step 3: validate and reset memory state. Diff the containment snapshot against the last pre-incident baseline, remove what the incident wrote, and retain the snapshot as evidence rather than as a restore source.
+5. Step 4: replay the incident scenario in a sandbox. Confirm the fix holds.
+6. Step 5: re-enable Tier-0 (read-only) tools first, then Tier-1 (bounded writes), incrementally with monitoring.
+7. Step 6: return to M0 Observe only after all of the above passes.
 
 **Pass criteria:**
 
@@ -204,6 +205,7 @@ The quarterly cadence isn't ceremonial. It's the smallest interval that catches 
 
 ## Related
 
+- **Offensive Lens:** [`offensive-lens/`](../offensive-lens/README.md). The executable form of the drills in this playbook. Each M1 through M5 drill above has one or more techniques with written PASS, PARTIAL and FAIL criteria, so a drill produces a recorded verdict rather than a recollection. PARTIAL is the common first result and the one worth knowing about: the control held and nothing recorded that it held.
 - **Kill-Switch Modes:** [`kill-switches/overview.md`](../kill-switches/overview.md). Full M0 through M5 mode specifications and TTA targets that this playbook tests against.
 - **Minimum Evidence Set:** [`evidence/minimum-evidence-set.md`](../evidence/minimum-evidence-set.md). The A–F evidence types that M4 drills must preserve before any state-mutating recovery.
 - **AI-BOM template:** [`templates/README-ai-bom.md`](../templates/README-ai-bom.md). The `kill_switches` section is the system of record for drill dates and measured TTA.

@@ -99,9 +99,10 @@ After eradication, recovery follows [MVO-4 Controlled Re-Enable](../framework/01
 1. **Re-enable in Read-Only (M1).** Confirm the agent functions and logs flow.
 2. **Validate identity and tool policies** (*scenario-specific gate*). Confirm the agent's permissions match the **pre-incident AI-BOM**, not the post-rotation configuration. Drift between intended and actual scope is itself a finding.
 3. **Validate retrieval and configuration.** Corpora versions confirmed clean. System prompt matches the approved version.
-4. **Replay the incident scenario in a safe harness.** Sandbox the original trigger (the suspicious prompt, the poisoned document, the over-permissioned tool call) and confirm the fix holds.
-5. **Re-enable tools incrementally** (*scenario-specific gate*). Start with **lowest-tier tools first** (T0 read-only per the [Privilege Matrix](../templates/agent-privilege-matrix.csv)). Monitor for drift, then T1, then T2 with approvals.
-6. **Return to M0 Observe.** Only after monitoring thresholds confirm normal behavior over a documented window (typically 24–72 hours).
+4. **Validate and reset memory state.** Diff the containment snapshot against the last pre-incident baseline to identify what the incident wrote. Remove those entries. The containment snapshot is evidence, not a restore source. See the memory validation step in [Kill-Switch Modes](../kill-switches/overview.md).
+5. **Replay the incident scenario in a safe harness.** Sandbox the original trigger (the suspicious prompt, the poisoned document, the over-permissioned tool call) and confirm the fix holds.
+6. **Re-enable tools incrementally** (*scenario-specific gate*). Start with **lowest-tier tools first** (T0 read-only per the [Privilege Matrix](../templates/agent-privilege-matrix.csv)). Monitor for drift, then T1, then T2 with approvals.
+7. **Return to M0 Observe.** Only after monitoring thresholds confirm normal behavior over a documented window (typically 24–72 hours).
 
 **Approver:** CISO or designated Incident Commander. **Never** the original agent owner alone. The owner has implementation bias; the IC has containment bias. The recovery decision needs the IC's lens.
 

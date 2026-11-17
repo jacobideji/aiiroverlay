@@ -93,7 +93,7 @@ For the full phase-by-control matrix view, see [`MATRIX.md`](MATRIX.md) Section 
 
 **New here? Start with [QUICKSTART.md](QUICKSTART.md)** for the standard 30-day adoption path. For startups and small security teams (5 or fewer people, limited platform control), [QUICKSTART-startup.md](QUICKSTART-startup.md) is the 4-week minimum-viable path targeting Maturity Level 2. For a worked end-to-end example, see [`examples/incident-walkthrough.md`](examples/incident-walkthrough.md). For working code examples of the framework's API contracts, see [`reference-impls/`](reference-impls/).
 
-For the full conceptual reading order, items 1 through 8 are the core, items 9 through 15 are the working artifacts.
+For the full conceptual reading order, items 1 through 8 are the core, items 9 through 16 are the working artifacts.
 
 For a self-contained tabular reference (matrix view of the framework: phases, kill-switch ladder, evidence types, metrics, MVO controls, maturity levels, playbook index, standards crosswalk), see [`MATRIX.md`](MATRIX.md).
 
@@ -125,6 +125,7 @@ For a self-contained tabular reference (matrix view of the framework: phases, ki
 14. **Reference implementations.** [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) is a Python CLI implementing the [Evidence Export Script Contract](schemas/evidence-export.spec.md) for Types A through F with manifest discipline, integrity hashes, parallel-export, and telemetry events. [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) demonstrates the [Kill-Switch API contract](schemas/kill-switch-api.md) with M0/M1/M2/M3/M4 against a synthetic agent tool registry, including separation-of-duties enforcement and the M3 scope parameter. Both are Python 3.10+ standard library only; both run end-to-end with no vendor accounts required.
 
 15. **Framework Matrix.** [`MATRIX.md`](MATRIX.md): self-contained tabular reference for the framework at v0.33.0. Nine sections covering the response-phase matrix (Preparation through Closure), the kill-switch ladder with all six M3 variants, the Minimum Evidence Set with deep-dive pointers, the Six Metrics, the four MVO controls, the four maturity levels, the 24-playbook quick reference, the standards crosswalk summary, and a quick-read legend. Calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references. Every cell traces to a specific file in the repo.
+16. **Offensive Lens.** [`offensive-lens/`](offensive-lens/README.md): validation exercises that test whether the four MVO controls hold in your deployment. Thirty-one techniques across four lenses, one per control, each with a written pass criterion. This is how the drill and the TTA measurement required by [`kill-switches/overview.md`](kill-switches/overview.md) are run, and [`offensive-lens/FINDINGS.md`](offensive-lens/FINDINGS.md) records what it found when it was run against this framework. Exercises are authorization-gated and scoped to agents your own organization operates: read [`offensive-lens/SCOPE-AND-ETHICS.md`](offensive-lens/SCOPE-AND-ETHICS.md) first.
 
 ## Provenance
 

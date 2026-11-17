@@ -129,12 +129,14 @@ The six metrics from PB13. Two have canonical acronyms (TTSM, TTE); the others u
 
 The four Minimum Viable Overlay controls. See [`framework/01-minimum-viable-overlay.md`](framework/01-minimum-viable-overlay.md) for the full specification.
 
-| Code | Name | Extends | What It Adds for AI Agents |
-|---|---|---|---|
-| **MVO-1** | Inventory | NIST CSF 2.0 ID.AM | AI-BOM: agent identity, tooling, write targets, retrieval corpora, memory configuration in one canonical artifact |
-| **MVO-2** | Safe Modes | NIST SP 800-61 r3 containment | Graduated kill-switch ladder M0 through M5 calibrated to agent action surface |
-| **MVO-3** | Minimum Evidence Set | NIST SP 800-61 r3 evidence | Six AI-agent-specific evidence types A through F; 60-minute export SLA |
-| **MVO-4** | Controlled Re-Enable | NIST CSF 2.0 RC.RP | Staged re-enablement pattern with validation gates |
+| Code | Name | Extends | What It Adds for AI Agents | Validated By |
+|---|---|---|---|---|
+| **MVO-1** | Inventory | NIST CSF 2.0 ID.AM | AI-BOM: agent identity, tooling, write targets, retrieval corpora, memory configuration in one canonical artifact | [L1 Inventory Drift](offensive-lens/lenses/L1-inventory-drift.md), OL-T101 to OL-T107 |
+| **MVO-2** | Safe Modes | NIST SP 800-61 r3 containment | Graduated kill-switch ladder M0 through M5 calibrated to agent action surface | [L2 Containment Bypass](offensive-lens/lenses/L2-containment-bypass.md), OL-T201 to OL-T210 |
+| **MVO-3** | Minimum Evidence Set | NIST SP 800-61 r3 evidence | Six AI-agent-specific evidence types A through F; 60-minute export SLA | [L3 Evidence Starvation](offensive-lens/lenses/L3-evidence-starvation.md), OL-T301 to OL-T308 |
+| **MVO-4** | Controlled Re-Enable | NIST CSF 2.0 RC.RP | Staged re-enablement pattern with validation gates | [L4 Recovery Re-entry](offensive-lens/lenses/L4-recovery-reentry.md), OL-T401 to OL-T406 |
+
+A control is **validated** for a deployment when every applicable technique in its lens passes, with evidence retained. The common first result is PARTIAL rather than FAIL: the control holds and nothing records that it held.
 
 ---
 

@@ -34,6 +34,32 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.36.0] · 2026-11-17 · Validation
+
+### Added
+
+- **Offensive Lens** (`offensive-lens/`): validation exercises that test whether the four Minimum Viable Overlay controls hold in a deployment. Thirty-one techniques across four lenses, one per control, each with a premise, a numbered procedure, and written PASS, PARTIAL and FAIL criteria. PARTIAL is the common first result and the one worth knowing about: the control held and nothing recorded that it held.
+- `offensive-lens/templates/`: the engagement authorization record that gates every exercise, an assessment report, and a finding record.
+- `offensive-lens/FINDINGS.md`: every finding this produced against the framework, why it was wrong, what replaced it, and the guard that keeps the correction right.
+- `offensive-lens/SCOPE-AND-ETHICS.md`: the authorization gate. Exercises are scoped to agents the organization operates, and vendor-operated agents are out of scope.
+- Reading-order item 16 in the README, a **Validated By** column in `MATRIX.md` section 5, a Related entry in Playbook 14, a provenance section in `CONTENT_MAP.md`, and a lens-coverage gate in `RELEASE_CHECKLIST.md`.
+
+### Changed
+
+- **M5 Controlled Re-Enable gains a memory validation step.** The published sequence validated retrieval policies and corpora versions but never memory, so an instruction written to agent memory before containment would execute on the first turn after re-enable. M5 is now six steps; step 3 diffs the containment snapshot against a pre-incident baseline and removes what the incident wrote, retaining the snapshot as evidence rather than as a restore source. M1 gains the operational check that captures that snapshot, on the first transition out of M0 whichever mode that is.
+- **The same step added to PB01, PB14 and PB18**, which restate the M5 sequence in full and none of which carried it. PB18's back-reference to "the replay step (3)" is corrected to (4). The other 21 playbooks were checked for the same gap across six classes of restated canonical text; none needed changing.
+- **Reference kill-switch implementation: five findings closed.** An unresolvable or empty M3 scope reported verified containment with every write tool still callable, because `_apply_mode()` ran before `probe()` and the probe skipped names it could not resolve. M5 was declared in `ALL_MODES` but had no apply branch and could never become effective. Tool calls produced no evidence, so a denied invocation was recorded nowhere and no containment verdict could be evidenced from the system's own logs. The M2 approval queue had no approve or deny method, making its own operational check unsatisfiable. Registry state was never recorded, so no past configuration was reconstructable.
+- `kill-switches/overview.md` no longer describes itself as "this v0.33.0 specification". The provenance marker on the qualification heading is accurate and stays; the self-reference went stale on every release that did not resolve the gap.
+- The kill-switch demo README described M3 as approval-gating, which is M2 behaviour. The code disables scoped tools, as its own inline comment states.
+
+### Why now
+
+The framework required that all six modes be drilled and that Time-To-Activate be "met in measurement, not promised," without specifying how either is done. The Offensive Lens is that instrument, and the kill-switch pre-production requirements now say so.
+
+Run against the reference implementation it returned 5 FAIL, 7 PARTIAL, 0 PASS of 31 techniques. After the changes above: 0 FAIL, 5 PARTIAL, 7 PASS. The five remaining PARTIALs are properties a 388-line in-memory demo cannot express, plus approver authority, which the ladder deliberately requires only at M5.
+
+The verification tooling behind the techniques, a three-profile fixture and the assessment-record validators, is maintained with the lens source rather than in this repository. It proves the techniques can tell a failed control from one that held unrecorded, which is a claim about the lens rather than guidance for responders.
+
 ## [0.35.0] · 2026-07-09 · Governance milestone: Second external Steering Committee member seated
 
 ### Changed
@@ -985,7 +1011,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.35.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.0...HEAD
+[0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 [0.35.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0
 [0.34.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0
 [0.33.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0

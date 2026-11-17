@@ -96,11 +96,12 @@ The recovery sequence with hardening built in:
 
 1. **Re-enable in Read-Only (M1).** Confirm the agent functions, logs flow.
 2. **Validate retrieval and tool policies.** Then deploy the first hardening fix (typically a Tier 2 tool downgrade or allowlist tightening).
-3. **Replay the incident scenario in a safe harness.** Verify the new hardening control would have prevented it. **If it wouldn't, the hardening is insufficient.**
-4. **Re-enable tools incrementally.** Monitor the new hardening control under live traffic for the first 24–72 hours.
-5. **Return to M0 Observe.** Only after the hardening control has been live, monitored, and demonstrated to hold across the post-incident observation window.
+3. **Validate and reset memory state.** Diff the containment snapshot against the last pre-incident baseline to identify what the incident wrote. Remove those entries. The containment snapshot is evidence, not a restore source. See the memory validation step in [Kill-Switch Modes](../kill-switches/overview.md).
+4. **Replay the incident scenario in a safe harness.** Verify the new hardening control would have prevented it. **If it wouldn't, the hardening is insufficient.**
+5. **Re-enable tools incrementally.** Monitor the new hardening control under live traffic for the first 24–72 hours.
+6. **Return to M0 Observe.** Only after the hardening control has been live, monitored, and demonstrated to hold across the post-incident observation window.
 
-The replay step (3) is the hardening **acceptance test**. If a recurrence of the triggering prompt wouldn't be contained by the new control, the recovery isn't complete. Go back to the fix list.
+The replay step (4) is the hardening **acceptance test**. If a recurrence of the triggering prompt wouldn't be contained by the new control, the recovery isn't complete. Go back to the fix list.
 
 ## Post-Incident Hardening
 
