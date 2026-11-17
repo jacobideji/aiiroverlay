@@ -214,6 +214,17 @@ Before ANY agent reaches production:
 
 If any of the above is "not yet," the agent is not production-ready.
 
+> **Where the drill is specified.** The second and third checkboxes name a drill
+> and a measurement without saying how either is run. Both are specified in
+> [`offensive-lens/`](../offensive-lens/README.md): every mode has a technique
+> that tests whether the mode does what this document says it does, and
+> [OL-T207](../offensive-lens/lenses/L2-containment-bypass.md) is the TTA
+> measurement that "met in measurement (not promised)" calls for. A recorded
+> lens assessment covering M1 through M5 **is** the tabletop drill, with
+> evidence attached. Exercises are authorization-gated; read
+> [`offensive-lens/SCOPE-AND-ETHICS.md`](../offensive-lens/SCOPE-AND-ETHICS.md)
+> before running one.
+
 ---
 
 ## Related
