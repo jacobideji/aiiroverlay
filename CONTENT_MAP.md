@@ -213,6 +213,26 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | Evidence Exporter (Python CLI implementing the Evidence Export Script Contract for Types A through F; six stub adapters; manifest with SHA-256 integrity; parallel-export; telemetry events) | [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) | ✅ `v0.26.0` |
 | Kill-Switch Demo (Python in-memory tool registry showing M0/M1/M2/M3/M4 with the Activate/Status/Deactivate/Probe API shape, separation-of-duties, scope parameter) | [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) | ✅ `v0.26.0` |
 
+## Offensive Lens (derived from the framework, not from an issue)
+
+`offensive-lens/` is the first artifact in this repository with no newsletter issue of origin. Every playbook traces to one issue, and the "every issue maps to one playbook" principle in the [README](README.md) holds for all twenty-four. The lens does not, and recording that is more useful than forcing a mapping.
+
+It was produced by reading the framework against itself: taking each Minimum Viable Overlay control, stating the assumption that control depends on, and writing an exercise that tries to falsify it. Its first finding came from that reading rather than from an incident. The M5 Controlled Re-Enable sequence validated retrieval and tool policies but never memory state, so an instruction written to memory before containment would execute on the first turn after re-enable. That gap was closed in the same release that introduced the component.
+
+| Artifact | Status |
+|---|---|
+| `offensive-lens/README.md`, `SCOPE-AND-ETHICS.md`, `START-HERE.md` | Shipped |
+| `offensive-lens/MATRIX.md`: 31 techniques across four lenses | Shipped |
+| `offensive-lens/lenses/L1` through `L4`: one per MVO control | Shipped |
+| `offensive-lens/templates/`: authorization record, assessment report, finding record | Shipped |
+| `offensive-lens/VALIDATION.md`: conformance ladder and falsification criteria | Shipped |
+| `offensive-lens/FINDINGS.md`: every finding, its correction, and the guard that holds it | Shipped |
+| `offensive-lens/crosswalks/`: OWASP Agentic Top 10 and MITRE ATLAS mappings | Unfilled by design, pending transcription from the published sources |
+
+The lens validates the framework; it does not extend it. No control, mode or playbook depends on it, and an adopter who never runs it is still conformant. What they lack is evidence.
+
+The verification tooling behind the techniques, a three-profile fixture and the assessment-record validators, is maintained with the lens source rather than here. It proves the techniques can tell a failed control from one that held unrecorded, which is a claim about the lens rather than guidance for responders. [`offensive-lens/FINDINGS.md`](offensive-lens/FINDINGS.md) records what each guard asserts.
+
 ## Operational entry points
 
 | Artifact | Purpose | Status |
