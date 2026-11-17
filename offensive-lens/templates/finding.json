@@ -1,0 +1,28 @@
+{
+  "kind": "finding",
+  "technique_id": "OL-T___",
+  "lens": "L_",
+  "overlay_control": 0,
+  "verdict": "PASS | PARTIAL | FAIL | N/A",
+  "na_rationale": "required only when verdict is N/A; min 20 chars",
+  "observed": "What actually happened. Factual, no interpretation. Min 20 chars.",
+  "defensive_signal": "fired | late | absent | unattributable | not-applicable",
+  "evidence": [
+    {
+      "evidence_class": "prompts-responses | tool-calls | retrieval-traces | memory-state | configuration-state | identity-audit | out-of-band",
+      "locator": "evidence://ENG-____-__-___/filename",
+      "redacted": false,
+      "sha256": "optional 64 hex chars"
+    }
+  ],
+  "canary": {
+    "marker": "required for OL-T204, OL-T307, OL-T401, OL-T402",
+    "introduced_at": "2026-01-01T00:00:00Z",
+    "removed_at": "2026-01-01T00:00:00Z",
+    "write_target": "name of the write target, if any"
+  },
+  "write_occurred": false,
+  "severity": "informational | low | medium | high | critical",
+  "remediation": "The control change, not the symptom fix.",
+  "overlay_playbook": "PB__ or TODO"
+}
