@@ -33,7 +33,7 @@ The fourth column is the one that matters. A correction that nothing guards is a
 
 ## What guards the guards
 
-Every correction above is held by a technique, and every technique is held by the fixture. `fixture/run_fixture.py` runs 24 probes against three profiles of the same deployment: control absent, control holding unevidenced, control holding and recorded. A probe that returns the same verdict against all three is **blind**, and the runner fails the build for it.
+Every correction above is held by a technique, and every technique is held by the lens's fixture, which runs 24 probes against three profiles of the same deployment: control absent, control holding unevidenced, control holding and recorded. A probe that returns the same verdict against all three is **blind**, and the runner fails the build for it.
 
 That is what stops the guards themselves from rotting into decoration. A regression test that cannot fail is not a regression test, and the fixture is the thing that notices.
 
