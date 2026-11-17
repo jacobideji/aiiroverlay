@@ -34,11 +34,8 @@ Be loud about the last row. The lens tests whether controls hold against failure
 
 A technique that has never failed anything proves nothing: PASS cannot be distinguished from blindness. So the probes are tested first against an agent whose answers are known.
 
-[`fixture/`](fixture/) holds a simulated deployment in three states. `vulnerable` (control absent), `silent` (control holds, unevidenced), `hardened` (control holds and is recorded), and asserts that every probe discriminates between them. 24 of 31 techniques are covered; the other seven need infrastructure a simulation cannot honestly stand in for, and are listed as such rather than faked.
+The fixture, the assessment records and the record validators are maintained with the lens source rather than here: they serve the lens's own verification and are not incident-response material. [FINDINGS.md](FINDINGS.md) records what each guard asserts.
 
-```
-python3 fixture/run_fixture.py
-```
 
 Current: 24 probes × 3 profiles, 0 errors, no blind probes. The hardest assertion is `silent` vs `hardened`. PASS vs PARTIAL, because that is the distinction a real first run turns on.
 
@@ -48,9 +45,6 @@ Current: 24 probes × 3 profiles, 0 errors, no blind probes. The hardest asserti
 
 **2. Reference validation.** Run the lens against the overlay's own `reference-impls/kill_switch_demo/`. The cheapest real target available: no production agent, no write targets, no meaningful authorization friction. *Done, see [the result](#reference-validation-result) below. Two containment defects found.*
 
-```
-python3 fixture/probe_kill_switch_demo.py --demo-path path/to/kill_switch_demo.py
-```
 
 **3. Self-validation.** One real agent the maintainer operates. Staging, then production. Expect PARTIAL to dominate: logs exist, nothing joins them, nothing proves what was true at T0.
 
@@ -85,7 +79,7 @@ A framework that publishes what would falsify it, and then reports the result ei
 
 ## G2 — the first result
 
-The ladder mapping found that M5's five-step sequence validates retrieval and tool policies but never mentions memory state. The fixture's `spec-m5` profile implements M5 exactly as published and is hardened in every other respect. Two techniques fail against it, and both attack memory re-entry:
+The ladder mapping found that M5's five-step sequence validates retrieval and tool policies but never mentions memory state. The lens's `spec-m5` fixture profile implements M5 exactly as published and is hardened in every other respect. Two techniques fail against it, and both attack memory re-entry:
 
 ```
 FAIL  OL_T204  instruction written to memory before containment executed after re-enable
@@ -98,7 +92,7 @@ FAIL  OL_T401  the poisoned fact survived re-enable; the agent still believes it
 
 ## Reference validation result
 
-Run 2026-11-10 against `kill_switch_demo.py` at overlay v0.35.0. Record: [`examples/assessment-kill-switch-demo-001.json`](examples/assessment-kill-switch-demo-001.json). Result: **5 FAIL, 7 PARTIAL, 0 PASS, 19 N/A** of 31. After the OL-T201 patch: **4 FAIL, 7 PARTIAL, 1 PASS, 19 N/A**.
+Run 2026-11-10 against `kill_switch_demo.py` at overlay v0.35.0. Record retained with the lens source. Result: **5 FAIL, 7 PARTIAL, 0 PASS, 19 N/A** of 31. After the OL-T201 patch: **4 FAIL, 7 PARTIAL, 1 PASS, 19 N/A**.
 
 Read the shape before the numbers. The demo states it is *"NOT production code"* and demonstrates *"Modes M0, M1, M2, M3, M4"*. So 19 N/A and most of the PARTIALs are **scope, not defects**: it models no memory, no retrieval, no identity, no credential, and keeps no tool-call records, and was never claiming to.
 
@@ -110,28 +104,17 @@ The second half is worse. `activate(Mode.M3, scope=["salesforce.write.oportunity
 
 **Fixed.** the fix in this release does three things: rejects an empty or unresolvable M3 scope at `activate()` before the registry is touched; snapshots tool state and rolls it back when the probe does not pass, so the registry honors the same rule the contract already set for `effective_at`; and makes `probe(M3)` treat an unresolvable scope entry as a failed probe rather than a skipped iteration. The demo's own `run_demo()` completes unchanged, legitimate M3 scoping still works, and M1/M2/M4 still probe `pass`.
 
-Re-run with the same probe logic: **OL-T201 FAIL → PASS**, and no other verdict moved. Record: [`examples/assessment-kill-switch-demo-002-postfix.json`](examples/assessment-kill-switch-demo-002-postfix.json). The prior FAIL is retained in `-001` rather than superseded. A remediation record is the pair, not the later half.
+Re-run with the same probe logic: **OL-T201 FAIL → PASS**, and no other verdict moved. Record retained with the lens source. The prior FAIL is retained in `-001` rather than superseded. A remediation record is the pair, not the later half.
 
 **OL-T404 FAIL. M5 cannot be activated.** `Mode.M5` is declared and present in `ALL_MODES`, but `_apply_mode()` has no M5 branch and `probe()` falls through to `return False`, so M5 never becomes effective. `deactivate()` is the only path back and goes M4 → M0 in one call, re-enabling every tool, gated on nothing but actor inequality. MVO control 4 *is* M5, and the overlay's pre-production requirements call for all six modes implemented and drilled.
 
 **Fixed, specification first.** This finding and G2 are one defect seen from two sides: M5 could not be implemented correctly in the reference while the specification omitted memory validation. So the fix in this release amends `kill-switches/overview.md`, M5 gains step 3, *validate and reset memory state*, and M1 gains the operational check that captures the snapshot step 3 diffs against. Then the fix in this release implements M5 against the amended spec: an apply branch and a probe branch, a `ReEnableGate` carrying steps 1–5 including memory validation, and a `deactivate()` that refuses a direct M4 → M0 and requires both a complete gate and CISO/IC authority for step 6.
 
-Re-run: **OL-T404 FAIL → PASS**, and with the OL-T201 patch the target moves 5 FAIL / 0 PASS → **3 FAIL / 2 PASS**, with no other verdict moving. Record: [`examples/assessment-kill-switch-demo-003-postfix.json`](examples/assessment-kill-switch-demo-003-postfix.json).
+Re-run: **OL-T404 FAIL → PASS**, and with the OL-T201 patch the target moves 5 FAIL / 0 PASS → **3 FAIL / 2 PASS**, with no other verdict moving. Record retained with the lens source.
 
 **What passed and deserves saying.** `effective_at` is gated on a probe that checks the registry rather than the configuration: the right design, and the only reason the first finding is detectable at all. `code_execution` is classified `is_write=True` and stripped at M1, which is the generic-capability classification decision OL-T104 and OL-T206 exist to catch, made correctly. Separation of duties on `deactivate()` is enforced and refuses the activating actor.
 
 **What this does and does not establish.** It moves the lens from "validated against a simulation" to "has found real defects in real published code." It says nothing about whether the overlay works in a production deployment, because the target is a 388-line in-memory demo. Conformance level is unchanged at **L0**.
-
-## Trajectory
-
-Every assessment against a target is retained and linked into a chain by `target_ref` and `supersedes`. Superseded records are **not** deleted: the head alone asserts a result, which is unfalsifiable, while the chain evidences one. `scripts/verify.py` validates the chains, forks, cycles, duplicate ids and target mismatches all fail, and exempts superseded records from the freshness limit, since they are history rather than something anyone would act on.
-
-[`examples/TRAJECTORY.md`](examples/TRAJECTORY.md) is generated from the records by `scripts/trajectory.py`, checked in CI so it cannot drift:
-
-| Run | FAIL | PARTIAL | PASS | Moved |
-|---|---:|---:|---:|---|
-| `-001` | 5 | 7 | 0 | baseline |
-| `-005` | **0** | 5 | 7 | OL-T201, T206, T208, T209, T302, T305, T404 |
 
 ## The circularity limit
 
@@ -152,7 +135,7 @@ G2 is the existence proof that reading a framework against itself finds real def
 | Conformance level | **L0 Specified** |
 | Fixture | green, 24 probes, 3 profiles, 0 blind |
 | Techniques validated by fixture | 24 of 31 |
-| Techniques awaiting first real run | 7 (listed in [fixture/README.md](fixture/README.md)) |
+| Techniques awaiting first real run | 7 (listed with the lens source) |
 | Assessments against real code | 5, `kill_switch_demo.py` at each remediation stage |
 | Remediation loops closed | 5, OL-T201, OL-T404, OL-T302, OL-T209, OL-T305; every FAIL → patch → PASS, all records retained |
 | FAILs remaining against the reference implementation | **0** |
