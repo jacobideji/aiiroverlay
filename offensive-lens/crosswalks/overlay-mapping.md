@@ -109,17 +109,17 @@ Remaining work: for each open playbook, identify the technique whose failure wou
 
 ## Gaps found by this mapping
 
-Gaps in both directions are the most valuable output of this crosswalk. Three were found; two are closed and one remains open against the overlay itself.
+Gaps in both directions are the most valuable output of this crosswalk. Three were found, and all three are now closed.
 
 **G1. M2 Approvals Required was under-tested. Closed in 0.3.0** by OL-T208 (approval-path bypass) and OL-T209 (approval integrity under load). The latter targets M2's three operational checks directly: queue staffed, latency acceptable, approver has authority to deny.
 
-**G2. M5's sequence validates corpora but not memory.** Step 2 confirms retrieval and tool policies and corpora versions. No step addresses memory state. OL-T401 therefore tests a re-entry path the overlay's own recovery sequence does not close. This is a proposed change to the overlay, not a deployment finding: *add a memory validation step to M5, between steps 2 and 3.*
+**G2. M5's sequence validated corpora but not memory. Closed in overlay 0.36.0.** The published five-step sequence confirmed retrieval and tool policies and corpora versions, and no step addressed memory state, so OL-T401 tested a re-entry path the overlay's own recovery sequence left open. It was a finding against the specification rather than against any deployment, and the remedy was a specification change. M5 is now six steps, with step 3 validating memory against a pre-incident baseline and removing what the incident wrote. M1 gained the operational check that captures that baseline. PB01, PB14 and PB18 restate the sequence in full and carry the step as well.
 
 **G3. M3-Output had no technique. Closed in 0.3.0** by OL-T210, which tests the destination rather than the tool name. The distinction the variant's definition turns on.
 
 **OL-T403 sequence assertion. Closed in 0.3.0.** The overlay states that rotating tokens before capturing scopes is "the single most common evidence-destruction failure in AI IR," and M4 deliberately scopes tokens for revocation *without* rotating. OL-T403 now fails in **either** direction, rotation before snapshot, or re-grant at M5, and requires the report to name which, because the two have opposite remediations.
 
-**G2 is the only gap still open**, and it is a gap in the overlay rather than in the lens.
+**No gap found by this mapping is still open.** G2 was the last of them, and it was a gap in the overlay rather than in the lens, which is the direction this crosswalk exists to catch.
 
 ## Feedback path
 
