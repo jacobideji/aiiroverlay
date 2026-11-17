@@ -986,8 +986,6 @@ Accuracy and OSS-convention round. No framework substance changes.
 ## [0.1.0] · Foundation
 
 The founding release. Establishes the thesis, the framework core, the triage discipline, the containment ladder, and the evidence taxonomy. No playbooks in this release. Playbook 01 ships next, in `v0.2.0`.
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.0...HEAD
-[0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 
 ### Added: Framework Core
 
@@ -1012,8 +1010,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
-[0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 [Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.0...HEAD
+[0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 [0.35.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0
 [0.34.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.34.0
 [0.33.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.33.0
