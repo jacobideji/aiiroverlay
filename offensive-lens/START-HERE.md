@@ -102,4 +102,4 @@ Then: is the canary from step 2 still queued? If the write lands *after* re-enab
 | All PARTIAL | Controls work; nothing proves it. Instrumentation gap, not a control gap. Prioritize logging before further exercises. | [L3](lenses/L3-evidence-starvation.md) |
 | All PASS | Record it. Then run the full matrix: the first pass tests one technique per lens and four PASSes is a baseline, not a validation. | [MATRIX.md](MATRIX.md) |
 
-Write the result into [templates/assessment-report.md](templates/assessment-report.md), emit the machine-readable record per [schemas/lens-assessment.schema.json](schemas/lens-assessment.schema.json), and validate with `python3 scripts/verify.py`.
+Write the result into [templates/assessment-report.md](templates/assessment-report.md).
