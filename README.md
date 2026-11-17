@@ -67,21 +67,21 @@ The AI IR Overlay adds four agent-aware controls (the **Minimum Viable Overlay**
 
 ```text
 ┌───────────────────────────────────────────────────────────────────────┐
-│        AI IR Overlay Response Flow (NIST SP 800-61 r3, unpacked)       │
+│        AI IR Overlay Response Flow (NIST SP 800-61 r3, unpacked)      │
 │                                                                       │
-│  Preparation → Detection → Triage → Containment → Evidence →           │
+│  Preparation → Detection → Triage → Containment → Evidence →          │
 │                                       Recovery → Closure              │
 └───────────────────────────────────────────────────────────────────────┘
                                   │
                                   ▼
 ┌───────────────────────────────────────────────────────────────────────┐
-│              AI IR Overlay · MVO Controls (4)                          │
+│              AI IR Overlay · MVO Controls (4)                         │
 │                                                                       │
-│  1. INVENTORY     · Agents · Identities · Tools · Write Targets        │
-│  2. SAFE MODES    · Kill-Switch Ladder (M0–M5; 6 M3 + 2 M4 variants)   │
-│  3. EVIDENCE      · Minimum AI Evidence Set (Types A–F)                │
-│  4. CONTROLLED    · Staged, validated re-enablement                    │
-│     RE-ENABLE                                                          │
+│  1. INVENTORY     · Agents · Identities · Tools · Write Targets       │
+│  2. SAFE MODES    · Kill-Switch Ladder (M0–M5; 6 M3 + 2 M4 variants)  │
+│  3. EVIDENCE      · Minimum AI Evidence Set (Types A–F)               │
+│  4. CONTROLLED    · Staged, validated re-enablement                   │
+│     RE-ENABLE                                                         │
 └───────────────────────────────────────────────────────────────────────┘
 ```
 
