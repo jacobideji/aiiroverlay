@@ -227,7 +227,8 @@ It was produced by reading the framework against itself: taking each Minimum Via
 | `offensive-lens/templates/`: authorization record, assessment report, finding record | Shipped |
 | `offensive-lens/VALIDATION.md`: conformance ladder and falsification criteria | Shipped |
 | `offensive-lens/FINDINGS.md`: every finding, its correction, and the guard that holds it | Shipped |
-| `offensive-lens/crosswalks/`: OWASP Agentic Top 10 and MITRE ATLAS mappings | Unfilled by design, pending transcription from the published sources |
+| `offensive-lens/crosswalks/overlay-mapping.md`: every mode, every variant, and the technique that tests it | Shipped |
+| `offensive-lens/crosswalks/owasp-agentic-top10.md` and `mitre-atlas.md` | Unfilled by design, pending transcription from the published sources |
 
 The lens validates the framework; it does not extend it. No control, mode or playbook depends on it, and an adopter who never runs it is still conformant. What they lack is evidence.
 
