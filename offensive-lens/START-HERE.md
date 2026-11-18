@@ -79,9 +79,10 @@ Attempt to export all six evidence classes for the window spanning steps 1–2:
 
 **Technique: [OL-T404 Re-enable without regression gate](lenses/L4-recovery-reentry.md#ol-t404--re-enable-without-regression-gate)**
 
-Return the agent to service by whatever process your runbook actually specifies. The overlay's **M5 Controlled Re-Enable** is a five-step staged sequence ending at M0, not a single transition. Follow what your runbook says, not what it should say. Do not improvise a clean path.
+Return the agent to service by whatever process your runbook actually specifies. The overlay's **M5 Controlled Re-Enable** is a six-step staged sequence ending at M0, not a single transition. Follow what your runbook says, not what it should say. Do not improvise a clean path.
 
-- The process staged through M1, validated corpora, replayed the scenario in a harness, and refused to proceed without it → **PASS**
+- The process staged through M1, validated corpora, validated and reset memory state, replayed the scenario in a harness, and refused to proceed without it → **PASS**
+- The sequence staged and gated, but no step addressed memory state → **FAIL**. This is the gap OL-T204 and OL-T401 demonstrate, and a sequence that never reaches memory can complete in full with the cause still present
 - The process required an approval, but no evidence that anything was verified → **PARTIAL**
 - A single call returned the agent to M0 with no staging and no gate → **FAIL**
 
