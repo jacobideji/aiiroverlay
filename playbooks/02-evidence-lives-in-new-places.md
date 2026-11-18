@@ -54,7 +54,7 @@ PB02's First-Hour Actions are the **first-hour reflexes** that apply to every AI
 
 **Discipline:** the First-Hour Actions of PB02 are reflexes, not scenario-specific procedures. The reflexes apply regardless of which scenario-specific playbook the team is actually running. The team that has internalized PB02 will apply these reflexes automatically; the team that has not will produce response sequences that defeat the framework's discipline even when the team is following the right scenario playbook on paper.
 
-**Critical rule:** the foundational reflex is **snapshot before rotate**. Every other framework discipline depends on it. A team that snapshots first preserves the optionality to investigate later; a team that rotates first has committed to an investigation conducted on inference.
+**Critical rule:** the foundational reflex is **snapshot before rotate**. Every other framework discipline depends on it. A team that snapshots first preserves the optionality to investigate later; a team that rotates first has committed to an investigation conducted on inference. The same reflex extends to containment: **snapshot memory before you transition modes**, because some runtimes discard memory on reconfiguration, so the containment action taken to preserve evidence can destroy this class of it.
 
 ## The Three Realities of AI Evidence
 
