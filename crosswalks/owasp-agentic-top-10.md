@@ -108,6 +108,7 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 - **MVO-3, type D (Memory Snapshot).** Captures persistent context at incident time. Without it, you can't prove cross-session bleed.
 - **MVO-3, type C (Retrieval Traces).** Captures what the agent retrieved, from which corpus, at which version, with what scores. Without this, the input vector is unprovable.
 - **MVO-4 Controlled Re-Enable, step 3.** Validates and resets memory state before the agent returns to service: the containment snapshot is diffed against the last pre-incident baseline and what the incident wrote is removed. Without this step a poisoned entry survives recovery and executes on the first turn after re-enable, which corpora validation and harness replay both miss.
+
 **Operational priority:** If memory is `scope: shared`, treat memory bleed across users as its own incident class. Capture D **before** cleaning or rotating memory.
 
 ### ASI07: Insecure Inter-Agent Communication
