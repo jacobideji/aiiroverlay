@@ -63,6 +63,8 @@ This is the **framework view** of maturity, the model used to assess and benchma
 | **3. Provable** | Level 2 + MVO-3 Minimum Evidence Set (A–F exportable in 60 min) |
 | **4. Resilient** | Level 3 + MVO-4 Controlled Re-Enable + quarterly tabletops + measured metrics |
 
+The quarterly tabletops at Level 4 are run and recorded with the [Offensive Lens](../offensive-lens/README.md). Per [`kill-switches/overview.md`](../kill-switches/overview.md), a recorded lens assessment covering M1 through M5 **is** the tabletop drill, with evidence attached.
+
 ## The Honest Self-Assessment
 
 A common failure mode is over-claiming. The Overlay's stance:
