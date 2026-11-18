@@ -34,6 +34,18 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+### Added
+
+- A dated framework-version note on the Day 1 recovery sequence in `examples/incident-walkthrough.md`. The sequence is the five-step MVO-4 that predates the memory validation step, and the walkthrough is pegged to v0.33.0 in its own setup, so the sequence is correct for the incident it records and wrong as a template. The note says which, points at the current step, and explains what that step would have changed in this specific scenario: the agent runs per-user memory, the triage call asks about its scope, and the Type D memory snapshot was captured during evidence collection, so the artifact the step needs was already in hand. The team checked it for customer-data bleed across users, which is memory as a store of facts rather than the instruction case the step was added for.
+
+### Why now
+
+The 0.36.1 read-through found this and deliberately left it. Editing a dated account of an incident to match a later specification falsifies the record, and the four restatements that still lack the memory step are documented exclusions rather than oversights. But a worked example is also the thing adopters copy, and this one is the closest case in the repository to the gap it predates. A note is the resolution that keeps both true.
+
+No control, mode, playbook, technique or line of reference code changes.
+
+No > characters in this one, so the copy problem from step 1 doesn't apply.
+
 ## [0.36.1] · 2026-11-17 · Propagation
 
 ### Fixed
@@ -1029,7 +1041,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.1...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.2...HEAD
+[0.36.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.2
 [0.36.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.1
 [0.36.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.0
 [0.35.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0
