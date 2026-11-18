@@ -34,9 +34,25 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
-## [0.36.2] · 2026-11-17 · Walkthrough note
+## [0.36.3] · 2026-11-18 · Capture order
 
-### Added
+### Fixed
+
+- **The Offensive Lens quick-start awarded a false PASS.** `offensive-lens/START-HERE.md` described M5 as a five-step sequence and its OL-T404 pass criterion listed staging, corpora validation, harness replay and the gate, with no memory step. A practitioner running the 90-minute first pass would therefore score PASS against a deployment whose M5 never touches memory, which is the gap OL-T204 and OL-T401 exist to find. The count is corrected and a verdict is added for a sequence that stages and gates but never reaches memory.
+- - **The Minimum Evidence Set capture order contradicted the kill-switch ladder.** Step 1 is containment and asserted it halts harm "without destroying state"; the M1 operational check requires a memory snapshot *before* the transition because some runtimes discard memory on reconfiguration. Memory was captured at Step 3, after containment, so a responder following the documented order destroyed evidence the ladder requires. Step 1 now carries the pre-transition snapshot and states that it is evidence rather than a restore source.
+- - **`RESPONSE-START.md` did not mention memory at all.** The paged-responder entry point sent the responder to pick a mode with no snapshot instruction. The minute 10-20 row now carries it.
+- - **OWASP ASI06 Memory & Context Poisoning did not map MVO-4.** The entry mapped MVO-1, MVO-3 and the Mental Model, while MVO-4 step 3 is the control that removes what the incident wrote to memory. The row and the narrative now name it.
+- **PB02's ordering reflex never generalised.** The playbook that owns "snapshot before rotate" now also carries "snapshot memory before you transition modes", which is the same reflex applied to containment rather than to rotation.
+
+### Why now
+
+The 0.36.0 change was propagated through the documents that *specify* the controls and, in 0.36.1, through the file that *defines* them. It was never propagated to the documents that *sequence a response*: the capture order, the paged-responder entry point, and the reflex playbook. Those are the three files a responder opens first.
+
+A live read-through of v0.36.2 also found the lens scoring itself PASS on the gap it was built to detect, which is the finding in this release that matters most.
+
+No control, mode, technique or line of reference code changes. The reference implementation still returns 0 FAIL, 5 PARTIAL, 7 PASS of 31 techniques.
+
+## [0.36.2] · 2026-11-17 · Walkthrough note
 
 - A dated framework-version note on the Day 1 recovery sequence in `examples/incident-walkthrough.md`. The sequence is the five-step MVO-4 that predates the memory validation step, and the walkthrough is pegged to v0.33.0 in its own setup, so the sequence is correct for the incident it records and wrong as a template. The note says which, points at the current step, and explains what that step would have changed in this specific scenario: the agent runs per-user memory, the triage call asks about its scope, and the Type D memory snapshot was captured during evidence collection, so the artifact the step needs was already in hand. The team checked it for customer-data bleed across users, which is memory as a store of facts rather than the instruction case the step was added for.
 
