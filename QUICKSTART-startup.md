@@ -152,7 +152,7 @@ This QUICKSTART has limits you should be aware of:
 
 Three natural progression points:
 
-- When your first drill is complete and you want the Level 2 claim to rest on a record rather than a recollection, run the Offensive Lens (offensive-lens/START-HERE.md) 90-minute first pass against the agent you drilled. One exercise per overlay control, four written verdicts, no new playbooks. A PARTIAL verdict means the control worked and nothing proved it, which is the instrumentation gap between Containable and Provable.
+- **When your first drill is complete and you want the Level 2 claim to rest on a record rather than a recollection**, run the [Offensive Lens](offensive-lens/START-HERE.md) 90-minute first pass against the agent you drilled. One exercise per overlay control, four written verdicts, no new playbooks. A PARTIAL verdict means the control worked and nothing proved it, which is the instrumentation gap between Containable and Provable.
 - **When you reach Maturity Level 2 with the startup-minimum subset and have run 3 monthly drills**, graduate to the standard [QUICKSTART.md](QUICKSTART.md). Add PB13 (Six Metrics) and PB14 (Testing) to formalize measurement. Add PB17 (Communication) and PB16 (Training) when you have more than one on-call responder.
 - **When you have an externally-visible incident or a customer/regulator inquiry**, add PB24 (Board-Ready Scorecard) and PB05 (Executive Decision-Making) to formalize the executive layer. The CIA+T framing is particularly valuable for incidents where traditional CIA understates the trust impact.
 
