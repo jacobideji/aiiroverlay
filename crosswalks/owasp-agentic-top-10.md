@@ -26,7 +26,7 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 | **ASI03** Identity & Privilege Abuse | MVO-1 Inventory + Triage Q3 | AI-BOM `identity` section · SaaS audit logs (F) |
 | **ASI04** Agentic Supply Chain Compromise | MVO-1 Inventory + MVO-3 Evidence | AI-BOM `model` + `retrieval` sections · config snapshot (E) |
 | **ASI05** Unexpected Code Execution | MVO-2 Safe Modes (M4) + Triage Q1, Q5 | Tool-call ledger (B) · Kill-Switch M4 |
-| **ASI06** Memory & Context Poisoning | MVO-1 Inventory + MVO-3 Evidence + Mental Model | Memory snapshot (D) · retrieval traces (C) |
+| **ASI06** Memory & Context Poisoning | MVO-1 Inventory + MVO-3 Evidence + MVO-4 Controlled Re-Enable + Mental Model | Memory snapshot (D) · retrieval traces (C) |
 | **ASI07** Insecure Inter-Agent Communication | MVO-1 Inventory + MVO-3 Evidence | AI-BOM `tools` section · tool-call ledger (B) |
 | **ASI08** Cascading Agent Failures | MVO-2 Safe Modes (M3 + M4) + MVO-4 Controlled Re-Enable | Kill-Switch ladder · staged recovery sequence |
 | **ASI09** Human-Agent Trust Exploitation | Mental Model + Maturity Roadmap | Operating cadence · drill design |
@@ -106,7 +106,7 @@ The AI IR Overlay provides the **operational machinery** (inventory, staged cont
 - **MVO-1 Inventory.** AI-BOM's `memory` section (scope: off / per-user / shared, retention, classification) and `retrieval` section are the inventory artifacts.
 - **Mental Model clause 2** ("if it can remember, treat it as a data store"): memory falls under SOC 2, HIPAA, GDPR, and PCI assessments.
 - **MVO-3, type D (Memory Snapshot).** Captures persistent context at incident time. Without it, you can't prove cross-session bleed.
-- **MVO-3, type C (Retrieval Traces).** Captures what the agent retrieved, from which corpus, at which version, with what scores. Without this, the input vector is unprovable.
+- **MVO-4 Controlled Re-Enable, step 3.** Validates and resets memory state before the agent returns to service: the containment snapshot is diffed against the last pre-incident baseline and what the incident wrote is removed. Without this step a poisoned entry survives recovery and executes on the first turn after re-enable, which corpora validation and harness replay both miss.
 
 **Operational priority:** If memory is `scope: shared`, treat memory bleed across users as its own incident class. Capture D **before** cleaning or rotating memory.
 
