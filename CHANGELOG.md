@@ -34,8 +34,6 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
-## [0.36.2].
-
 ## [0.36.2] · 2026-11-17 · Walkthrough note
 
 ### Added
