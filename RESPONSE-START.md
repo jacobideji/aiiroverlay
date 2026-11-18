@@ -15,7 +15,7 @@
 |---|---|---|
 | **0–2** | The AI-BOM YAML for the affected agent (per [`templates/ai-bom.yaml`](templates/ai-bom.yaml) schema; one file per agent in production) | Know what the agent is, what it can do, what it writes to. If you don't have an AI-BOM for this agent, you have an inventory problem, not just an incident |
 | **2–15** | [`triage/six-questions.md`](triage/six-questions.md) | Walk the six questions in order. The "Where each answer routes" table at the end points you to the right playbook |
-| **10–20** | [`kill-switches/overview.md`](kill-switches/overview.md) | At Question 5, pick the Mode (M1–M4) and variant. Use the **Variant Selector** quick reference for fast matching. Activation SLA: ≤ 10 minutes from IC order |
+| **10–20** | [`kill-switches/overview.md`](kill-switches/overview.md) | At Question 5, pick the Mode (M1–M4) and variant. Use the **Variant Selector** quick reference for fast matching. **Snapshot memory before you transition:** some runtimes discard it on reconfiguration, so containment can destroy the evidence it was meant to preserve. Activation SLA: ≤ 10 minutes from IC order |
 | **30–60** | [`framework/04-materiality-and-disclosure.md`](framework/04-materiality-and-disclosure.md) | Convene the Materiality and Disclosure call if Mode ≥ M3 OR any condition trigger applies (customer data, external recipients, regulated data, financial actions, customer-facing trust, public attention). CISO + General Counsel + Incident Commander within 1 hour |
 
 ## During response, you may also need
