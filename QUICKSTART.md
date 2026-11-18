@@ -75,9 +75,9 @@ If you have a fleet of agents, run this path on the highest-impact agent first. 
    - **Activate M4 (Full Disable).** Confirm the agent is offline AND that you snapshotted identity scopes BEFORE token rotation. Capture timing.
 3. Record each Time-to-Activate (TTA) value in the AI-BOM `kill_switches.mX.tta_minutes` field.
 
-**Done when:** all four TTA values are below 10 minutes (the framework's drill-measured target per [`framework/01`](framework/01-minimum-viable-overlay.md#measurement-scope)). If any exceeds 10 minutes, that mode is a hardening item for the next cycle.
+**Done when:** all four TTA values are below 10 minutes (the framework's drill-measured target per [`framework/01`](framework/01-minimum-viable-overlay.md#measurement-scope)) **and** each mode was confirmed in effect against the running agent rather than against its configuration, per step 2 above: a write tool that should have been unreachable was actually called and refused. Timing is not containment. If any TTA exceeds 10 minutes, or any mode reported active while a write path still worked, that mode is a hardening item for the next cycle.
 
-**Conformance link:** [`kill-switches/overview.md`](kill-switches/overview.md); [Playbook 14](playbooks/14-testing-for-agent-failure-modes.md).
+**Conformance link:** [`kill-switches/overview.md`](kill-switches/overview.md); [Playbook 14](playbooks/14-testing-for-agent-failure-modes.md); [`offensive-lens/START-HERE.md`](offensive-lens/START-HERE.md) for the 90-minute first pass, which records a written verdict per mode instead of a recollection.
 
 ## Day 21: Drill the 60-minute evidence export
 
