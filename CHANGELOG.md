@@ -36,7 +36,7 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 
 ### Added
 
-- A dated framework-version note on the Day 1 recovery sequence in `examples/incident-walkthrough.md`. The sequence is the five-step MVO-4 that predates the memory validation step, and the walkthrough is pegged to v0.33.0 in its own setup, so the sequence is correct for the incident it records and wrong as a template. The note says which, points at the current step, and explains what that step would have changed in this specific scenario: the agent runs per-user memory, the triage call asks about its scope, and the Type D memory snapshot was captured during evidence collection, so the artifact the step needs was already in hand. The team checked it for customer-data bleed across users, which is memory as a store of facts rather than the instruction case the step was added for.
+## [0.36.2] · 2026-11-17 · Walkthrough note - A dated framework-version note on the Day 1 recovery sequence in `examples/incident-walkthrough.md`. The sequence is the five-step MVO-4 that predates the memory validation step, and the walkthrough is pegged to v0.33.0 in its own setup, so the sequence is correct for the incident it records and wrong as a template. The note says which, points at the current step, and explains what that step would have changed in this specific scenario: the agent runs per-user memory, the triage call asks about its scope, and the Type D memory snapshot was captured during evidence collection, so the artifact the step needs was already in hand. The team checked it for customer-data bleed across users, which is memory as a store of facts rather than the instruction case the step was added for.
 
 ### Why now
 
