@@ -38,7 +38,7 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 
 ### Fixed
 
-- `README.md` claimed both that the content gate was complete and that more playbooks ship as MINOR releases, nine lines apart. The CHANGELOG settles it: the gate closed at v0.24.0 with no remaining drafted playbooks, and twenty-four playbook files are on disk. The line now says so and points at the v1.1 scope backlog, which is where a reader looking for what comes next should land.
+- `README.md` claimed both that the content gate was complete and that more playbooks ship as MINOR releases, nine lines apart. The CHANGELOG settles it: the gate closed at v0.24.0 with no remaining drafted playbooks, and all twenty-four are published. The line now says so and points at the v1.1 scope backlog, which is where a reader looking for what comes next should land.
 - `RESPONSE-START.md` was stamped *Last revised: 2026-06-30 (v0.33.0)*, three releases back, although v0.36.3 changed it: the minute 10-20 row gained the memory snapshot instruction. The most time-critical file in the repository now reports its own currency correctly.
 - `crosswalks/owasp-agentic-top-10.md` kept a 2026-06-29 stamp after v0.36.3 added MVO-4 to the ASI06 mapping and a narrative bullet explaining step 3. The two NIST crosswalks were not edited in that release, so their stamps remain accurate and are left alone.
 
