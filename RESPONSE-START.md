@@ -43,6 +43,6 @@ For adoption (not response), see [`QUICKSTART.md`](QUICKSTART.md) (30-day path) 
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
-*Last revised: 2026-06-30 (v0.33.0 A1.3 navigation fix).*
+*Last revised: 2026-11-18 (v0.36.3: memory snapshot added to the containment step).*
 
 <https://www.linkedin.com/in/jacobideji/>
