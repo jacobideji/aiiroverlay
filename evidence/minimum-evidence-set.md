@@ -27,6 +27,8 @@ This document defines the **minimum** evidence set every team must be able to ca
 
 Use staged containment (Kill-Switch Modes M1 to M4) to stop damage **without destroying state**. The objective is to halt harm while keeping systems intact long enough to capture evidence.
 
+**Snapshot memory before the transition.** Some runtimes discard memory on reconfiguration, so the containment action taken to preserve evidence can destroy this class of it. Capture memory state first and retain it as the incident state. It is evidence, not a restore source. This is an operational check on the first transition out of M0 in [`kill-switches/overview.md`](../kill-switches/overview.md), and the memory validation step in M5 diffs it against a pre-incident baseline.
+
 ### Step 2: Snapshot Identity and Capabilities
 
 **Before** rotating credentials or making config changes, document:
