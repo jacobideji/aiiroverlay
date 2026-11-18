@@ -13,6 +13,7 @@
 
 # Playbook 16: Training Your Team for AI Incidents
 
+- **Offensive Lens:** [`offensive-lens/`](../offensive-lens/README.md). The instrument for the drills in this playbook. Each technique carries written PASS, PARTIAL and FAIL criteria, so a micro-drill produces a recorded verdict rather than a recollection, and the drill-artifact archive has something to hold.
 > *Every other playbook in this framework assumes the response team can execute the operational discipline it specifies. Activate Mode M3 Tool Tiering inside 10 minutes per [Playbook 04](04-tool-design-is-containment.md). Export the Minimum Evidence Set A through F inside 60 minutes per the [Evidence Export Script Contract](../schemas/evidence-export.spec.md). Issue the first stakeholder update inside 30 minutes per [Playbook 17](17-communication-techniques.md). None of those time budgets survive untrained execution. The first time a responder activates safe mode, exports evidence, applies the Three-Status Taxonomy, or convenes the Materiality call should not be during a real incident. PB16 is the training discipline that converts the framework's documented capabilities into the team's operational muscle memory.*
 
 ## Premise
