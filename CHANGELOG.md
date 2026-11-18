@@ -1090,7 +1090,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
 [Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.0...HEAD
-[0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
+[0.37.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
+[0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.4
 [0.36.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.3
 [0.36.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.2
 [0.36.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.1
