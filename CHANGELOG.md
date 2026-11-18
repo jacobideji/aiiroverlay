@@ -34,6 +34,20 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.36.4] · 2026-11-18 · Stale statements
+
+### Fixed
+
+- `README.md` claimed both that the content gate was complete and that more playbooks ship as MINOR releases, nine lines apart. The CHANGELOG settles it: the gate closed at v0.24.0 with no remaining drafted playbooks, and twenty-four playbook files are on disk. The line now says so and points at the v1.1 scope backlog, which is where a reader looking for what comes next should land.
+- `RESPONSE-START.md` was stamped *Last revised: 2026-06-30 (v0.33.0)*, three releases back, although v0.36.3 changed it: the minute 10-20 row gained the memory snapshot instruction. The most time-critical file in the repository now reports its own currency correctly.
+- `crosswalks/owasp-agentic-top-10.md` kept a 2026-06-29 stamp after v0.36.3 added MVO-4 to the ASI06 mapping and a narrative bullet explaining step 3. The two NIST crosswalks were not edited in that release, so their stamps remain accurate and are left alone.
+
+### Why now
+
+The first two were found by the review that produced v0.36.3 and deliberately deferred, because neither affects a response. The third was introduced by v0.36.3 itself and is recorded here rather than quietly corrected: a patch that edits a document and leaves its revision stamp behind creates the same class of stale statement it was fixing.
+
+No control, mode, playbook, technique or line of reference code changes.
+
 ## [0.36.3] · 2026-11-18 · Capture order
 
 ### Fixed
@@ -1059,7 +1073,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.3...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.4...HEAD
+[0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.4
 [0.36.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.3
 [0.36.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.2
 [0.36.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.1
