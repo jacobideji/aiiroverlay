@@ -140,7 +140,7 @@ For a full end-to-end walkthrough of an incident response using this framework, 
 
 ---
 
-*Last revised: 2026-06-29 (file content last modified in v0.26.0; current as of v0.33.0).*
+*Last revised: 2026-11-18 (v0.37.0: Day 14 exit criterion requires confirmed containment, not timing alone).*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
