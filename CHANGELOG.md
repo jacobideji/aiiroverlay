@@ -34,6 +34,22 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.37.0] · 2026-11-18 · Adoption path
+
+### Added
+
+- The Offensive Lens is named in the four places the framework already sends a reader who is about to drill. `QUICKSTART.md` Day 14 is "Tabletop M1 through M4", and `kill-switches/overview.md` states that a recorded lens assessment covering M1 through M5 **is** the tabletop drill, with evidence attached; the step's Conformance link now says so and points at the 90-minute first pass. Level 4 Resilient in `framework/03-maturity-roadmap.md` requires quarterly tabletops and measured metrics without previously naming what runs them. `playbooks/16-training-your-team.md` owns the monthly micro-drill and the drill-artifact archive, and is the other half of the testing-and-training pair with PB14, which already carried the link. `QUICKSTART-startup.md` gains a third progression point, placed first in that list because the first pass is triggered by the Week 4 drill rather than by graduation and adds no playbooks.
+
+### Changed
+
+- **`QUICKSTART.md` Day 14's exit criterion tested timing, not containment.** The step's goal is to "prove each is implementable" and its procedure asks for two things: that write tools are confirmed unreachable in production, and that Time-To-Activate is captured. The exit criterion tested only the second, and Day 30 then cites Day 14 as satisfying "MVO-2 Safe Modes M1-M4 are implemented and tabletop-tested", so a timing measurement became a Level 2 maturity claim. Against this repository's own reference implementation before v0.36.0, the lens recorded OL-T207 Time-To-Activate at roughly ten milliseconds while OL-T201 reported FAIL, with `current_mode` showing the previous mode and every write tool still callable. A Day 14 tabletop measuring Time-To-Activate alone would have scored that green. The criterion now requires both, and says that timing is not containment.
+
+### Why now
+
+An organization completing the 30-day path had no route to the lens: it was reading-order item 16 of 16 and absent from every adoption document. The practical consequence was that a team reaching Day 14 ran whatever tabletop it invented and recorded four Time-To-Activate numbers, when the framework's own instrument would have produced a written verdict per control with PARTIAL distinguished from PASS. PARTIAL is the result that matters: the control held and nothing recorded that it held, which fails an audit rather than an incident.
+
+No control, mode, technique or line of reference code changes. The one playbook edit adds a cross-reference to a Related list and changes no guidance.
+
 ## [0.36.4] · 2026-11-18 · Stale statements
 
 ### Fixed
@@ -1073,8 +1089,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.36.4...HEAD
-[0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.4
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.0...HEAD
+[0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
 [0.36.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.3
 [0.36.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.2
 [0.36.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.1
