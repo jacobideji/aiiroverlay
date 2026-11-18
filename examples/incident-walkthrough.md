@@ -140,6 +140,11 @@ Recovery follows [MVO-4 (Controlled Re-Enable)](../framework/01-minimum-viable-o
 
 **M5 approver:** CISO (not the agent's business owner).
 
+
+**Framework version note, added v0.36.2.** The setup above states that Northstar adopted the Overlay through v0.33.0, and this recovery is the five-step MVO-4 of that release with PB06's workflow-specific gates layered on. The memory validation step, *validate and reset memory state*, was added to the M5 specification in v0.36.0 and to the MVO-4 control definition and PB06 in v0.36.1. A reader following either document today runs it between retrieval-policy validation (4) and sandboxed replay (5) of the sequence below.
+It would change this scenario. The agent runs per-user memory with 30-day retention, the triage call asks about it, and the Type D memory snapshot was captured during evidence collection, so the artifact the step needs was already in hand. What the team checked it for was customer-data bleed across users, which is memory as a store of *facts*. The step exists because memory also carries *instructions*: a directive written before containment executes on the first turn after re-enable, and neither corpus validation nor harness replay reaches it.
+The sequence is left as it was run. This walkthrough records one fictional incident at one version of the framework, not current guidance.
+
 ### Day 3: full operation restored, monitoring tightened
 
 Agent returned to M0 (Observe). [PB11 (Monitoring)](../playbooks/11-monitoring-detection.md) retrieval-anomaly threshold lowered to mean+2σ for the next 14 days post-incident.
