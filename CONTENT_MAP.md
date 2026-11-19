@@ -213,6 +213,16 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | Evidence Exporter (Python CLI implementing the Evidence Export Script Contract for Types A through F; six stub adapters; manifest with SHA-256 integrity; parallel-export; telemetry events) | [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) | ✅ `v0.26.0` |
 | Kill-Switch Demo (Python in-memory tool registry showing M0/M1/M2/M3/M4 with the Activate/Status/Deactivate/Probe API shape, separation-of-duties, scope parameter) | [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) | ✅ `v0.26.0` |
 
+## Transferable Indicator Set (derived from the evidence types, not from an issue)
+
+`evidence/transferable-indicators.md` is the second artifact here with no newsletter issue of origin, after the Offensive Lens below. It was produced by asking what part of each evidence type could be handed to another organization: the Minimum Evidence Set is scoped to the responding organization and none of its six types is shareable as captured.
+
+| Artifact | Status |
+|---|---|
+| `evidence/transferable-indicators.md`: six indicator classes TI-1 through TI-6, each derived from a named evidence type, reduced per PB23, labelled with the ATLAS technique and OWASP ASI entry it evidences, and gated by the lens technique that proves it is producible | ✅ `v0.39.0` |
+
+No sharing protocol is specified: no TLP marking, STIX shape or MISP object. The taxonomy comes first, the serialization later.
+
 ## Offensive Lens (derived from the framework, not from an issue)
 
 `offensive-lens/` is the first artifact in this repository with no newsletter issue of origin. Every playbook traces to one issue, and the "every issue maps to one playbook" principle in the [README](README.md) holds for all twenty-four. The lens does not, and recording that is more useful than forcing a mapping.
