@@ -7,13 +7,13 @@
 
 # AI IR Overlay Framework Matrix
 
-> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.39.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
+> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.40.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
 
 **Current release:** see [CHANGELOG.md](CHANGELOG.md), or the [latest release](https://github.com/jacobideji/aiiroverlay/releases/latest). This file does not restate the version, so it cannot misstate it.
 
 ## How to read this document
 
-The matrix in [Section 1](#1-the-matrix-response-phases--operational-controls) is the primary artifact: response phases sequenced across the top per NIST SP 800-61 r3; controls, playbooks, and primitives listed in each phase column. Every cell points to a repo artifact that operationalizes the corresponding step.
+The matrix in [Section 1](#1-the-matrix-response-phases--operational-controls) is the primary artifact: response phases sequenced across the top per this framework's own seven-column arc; controls, playbooks, and primitives listed in each phase column. Every cell points to a repo artifact that operationalizes the corresponding step.
 
 Sections 2 through 9 expand each cross-cutting reference (kill-switch ladder, evidence taxonomy, metrics, MVO controls, maturity levels, playbook index, standards crosswalk, quick-read legend). Use them as appendices to the matrix.
 
@@ -27,7 +27,7 @@ This document is intended to be:
 
 ## 1. The Matrix: Response Phases × Operational Controls
 
-Rows in each column are the controls, playbooks, and primitives that operate at that phase. Phases are sequenced per NIST SP 800-61 r3 (Preparation, Detection and Analysis, Containment / Eradication / Recovery, Post-Incident Activity), unpacked into seven operationally-distinct columns.
+Rows in each column are the controls, playbooks, and primitives that operate at that phase. The seven columns are this framework's own unpacking of the response arc. NIST SP 800-61 r3 organizes incident response around the six CSF 2.0 Functions, not the four-phase life cycle of r2, which r3 presents only as the previous model; the Function-level mapping is in [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) and the Subcategory-level mapping of r3's incident-response tier is in [`crosswalks/sp-800-61r3.md`](crosswalks/sp-800-61r3.md).
 
 | **Preparation** | **Detection** | **Triage** | **Containment** | **Evidence** | **Recovery** | **Closure** |
 |---|---|---|---|---|---|---|
@@ -192,7 +192,8 @@ All 24 playbooks. Category assignments per the [README reading order](README.md#
 | Standard | Crosswalk File | Coverage Posture |
 |---|---|---|
 | **NIST AI RMF 1.0** | [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) | MVO-1 → GOVERN/MAP · MVO-2 → MANAGE · MVO-3 → MEASURE/MANAGE · MVO-4 → MANAGE |
-| **NIST CSF 2.0 + SP 800-61 r3** | [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) | DETECT (PB11) · PR.AA-05 (PB07) · PR.DS-01 (PB03 + PB06; PB23 for AI logs) · RS.AN-06 and RS.AN-07 (PB15) |
+| **NIST CSF 2.0** | [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) | DETECT (PB11) · PR.AA-05 (PB07) · PR.DS-01 (PB03 + PB06; PB23 for AI logs) · RS.AN-06 and RS.AN-07 (PB15) |
+| **NIST SP 800-61r3** | [`crosswalks/sp-800-61r3.md`](crosswalks/sp-800-61r3.md) | The 32 Subcategories of r3's Table 3, *Community Profile part 2: Incident Response*: DETECT 11 · RESPOND 13 · RECOVER 8. 31 of 32 carry an agent-specific extension; `DE.CM-02` does not. r3's preparation tier is mapped in the CSF 2.0 row above. |
 | **OWASP Top 10 Agentic 2026** | [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) | ASI04 (PB10) · ASI07 + ASI08 (PB08) · ASI10 (PB12) |
 | **ISO/IEC 27035** | forthcoming | Planned community contribution lane (referenced in `framework/01`) |
 | **ISO/IEC 42001:2023** | forthcoming | Planned community contribution lane |
@@ -226,7 +227,7 @@ For the full acronym list see the [README Acronyms section](README.md#acronyms).
 
 ## Source
 
-*This matrix synthesizes the AI IR Overlay™ framework at v0.39.0. It will be revised as the framework evolves toward v1.0.0 and as additional Steering Committee members are seated and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
+*This matrix synthesizes the AI IR Overlay™ framework at v0.40.0. It will be revised as the framework evolves toward v1.0.0 and as additional Steering Committee members are seated and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
