@@ -34,6 +34,32 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.39.0] · 2026-11-19 · Transferable indicators
+
+### Added
+
+- **`evidence/transferable-indicators.md`, the Transferable Indicator Set.** Six classes, TI-1 through TI-6, naming what an organization can hand to a peer, an ISAC or a vendor's security team. Each is derived from a named evidence type rather than authored: TI-1 injection content from Type A and Type C, TI-2 poisoned corpus document identity from Type C, TI-3 memory entry from Type D, TI-4 tool-call signature from Type B, TI-5 grant and scope delta from Types E and F, TI-6 agent provenance as seen downstream from Type F. Every class states the fields that transfer, the fields that stay behind under `playbooks/23`'s payload-tier rule, the ATLAS technique and OWASP ASI entry it evidences, and the lens technique that proves it is producible. The field names are those of the [Evidence Export Script Contract](schemas/evidence-export.spec.md), and the hash-only classes ride on the manifest's existing `sha256_hash` rather than new machinery.
+- **The set gives four orphaned lens techniques a purpose.** v0.38.0 found six techniques with no OWASP counterpart; four of them — OL-T301, OL-T302, OL-T303 and OL-T308 — are the gates on these six classes. The lens's evidence-starvation axis has no weakness class to answer to because it does not describe a weakness, it describes whether you can say anything useful afterwards. OL-T207 and OL-T210 remain unmapped and are not claimed here.
+- Reading-order item 8 in `README.md`, directly after the Minimum Evidence Set, with items 8 through 16 renumbered to 9 through 17. A provenance section in `CONTENT_MAP.md` recording it as the second artifact with no newsletter issue of origin. A row in `MATRIX.md` section 3. Reciprocal links from `evidence/minimum-evidence-set.md` and from PB11, PB15, PB18 and PB23, which are the four the document names as load-bearing: PB11 consumes received indicators as detection rules, PB15 owns the retention that decides whether one still exists, PB18 is the Closure step the derivation belongs to, and PB23 supplies the rule for what stays behind.
+
+### Changed
+
+- `MATRIX.md`'s two self-version references and `README.md`'s description of it move from v0.36.1 to v0.39.0. The `Last revised` footer stays at the v0.35.0 governance milestone, which is the convention v0.34.0 and v0.35.0 established and v0.36.1 followed.
+
+### Fixed
+
+- **`MATRIX.md` had claimed `Current release: v0.35.0 · 2026-07-09` through nine releases.** v0.36.1's entry states that three self-version statements were corrected; this was not one of them, and it has been wrong since July across v0.36.0, the four v0.36.x patches, the four v0.37.x releases and v0.38.0. The restatement is removed rather than reset, pointing at `CHANGELOG.md` and the latest-release URL instead, on the same reasoning v0.37.2 applied to `CONTENT_MAP.md`: a third copy of the current version manufactures the staleness it just produced. The replacement says so, so the next reader does not re-add it.
+
+### Why now
+
+The framework specified what to capture and what to prove, and never what to pass on. An agent incident is rarely confined to one organization — a poisoned document sits in a vendor corpus that many customers index, and an injection string that works against one orchestrator works against the next one built on the same framework — but none of the six evidence types is shareable as captured, because each contains either regulated content or detail specific to one deployment.
+
+The word "indicator" was already taken. `playbooks/08` uses **Indicators** as a labelled field for internal detection signals and `playbooks/11` calls the same thing signals, both facing inward. "Transferable" is the property that distinguishes these, and Evidence Type G was not used because the v1.1 backlog reserves it for UI Action Trace.
+
+No sharing protocol is specified: no TLP marking, STIX shape or MISP object. The taxonomy has to be settled before the serialization, and specifying a wire format for indicator classes nobody has yet produced would be specifying the easy half.
+
+No control, mode, playbook, technique or line of reference code changes.
+
 ## [0.38.0] · 2026-11-18 · OWASP vocabulary
 
 ### Added
@@ -1157,7 +1183,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.38.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.39.0...HEAD
+[0.39.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.0
 [0.38.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.38.0
 [0.37.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.3
 [0.37.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.2
