@@ -13,7 +13,7 @@ or a vendor-specific tool-management API.
 
 Conformance to the contract is demonstrated by:
   - Activate accepts required inputs (mode, actor, reason, ticket_id); the
-      agent_id from the contract is bound once on the API instance
+          agent_id from the contract is bound once on the API instanc
   - Activate returns activation_id with requested_at, acknowledged_at, effective_at
   - effective_at is set only after Probe returns pass (no caching, no fast-fail)
   - Status query by agent_id returns current_mode, activated_at, last_probed_at
