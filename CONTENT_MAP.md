@@ -179,7 +179,8 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 | Standard | Repo home | Status |
 |---|---|---|
 | NIST AI RMF 1.0 | [`crosswalks/nist-ai-rmf.md`](crosswalks/nist-ai-rmf.md) | ✅ `v0.1.0` |
-| NIST CSF 2.0 + SP 800-61 r3 | [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) | ✅ `v0.1.5` |
+| NIST CSF 2.0 | [`crosswalks/nist-csf-2.md`](crosswalks/nist-csf-2.md) | ✅ `v0.1.5` |
+| NIST SP 800-61r3 (A CSF 2.0 Community Profile) | [`crosswalks/sp-800-61r3.md`](crosswalks/sp-800-61r3.md) | ✅ `v0.40.0` |
 | OWASP Top 10 for Agentic Applications 2026 | [`crosswalks/owasp-agentic-top-10.md`](crosswalks/owasp-agentic-top-10.md) | ✅ `v0.1.5` |
 | ISO/IEC 27035 (Information security incident management) | *forthcoming* | ⬜ planned (referenced from `framework/01-minimum-viable-overlay.md` as a base IR discipline the MVO extends for AI agents) |
 | ISO/IEC 42001:2023 | *forthcoming* | ⬜ planned |
@@ -289,4 +290,4 @@ A reader who lands on the framework asking "are all 24 playbooks shipped?" deser
 
 ---
 
-<!-- Last revised: 2026-11-19 (v0.39.0 added the Transferable Indicator Set section; v0.37.2 release-statement removed so this file no longer restates the current version; v0.36.0 added the Offensive Lens section; v0.33.0 added MATRIX.md row to Operational entry points; v0.32.0 P2 polish + Why-24-shipped section restructured: sub-bullets per axis for NIST CSF 2.0 closures and OWASP Agentic closures, six-stage operational arc and evidence-taxonomy coverage broken out, bullet 3 split into per-playbook sub-bullets with framework concepts bolded up-front, and a new Framework Concepts at a Glance table added) -->
+<!-- Last revised: 2026-11-19 (v0.40.0 split the CSF 2.0 and SP 800-61r3 crosswalk rows and added the r3 row; v0.39.0 added the Transferable Indicator Set section; v0.37.2 release-statement removed so this file no longer restates the current version; v0.36.0 added the Offensive Lens section; v0.33.0 added MATRIX.md row to Operational entry points; v0.32.0 P2 polish + Why-24-shipped section restructured: sub-bullets per axis for NIST CSF 2.0 closures and OWASP Agentic closures, six-stage operational arc and evidence-taxonomy coverage broken out, bullet 3 split into per-playbook sub-bullets with framework concepts bolded up-front, and a new Framework Concepts at a Glance table added) -->
