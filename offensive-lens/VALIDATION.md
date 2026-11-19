@@ -123,7 +123,7 @@ The lens was written by reading the overlay. It can only attack assumptions that
 Three things lift it:
 
 - **Someone else writes techniques**, without access to the existing mapping.
-- **Anchor coverage to catalogs the maintainer did not write.** The MITRE ATLAS crosswalk is transcribed as of v0.37.3 and the OWASP crosswalk is still `TODO`; filling them reveals which real-world weakness classes have *no* technique. That list is the lens's blind spot, enumerated by a third party.
+- **Anchor coverage to catalogs the maintainer did not write.** Both crosswalks are transcribed: MITRE ATLAS at v0.37.3 and the OWASP Agentic Top 10 at v0.38.0. Filling them did what it was supposed to do, in both directions. Six techniques turned out to have no OWASP counterpart, four of them in L3, because the 2026 list carries no entry for insufficient logging or traceability. That set is the lens's blind spot seen from outside, and the inverse list — weakness classes with no technique — is the next thing to enumerate.
 - **Treat every unmapped OWASP entry as a candidate gap in the overlay**, not a gap in the crosswalk.
 
 G2 is the existence proof that reading a framework against itself finds real defects. It is also the limit case: G2 was found because the overlay documents M5 explicitly. Nothing in this method finds a failure the framework never thought to describe.
