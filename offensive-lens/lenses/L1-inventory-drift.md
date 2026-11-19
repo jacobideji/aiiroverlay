@@ -123,7 +123,7 @@ Why this lens runs first: every other overlay control is scoped by the inventory
 
 ### OL-T107 — Stale AI-BOM freshness
 
-**Premise:** The overlay ships `scripts/verify.py` to check schema conformity and data freshness in CI. A freshness check is only a control if failing it blocks something.
+**Premise:** The overlay ships `scripts/validate.py` to check schema conformity and data freshness in CI. A freshness check is only a control if failing it blocks something.
 
 **Procedure**
 1. Record each AI-BOM entry's freshness date and the deployment date of its agent's most recent change.
