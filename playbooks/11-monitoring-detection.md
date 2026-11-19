@@ -227,6 +227,7 @@ These are the highest-frequency failure modes specific to AI agent monitoring. E
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports MEASURE 2.7, MEASURE 4.2, MANAGE 4.1).
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports DE.CM-01, DE.CM-09, DE.AE-02, DE.AE-03, DE.AE-06, RS.MA-02).
 - **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the direct operational response for ASI06 Memory & Context Poisoning detection, ASI08 Cascading Failures early detection, and ASI10 Rogue Agent drift detection).
+- **Transferable Indicator Set:** [`evidence/transferable-indicators.md`](../evidence/transferable-indicators.md) (the outward-facing counterpart to the three signal families above, and their supplier: a TI-2 received from a peer becomes a Family 2 corpus check, a TI-4 becomes a Family 1 tool-call rule)
 
 ## The Question to Carry Forward
 
