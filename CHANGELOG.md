@@ -34,6 +34,20 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.39.1] · 2026-11-19 · One-way asymmetry
+
+### Fixed
+
+- **`offensive-lens/VALIDATION.md` pointed at an empty set.** The v0.39.0 edit to that file closed by naming "the inverse list — weakness classes with no technique — as the next thing to enumerate." There is no such list: all ten OWASP ASI entries are covered, by at least two techniques each. The bullet also claimed the transcriptions worked "in both directions", which only the technique-to-entry direction did. Both statements are replaced with the counts, which say something the empty list could not. Against ATLAS, 4 of the 31 techniques map, because ATLAS catalogs what an adversary does while most of these catalog how a control fails. Against OWASP, 25 of 31 map, because OWASP catalogs weaknesses in applications, which control failures sit closer to. The real result is that the lens covers every published weakness class and still holds six techniques no weakness class asks about, four of them in L3.
+
+### Why now
+
+The claim was a suggestion about future work rather than a statement about the framework, and it was wrong in the direction that invents work. The bullet below it, *"Treat every unmapped OWASP entry as a candidate gap in the overlay, not a gap in the crosswalk"*, is left as written: it is conditional guidance that stays correct when the condition is empty and becomes useful when a later edition of the list adds an entry the lens does not reach.
+
+The v0.39.0 entry's description of what `VALIDATION.md` carries is left as written too. It accurately records what v0.39.0 shipped, and the correction belongs here rather than in a rewrite of that release's own account of itself.
+
+No control, mode, playbook, technique or line of reference code changes. No crosswalk cell changes.
+
 ## [0.39.0] · 2026-11-19 · Transferable indicators
 
 ### Added
@@ -1183,7 +1197,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.39.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.39.1...HEAD
+[0.39.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.1
 [0.39.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.0
 [0.38.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.38.0
 [0.37.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.3
