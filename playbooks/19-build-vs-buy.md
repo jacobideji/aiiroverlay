@@ -208,7 +208,7 @@ These are the highest-frequency failure modes in AI platform procurement. Each h
 - **Playbook 24: Board-Ready Scorecard** ([`playbooks/24-board-ready-scorecard.md`](24-board-ready-scorecard.md)). Procurement-time gaps that the customer accepts as risk are tracked in scorecard item C4 until closure; the Executive Incident Snapshot Template is produced from the procured platform's evidence export.
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.4 risk-management process design, MAP 4.1 third-party data and software risks, MANAGE 1.3 risk response prioritization).
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports GV.SC supply-chain risk management, GV.RR roles and responsibilities, ID.AM-04 inventories of services provided by suppliers).
-- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the procurement-time discipline that closes the precondition gap behind ASI04 Agentic Supply Chain Compromise; the framework's response to ASI04 lives in PB10, but the procurement decision is upstream of that response).
+- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the procurement-time discipline that closes the precondition gap behind ASI04 Agentic Supply Chain Vulnerabilities; the framework's response to ASI04 lives in PB10, but the procurement decision is upstream of that response).
 
 ## The Question to Carry Forward
 
