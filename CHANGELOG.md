@@ -34,6 +34,21 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.37.2] · 2026-11-18 · Self-description
+
+### Fixed
+
+- **`CONTENT_MAP.md` had not reported its own currency since v0.33.0.** It was edited in v0.36.0, which added the Offensive Lens provenance section, and its revision footer still read `2026-06-29 (v0.33.0 ...)`. Its body also stated "current release is v0.33.0", four minor releases back. That restatement is now removed rather than corrected: the file's subject is which newsletter issue became which artifact, the current release is stated in this changelog and in `CITATION.cff`, and a third copy only creates the staleness it just produced. This is the same class v0.36.4 fixed in `RESPONSE-START.md` and the OWASP crosswalk; that sweep covered two files and missed this one.
+- **`offensive-lens/MATRIX.md` sent a reader to `crosswalks/` as a bare directory.** GitHub renders a directory listing, so the link worked in the repository browser and returned 404 on the published site, which has no index for a directory without a `README.md`. It now points at the `Playbook mapping` section of `crosswalks/overlay-mapping.md`: the nine `TODO` cells are Playbook cells, and that file is the only one of the three crosswalks carrying playbook IDs. The sentence said those IDs come from "the mapped standard"; they come from the mapping, and it now says so.
+- **A link in this file's v0.27.0 entry resolved outside the repository.** It was copied from `framework/02-mental-model.md`, where `../playbooks/` is correct, into a file at the repository root, where it is not; GitHub rendered it as `/blob/playbooks/...`, which is a 404. The entry's text is unchanged and only the path is re-based.
+- **`CONTRIBUTING.md` said "Every playbook has these sections" without exception.** Twenty-three of twenty-four do. Playbook 19 (Build vs Buy) keeps the nine slots and their order and renames four for its procurement domain: Containment Options becomes the Build vs Buy Decision Matrix, Evidence Priorities becomes Evidence Requirements, Recovery Sequence becomes the Procurement Decision Sequence, and Post-Incident Hardening becomes Post-Procurement Hardening. The deviation is the right call for a procurement-time playbook, so the contributor guidance now names it rather than the playbook being made to conform.
+
+### Why now
+
+A completeness sweep against the repository's own declared contracts returned no missing artifacts: six evidence types to six exporter adapters, six ladder modes with five operational checks and the baseline correctly exempt, all seven mode variants mapped to techniques with M3-Vendor excluded for a stated reason, thirty-one techniques each carrying PASS, PARTIAL and FAIL criteria with `MATRIX.md` and the four lens files agreeing exactly, all seven response phases, all twenty-four playbooks reachable from each of the three navigation artifacts, six triage questions with no unresolvable link, and four maturity levels with criteria. What the sweep did find was four statements the repository makes about itself that were no longer true. Nothing in the framework or the component is incomplete; four sentences describing them were wrong.
+
+No control, mode, playbook, technique or line of reference code changes.
+
 ## [0.37.1] · 2026-11-18 · Technique count
 
 ### Fixed
@@ -389,7 +404,7 @@ After v0.28.0, the framework's calibration story is more complete. The remaining
 ### Changed
 
 - `CHANGELOG.md` adds an HTML comment above the `[0.14.2]` link reference explaining the literal-trailing-comma workaround. The v0.14.2 release tag was inadvertently created with a trailing comma ("v0.14.2,") and the tag could not be deleted or renamed; the link reference points at the actual malformed URL so the reference resolves to HTTP 200. The annotation prevents future readers from "fixing" the comma and unintentionally 404'ing the link.
-- `framework/02-mental-model.md` Related section now references [Playbook 02 (Evidence Lives in New Places)](../playbooks/02-evidence-lives-in-new-places.md) as the foundational concepts companion. PB02 was promoted from absorbed-into-framework-core to a separate foundational playbook in v0.23.0; the Mental Model document did not receive the ripple cross-reference in that release. v0.27.0 closes the cross-reference gap: the Mental Model determines how to govern the agent (Acts, Remembers, Retrieves, Changes); PB02's Three Realities determine how to investigate the agent (actor is workflow, payload can be language, evidence is fragile). The two foundational artifacts together produce the framework's pedagogical entry point for newcomers.
+- `framework/02-mental-model.md` Related section now references [Playbook 02 (Evidence Lives in New Places)](playbooks/02-evidence-lives-in-new-places.md) as the foundational concepts companion. PB02 was promoted from absorbed-into-framework-core to a separate foundational playbook in v0.23.0; the Mental Model document did not receive the ripple cross-reference in that release. v0.27.0 closes the cross-reference gap: the Mental Model determines how to govern the agent (Acts, Remembers, Retrieves, Changes); PB02's Three Realities determine how to investigate the agent (actor is workflow, payload can be language, evidence is fragile). The two foundational artifacts together produce the framework's pedagogical entry point for newcomers.
 - `CITATION.cff` version + preferred-citation.version bumped from `0.26.0` to `0.27.0`.
 
 ### Why now
@@ -1101,7 +1116,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.1...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.2...HEAD
+[0.37.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.2
 [0.37.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.1
 [0.37.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
 [0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.4
