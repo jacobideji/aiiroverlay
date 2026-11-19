@@ -132,7 +132,7 @@ G2 is the existence proof that reading a framework against itself finds real def
 
 | | |
 |---|---|
-| Conformance level | **L0 Specified** |
+| Conformance level | **L1 Implemented** |
 | Fixture | green, 24 probes, 3 profiles, 0 blind |
 | Techniques validated by fixture | 24 of 31 |
 | Techniques awaiting first real run | 7 (listed with the lens source) |
