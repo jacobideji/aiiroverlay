@@ -205,7 +205,7 @@ The AI IR Overlay focuses on agent-class incidents (the Agentic Top 10 territory
 
 ---
 
-*Last revised: 2026-11-18 · Maintainer interpretation, not an OWASP publication.*
+*Last revised: 2026-11-19 · Maintainer interpretation, not an OWASP publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
