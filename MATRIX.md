@@ -7,9 +7,9 @@
 
 # AI IR Overlay Framework Matrix
 
-> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.36.1. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework, calibrated for board briefings, onboarding, auditor walkthroughs, and one-page references.*
+> *Self-contained tabular reference for the AI IR Overlay™ framework at v0.39.0. Single document, all tables. Distinct from prose narratives elsewhere in the repo: this is the matrix view of the framework rather than a narrative about it.*
 
-**Current release:** [v0.35.0](https://github.com/jacobideji/aiiroverlay/releases/tag/v0.35.0) · 2026-07-09
+**Current release:** see [CHANGELOG.md](CHANGELOG.md), or the [latest release](https://github.com/jacobideji/aiiroverlay/releases/latest). This file does not restate the version, so it cannot misstate it.
 
 ## How to read this document
 
@@ -107,7 +107,7 @@ The six AI-agent-specific evidence types that disappear fastest in an incident. 
 | **Redaction-and-tokenization discipline** | [PB23](playbooks/23-logging-privacy.md) | Role-separated access with audited break-glass |
 | **Multi-Stakeholder Governance Matrix** | [PB23](playbooks/23-logging-privacy.md) | Security / Privacy / Legal / Engineering joint governance |
 | **Output distribution map** | [PB09](playbooks/09-output-leakage.md) | Type F extension scoping output-leakage incidents (per destination, per recipient) |
-
+| **Transferable Indicator Set (TI-1–TI-6)** | [`evidence/transferable-indicators.md`](evidence/transferable-indicators.md) | What leaves the organization: six indicator classes derived from A through F, reduced per PB23, labelled with the ATLAS technique and OWASP ASI entry each evidences, every one gated by the lens technique that proves it is producible |
 ---
 
 ## 4. Six Metrics (Measurement Discipline)
@@ -225,7 +225,7 @@ For the full acronym list see the [README Acronyms section](README.md#acronyms).
 
 ## Source
 
-*This matrix synthesizes the AI IR Overlay™ framework at v0.36.1. It will be revised as the framework evolves toward v1.0.0 and as additional Steering Committee members are seated and external contributions land. Suggested edits welcome via Pull Request per [`CONTRIBUTING.md`](CONTRIBUTING.md).*
+*This matrix synthesizes the AI IR Overlay™ framework at v0.39.0. It will be revised as the framework evolves toward v1.0.0 and as additional Steering Committee members are seated and external contributions land.*
 
 *Source: AI IR Overlay framework, by Jacob Ideji.*
 
