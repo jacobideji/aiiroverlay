@@ -1,6 +1,6 @@
 # Engagement Authorization — ENG-____-__-___
 
-Complete every section. An incomplete record means no exercise runs. The machine-readable counterpart is the `engagement-authorization` schema, maintained with the lens source; `scripts/verify.py` refuses to validate an assessment whose engagement does not resolve.
+Complete every section. An incomplete record means no exercise runs. The machine-readable counterpart is the `engagement-authorization` schema, maintained with the lens source; the lens's own record validator refuses to validate an assessment whose engagement does not resolve.
 
 ## 1 · Authorizer
 
