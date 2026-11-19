@@ -224,7 +224,7 @@ These are the highest-frequency failure modes in Shadow AI response. Each has be
 - **Playbook 24: Board-Ready Scorecard** ([`playbooks/24-board-ready-scorecard.md`](24-board-ready-scorecard.md)). Shadow AI inventory currency and discovery cadence are Governance domain signals. The number of shadow agents discovered per quarter, the number migrated within 30 days, and the trend over time are board-defensible posture indicators.
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports GOVERN 1.6 inventory mechanisms, MAP 1.1 intended-use documentation, MANAGE 1.3 risk response prioritization).
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook is the direct operational response for **ID.AM** asset management gaps applied to AI agents; supports GV.OC organizational context, GV.RR roles and responsibilities, ID.AM-01 inventories of hardware, ID.AM-02 inventories of software and services, ID.AM-04 inventories of supplier services).
-- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook addresses the inventory-gap precondition that makes ASI03 Identity & Privilege Abuse and ASI04 Agentic Supply Chain Compromise harder to detect and contain).
+- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook addresses the inventory-gap precondition that makes ASI03 Identity & Privilege Abuse and ASI04 Agentic Supply Chain Vulnerabilities harder to detect and contain).
 
 ## The Question to Carry Forward
 
