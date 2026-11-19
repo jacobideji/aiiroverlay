@@ -5,7 +5,7 @@
 <!--  License: Apache 2.0  ·  See LICENSE file in this package              -->
 <!-- ────────────────────────────────────────────────────────────────── -->
 
-> **Unfilled by design. Standard IDs are transcribed, never recalled.**
+> **Transcribed from the published document. Standard IDs are transcribed, never recalled.**
 >
 > *Part of the AI IR Overlay™ framework. See [CONTENT_MAP.md](../../CONTENT_MAP.md) for the full repository map.*
 
