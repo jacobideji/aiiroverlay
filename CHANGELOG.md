@@ -34,6 +34,28 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.38.0] · 2026-11-18 · OWASP vocabulary
+
+### Added
+
+- **`offensive-lens/crosswalks/owasp-agentic-top10.md` is transcribed.** The ten entries come from *OWASP Top 10 For Agentic Applications 2026*, Version 2026, December 2025, published by the OWASP Gen AI Security Project under CC BY-SA 4.0, read from the document's section headings and corroborated against its contributor table. Twenty-five of the thirty-one techniques map to at least one entry and nine are cited by two. Each row states which control failure the entry exercises rather than restating the entry: ASI01 goal hijack reaches OL-T105, OL-T307 and OL-T402 because hijack arrives as injected content and the questions are whether the carrier is declared, whether the responder can tell it from system output, and whether re-enable leaves it in place.
+- **Six techniques are recorded as having no OWASP counterpart, and four of them are in L3.** OL-T207, OL-T210, OL-T301, OL-T302, OL-T303 and OL-T308 map to nothing, because the 2026 list carries no entry for insufficient logging, monitoring or traceability. The lens's entire evidence-starvation axis therefore has no weakness class to answer to. The file's own earlier note predicted that entries concerning insufficient monitoring would map to the whole of L3; the transcription shows no such entry exists, and the prediction is corrected in place rather than dropped. An organization that satisfies all ten entries has said nothing about whether it could reconstruct the incident afterwards.
+
+### Changed
+
+- `CONTENT_MAP.md` and `offensive-lens/VALIDATION.md` described the OWASP crosswalk as unfilled. Both now record it as transcribed, and `VALIDATION.md` carries what the transcription found: the six unmapped techniques, the four in L3, and the inverse list — OWASP entries with no technique — as the next thing to enumerate.
+
+### Fixed
+
+- **Two OWASP entry titles were wrong in `crosswalks/owasp-agentic-top-10.md` and had been since v0.33.0.** ASI04 read *Agentic Supply Chain Compromise* and ASI08 read *Cascading Agent Failures*; the document says **Agentic Supply Chain Vulnerabilities** and **Cascading Failures**. Neither "Compromise" nor the inserted "Agent" appears in the document for those entries. Corrected in all seven places in that file, in the Related sections of PB07, PB08, PB10, PB11, PB19 and PB21, and in the five dated entries of this changelog that quote them. Correcting dated entries departs from the practice v0.36.2 set for the walkthrough note, and deliberately: that note protected an account of what a team did during an incident, while these lines misquote a published standard, and a standard's title is not a historical fact about this project.
+- The crosswalk's opening paragraph now names the document edition the titles were transcribed from, so the two corrections are auditable rather than asserted.
+
+### Why now
+
+The lens could already be read by a threat-intel team after v0.37.3 put it in ATLAS's vocabulary. This closes the other half: the list most organizations are actually asked about in a procurement questionnaire. The work was not the mapping, which the file had already sketched in its *Expected shape* section. The work was refusing to transcribe from anything but the document, which took downloading it, because two OWASP announcement pages disagree with each other on three titles and the vendor restatements that quote them inherit the disagreement. That discipline is also what surfaced the two titles this repository has been getting wrong for five minor releases.
+
+No control, mode, playbook, technique or line of reference code changes. The thirty-one techniques and their criteria are untouched.
+
 ## [0.37.3] · 2026-11-18 · ATLAS vocabulary
 
 ### Added
@@ -687,7 +709,7 @@ PB22 completes the framework's **pre-production-testing / continuous-monitoring 
 - `README.md` reading order updated from "Sixteen shipped playbooks" to "Seventeen shipped playbooks". PB19 added to the Prevention arc bucket alongside PB04 (Tool Design); together PB04 and PB19 form the **pre-incident discipline pair**: PB19 selects the platform that supports response, PB04 tiers the tools that platform exposes.
 - `crosswalks/nist-csf-2.md` Status section adds **GV.SC** (supply-chain risk management) procurement-time discipline coverage by PB19, naming the Proof of Readiness Test as the empirical evidence that supports the GV.SC subcategory requirements.
 - `crosswalks/nist-ai-rmf.md` MVO-1 Inventory section adds a gap-note acknowledgment that AI RMF does not specify the procurement-time precondition; PB19 fills the gap with the Proof of Readiness Test and the eight critical procurement questions.
-- `crosswalks/owasp-agentic-top-10.md` ASI04 (Agentic Supply Chain Compromise) mapping extended to include PB19 as the procurement-time discipline that closes the precondition gap behind ASI04 response. Coverage status bumped from `through v0.16.0` to `through v0.17.0`.
+- `crosswalks/owasp-agentic-top-10.md` ASI04 (Agentic Supply Chain Vulnerabilities) mapping extended to include PB19 as the procurement-time discipline that closes the precondition gap behind ASI04 response. Coverage status bumped from `through v0.16.0` to `through v0.17.0`.
 - `CITATION.cff` version + preferred-citation.version bumped from `0.16.0` to `0.17.0`.
 
 ### Why now
@@ -712,7 +734,7 @@ PB19 also closes a long-standing strategic positioning gap: prior framework rele
 - `README.md` reading order updated from "Fifteen shipped playbooks" to "Sixteen shipped playbooks". PB21 added to the Operations arc bucket with description naming the 60-minute Discovery Snapshot, the 24-hour Intake Standard, identity-level containment, and the migrate/redesign/retire decision path.
 - `crosswalks/nist-csf-2.md` Status section adds **ID.AM** (asset management) operational discipline coverage by PB21, naming the Shadow AI discovery boundary as the closure of the inventory-gap precondition that prior framework releases depended on but did not specify.
 - `crosswalks/nist-ai-rmf.md` MVO-1 Inventory section adds a gap-note acknowledgment that AI RMF does not specify the discovery boundary itself; PB21 fills the gap with the 24-hour intake standard, identity-level containment discipline, and the migrate/redesign/retire decision path.
-- `crosswalks/owasp-agentic-top-10.md` ASI03 (Identity & Privilege Abuse) and ASI04 (Agentic Supply Chain Compromise) mappings extended to include PB21 as the discovery-boundary playbook that closes the inventory-gap precondition. Coverage status bumped from `through v0.15.0` to `through v0.16.0`.
+- `crosswalks/owasp-agentic-top-10.md` ASI03 (Identity & Privilege Abuse) and ASI04 (Agentic Supply Chain Vulnerabilities) mappings extended to include PB21 as the discovery-boundary playbook that closes the inventory-gap precondition. Coverage status bumped from `through v0.15.0` to `through v0.16.0`.
 - `CITATION.cff` version + preferred-citation.version bumped from `0.15.0` to `0.16.0`.
 
 ### Why now
@@ -874,7 +896,7 @@ The schemas are not a new framework chapter. They are the machine-readable encod
 
 PB10 closes one of the two largest gaps the maintainer identified in the framework's coverage of 2026 production deployment patterns. Vendor copilots (Microsoft 365 Copilot, Salesforce Einstein, ServiceNow Now Assist, Google Workspace Gemini, GitHub Copilot, and the embedded copilots increasingly built into CRM, ERP, and ticketing platforms) are a common 2026 deployment pattern for AI agents in regulated enterprises. The framework's existing playbooks assumed customer-managed agents; PB10 ships the operational discipline for the case where the customer is responsible to the regulator but the vendor controls the agent's operational levers.
 
-PB10's defensive thesis (deploy behind customer-controlled identity boundary, contract for testable evidence and containment SLAs, rehearse quarterly through the Vendor Evidence Drill) is the framework's first formal supply-chain response playbook. It maps directly to OWASP Agentic Top 10 ASI04 (Agentic Supply Chain Compromise), NIST CSF 2.0 GV.SC (supply chain risk management), and the EU AI Act provider/deployer distinction. Customers acting as deployers of vendor-provided AI systems can now point at a specific operational playbook when responding to regulator inquiry or auditor question about vendor copilot incident readiness.
+PB10's defensive thesis (deploy behind customer-controlled identity boundary, contract for testable evidence and containment SLAs, rehearse quarterly through the Vendor Evidence Drill) is the framework's first formal supply-chain response playbook. It maps directly to OWASP Agentic Top 10 ASI04 (Agentic Supply Chain Vulnerabilities), NIST CSF 2.0 GV.SC (supply chain risk management), and the EU AI Act provider/deployer distinction. Customers acting as deployers of vendor-provided AI systems can now point at a specific operational playbook when responding to regulator inquiry or auditor question about vendor copilot incident readiness.
 
 The Materiality and Disclosure integration (from v0.12.0) extends naturally to vendor-copilot incidents: vendor incidents nearly always cross the convening threshold because external recipients (the vendor and downstream customers) are touched. PB10 makes that convening call explicit in its First-Hour Actions section.
 
@@ -938,7 +960,7 @@ PB12's "Insider Threat 3.0" framing positions the framework ahead of the analyst
 
 ### Changed
 
-- OWASP Agentic Top 10 crosswalk Status section updated. All 10 ASI categories now have substantive playbook coverage with direct references. ASI07 (Insecure Inter-Agent Communication) and ASI08 (Cascading Agent Failures) detailed mappings updated to reference Playbook 08 as the operational layer.
+- OWASP Agentic Top 10 crosswalk Status section updated. All 10 ASI categories now have substantive playbook coverage with direct references. ASI07 (Insecure Inter-Agent Communication) and ASI08 (Cascading Failures) detailed mappings updated to reference Playbook 08 as the operational layer.
 
 ### Why now
 
@@ -1135,7 +1157,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.3...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.38.0...HEAD
+[0.38.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.38.0
 [0.37.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.3
 [0.37.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.2
 [0.37.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.1
