@@ -11,7 +11,7 @@ During the `v0.x` series, each substantive content drop ships as its own MINOR r
 ### Planned
 
 - **Content gate complete after v0.24.0.** No remaining drafted playbooks.
-- Additional crosswalks: CIS Controls, SOC 2, HIPAA, and a companion NIST SP 800-61 r3 ↔ AI IR Overlay crosswalk (referenced from `crosswalks/nist-csf-2.md`)
+- Additional crosswalks: CIS Controls, SOC 2, HIPAA
 - Printable Board Scorecard template (`templates/board-scorecard.md`)
 - **Full Steering Committee founding cohort seated (cuts `v1.0.0`)**: v0.34.0 seated the first external Steering Committee member (Chukwunenye Amadi); v0.35.0 seated the second (Dr. Willy Takang). Target: 5 total seats (Founding Maintainer + 4 external members). Additional external seats to be seated through v0.35.x / v0.36.x releases.
 - **First external contributor artifacts merged**: both founding Steering Committee members have contribution artifacts in preparation, including a new playbook, new reference implementation, and the framework's first documented production-incident anonymized case study from Chukwunenye Amadi. These will land as coordinated releases in v0.34.x / v0.35.x / v0.36.x pending review discipline (case study specifically requires additional anonymization and subject-organization approval). Dr. Willy Takang's contribution artifacts to follow.
@@ -33,6 +33,31 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Cross-border data transfer for cloud-hosted agents.** GDPR Article 44 / Schrems II implications, US CLOUD Act considerations. Not covered in PB23 or PB10 despite direct relevance to vendor-hosted agents touching EU subjects. v1.1 candidate: PB23 cross-border-transfer subsection; PB10 vendor-data-residency boundary.
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
+
+## [0.40.0] · 2026-11-19 · Incident-response profile
+
+### Added
+
+- **`crosswalks/sp-800-61r3.md`, the NIST SP 800-61r3 crosswalk.** The 32 CSF 2.0 Subcategories that r3 profiles in its own Table 3, *CSF 2.0 Community Profile part 2: Incident Response* — DETECT 11, RESPOND 13, RECOVER 8 — each with the Subcategory text, what the overlay adds when the actor is an authorized agent, and the artifact that delivers it. Subcategory text is quoted from the NIST CSF 2.0 Reference Tool export and was compared cell by cell against it. r3's own Recommendations and Considerations are deliberately not reproduced: the PDF table column does not extract reliably, and a partial quotation of a standard is worse than a pointer to it, so the file says to read it with r3 open. Thirty-one of the thirty-two Subcategories carry an agent-specific extension; `DE.CM-02`, physical-environment monitoring, does not, and is listed rather than omitted so the count stays honest.
+- The crosswalk covers r3's incident-response tier only. r3 places Govern, Identify and Protect outside incident response, and those remain mapped at Function and Category level in [`nist-csf-2.md`](crosswalks/nist-csf-2.md), which now states the division of labour instead of promising a future file.
+
+### Changed
+
+- `crosswalks/nist-csf-2.md` promised a companion r3 crosswalk in a future release. That promise is kept, so the paragraph states where the mapping lives and what each of the two files covers.
+- The crosswalk is listed in `README.md` reading-order item 11, `MATRIX.md` section 8, and the `CONTENT_MAP.md` crosswalks table. In all three, `nist-csf-2.md` had been labelled as covering *CSF 2.0 and SP 800-61 r3* — one file standing in for two standards. The standards now have separate rows pointing at separate files, which is what made the next item findable.
+- `MATRIX.md` self-version references move to v0.40.0, and `README.md`'s description of it follows. The `Last revised` footer stays at the v0.35.0 governance milestone per the convention v0.34.0 and v0.35.0 established.
+
+### Fixed
+
+- **`MATRIX.md` attributed r3's superseded predecessor's life cycle to r3 itself.** Two places said response phases were *sequenced per NIST SP 800-61 r3*, and one named them: *Preparation, Detection and Analysis, Containment / Eradication / Recovery, Post-Incident Activity*. Those are r2's phases. In r3 the string "Detection and Analysis" appears zero times, and the four names appear once between them, inside a table headed *Previous Incident Response Life Cycle Model Phase* that maps them to the CSF Functions replacing them. r3's own model, from its section 2.1, is *"based on the six CSF 2.0 Functions"*. `README.md` already said so, so the repository contradicted itself and MATRIX was the wrong side. The seven-column response arc keeps its names and is now attributed to this framework rather than to r3, with r3's structure stated and both mapping levels cited.
+
+### Why now
+
+The *Planned* list had carried this crosswalk since the CSF 2.0 crosswalk shipped at v0.1.5, and `crosswalks/nist-csf-2.md` pointed a reader at it by name. A forward reference to a file that does not exist is a different and worse thing than an unstarted plan, which is why this one came before the other Planned crosswalks.
+
+Writing it also surfaced the misattribution. Transcribing r3 rather than recalling it meant reading section 2.1, where the four-phase model appears exactly once and is labelled as the previous version. The item is removed from *Planned*; CIS Controls, SOC 2 and HIPAA remain there.
+
+No control, mode, playbook, technique or line of reference code changes. No existing crosswalk cell changes.
 
 ## [0.39.2] · 2026-11-19 · Self-consistency
 
@@ -1210,7 +1235,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.39.2...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.40.0...HEAD
+[0.40.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.40.0
 [0.39.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.2
 [0.39.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.1
 [0.39.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.0
