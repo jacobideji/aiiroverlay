@@ -43,7 +43,7 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 
 ### Why now
 
-Both items came out of a full sweep of the repository rather than a reader hitting them, and neither affects a response. They are shipped together because the sweep found nothing else: 1,975 relative links and 23 anchor fragments resolve, 57 changelog entries correspond exactly to 57 tags in both directions, all 31 lens techniques carry their three criteria and agree with the matrix, the ladder's six modes and thirteen variant rows are all mapped, the six evidence types reach six exporter adapters and six indicator classes, and every MITRE ATLAS identifier cited anywhere in the repository is present in ATLAS v5.6.0.
+Both items came out of a full review of the repository rather than a reader hitting them, and neither affects a response. They are shipped together because the review found nothing else: 1,975 relative links and 23 anchor fragments resolve, 57 changelog entries correspond exactly to 57 tags in both directions, all 31 lens techniques carry their three criteria and agree with the matrix, the ladder's six modes and thirteen variant rows are all mapped, the six evidence types reach six exporter adapters and six indicator classes, and every MITRE ATLAS identifier cited anywhere in the repository is present in ATLAS v5.6.0.
 
 No control, mode, playbook, technique or line of reference code changes. No crosswalk cell changes, and no document gained or lost a sentence.
 
@@ -137,7 +137,7 @@ No control, mode, playbook, technique or line of reference code changes. The thi
 
 ### Why now
 
-The sweep was looking for holes and found none. Six evidence types each have an exporter adapter. The ladder's six modes carry five operational checks, with the baseline correctly exempt. All seven mode variants map to techniques, and the one that does not, M3-Vendor, says why. Thirty-one techniques each carry PASS, PARTIAL and FAIL criteria, and `MATRIX.md` and the four lens files agree exactly. All seven response phases are covered, all twenty-four playbooks are reachable from each of the three navigation artifacts, the six triage questions all route somewhere, and the four maturity levels all have criteria.
+The review was looking for holes and found none. Six evidence types each have an exporter adapter. The ladder's six modes carry five operational checks, with the baseline correctly exempt. All seven mode variants map to techniques, and the one that does not, M3-Vendor, says why. Thirty-one techniques each carry PASS, PARTIAL and FAIL criteria, and `MATRIX.md` and the four lens files agree exactly. All seven response phases are covered, all twenty-four playbooks are reachable from each of the three navigation artifacts, the six triage questions all route somewhere, and the four maturity levels all have criteria.
 
 What it found was four sentences. Nothing in the framework or the component is incomplete; four descriptions of them were wrong.
 
