@@ -200,6 +200,7 @@ These four data points are the [Maturity Roadmap](../framework/03-maturity-roadm
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports MANAGE 4.2, MANAGE 4.3)
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports ID.IM-01, ID.IM-02, RC.RP-04, RC.CO-03, GV.OV-01)
 - **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook addresses recurrence prevention for ASI02, ASI06, ASI08)
+- **Transferable Indicator Set:** [`evidence/transferable-indicators.md`](../evidence/transferable-indicators.md) (deriving indicators is a Closure activity alongside the hardening list on this page: the last thing you do with the evidence, and the first thing another organization's detection layer consumes)
 
 ## The Question to Carry Forward
 
