@@ -99,7 +99,7 @@ An agent incident that recurs after recovery does not look like a recurrence. It
 **FAIL**. A single call returned the agent to M0 with no gate.
 
 **Expected defensive signal:** the refusal itself, logged, with the failing check named.
-**Remediation theme:** make the gate a test, not a signature. A regression case derived from the incident, run automatically, is the minimum. The overlay's `verify.py` pattern is the right shape for it.
+**Remediation theme:** make the gate a test, not a signature. A regression case derived from the incident, run automatically, is the minimum. The overlay's `validate.py` pattern is the right shape for it.
 
 ### OL-T405 — Self-approved re-enable
 
