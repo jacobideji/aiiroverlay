@@ -34,6 +34,18 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.37.1] · 2026-11-18 · Technique count
+
+### Fixed
+
+- `offensive-lens/START-HERE.md` told a reader to run the 90-minute first pass "before committing to the full 28", while `MATRIX.md`, the component's technique index, lists 31. The first pass is the document that decides whether a practitioner runs the rest of the component, and it understated the rest by three. `MATRIX.md` holds 31 distinct technique rows with no duplicates, the four lens files account for 7, 10, 8 and 6 of them, and every other count statement in the component already read 31. The line now reads 31.
+
+### Why now
+
+v0.37.0 routed four adoption documents to the first pass, which makes the number of techniques it quotes the first figure a reader meets on the path from `QUICKSTART.md` to the component. A sweep of every count claim in the component found this to be the only one that disagreed with its source: the technique total, the per-lens totals, the six evidence classes, the six ladder modes and the four MVO controls all check out against the files that define them.
+
+No control, mode, playbook, technique or line of reference code changes.
+
 ## [0.37.0] · 2026-11-18 · Adoption path
 
 ### Added
@@ -1089,7 +1101,9 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.1...HEAD
+[0.37.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.1
+[0.37.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
 [0.37.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
 [0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.4
 [0.36.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.3
