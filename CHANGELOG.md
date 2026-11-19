@@ -983,7 +983,7 @@ PB08 also extends the upstream-downstream contract pattern established by PB07 �
 
 PB11 closes the last remaining NIST CSF 2.0 deferral. With this release, the framework has substantive playbook coverage of all six CSF 2.0 functions (GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER). PB11 also consumes the credential-event log schema specified in [Playbook 07](playbooks/07-secrets-and-tokens.md), honoring the upstream-downstream contract PB07 established. The framework's IR loop (identify, protect, detect, respond, recover, improve) is now operationally complete.
 
-PB11 covers OWASP ASI06 (Memory & Context Poisoning detection), ASI08 (Cascading Agent Failures early detection), and ASI10 (Rogue Agent drift detection).
+PB11 covers OWASP ASI06 (Memory & Context Poisoning detection), ASI08 (Cascading Failures early detection), and ASI10 (Rogue Agent drift detection).
 
 ## [0.8.0] · 2026-06-24 · Playbook 07: Secrets and Tokens in an Agent World
 
