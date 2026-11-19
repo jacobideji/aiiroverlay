@@ -43,7 +43,7 @@ For open-ended questions, use **[Discussions](https://github.com/jacobideji/aiir
 
 ### Playbooks (`playbooks/`)
 
-- Follow the **playbook template**. Every playbook has these sections: Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related, The Question to Carry Forward. Each playbook closes with a source-citation footer linking back to the originating newsletter issue.
+- Follow the **playbook template**. Every playbook carries these sections, in this order: Premise, First-Hour Actions, Containment Options, Evidence Priorities, Recovery Sequence, Post-Incident Hardening, Common Pitfalls, Related, The Question to Carry Forward. Playbook 19 (Build vs Buy) keeps the order and renames four of them for its procurement domain, which is the one sanctioned deviation. Each playbook closes with a source-citation footer linking back to the originating newsletter issue.
 - Must include a **source citation** if adapted from existing material
 - Must reference the Mental Model clause(s) the scenario engages
 - Must cross-reference relevant framework pieces using relative paths (for example, `[Six Triage Questions](../triage/six-questions.md)` or `[Mode M3](../kill-switches/overview.md#mode-3-tool-tiering)`). Anchor links are encouraged where the target heading is stable.
