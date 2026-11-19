@@ -96,7 +96,7 @@ When responding to an auditor, regulator, or board question framed in AI RMF ter
 
 ---
 
-*Last revised: 2026-06-29 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-06-30 · Maintainer interpretation, not a NIST publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
