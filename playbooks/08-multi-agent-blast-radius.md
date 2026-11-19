@@ -268,7 +268,7 @@ These are the highest-frequency multi-agent-specific failure modes. Each has bee
 - **Playbook 20: Maturity Roadmap (Operating View)** ([`playbooks/20-maturity-roadmap.md`](20-maturity-roadmap.md)). Multi-agent topologies require Level 3 traceability before the delegation-depth cap can be raised above 2.
 - **NIST AI RMF crosswalk:** [`crosswalks/nist-ai-rmf.md`](../crosswalks/nist-ai-rmf.md) (this playbook supports MAP 4.1, MANAGE 1.3, MANAGE 2.4).
 - **NIST CSF 2.0 crosswalk:** [`crosswalks/nist-csf-2.md`](../crosswalks/nist-csf-2.md) (this playbook supports ID.AM-04, RS.MI-01, RS.MI-02, RC.RP-02).
-- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the direct operational response for ASI07 Insecure Inter-Agent Communication and the response-side complement to ASI08 Cascading Failures.
+- **OWASP Agentic Top 10 crosswalk:** [`crosswalks/owasp-agentic-top-10.md`](../crosswalks/owasp-agentic-top-10.md) (this playbook is the direct operational response for ASI07 Insecure Inter-Agent Communication and the response-side complement to ASI08 Cascading Failures).
 
 ## The Question to Carry Forward
 
