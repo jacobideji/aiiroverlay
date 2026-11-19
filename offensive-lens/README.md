@@ -101,4 +101,4 @@ Findings produced here are intended to flow back as overlay hardening input: the
 
 ## Status
 
-Pre-release. Conformance level **L0 Specified** per [VALIDATION.md](VALIDATION.md): the fixture is green and 24 of 31 techniques are shown to discriminate, but no exercise in this repository has been executed against a real deployment by anyone. `TODO` markers indicate crosswalk cells awaiting authoritative standard IDs.
+Pre-release. Conformance level **L1 Implemented** per [VALIDATION.md](VALIDATION.md): all six kill-switch modes are invocable in the overlay's reference implementation, and the fixture is green with 24 of 31 techniques shown to discriminate. No exercise in this repository has been executed against a real deployment by anyone. The `TODO` cells in [MATRIX.md](MATRIX.md) are overlay-playbook mappings awaiting direct evidence, not missing standard IDs: the ATLAS and OWASP crosswalks are transcribed.
