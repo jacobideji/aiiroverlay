@@ -15,8 +15,6 @@
 
 OWASP's Agentic Top 10 (*OWASP Top 10 For Agentic Applications 2026*, Version 2026, released December 2025 by the OWASP Gen AI Security Project; entry titles in this file are transcribed from that document's section headings) is the most current ranking of risks specific to autonomous and agentic AI. The 10 risks (ASI01–ASI10) cover goal hijacking, tool misuse, identity abuse, supply chain, code execution, memory poisoning, inter-agent communication, cascading failures, human-agent trust, and rogue behavior.
 
-This one isn't a title fix — it records which edition the corrected titles came from, so the file is auditable the way the lens crosswalk and the ATLAS crosswalk now are. Without it, two titles change with nothing saying why.
-
 The AI IR Overlay provides the **operational machinery** (inventory, staged containment, evidence preservation, controlled recovery) for **responding to incidents** in each ASI category. OWASP categorizes what can go wrong. The AI IR Overlay specifies how to detect, contain, prove, and recover when it does.
 
 ## At a Glance
