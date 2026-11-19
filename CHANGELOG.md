@@ -34,6 +34,23 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.37.3] · 2026-11-18 · ATLAS vocabulary
+
+### Added
+
+- **`offensive-lens/crosswalks/mitre-atlas.md` is transcribed.** The file shipped with its six expected cells as `TODO` and a standing instruction not to fill them from memory. They are filled from ATLAS v5.6.0, `mitre-atlas/atlas-data` release `v2026.10`, and the file now records the matrix version it was transcribed against. Four of the six map: OL-T204 and OL-T401 to `AML.T0080.000` Memory, which specializes `AML.T0080` AI Agent Context Poisoning, with OL-T204 also taking `AML.T0094` Delay Execution of LLM Instructions because a write held for re-enable is a delayed instruction bypassing a control; OL-T307 to `AML.T0071` False RAG Entry Injection at High confidence and `AML.T0067` LLM Trusted Output Components Manipulation at Medium, since T0067 manipulates output to deceive the user while OL-T307 deceives the responder reading evidence; and OL-T402 to `AML.T0070` RAG Poisoning.
+- **Two of the six are recorded as unmapped rather than forced.** OL-T206 describes a contained agent trying alternative tools out of competence, with no adversary in the loop, so it has no adversary-technique counterpart; `AML.T0053` AI Agent Tool Invocation is named as the nearest neighbour along with the reason it is not equivalent. OL-T403 is a defect in the responder's own rotation sequence rather than something an adversary does, and ATLAS carries no valid-account persistence entry; `AML.T0055` Unsecured Credentials and `AML.T0083` Credentials from AI Agent Configuration are named as the techniques that benefit when that sequence is wrong. The file states that four of six mapping is the crosswalk working as specified, not falling short of six.
+
+### Changed
+
+- `CONTENT_MAP.md` and `offensive-lens/VALIDATION.md` each described both lens crosswalks as unfilled. Only the OWASP one is, and both files now say so. Leaving either behind would have recreated the stale-statement class v0.37.2 had just finished clearing.
+
+### Why now
+
+A threat-intel reader was the one audience the lens could not serve, and the file said so itself: an Offensive Lens report that speaks ATLAS can be read by a threat-intel team without translation. It simply did not speak it yet. Six cells was the whole distance. The discipline that kept them empty is also why filling them took the published dataset rather than a recollection, and why two of them came back empty on purpose.
+
+No control, mode, playbook, technique or line of reference code changes. The thirty-one techniques and their criteria are untouched. What changed is what they can be called in somebody else's vocabulary.
+
 ## [0.37.2] · 2026-11-18 · Self-description
 
 ### Fixed
@@ -1118,8 +1135,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.2...HEAD
-[0.37.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.2
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.37.3...HEAD
+[0.37.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.3
 [0.37.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.1
 [0.37.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.37.0
 [0.36.4]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.36.4
