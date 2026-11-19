@@ -133,7 +133,7 @@ That layered relationship is formalized in [`sp-800-61r3.md`](sp-800-61r3.md), w
 
 ---
 
-*Last revised: 2026-06-29 · Maintainer interpretation, not a NIST publication.*
+*Last revised: 2026-11-19 · Maintainer interpretation, not a NIST publication.*
 
 *Source: AI IR Overlay newsletter and framework synthesis, by Jacob Ideji.*
 <https://www.linkedin.com/in/jacobideji/>
