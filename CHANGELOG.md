@@ -34,7 +34,7 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
-## [0.37.2] · 2026-11-18 · Self-description
+### [0.37.2] · 2026-11-18 · Self-description
 
 ### Fixed
 
@@ -45,7 +45,9 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 
 ### Why now
 
-A completeness sweep against the repository's own declared contracts returned no missing artifacts: six evidence types to six exporter adapters, six ladder modes with five operational checks and the baseline correctly exempt, all seven mode variants mapped to techniques with M3-Vendor excluded for a stated reason, thirty-one techniques each carrying PASS, PARTIAL and FAIL criteria with `MATRIX.md` and the four lens files agreeing exactly, all seven response phases, all twenty-four playbooks reachable from each of the three navigation artifacts, six triage questions with no unresolvable link, and four maturity levels with criteria. What the sweep did find was four statements the repository makes about itself that were no longer true. Nothing in the framework or the component is incomplete; four sentences describing them were wrong.
+The sweep was looking for holes and found none. Six evidence types each have an exporter adapter. The ladder's six modes carry five operational checks, with the baseline correctly exempt. All seven mode variants map to techniques, and the one that does not, M3-Vendor, says why. Thirty-one techniques each carry PASS, PARTIAL and FAIL criteria, and `MATRIX.md` and the four lens files agree exactly. All seven response phases are covered, all twenty-four playbooks are reachable from each of the three navigation artifacts, the six triage questions all route somewhere, and the four maturity levels all have criteria.
+
+What it found was four sentences. Nothing in the framework or the component is incomplete; four descriptions of them were wrong.
 
 No control, mode, playbook, technique or line of reference code changes.
 
