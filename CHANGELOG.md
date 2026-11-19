@@ -34,6 +34,19 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.39.2] · 2026-11-19 · Self-consistency
+
+### Fixed
+
+- **Two revision stamps were a day behind their own files.** `CONTENT_MAP.md` was stamped 2026-11-18 and edited on the 19th, when v0.39.0 added its Transferable Indicator Set section; `crosswalks/owasp-agentic-top-10.md` was stamped the same and edited on the 19th by v0.38.0. Both now read 2026-11-19, and the `CONTENT_MAP.md` stamp names the section it gained. Neither was carelessness: both releases crossed midnight UTC between the edit and the stamp. This is the class v0.37.2 shipped a release to fix in `CONTENT_MAP.md`, recurring from a calendar boundary rather than from inattention, which is worth recording because the next release to cross midnight will do it again unless the stamp is written last.
+- **Four lines carried trailing whitespace.** `examples/incident-walkthrough.md` lines 144 and 146 are blockquote continuation lines in the dated framework-version note added by v0.36.2, and were `> ` rather than `>`. `RELEASE_CHECKLIST.md` line 26 ended a sentence with a space. `playbooks/15-records-retention.md` line 253 is the blank line before the closing heading, which GitHub's editor indented when the Transferable Indicator Set link was added in v0.39.0. All four render identically either way: a whitespace-only line is blank to CommonMark and two trailing spaces after a full stop are collapsed. They are corrected because `markdownlint-cli2` is named as repository tooling in `SECURITY.md` and MD009 flags exactly this, and because the repository now has no trailing whitespace at all, which is a cheaper invariant to hold than to re-establish.
+
+### Why now
+
+Both items came out of a full sweep of the repository rather than a reader hitting them, and neither affects a response. They are shipped together because the sweep found nothing else: 1,975 relative links and 23 anchor fragments resolve, 57 changelog entries correspond exactly to 57 tags in both directions, all 31 lens techniques carry their three criteria and agree with the matrix, the ladder's six modes and thirteen variant rows are all mapped, the six evidence types reach six exporter adapters and six indicator classes, and every MITRE ATLAS identifier cited anywhere in the repository is present in ATLAS v5.6.0.
+
+No control, mode, playbook, technique or line of reference code changes. No crosswalk cell changes, and no document gained or lost a sentence.
+
 ## [0.39.1] · 2026-11-19 · One-way asymmetry
 
 ### Fixed
@@ -1197,7 +1210,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.39.1...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.39.2...HEAD
+[0.39.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.2
 [0.39.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.1
 [0.39.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.0
 [0.38.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.38.0
