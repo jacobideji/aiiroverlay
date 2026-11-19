@@ -229,7 +229,7 @@ It was produced by reading the framework against itself: taking each Minimum Via
 | `offensive-lens/FINDINGS.md`: every finding, its correction, and the guard that holds it | Shipped |
 | `offensive-lens/crosswalks/overlay-mapping.md`: every mode, every variant, and the technique that tests it | Shipped |
 | `offensive-lens/crosswalks/mitre-atlas.md` | Transcribed from ATLAS v5.6.0 at v0.37.3 |
-| `offensive-lens/crosswalks/owasp-agentic-top10.md` | Unfilled by design, pending transcription from the published source |
+| `offensive-lens/crosswalks/owasp-agentic-top10.md` | Transcribed from the OWASP Top 10 for Agentic Applications 2026 at v0.38.0 |
 
 The lens validates the framework; it does not extend it. No control, mode or playbook depends on it, and an adopter who never runs it is still conformant. What they lack is evidence.
 
