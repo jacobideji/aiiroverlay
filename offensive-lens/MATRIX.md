@@ -17,7 +17,7 @@
 
 **Legend**, *Control*: overlay MVO control (1 Inventory · 2 Safe Modes · 3 Evidence · 4 Controlled Re-enable). *CSF*: NIST CSF 2.0 function, the axis NIST SP 800-61 r3 is organized on. *Write risk*: whether running the technique can produce a write to a real target, and therefore needs per-exercise sign-off per [SCOPE-AND-ETHICS.md](SCOPE-AND-ETHICS.md#authorization-gate).
 
-Playbook IDs are filled only where the overlay's own `kill-switches/overview.md` or a playbook's stated scope gives direct evidence. Remaining `TODO` cells await authoritative IDs from the mapped standard, see [crosswalks/](crosswalks/). Do not fill them from memory.
+Playbook IDs are filled only where the overlay's own `kill-switches/overview.md` or a playbook's stated scope gives direct evidence. Remaining `TODO` cells await authoritative IDs from the mapping, see [`crosswalks/overlay-mapping.md`](crosswalks/overlay-mapping.md#playbook-mapping). Do not fill them from memory.
 
 ## L1 · Inventory Drift
 
