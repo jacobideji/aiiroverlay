@@ -10,7 +10,7 @@
 This directory contains **minimal, working reference implementations** of the framework's two operational contracts:
 
 1. [`evidence_exporter/`](evidence_exporter/): a Python CLI implementing the [Evidence Export Script Contract](../schemas/evidence-export.spec.md) for Types A through F
-2. [`kill_switch_demo/`](kill_switch_demo/): a Python tool-toggle demo showing Modes M0, M1, M3 against a synthetic agent
+2. [`kill_switch_demo/`](kill_switch_demo/): a Python demo of the [Kill-Switch API contract](../schemas/kill-switch-api.md) showing Modes M0 through M5 against a synthetic agent
 
 These are **not production code.** They are skeletons that demonstrate the contracts' shape, manifest discipline, and key behaviors. Adopters fork these and replace the stub adapters with their own vendor-specific integrations.
 
