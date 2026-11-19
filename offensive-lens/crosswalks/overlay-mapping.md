@@ -83,14 +83,14 @@ An agent that passes L1–L4 has a defensible answer to all four. That is the cl
 
 ## Playbook mapping
 
-The overlay's 24 playbooks, from its repository tree. Mappings below are asserted only where the overlay's own kill-switch document or playbook title gives direct evidence; the rest remain open and are tracked as a separate work item.
+The overlay's 24 playbooks, from its repository tree. Mappings rest on one of two bases: the overlay's own kill-switch document and playbook titles, or a reading of the playbook's procedure for the step a technique's failure would invalidate. The eight rows added at v0.42.0, and three techniques added to rows that already existed, come from the second.
 
 | Playbook | Techniques | Basis |
 |---|---|---|
-| PB01 Agent as Privileged Identity | OL-T102, OL-T106, OL-T403 | identity and scope are L1's subject |
+| PB01 Agent as Privileged Identity | OL-T101, OL-T102, OL-T106, OL-T306, OL-T403 | identity and scope are L1's subject; OL-T101 tests the AI-BOM tool list this playbook owns, and OL-T306 is the same identity problem seen from the evidence side |
 | PB02 Evidence Lives in New Places | all of L3 | the six evidence classes |
 | PB03 RAG / Knowledge-Base Forensics | OL-T105, OL-T303, OL-T402 | M3-RAG variant owner |
-| PB04 Tool Design Is Containment | OL-T101, OL-T104, OL-T206, OL-T208, OL-T209 | cited by M3 tier definitions; PB04's controls include approval gates |
+| PB04 Tool Design Is Containment | OL-T101, OL-T104, OL-T201, OL-T206, OL-T208, OL-T209 | cited by M3 tier definitions; PB04's controls include approval gates, and a write path that never consulted the registry is a tool-design defect |
 | PB06 Prompt Injection as a Workflow Threat | OL-T307 | M3-Workflow variant owner |
 | PB08 Multi-Agent Blast Radius | OL-T203 | M3-Delegation Cap variant owner |
 | PB09 Leakage Without a Breach | OL-T210 | M3-Output variant owner |
@@ -105,7 +105,20 @@ The overlay's 24 playbooks, from its repository tree. Mappings below are asserte
 | PB22 Model and Policy Drift | OL-T305, OL-T406 | M3-Drift variant owner |
 | PB05, PB07, PB11, PB16, PB17, PB19, PB23, PB24 | open | require reading each playbook's procedure |
 
-Remaining work: for each open playbook, identify the technique whose failure would invalidate that playbook's *procedure*, not the playbook on the same topic, the one that would be wrong. A technique mapping to no playbook is a gap in the overlay; a playbook with no technique is a gap in the lens. Record both rather than forcing a mapping.
+The rule: for each playbook, identify the technique whose failure would invalidate that playbook's *procedure*, not the playbook on the same topic, the one that would be wrong. A technique mapping to no playbook is a gap in the overlay; a playbook with no technique is a gap in the lens. Record both rather than forcing a mapping.
+
+Applying it leaves every playbook carrying at least one technique, and two techniques carrying no playbook of their own: **OL-T202** (in-flight action completion) and **OL-T204** (memory-mediated deferred write). Both turn on the interval between dispatch and effect, OL-T202 at the tool layer and OL-T204 across a containment boundary, and no playbook's procedure has a step that interval would break. PB14 covers them as it covers the whole lens, which is not the same as a playbook whose procedure they test. They are recorded here rather than forced onto the nearest playbook on the same topic, and they are the two cells `MATRIX.md` still carries as `TODO`.
+
+Operation 2 — line 106, the single | PB05, PB07, PB11, … | open | row. Select the whole line and paste these eight rows over it:
+
+| PB05 Executive Decision-Making | OL-T209, OL-T303, OL-T307 | the Approval Receipt cannot render provenance the approver can act on, and packet claims tagged *Confirmed* rest on evidence |
+| PB07 Secrets and Tokens | OL-T102, OL-T205, OL-T401, OL-T403, OL-T405 | the snapshot-before-rotation sequence, the scope-shrink rule, break-glass independence, and the approver this playbook names |
+| PB11 Monitoring That Truly Detects | OL-T102, OL-T107, OL-T302, OL-T303 | one technique per signal family, plus the rule-calibration decay the drill schedules |
+| PB16 Training Your Team | OL-T201, OL-T207 | Core Move 1 is *verify activation* against a measured TTSM; the drill scores both |
+| PB17 Communication Techniques | OL-T301, OL-T306, OL-T307 | the Three-Status Taxonomy and the impact statement are built from evidence a responder reads |
+| PB19 Build vs Buy | OL-T201, OL-T303, OL-T305, OL-T306 | the Proof of Readiness Test is these four techniques run against a candidate platform |
+| PB23 AI Logging and Privacy | OL-T301, OL-T306, OL-T308 | Layer 2's full payload, Layer 1's correlation tokens, and the tier retention horizons |
+| PB24 Board-Ready Scorecard | OL-T201, OL-T209, OL-T302 | scorecard items A1, A2 and B3 are capability claims these techniques falsify |
 
 ## Gaps found by this mapping
 
