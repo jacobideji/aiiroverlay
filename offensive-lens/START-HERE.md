@@ -13,7 +13,7 @@
 
 # Start Here — the 90-minute first pass
 
-One exercise per lens. Four verdicts. Enough to know which overlay control is weakest in your deployment, before committing to the full 28.
+One exercise per lens. Four verdicts. Enough to know which overlay control is weakest in your deployment, before committing to the full 31.
 
 Prerequisite: the [Authorization Gate](SCOPE-AND-ETHICS.md#authorization-gate) is satisfied and recorded. Target one agent, in staging, with at least one write-capable tool and a working kill switch.
 
