@@ -13,7 +13,7 @@
 
 # AI IR Overlay — Offensive Lens
 
-**Version 0.37.0** · companion to [AI IR Overlay™](https://github.com/jacobideji/aiiroverlay) v0.35.0 · Apache 2.0
+**Companion to [AI IR Overlay™](https://github.com/jacobideji/aiiroverlay)** · versioned and released with the overlay · Apache 2.0
 
 > The overlay specifies what to do when an AI agent incident happens.
 > The Offensive Lens tests whether any of it would actually work.
