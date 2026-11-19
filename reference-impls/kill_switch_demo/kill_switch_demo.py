@@ -3,7 +3,7 @@
 AI IR Overlay reference kill-switch demo.
 
 A minimal Python implementation of the Kill-Switch API contract from
-`schemas/kill-switch-api.md` showing Modes M0, M1, M2, M3, M4 against a
+`schemas/kill-switch-api.md` showing Modes M0 through M5 against a
 synthetic in-memory agent tool registry.
 
 This is NOT production code. It demonstrates the Activate / Status /
@@ -12,7 +12,8 @@ Adopters fork this and wire the registry up to LangGraph, Bedrock Agents,
 or a vendor-specific tool-management API.
 
 Conformance to the contract is demonstrated by:
-  - Activate accepts required inputs (mode, agent_id, actor, reason, ticket_id)
+  - Activate accepts required inputs (mode, actor, reason, ticket_id); the
+      agent_id from the contract is bound once on the API instance
   - Activate returns activation_id with requested_at, acknowledged_at, effective_at
   - effective_at is set only after Probe returns pass (no caching, no fast-fail)
   - Status query by agent_id returns current_mode, activated_at, last_probed_at
@@ -22,7 +23,7 @@ Conformance to the contract is demonstrated by:
 
 Usage
 -----
-    # Run the demo end-to-end with all five modes
+    # Run the demo end-to-end with all six modes
     python3 kill_switch_demo.py
 
     # Run with verbose telemetry output
