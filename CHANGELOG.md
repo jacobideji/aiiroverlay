@@ -34,6 +34,22 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.42.1] · 2026-11-20 · Tag hygiene
+
+### Fixed
+
+- **The `v0.14.2` release tag carried a literal trailing comma. It no longer does.** The tag and its GitHub release were both named `v0.14.2,`. A tag named `v0.14.2` now points at the same commit, `b1f6aa8`, the release title is preserved, and the malformed tag and release are deleted. The release body was empty and it carried no assets, so nothing was lost. Two entries below, at v0.24.0 and v0.27.0, record that the tag *could not be deleted or renamed after the fact*; that was wrong rather than unlucky, and both are left as the dated record of what was believed at the time. The `[0.14.2]` link reference drops its comma, and the HTML comment above it, which told a future reader not to remove the comma without first verifying the tag had been renamed, now records that it has been.
+- **The `[0.41.0]` and `[0.42.0]` link references were missing.** Every `## [x.y.z]` heading in this file is a reference link, so the two newest releases rendered as plain text instead of linking to their release pages. `[0.42.1]` is added alongside them.
+- **The `[Unreleased]` compare link still pointed at `v0.40.0`.** It is the diff from the latest release to `HEAD`, and it sat two releases behind.
+
+### Why now
+
+Fixing the tag is what surfaced the other two: the tag fix breaks the `[0.14.2]` link unless the reference moves with it, and checking that one reference meant reading the whole block.
+
+`RELEASE_CHECKLIST.md` already gates all three. Two pre-flight items bump `[Unreleased]` and add the new `[X.Y.Z]` reference, and a post-push item says to open the new reference in a browser and confirm it resolves to HTTP 200. The gates were right and were not run for v0.41.0 or v0.42.0. That is a different failure from a missing gate, and it does not call for a new one.
+
+No control, mode, playbook, technique, crosswalk cell or line of reference-implementation logic changes.
+
 ## [0.42.0] · 2026-11-20 · Playbook mapping
 
 ### Added
@@ -1289,7 +1305,10 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.40.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.42.1...HEAD
+[0.42.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.42.1
+[0.42.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.42.0
+[0.41.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.41.0
 [0.40.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.40.0
 [0.39.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.2
 [0.39.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.39.1
@@ -1326,8 +1345,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 [0.16.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.16.0
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
-<!-- The v0.14.2 release tag was inadvertently created with a literal trailing comma ("v0.14.2,") and the tag could not be deleted or renamed after the fact. The link reference below points at the actual malformed URL so the reference resolves to HTTP 200; do NOT remove the trailing comma without first verifying the GitHub-side tag has been renamed. See v0.14.2 release page for context. -->
-[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2,
+<!-- The v0.14.2 release tag was created with a literal trailing comma ("v0.14.2,"). At v0.42.1 a correctly named tag was created on the same commit and the malformed tag and its release were deleted, so the reference below carries no comma. Do not re-add it. -->
+[[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
 [0.13.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.13.0
