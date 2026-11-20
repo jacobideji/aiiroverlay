@@ -209,10 +209,11 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 
 | Artifact | Repo home | Status |
 |---|---|---|
-| AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1`; v0.26.0 adds maturity-target-conditional schema validation, last_reviewed and kill_switches.tested_at staleness checks, and `--strict` flag |
-| CI workflow (GitHub Actions) running the validator on every PR touching `templates/`, `schemas/`, or `scripts/validate.py`. Supports manual dispatch via the Actions tab. | [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) | ✅ `v0.14.2` |
+| Repository consistency checks (Python 3; links, anchors, identifiers, the changelog ledger, and the claims these documents make about the repository's own tooling) | [`scripts/check_repo.py`](scripts/check_repo.py) | ✅ `v0.44.0` |
+| Staleness regression tests for the reference validator | [`tests/test_validate.py`](tests/test_validate.py) | ✅ `v0.43.0` |
+| CI workflow (GitHub Actions) running the repository checks, the reference validator and the test suite on every PR touching `templates/**`, `schemas/**`, `scripts/validate.py`, `scripts/check_repo.py` or `tests/**`. Supports manual dispatch via the Actions tab. | [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) | ✅ `v0.14.2`; v0.43.0 adds the test suite, v0.44.0 the repository checks |
 | Evidence Exporter (Python CLI implementing the Evidence Export Script Contract for Types A through F; six stub adapters; manifest with SHA-256 integrity; parallel-export; telemetry events) | [`reference-impls/evidence_exporter/`](reference-impls/evidence_exporter/) | ✅ `v0.26.0` |
-| Kill-Switch Demo (Python in-memory tool registry showing M0/M1/M2/M3/M4 with the Activate/Status/Deactivate/Probe API shape, separation-of-duties, scope parameter) | [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) | ✅ `v0.26.0` |
+| Kill-Switch Demo (Python in-memory tool registry showing M0 through M5 with the Activate/Status/Deactivate/Probe API shape, separation-of-duties, scope parameter) | [`reference-impls/kill_switch_demo/`](reference-impls/kill_switch_demo/) | ✅ `v0.26.0` |
 
 ## Transferable Indicator Set (derived from the evidence types, not from an issue)
 
