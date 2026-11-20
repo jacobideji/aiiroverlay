@@ -155,6 +155,35 @@ def check_staleness(instance: dict, today: date | None = None) -> list[str]:
                     f"must be within {KILL_SWITCH_TESTED_MAX_DAYS} days for {maturity_target} conformance"
                 )
 
+    # level_4_resilient additionally requires a quarterly M5 drill. M5 carries no
+    # kill_switches record by design: per schemas/ai-bom.schema.json its outcomes
+    # live in incidents_history, which playbooks/13-six-metrics.md Metric 6 reads.
+    if maturity_target == "level_4_resilient":
+        m5_records = [
+            r
+            for r in instance.get("incidents_history") or []
+            if isinstance(r, dict) and r.get("mode_activated") == "M5"
+        ]
+        m5_dates = [d for d in (parse_date(r.get("date")) for r in m5_records) if d]
+        if not m5_records:
+            findings.append(
+                "  incidents_history: no M5 Controlled Re-Enable record; required for "
+                f"{maturity_target} conformance (per framework/03-maturity-roadmap.md)"
+            )
+        elif not m5_dates:
+            findings.append(
+                "  incidents_history: M5 record present but its date is missing or "
+                f"unparsable; required for {maturity_target} conformance"
+            )
+        else:
+            age = (today - max(m5_dates)).days
+            if age > KILL_SWITCH_TESTED_MAX_DAYS:
+                findings.append(
+                    f"  incidents_history: most recent M5 drill is {age} days old "
+                    f"({max(m5_dates).isoformat()}); must be within "
+                    f"{KILL_SWITCH_TESTED_MAX_DAYS} days for {maturity_target} conformance"
+                )
+
     return findings
 
 
