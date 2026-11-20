@@ -28,6 +28,7 @@ Exit codes
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -243,7 +244,9 @@ def check_workflow_paths() -> list[str]:
     """Prose describing the CI trigger paths matches the workflow's own paths.
 
     v0.43.0 added `tests/**` to the triggers and left `CONTENT_MAP.md` and
-    `RELEASE_CHECKLIST.md` describing the previous set.
+    `RELEASE_CHECKLIST.md` describing the previous set. v0.45.0 widened this to
+    every markdown file, because `README.md` carried a third stale copy that a
+    two-file loop never looked at.
     """
     if not WORKFLOW.exists():
         return [f"{rel(WORKFLOW)}: missing"]
@@ -256,13 +259,19 @@ def check_workflow_paths() -> list[str]:
         return path.rstrip("*").rstrip("/")
 
     bad: list[str] = []
-    for name in ("CONTENT_MAP.md", "RELEASE_CHECKLIST.md"):
-        text = read(REPO_ROOT / name)
-        for line_no, line in enumerate(text.split("\n"), 1):
+    for p in walk((".md",)):
+        if p.name == "CHANGELOG.md":
+            continue
+        name = rel(p)
+        for line_no, line in enumerate(read(p).split("\n"), 1):
             if "validate-templates" not in line and "triggers" not in line:
                 continue
             named = {stem(x) for x in re.findall(r"`([^`]+)`", line)}
-            if not named & {stem(w) for w in watched}:
+            # Two or more watched paths on one line means the line is
+            # enumerating the trigger set. One means it is referring to a
+            # file, as QUICKSTART.md does when it tells an adopter to re-run
+            # the validator; demanding completeness there would be noise.
+            if len(named & {stem(w) for w in watched}) < 2:
                 continue
             missing = sorted(w for w in watched if stem(w) not in named)
             if missing:
@@ -442,6 +451,50 @@ def check_table_separators() -> list[str]:
     return bad
 
 
+def check_mode_vocabulary() -> list[str]:
+    """The AI-BOM's mode vocabulary matches the canonical kill-switch ladder.
+
+    `kill-switches/overview.md` defines the ladder; `incident_record.mode_activated`
+    records which mode an incident reached. A mode added to the ladder and not to
+    the enum cannot be recorded by an adopter. Compared against the mode headings
+    rather than per-mode `kill_switches` fields, because M0 is the baseline and
+    M5's drills live in `incidents_history`, so neither carries such a field.
+    """
+    overview = REPO_ROOT / "kill-switches" / "overview.md"
+    schema_path = REPO_ROOT / "schemas" / "ai-bom.schema.json"
+    for required in (overview, schema_path):
+        if not required.exists():
+            return [f"{rel(required)}: missing"]
+    try:
+        schema = json.loads(read(schema_path))
+    except ValueError as exc:
+        return [f"{rel(schema_path)}: not valid JSON ({exc})"]
+    enum = (
+        schema.get("$defs", {})
+        .get("incident_record", {})
+        .get("properties", {})
+        .get("mode_activated", {})
+        .get("enum")
+    )
+    if not isinstance(enum, list):
+        return [f"{rel(schema_path)}: incident_record.mode_activated has no enum"]
+    ladder = {f"M{n}" for n in re.findall(r"^## Mode (\d):", read(overview), re.M)}
+    if not ladder:
+        return [f"{rel(overview)}: no '## Mode N:' headings found"]
+    bad: list[str] = []
+    for missing in sorted(ladder - set(enum)):
+        bad.append(
+            f"schemas/ai-bom.schema.json: mode_activated omits {missing}, "
+            f"which kill-switches/overview.md defines"
+        )
+    for extra in sorted(set(enum) - ladder):
+        bad.append(
+            f"schemas/ai-bom.schema.json: mode_activated lists {extra}, "
+            f"which kill-switches/overview.md does not define"
+        )
+    return bad
+
+
 CHECKS = [
     ("relative links and anchors resolve", check_links),
     ("no trailing whitespace, CRLF or tabs", check_whitespace),
@@ -455,6 +508,7 @@ CHECKS = [
     ("shipped scripts and tests appear in CONTENT_MAP", check_tooling_is_mapped),
     ("directory trees list paths that exist", check_tree_blocks),
     ("stated composition counts are correct", check_composition_counts),
+    ("AI-BOM mode vocabulary matches the ladder", check_mode_vocabulary),
 ]
 
 
