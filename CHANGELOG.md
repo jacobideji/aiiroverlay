@@ -34,6 +34,28 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.43.0] · 2026-11-20 · The check that never ran
+
+### Added
+
+- **`tests/test_validate.py`, the repository's first test.** Six cases over `check_staleness`, pinning the field's location: a current date under `agent` is clean, an RFC 3339 timestamp parses, a 200-day-old date reports its real age, an absent field reports missing, a root-level value does **not** satisfy the check, and the shipped template's own field reaches the check whatever its age. Five of the six fail against the code as it stood, which is the only property that makes a regression test worth committing. `python3 -m unittest discover -s tests`, standard library only, so CI needs no new dependency.
+- `.github/workflows/validate-templates.yml` runs the tests after the validator and adds `tests/**` to both path triggers. Ten Python files shipped with no test of any kind, which is how a one-line path error survived forty-eight releases.
+
+### Fixed
+
+- **The 7-day AI-BOM freshness check has never evaluated.** `scripts/validate.py` read `last_reviewed` from the document root; the schema and the shipped template both place it at `agent.last_reviewed`. So the check reported `last_reviewed: missing or unparsable` whatever an AI-BOM said, no value could satisfy it, and Metric 1 Inventory Currency — the measurement behind MVO-1 conformance — produced no signal from the validator's first commit on 2026-06-29 through v0.42.1. The adjacent `kill_switches.*.tested_at` check navigates correctly, which is why those findings always carried real ages and this one never did. CI runs without `--strict`, so the false finding surfaced as a WARNING on every green run rather than failing a build; `--strict` failed a correctly filled AI-BOM instead. The lookup now reads the schema's location, and the three messages that name the field say `agent.last_reviewed` so a reader is pointed at where it lives, matching how the kill-switch findings are already written. Against the shipped template the check now reports *145 days old (2026-06-28)* rather than *missing*.
+- **`playbooks/07-secrets-and-tokens.md` stated a different credential-event field set from the schema.** Its first-hour step 3 named seven fields — `who, what, when, prior_scope, new_scope, reason, ticket_id` — renaming four, singularising two, and omitting `agent_id` and `principal`, the two that make the record attributable to an agent. `schemas/credential-event.schema.json` requires nine, and `playbooks/11-monitoring-detection.md` reproduces those nine exactly while crediting PB07 as their source. So PB11 cited PB07 for a contract PB07 did not state, and an adopter implementing PB07 literally produced a log PB11 could not consume and the schema rejected. PB07 now carries the schema's nine and links to it.
+- **The lens's OWASP crosswalk had no inbound link from any document.** `offensive-lens/crosswalks/owasp-agentic-top10.md` was reachable only by browsing the directory tree: its two mentions, in `CONTENT_MAP.md` and this file, are code spans rather than links. `offensive-lens/VALIDATION.md` rests its coverage argument on it — *25 of 31 map, all ten ASI entries covered* — and named it without linking. That sentence now links both transcribed crosswalks, which also gives the ATLAS crosswalk its first link from inside the lens.
+- **`offensive-lens/crosswalks/overlay-mapping.md` said it was mapped against overlay v0.35.0.** Its own M5 ladder row carries the six-step sequence that arrived at overlay v0.36.0, and its preamble says eight rows were added at v0.42.0, so the file contradicted itself about its own provenance. The line now points at `kill-switches/overview.md` and names no version, on the reasoning v0.37.2, v0.39.0, v0.40.0 and v0.41.0 applied to `CONTENT_MAP.md`, `MATRIX.md`, `README.md` and the lens README.
+
+### Why now
+
+The defect is in the only executable control the framework ships, it is the measurement behind a published conformance claim, and it is the first one found in this repository that reaches an adopter rather than a reader: anyone following the QUICKSTART Day 7 instruction to *run the validator against each AI-BOM* was told a field they had filled in correctly was missing, with no value that would clear it.
+
+It was found by running the validator rather than reading it. Every earlier review of this repository checked documents against documents; this one executed the code and compared the field paths it reads against the paths the schema defines. That is the class of check that was missing, and the other three items in this release came from the same pass — comparing one contract across every document that states it, and asking of every file whether anything links to it.
+
+No control, mode, playbook, technique or crosswalk cell changes. The validator's behaviour changes: a check that always reported a finding now discriminates, so `--strict` outcomes move for any AI-BOM whose `agent.last_reviewed` is current.
+
 ## [0.42.1] · 2026-11-20 · Tag hygiene
 
 ### Fixed
@@ -1305,7 +1327,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.42.1...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.43.0...HEAD
+[0.43.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.43.0
 [0.42.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.42.1
 [0.42.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.42.0
 [0.41.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.41.0
