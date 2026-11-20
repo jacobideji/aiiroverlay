@@ -21,6 +21,7 @@ still valid):
   - kill_switches.mX.tested_at: must be within 90 days for the claimed
     maturity_target (level_2_containable and above)
   - incidents_history: an M5 drill within 90 days for level_4_resilient
+
 By default, staleness is reported as a WARNING. The --strict flag escalates
 staleness findings to errors (exit 1).
 
