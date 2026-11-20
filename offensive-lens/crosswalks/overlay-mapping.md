@@ -103,14 +103,6 @@ The overlay's 24 playbooks, from its repository tree. Mappings rest on one of tw
 | PB20 Maturity Roadmap | lens verdicts as maturity evidence | |
 | PB21 Shadow AI | OL-T103 | unregistered deployments |
 | PB22 Model and Policy Drift | OL-T305, OL-T406 | M3-Drift variant owner |
-| PB05, PB07, PB11, PB16, PB17, PB19, PB23, PB24 | open | require reading each playbook's procedure |
-
-The rule: for each playbook, identify the technique whose failure would invalidate that playbook's *procedure*, not the playbook on the same topic, the one that would be wrong. A technique mapping to no playbook is a gap in the overlay; a playbook with no technique is a gap in the lens. Record both rather than forcing a mapping.
-
-Applying it leaves every playbook carrying at least one technique, and two techniques carrying no playbook of their own: **OL-T202** (in-flight action completion) and **OL-T204** (memory-mediated deferred write). Both turn on the interval between dispatch and effect, OL-T202 at the tool layer and OL-T204 across a containment boundary, and no playbook's procedure has a step that interval would break. PB14 covers them as it covers the whole lens, which is not the same as a playbook whose procedure they test. They are recorded here rather than forced onto the nearest playbook on the same topic, and they are the two cells `MATRIX.md` still carries as `TODO`.
-
-Operation 2 — line 106, the single | PB05, PB07, PB11, … | open | row. Select the whole line and paste these eight rows over it:
-
 | PB05 Executive Decision-Making | OL-T209, OL-T303, OL-T307 | the Approval Receipt cannot render provenance the approver can act on, and packet claims tagged *Confirmed* rest on evidence |
 | PB07 Secrets and Tokens | OL-T102, OL-T205, OL-T401, OL-T403, OL-T405 | the snapshot-before-rotation sequence, the scope-shrink rule, break-glass independence, and the approver this playbook names |
 | PB11 Monitoring That Truly Detects | OL-T102, OL-T107, OL-T302, OL-T303 | one technique per signal family, plus the rule-calibration decay the drill schedules |
@@ -119,6 +111,10 @@ Operation 2 — line 106, the single | PB05, PB07, PB11, … | open | row. Selec
 | PB19 Build vs Buy | OL-T201, OL-T303, OL-T305, OL-T306 | the Proof of Readiness Test is these four techniques run against a candidate platform |
 | PB23 AI Logging and Privacy | OL-T301, OL-T306, OL-T308 | Layer 2's full payload, Layer 1's correlation tokens, and the tier retention horizons |
 | PB24 Board-Ready Scorecard | OL-T201, OL-T209, OL-T302 | scorecard items A1, A2 and B3 are capability claims these techniques falsify |
+
+The rule: for each playbook, identify the technique whose failure would invalidate that playbook's *procedure*, not the playbook on the same topic, the one that would be wrong. A technique mapping to no playbook is a gap in the overlay; a playbook with no technique is a gap in the lens. Record both rather than forcing a mapping.
+
+Applying it leaves every playbook carrying at least one technique, and two techniques carrying no playbook of their own: **OL-T202** (in-flight action completion) and **OL-T204** (memory-mediated deferred write). Both turn on the interval between dispatch and effect, OL-T202 at the tool layer and OL-T204 across a containment boundary, and no playbook's procedure has a step that interval would break. PB14 covers them as it covers the whole lens, which is not the same as a playbook whose procedure they test. They are recorded here rather than forced onto the nearest playbook on the same topic, and they are the two cells `MATRIX.md` still carries as `TODO`.
 
 ## Gaps found by this mapping
 
