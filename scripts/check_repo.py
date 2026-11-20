@@ -417,10 +417,36 @@ def check_composition_counts() -> list[str]:
     return bad
 
 
+def check_table_separators() -> list[str]:
+    """A table's header row is followed by its separator row.
+
+    Found by using this script: `check_tables` only inspects rows *after* a
+    separator, so deleting the separator makes a broken table invisible to
+    it. v0.44.0 produced exactly that while editing `CONTENT_MAP.md`.
+    """
+    sep = re.compile(r"^\|[\s:|-]+\|?\s*$")
+    bad: list[str] = []
+    for p in walk((".md",)):
+        lines = read(p).split("\n")
+        fence = False
+        for i, line in enumerate(lines[:-1]):
+            if line.lstrip().startswith("```"):
+                fence = not fence
+                continue
+            if fence or not line.startswith("|") or sep.match(line):
+                continue
+            opens_block = i == 0 or lines[i - 1].strip() == ""
+            next_is_row = lines[i + 1].startswith("|") and not sep.match(lines[i + 1])
+            if opens_block and next_is_row:
+                bad.append(f"{rel(p)}:{i + 1}: header row is not followed by a separator")
+    return bad
+
+
 CHECKS = [
     ("relative links and anchors resolve", check_links),
     ("no trailing whitespace, CRLF or tabs", check_whitespace),
     ("markdown tables are rectangular", check_tables),
+    ("table headers carry a separator row", check_table_separators),
     ("PB and OL-T identifiers resolve", check_identifiers),
     ("changelog entries and link references agree", check_changelog_ledger),
     ("CI trigger paths described accurately", check_workflow_paths),
