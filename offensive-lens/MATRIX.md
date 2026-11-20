@@ -17,7 +17,7 @@
 
 **Legend**, *Control*: overlay MVO control (1 Inventory · 2 Safe Modes · 3 Evidence · 4 Controlled Re-enable). *CSF*: NIST CSF 2.0 function, the axis NIST SP 800-61 r3 is organized on. *Write risk*: whether running the technique can produce a write to a real target, and therefore needs per-exercise sign-off per [SCOPE-AND-ETHICS.md](SCOPE-AND-ETHICS.md#authorization-gate).
 
-Playbook IDs are filled only where the overlay's own `kill-switches/overview.md` or a playbook's stated scope gives direct evidence. Remaining `TODO` cells await authoritative IDs from the mapping, see [`crosswalks/overlay-mapping.md`](crosswalks/overlay-mapping.md#playbook-mapping). Do not fill them from memory.
+Playbook IDs come from [`crosswalks/overlay-mapping.md`](crosswalks/overlay-mapping.md#playbook-mapping), which asserts them either from the overlay's own `kill-switches/overview.md` and playbook titles or from a reading of each playbook's procedure. This column names one playbook per technique; the mapping assigns several to some, and it is the authority. Two `TODO` cells remain and are recorded gaps rather than pending work: no playbook's procedure turns on OL-T202 or OL-T204. Do not fill them from memory.
 
 ## L1 · Inventory Drift
 
@@ -31,7 +31,7 @@ Premise: the AI-BOM is a declaration; the runtime is the truth.
 | OL-T104 | Transitive write path via read-only tool | 1 | ID | PB04 | **yes** |
 | OL-T105 | Retrieval-corpus drift | 1 | ID | PB03 | no |
 | OL-T106 | Agent identity aliasing | 1 | ID | PB01 | no |
-| OL-T107 | Stale AI-BOM freshness | 1 | GV / ID | TODO | no |
+| OL-T107 | Stale AI-BOM freshness | 1 | GV / ID | PB11 | no |
 
 ## L2 · Containment Bypass
 
@@ -43,8 +43,8 @@ Premise: a ladder mode is a claim about capability removal. Test whether capabil
 | OL-T202 | In-flight action completion | 2 | RS | TODO | **yes** |
 | OL-T203 | Multi-agent containment relay | 2 | RS | PB08 | **yes** |
 | OL-T204 | Memory-mediated deferred write | 2 | RS | TODO | **yes** |
-| OL-T205 | Kill-switch control-plane dependency | 2 | RS / PR | TODO | no |
-| OL-T206 | Containment-aware rerouting | 2 | RS | TODO | **yes** |
+| OL-T205 | Kill-switch control-plane dependency | 2 | RS / PR | PB07 | no |
+| OL-T206 | Containment-aware rerouting | 2 | RS | PB04 | **yes** |
 | OL-T207 | Containment application race | 2 | RS | PB13 | **yes** |
 | OL-T208 | Approval-path bypass | 2 | RS | PB04 | **yes** |
 | OL-T209 | Approval integrity under load | 2 | RS | PB04 | **yes** |
@@ -62,7 +62,7 @@ Premise: the minimum evidence set is only as good as what survives contact.
 | OL-T304 | Memory volatility under containment | 3 | RS | PB02 | no |
 | OL-T305 | Unversioned configuration state | 3 | ID / DE | PB22 | no |
 | OL-T306 | Downstream attribution collapse | 3 | DE | PB01 | no |
-| OL-T307 | Evidence poisoning via injected content | 3 | DE / RS | TODO | no |
+| OL-T307 | Evidence poisoning via injected content | 3 | DE / RS | PB06 | no |
 | OL-T308 | Retention shorter than detection latency | 3 | DE / GV | PB15 | no |
 
 ## L4 · Recovery Re-entry
@@ -71,11 +71,11 @@ Premise: re-enable restores capability. Does it also restore the foothold?
 
 | ID | Technique | Control | CSF | Overlay playbook | Write risk |
 |---|---|---|---|---|---|
-| OL-T401 | Poisoned memory survives re-enable | 4 | RC | TODO | **yes** |
+| OL-T401 | Poisoned memory survives re-enable | 4 | RC | PB07 | **yes** |
 | OL-T402 | Poisoned corpus survives re-enable | 4 | RC | PB03 | **yes** |
 | OL-T403 | Credential re-grant and rotation sequence | 4 | RC / PR | PB07 | no |
 | OL-T404 | Re-enable without regression gate | 4 | RC | PB18 | no |
-| OL-T405 | Self-approved re-enable | 4 | GV / RC | TODO | no |
+| OL-T405 | Self-approved re-enable | 4 | GV / RC | PB07 | no |
 | OL-T406 | Rollback to vulnerable configuration | 4 | RC | PB22 | no |
 
 ## Coverage of the six evidence classes
