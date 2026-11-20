@@ -17,7 +17,7 @@ The validator also enforces operational staleness checks beyond the JSON
 schemas (date fields drift out of bounds even when the structural shape is
 still valid):
 
-  - last_reviewed: must be within 7 days for MVO-1 Inventory conformance
+  - agent.last_reviewed: must be within 7 days for MVO-1 Inventory conformance
   - kill_switches.mX.tested_at: must be within 90 days for the claimed
     maturity_target (level_2_containable and above)
 
@@ -114,16 +114,16 @@ def check_staleness(instance: dict, today: date | None = None) -> list[str]:
     findings: list[str] = []
     today = today or date.today()
 
-    # last_reviewed within 7 days
-    last_reviewed_str = instance.get("last_reviewed")
+    # agent.last_reviewed within 7 days
+    last_reviewed_str = (instance.get("agent") or {}).get("last_reviewed")
     last_reviewed = parse_date(last_reviewed_str)
     if last_reviewed is None:
-        findings.append("  last_reviewed: missing or unparsable; required for MVO-1 Inventory currency")
+        findings.append("  agent.last_reviewed: missing or unparsable; required for MVO-1 Inventory currency")
     else:
         age = (today - last_reviewed).days
         if age > LAST_REVIEWED_MAX_DAYS:
             findings.append(
-                f"  last_reviewed: {age} days old ({last_reviewed.isoformat()}); "
+                f"  agent.last_reviewed: {age} days old ({last_reviewed.isoformat()}); "
                 f"must be within {LAST_REVIEWED_MAX_DAYS} days for MVO-1 conformance"
             )
 
@@ -227,7 +227,7 @@ def main(argv: list[str]) -> int:
     parser.add_argument(
         "--strict",
         action="store_true",
-        help="Escalate staleness findings (last_reviewed > 7 days, tested_at > 90 days at the claimed maturity_target) to errors. Default: WARNING.",
+        help="Escalate staleness findings (agent.last_reviewed > 7 days, tested_at > 90 days at the claimed maturity_target) to errors. Default: WARNING.",
     )
     args = parser.parse_args(argv)
 
