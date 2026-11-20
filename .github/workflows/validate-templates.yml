@@ -6,6 +6,7 @@ on:
       - "templates/**"
       - "schemas/**"
       - "scripts/validate.py"
+      - "scripts/check_repo.py"
       - "tests/**"
       - ".github/workflows/validate-templates.yml"
   push:
@@ -15,6 +16,7 @@ on:
       - "templates/**"
       - "schemas/**"
       - "scripts/validate.py"
+      - "scripts/check_repo.py"
       - "tests/**"
       - ".github/workflows/validate-templates.yml"
   workflow_dispatch:
@@ -36,6 +38,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install jsonschema pyyaml
+
+      - name: Run repository consistency checks
+        run: python3 scripts/check_repo.py
 
       - name: Run reference validator
         run: python3 scripts/validate.py
