@@ -15,7 +15,7 @@
 
 This is the **single file to update** when the overlay's `MATRIX.md` or `kill-switches/overview.md` changes. Nothing else in this repository references overlay playbook IDs or ladder semantics.
 
-Mapped against overlay **v0.35.0**, `kill-switches/overview.md`.
+Mapped against the overlay's [`kill-switches/overview.md`](../../kill-switches/overview.md) in this repository, at whatever release this file ships in. It names no overlay version, because it cannot then fall behind one.
 
 ## Control mapping
 
