@@ -88,9 +88,8 @@ START-HERE.md               90-minute first pass
 lenses/                     L1–L4, technique definitions and procedures
 templates/                  engagement authorization, report, finding stub
 crosswalks/                 overlay playbooks, OWASP Agentic Top 10, MITRE ATLAS
-offensive-lens/          the complete upload: 18 self-contained step folders
-dist/                    generated: the component as it lands in the framework repository
 VALIDATION.md               conformance ladder and pre-registered falsification criteria
+FINDINGS.md                 every finding, what replaced it, and what guards the correction
 ```
 
 ## Relationship to the overlay
