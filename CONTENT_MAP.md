@@ -207,6 +207,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 
 ## Reference implementations
 
+| Artifact | Repo home | Status |
 |---|---|---|
 | AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1`; v0.26.0 adds maturity-target-conditional schema validation, last_reviewed and kill_switches.tested_at staleness checks, and `--strict` flag |
 | Repository consistency checks (Python 3; links, anchors, identifiers, the changelog ledger, and the claims these documents make about the repository's own tooling) | [`scripts/check_repo.py`](scripts/check_repo.py) | ✅ `v0.44.0` |
