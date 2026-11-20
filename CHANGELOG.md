@@ -34,6 +34,34 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.42.0] · 2026-11-20 · Playbook mapping
+
+### Added
+
+- **The eight open playbook mappings in `offensive-lens/crosswalks/overlay-mapping.md`.** PB05, PB07, PB11, PB16, PB17, PB19, PB23 and PB24 had sat as one row reading `open`, with the method for closing them stated underneath: for each playbook, find the technique whose failure would invalidate that playbook's *procedure*, not the playbook on the same topic. Each row is now asserted from a reading of that procedure, and the Basis column names the step the technique would break. All 24 playbooks carry at least one technique. The reading produced mappings a title would not have: PB19's 60-minute Proof of Readiness Test is OL-T201, OL-T303, OL-T305 and OL-T306 run against a candidate platform instead of your own; PB24's scorecard items A1, A2 and B3 are capability claims those techniques falsify, which is why a GREEN rating there requires *tested* rather than *implemented*; PB07's recovery approver rule — never the agent owner alone, never the engineer who set up the credential — is OL-T405 stated as a control.
+- **Two techniques recorded as carrying no playbook of their own.** OL-T202, in-flight action completion, and OL-T204, memory-mediated deferred write, both turn on the interval between dispatch and effect, and no playbook's procedure has a step that interval would break. PB14 covers them as it covers the whole lens, which is not the same as a playbook whose procedure they test. Per the rule the crosswalk already stated they are recorded rather than forced onto the nearest playbook on the same topic. A technique mapping to no playbook is a gap in the overlay, which is the direction this crosswalk exists to catch.
+
+### Changed
+
+- `offensive-lens/MATRIX.md`'s six fillable `TODO` cells carry their playbook: OL-T107 → PB11, OL-T205 → PB07, OL-T206 → PB04, OL-T307 → PB06, OL-T401 → PB07, OL-T405 → PB07. The file's own instruction was that these cells *await authoritative IDs from the mapping* and are not to be filled from memory; the mapping now supplies them. OL-T202 and OL-T204 stay `TODO`, and the note above the table says they are recorded gaps rather than pending work.
+- The mapping's preamble said mappings were asserted *only where the overlay's own kill-switch document or playbook title gives direct evidence; the rest remain open and are tracked as a separate work item*. There is no separate work item now and two bases are in use, so the preamble names both and says which rows come from which. The *Remaining work* paragraph becomes the rule plus what applying it found.
+- `MATRIX.md`'s playbook column holds one value per technique while the mapping assigns several to some. The note above the table now says so and names the mapping as the authority, rather than leaving a reader to discover the asymmetry.
+
+### Fixed
+
+- **`MATRIX.md` and the mapping contradicted each other on two techniques, and have since the lens shipped.** OL-T206 and OL-T307 were `TODO` in `MATRIX.md` while the mapping asserted PB04 and PB06 for them in the same v0.36.0 merge. Two documents, one question, two answers. Both cells now read what the mapping says.
+- **Three techniques `MATRIX.md` assigned to a playbook were absent from that playbook's row in the mapping.** OL-T101 and OL-T306 were named for PB01, and OL-T201 for PB04, in `MATRIX.md` alone. Each is defensible from the playbook it was given: the AI-BOM tool list OL-T101 tests is PB01's artifact, OL-T306's attribution collapse is PB01's identity problem seen from the evidence side, and a write path that never consulted the registry is the tool-design defect PB04 exists to name. All three join those rows, so the two files now agree on every one of the 31 techniques. OL-T201 is the one that had to be settled in this release rather than later: the mapping had been silent on it, so adding PB16, PB19 and PB24 without PB04 would have turned a silence into a contradiction.
+
+### Why now
+
+The lens declared this work in its own file and stated the method for doing it, which made it the largest piece of declared-open work in the repository and the only substantial one not waiting on another organization. v0.41.0 closed the last of the self-description defects; this is the first release in some time that adds a judgement rather than correcting one.
+
+The two-basis distinction is the part worth keeping. Sixteen rows were asserted from titles and the kill-switch document, which is cheap and mostly right. The eight that needed a procedure read came out differently: PB24, a board scorecard, maps to an approval-integrity technique, and PB17, a communications playbook, maps to evidence poisoning, because its Three-Status Taxonomy tags a claim *Confirmed* on the strength of evidence a responder read, and OL-T307 is the case where the adversary wrote that evidence.
+
+Cross-checking the two files against each other is what surfaced the five disagreements. Neither was wrong on its own. They were wrong about each other, which is the class only a comparison finds.
+
+No control, mode, playbook, technique or line of reference-implementation logic changes. The lens's verdicts do not move either: a mapping says which playbook a technique's failure would invalidate, not whether it fails.
+
 ## [0.41.0] · 2026-11-19 · Reference reality
 
 ### Changed
