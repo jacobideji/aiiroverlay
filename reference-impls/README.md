@@ -23,7 +23,7 @@ The v0.24.0 holistic critique surfaced that the [`schemas/evidence-export.spec.m
 | Implementation | What it does | What it does NOT do |
 |---|---|---|
 | `evidence_exporter` | Reads a synthetic-or-real evidence source layout; produces a manifest with integrity hashes; emits telemetry events; demonstrates parallel-export discipline; shows the per-type capture order | Connect to specific vendors (OpenAI, Anthropic, Salesforce, Okta); store evidence in production durable storage; handle PII redaction |
-| `kill_switch_demo` | Demonstrates an in-memory tool registry that can be toggled to M0 through M5; shows the Activate/Status/Deactivate/Probe API shape; logs activation history with separation-of-duties enforcement | Persist state across restarts; integrate with a real agent runtime; enforce containment at the credential or network layer |
+| `kill_switch_demo` | Demonstrates an in-memory tool registry that can be toggled to M0 through M5; shows the Activate/Status/Deactivate/Probe API shape; logs activation events | Integrate with LangGraph, Bedrock Agents, or specific vendor copilot platforms; persist state across restarts |
 
 ## Usage
 
