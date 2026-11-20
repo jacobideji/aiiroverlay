@@ -34,6 +34,33 @@ The following gaps were identified by the v0.33.0 expert-domain audit (CISO, NIS
 - **Long-running autonomous agents (24/7 operations).** TTSM ≤ 10 minutes for Tier-1 SOC assumes a SOC is staffed. For purely autonomous agents at 3am with the agent owner as the only human in the loop, the M3/M4 activation path requires automation that the framework does not yet specify. `kill-switches/overview.md` carries a qualification note at v0.33.0. v1.1 candidate: automation-trigger discipline for the activation path.
 - **Formal decision-rights specification.** Framework names the canonical convening triad (CISO + General Counsel + Incident Commander) but does not specify who can declare an incident, who can stand down a false-positive determination, who can escalate or de-escalate Kill-Switch Modes, or who holds the tie-break vote when the triad disagrees. These are currently org-defined via RACI / charter / governance policy. `framework/04-materiality-and-disclosure.md` carries a qualification note at v0.33.0. v1.1 candidate: a formal decision-rights subsection (declare / stand-down / escalate / tie-break authorities) or a Decision-Rights template that customers can populate.
 
+## [0.44.0] · 2026-11-20 · Checks the reviewer cannot forget
+
+### Added
+
+- **`scripts/check_repo.py`, twelve checks that read the repository against itself.** Links and anchors resolve; markdown tables are rectangular and carry a separator row; every `PB` and `OL-T` identifier cited anywhere resolves to a real one; every changelog entry has a link reference and every reference URL is well formed; the CI trigger paths that prose describes match the workflow's own; prose describing the kill-switch demo names the modes it implements; the field paths `scripts/validate.py` reads exist in the shipped AI-BOM; every shipped script and test has a `CONTENT_MAP.md` row; fenced directory trees list only paths that exist; and a sentence claiming the framework's composition counts correctly. Each check carries a docstring naming the released defect it exists to catch, so a future reader can tell whether a check is load-bearing or decorative. Standard library plus `pyyaml`, which CI already installs.
+- **The module docstring states what the script cannot check**: whether the incident-response guidance is correct as practice, whether any external organization has run the Offensive Lens, and the lens fixture and assessment records that `offensive-lens/VALIDATION.md` places with the lens source rather than here. A green run is not a claim about any of those, and saying so in the file is cheaper than discovering later that someone read it as one.
+- `.github/workflows/validate-templates.yml` runs the checks ahead of the validator and the tests, and watches `scripts/check_repo.py`. A release that leaves a document behind now goes red instead of shipping.
+
+### Fixed
+
+- **The stale kill-switch mode list existed in six places, not three.** v0.41.0 corrected the demo's docstring, its usage comment and `reference-impls/README.md` line 13, and its entry says *All three now say M0 through M5*. Three more survived: `CONTENT_MAP.md` and `README.md` both described the demo as *M0/M1/M2/M3/M4*, and `reference-impls/README.md` line 26 — in the same file v0.41.0 edited — described it as *M0/M1/M3*. All three now match `ALL_MODES`, and the check that found them compares prose against the code rather than against a previous release's claim.
+- **`CONTENT_MAP.md` and `RELEASE_CHECKLIST.md` described the previous CI trigger set.** v0.43.0 added `tests/**`; both documents still named only `templates/`, `schemas/` and `scripts/validate.py`. Both now name all five paths, and `CONTENT_MAP.md` describes all three workflow steps rather than just the validator.
+- **`CONTENT_MAP.md` had no row for `tests/test_validate.py`**, in a table that rows the validator, the CI workflow and both reference implementations. It now rows the test suite and this release's checks.
+- **`QUICKSTART-startup.md` said the framework has three crosswalks.** `crosswalks/sp-800-61r3.md` made it four at v0.40.0, which updated `README.md`, `MATRIX.md` and `CONTENT_MAP.md` and left this sentence behind.
+- **`offensive-lens/README.md`'s directory tree listed two paths that have never existed here.** `offensive-lens/` described as *the complete upload: 18 self-contained step folders* and a generated `dist/` are artifacts of the lens's authoring workspace; the tree also omitted `FINDINGS.md`, which the same file's reading order lists as item 5. Six real entries unchanged, two phantoms gone, `FINDINGS.md` added.
+- `RELEASE_CHECKLIST.md` gains a pre-flight item requiring `scripts/check_repo.py` to exit 0, placed with the cross-reference and attribution checks it belongs beside.
+
+### Why now
+
+Ten of the twelve checks were written from defects that had already shipped. Running them against the repository as it stood found ten findings, three of which no manual pass had found, including the three surviving instances of a defect a previous release had declared closed in all three of its locations. That ratio is the argument: the checks are not hypothetical hygiene, they are a transcript of what this repository has actually got wrong.
+
+The twelfth check came from using the eleven. While editing `CONTENT_MAP.md` for this release the table separator was deleted, and `check_tables` could not see it, because it only inspects rows that follow a separator. A table checker blind to a broken table is the kind of thing this release exists to prevent, so the check was added and the defect it was written from is named in its docstring.
+
+What this does not change is the part that was never automatable. The module docstring names it, `RELEASE_CHECKLIST.md`'s new item repeats it, and the distinction matters more than the checks do: a green run says the repository is internally consistent. It says nothing about whether the guidance is right.
+
+No control, mode, playbook, technique, crosswalk cell or line of reference-implementation logic changes.
+
 ## [0.43.0] · 2026-11-20 · The check that never ran
 
 ### Added
@@ -1327,7 +1354,8 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 - `templates/ai-bom.yaml`: machine-readable AI Bill of Materials.
 - `templates/agent-privilege-matrix.csv`: Tier 0, 1, and 2 example mapping.
 
-[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.43.0...HEAD
+[Unreleased]: https://github.com/jacobideji/aiiroverlay/compare/v0.44.0...HEAD
+[0.44.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.44.0
 [0.43.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.43.0
 [0.42.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.42.1
 [0.42.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.42.0
