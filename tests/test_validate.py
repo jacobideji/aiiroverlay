@@ -66,6 +66,64 @@ class LastReviewedLocation(unittest.TestCase):
         self.assertIn("missing or unparsable", found[0])
 
 
+def level_4(history=None):
+    """A Level 4 instance, current on every m1-m4 record."""
+    modes = {
+        k: {"implemented": True, "tested_at": TODAY.isoformat(), "tta_minutes": 1}
+        for k in ("m1_read_only", "m2_approvals", "m3_tool_tiering", "m4_full_disable")
+    }
+    return {
+        "agent": {"last_reviewed": TODAY.isoformat()},
+        "kill_switches": dict(maturity_target="level_4_resilient", **modes),
+        "incidents_history": [] if history is None else history,
+    }
+
+
+def m5_findings(instance):
+    return [
+        f
+        for f in validate.check_staleness(instance, today=TODAY)
+        if "incidents_history" in f
+    ]
+
+
+class LevelFourRequiresAnM5Drill(unittest.TestCase):
+    """M5 carries no kill_switches record by design; its drills live in
+    incidents_history, which the validator did not read before v0.45.0."""
+
+    def test_no_m5_record_is_a_finding(self):
+        found = m5_findings(level_4())
+        self.assertEqual(len(found), 1)
+        self.assertIn("no M5 Controlled Re-Enable record", found[0])
+
+    def test_stale_m5_drill_reports_its_age(self):
+        old = (TODAY - timedelta(days=200)).isoformat()
+        found = m5_findings(level_4([{"date": old, "mode_activated": "M5"}]))
+        self.assertEqual(len(found), 1)
+        self.assertIn("200 days old", found[0])
+
+    def test_recent_m5_drill_is_clean(self):
+        now = TODAY.isoformat()
+        self.assertEqual(m5_findings(level_4([{"date": now, "mode_activated": "M5"}])), [])
+
+    def test_a_non_m5_drill_does_not_satisfy_it(self):
+        now = TODAY.isoformat()
+        found = m5_findings(level_4([{"date": now, "mode_activated": "M1"}]))
+        self.assertEqual(len(found), 1)
+        self.assertIn("no M5 Controlled Re-Enable record", found[0])
+
+    def test_an_unparsable_m5_date_is_reported_not_raised(self):
+        """The first draft of this gate raised ValueError on this input."""
+        found = m5_findings(level_4([{"date": "not-a-date", "mode_activated": "M5"}]))
+        self.assertEqual(len(found), 1)
+        self.assertIn("missing or unparsable", found[0])
+
+    def test_lower_levels_are_not_asked_for_an_m5_drill(self):
+        inst = level_4()
+        inst["kill_switches"]["maturity_target"] = "level_2_containable"
+        self.assertEqual(m5_findings(inst), [])
+
+
 class ShippedTemplate(unittest.TestCase):
     def test_the_shipped_ai_bom_field_is_found_and_parsed(self):
         """Whatever its age, the template's own field must reach the check."""
