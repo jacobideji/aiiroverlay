@@ -8,7 +8,7 @@ authors:
     affiliation: "AI IR Overlay Framework (Independent)"
     website: "https://jacobideji.com"
 version: "0.42.0"
-date-released: "2026-11-19"
+date-released: "2026-11-20"
 license: "Apache-2.0"
 repository-code: "https://github.com/jacobideji/aiiroverlay"
 url: "https://github.com/jacobideji/aiiroverlay"
