@@ -1346,7 +1346,7 @@ The founding release. Establishes the thesis, the framework core, the triage dis
 [0.15.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.15.0
 [0.14.3]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.3
 <!-- The v0.14.2 release tag was created with a literal trailing comma ("v0.14.2,"). At v0.42.1 a correctly named tag was created on the same commit and the malformed tag and its release were deleted, so the reference below carries no comma. Do not re-add it. -->
-[[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
+[0.14.2]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.2
 [0.14.1]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.1
 [0.14.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.14.0
 [0.13.0]: https://github.com/jacobideji/aiiroverlay/releases/tag/v0.13.0
