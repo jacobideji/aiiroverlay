@@ -53,8 +53,8 @@ A maturity roadmap is **not** an incident response playbook. But the level you o
 | Maturity level | Containment modes you can credibly execute | Containment modes that are documented but not real |
 |---|---|---|
 | **Level 1 (Aware)** | M0 Observe | M1–M4 exist on paper. None will activate cleanly in 10 minutes. |
-| **Level 2 (Containable)** | M0, M1, M2 (tested in last 90 days) | M3 Tool Tiering may exist but is unrehearsed. M4 disable may have credential-rotation timing problems. |
-| **Level 3 (Provable)** | M0, M1, M2, M3, M4 (all tested in last 90 days) AND evidence capture in 60 min | M5 Controlled Re-Enable is documented but may collapse to a single binary decision under business pressure. |
+| **Level 2 (Containable)** | M0, M1, M2, M3, M4 (all tested in last 90 days) | M5 Controlled Re-Enable is documented but may collapse to a single binary decision under business pressure. |
+| **Level 3 (Provable)** | Level 2's modes, plus the Minimum Evidence Set exported inside 60 minutes | M5 Controlled Re-Enable, as at Level 2: documented, not yet exercised under pressure. |
 | **Level 4 (Resilient)** | All six modes, all tested quarterly, plus measured improvement in TTA and Time-to-Evidence over 90-day windows | None. |
 
 **The asymmetry to internalize:** a Level 1 organization claiming Level 3 capability believes its runbook describes a real procedure. When the incident hits, the runbook describes a wish. The operating cadence in this playbook is the work that converts the wish into a procedure.
