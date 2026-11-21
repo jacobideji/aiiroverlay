@@ -209,7 +209,7 @@ Legend: ✅ shipped · 🟡 drafted (in maintainer's working folder) · ⬜ plan
 
 | Artifact | Repo home | Status |
 |---|---|---|
-| AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1`; v0.26.0 adds maturity-target-conditional schema validation, lagent.last_reviewed, kill_switches.tested_at and level_4 M5-drill staleness checks, and `--strict` flag |
+| AI-BOM + Privilege Matrix validator (Python 3) | [`scripts/validate.py`](scripts/validate.py) | ✅ `v0.14.1`; v0.26.0 adds maturity-target-conditional schema validation, agent.last_reviewed, kill_switches.tested_at and level_4 M5-drill staleness checks, and `--strict` flag |
 | Repository consistency checks (Python 3; links, anchors, identifiers, the changelog ledger, and the claims these documents make about the repository's own tooling) | [`scripts/check_repo.py`](scripts/check_repo.py) | ✅ `v0.44.0` |
 | Staleness regression tests for the reference validator | [`tests/test_validate.py`](tests/test_validate.py) | ✅ `v0.43.0` |
 | CI workflow (GitHub Actions) running the repository checks, the reference validator and the test suite on every PR touching `templates/**`, `schemas/**`, `scripts/validate.py`, `scripts/check_repo.py` or `tests/**`. Supports manual dispatch via the Actions tab. | [`.github/workflows/validate-templates.yml`](.github/workflows/validate-templates.yml) | ✅ `v0.14.2`; v0.43.0 adds the test suite, v0.44.0 the repository checks |
